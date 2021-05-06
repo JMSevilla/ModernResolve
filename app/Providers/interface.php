@@ -1,6 +1,6 @@
 <?php
 //backend providers.
-namespace App\Provider;
+namespace Illuminate\Provider;
 
 interface DBContext
 {

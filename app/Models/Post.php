@@ -1,6 +1,6 @@
 <?php
 
-use App\Provider\iModelsInterface;
+use Illuminate\Provider\iModelsInterface;
 use App\DatabaseIntegration\DBIntegration as DBIntegrate;
 use App\PostController\postController;
 class Post extends DBIntegrate implements iModelsInterface{
