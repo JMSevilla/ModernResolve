@@ -1,3 +1,92 @@
+
+/* .layer-1 .card
+{
+  margin-top: 25px;
+  border-radius: 15px;
+} */
+.layer-4 .card
+{
+  margin-top: 25px;
+  border-radius: 15px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#alink{
+  color: grey;
+}
+#forpadding
+{
+  padding: 5px;
+  width: 90%;
+}
+/* #logo
+{
+  width: 5%;
+}
+#toressimg
+{
+  margin-left: 10px;
+  width: 8%;
+} */
+.navbarimages
+{
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbarimages #logo{
+  width: 20%;
+}
+.navbarimages #logo2
+{
+  margin-left: 10px;
+  width:30%;
+}
+.navbarproceed
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+.navbarmenu
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#forpadding #marginforul1
+{
+  float: right;
+  
+}
+#marginforul1 li
+{
+  
+  padding: 8px;
+  background-color: yellow;
+  border-radius: 10px;
+  margin-right: 5px;
+  
+}
+#marginforul1 li:hover
+{
+  background-color: grey;
+}
+#marginforul1 a:hover
+{
+  color: yellow;
+}
+
+#forcontent4img img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+
+=======
 /* .layer-1 .card{
   margin-top: 25px;
   border-radius: 15px;
@@ -22,3 +111,4 @@
 #showme_hover:hover {
   text-decoration:underline;
 }
+
