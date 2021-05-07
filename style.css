@@ -2,3 +2,44 @@
   margin-top: 25px;
   border-radius: 15px;
 }
+
+/* hannah-5/6/21:Add /footer-starts here */
+
+#logo1
+{
+  width: 60px;
+  margin-right: 10px;
+}
+
+#logo2
+{
+  width: 90px;
+}
+
+.footer-section-content
+{
+  color: #343a40;
+  font-size: 15px;
+  text-align: justify;
+}
+
+.footer-section-title
+{
+  color: #343a40;
+  font-size: 15px;
+}
+
+.list-unstyled a
+{
+  color: #6c757d;
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 300%;
+}
+
+.list-unstyled a:hover
+{
+  color: #6c757d;
+  text-decoration: underline;
+}
+/* hannah-5/6/21:Add content/footer-ends here */
