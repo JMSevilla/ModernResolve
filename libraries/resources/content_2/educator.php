@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <img src="https://a.edim.co/images_v2/landing/rebrand/translated_ltr/module_2_img_ltr_trans.webp" width="100%" height="100%">
+            <img src="img/teacher.png" width="100%" height="100%">
         </div>
     </div>
 </div>

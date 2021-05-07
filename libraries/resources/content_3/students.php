@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <img src="https://a.edim.co/images_v2/landing/rebrand/translated_ltr/module_3_img_ltr_trans_box.png" alt="" width="70%">
+            <img src="img/discover.png" alt="" width="70%">
         </div>
         <div class="col-md-6">
             <div class="container">
