@@ -12,6 +12,10 @@ interface WebRoute
   public function root($config, $models, $controllers, $query, $interface);
 }
 
+interface lightweightRoute{
+  public function LRoot($config, $controller, $rootqueries, $rootinterface);
+}
+
 interface iModelsInterface{
   public function postModels($table);
 }
