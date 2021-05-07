@@ -1,7 +1,7 @@
-<div class="container-fluid ">
+<div class="container-fluid">
     <div class="row align-items-center">
         <div class="col-md-1">
-            
+
         </div>
         <div class="col-md-8">
             <div class="text-dark">
