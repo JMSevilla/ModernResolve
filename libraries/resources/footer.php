@@ -2,8 +2,8 @@
 <div class="container-footer">
         <div class="card" style="padding: 25px 70px;">
             <div class="card-top" style="margin-bottom: 16px">
-                <img src="http://localhost/torres/torrestechnology/img/toresstec.png" id="logo1">
-                <img src="http://localhost/torres/torrestechnology/img/toresstech.png" id="logo2">
+                <img src="img/toresstec.png" id="logo1">
+                <img src="img/toresstech.png" id="logo2">
             </div>
             <div class="row ">
                 <div class="col-md-4" style="padding-right: 30px">
