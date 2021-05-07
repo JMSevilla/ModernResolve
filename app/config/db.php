@@ -6,9 +6,9 @@ use Illuminate\Provider\DBContext;
 use PDO;
 class DBIntegration implements DBContext
 {
-  private $host = "localhost";
-  private $username = "root";
-  private $pwd = "";
+  private $host = "azuretorrestech28.mysql.database.azure.com";
+  private $username = "torresdb@azuretorrestech28";
+  private $pwd = "Syncdb123456";
   private $mydb = "dbtorres";
   private $dataOutbound;
   private $stmt;
