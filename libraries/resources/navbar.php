@@ -3,8 +3,8 @@
   
     <div class="container-fluid" id="forpadding">
       <div class="navbarimages">
-        <img src="../img/toresstec.png" alt="" id="logo">
-        <img src="../img/toresstech.png" alt="" id="logo2">
+        <img src="gitimg/toresstec.png" alt="" id="logo">
+        <img src="img/toresstech.png" alt="" id="logo2">
       </div>
         <div class="navbarmenu">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">

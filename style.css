@@ -1,9 +1,5 @@
 
-/* .layer-1 .card
-{
-  margin-top: 25px;
-  border-radius: 15px;
-} */
+
 .layer-4 .card
 {
   margin-top: 25px;
@@ -12,7 +8,8 @@
   margin-left: auto;
   margin-right: auto;
 }
-#alink{
+#alink
+{
   color: grey;
 }
 #forpadding
@@ -20,15 +17,6 @@
   padding: 5px;
   width: 90%;
 }
-/* #logo
-{
-  width: 5%;
-}
-#toressimg
-{
-  margin-left: 10px;
-  width: 8%;
-} */
 .navbarimages
 {
   width: 25%;
@@ -84,9 +72,6 @@
   margin-right: auto;
   width: 100%;
 }
-
-
-=======
 /* .layer-1 .card{
   margin-top: 25px;
   border-radius: 15px;
