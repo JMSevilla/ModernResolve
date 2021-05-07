@@ -1,7 +1,7 @@
 <div class="container my-5">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <img src="https://a.edim.co/images_v2/landing/rebrand/Edmodo_SpotImageSchools@1x.png" alt="" width="100%">
+            <img src="img/admin.png" alt="" width="100%">
         </div>
         <div class="col-md-6">
             <div class="p-5">
