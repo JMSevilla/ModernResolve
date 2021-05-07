@@ -2,7 +2,7 @@
 
 namespace App\DatabaseIntegration;
 
-use App\Provider\DBContext;
+use Illuminate\Provider\DBContext;
 use PDO;
 class DBIntegration implements DBContext
 {

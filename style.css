@@ -1,3 +1,4 @@
+
 /* .layer-1 .card
 {
   margin-top: 25px;
@@ -84,4 +85,30 @@
   width: 100%;
 }
 
+
+=======
+/* .layer-1 .card{
+  margin-top: 25px;
+  border-radius: 15px;
+} */
+
+/* content 1 */
+#bg_card {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  font-size: 38px;
+}
+#p {
+  font-size: 20px;
+}
+
+#showme_hover {
+  text-decoration: none;
+}
+
+#showme_hover:hover {
+  text-decoration:underline;
+}
 
