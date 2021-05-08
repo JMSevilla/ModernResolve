@@ -1,12 +1,12 @@
-<div class="container mt-3">
+<div class="container content_pad">
     <div class="row align-items-center">
         <div class="col-md-6">
             <div class="container">
-                <h3 class="text-muted text-primary">FOR EDUCATORS</h3>
-                <p class="fs-4 fw-bold">Tools that teachers need</p>
+                <h3 class="text_content">FOR EDUCATORS</h3>
+                <p class="text_subtle">Tools that teachers need</p>
                 <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. At molestias nisi expedita voluptatum, 
                     natus ducimus mollitia neque libero, vero commodi suscipit omnis odio laudantium distinctio quisquam temporibus necessitatibus itaque officia.</p>
-                <a href="http://" class="text-warning fs-5" id="showme_hover">Show me how</a>           
+                <a href="http://" class="btn btn-warning btn-sm text-capitalize fs-6">Show me how</a>           
             </div>
         </div>
         <div class="col-md-6">

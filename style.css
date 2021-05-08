@@ -82,6 +82,8 @@
   background-color: rgba(0, 0, 0, 0.2);
 } */
 
+/* Emman */
+
 .header {
   font-size: 38px;
 }
@@ -89,17 +91,30 @@
   font-size: 20px;
 }
 
-#showme_hover {
-  text-decoration: none;
-}
-
-#showme_hover:hover {
-  text-decoration:underline;
+.content_pad {
+  padding: 30px 90px;
 }
 
 .cardcheck{
 border-radius: 18px;
 }
+
+.text_content {
+  color: #abaeba;
+  font-size: 20px;
+  letter-spacing: .5px;
+  line-height: 38px;
+  margin-bottom: 18px;
+}
+
+.text_subtle {
+  color: #1a237e;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+/* Emman / content ends */
 
 .nav-sticky{
   z-index: 10;
