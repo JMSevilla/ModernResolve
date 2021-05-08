@@ -1,11 +1,16 @@
 <?php
-
+/* 
+Please use this function plugins that i created to create your backend.
+Reminder !
+1. If you want to edit or add something please notify me. 
+*/
 namespace App\DatabaseIntegration;
 
 use Illuminate\Provider\DBContext;
 use PDO;
 class DBIntegration implements DBContext
 {
+  // Connection privates
   private $host = "azuretorrestech28.mysql.database.azure.com";
   private $username = "torresdb@azuretorrestech28";
   private $pwd = "Syncdb123456";
@@ -24,9 +29,20 @@ class DBIntegration implements DBContext
       die("could not connect" . $e->getMessage());
     }
   }
+  //Models Starts here
   public function model_prepare($sql){
     return $this->stmt = $this->connect()->prepare($sql);
   }
+  public function ModelsExecution(){
+    return $this->stmt->execute();
+  }
+  public function ModelsCount(){
+    return $this->stmt->rowCount() > 0;
+  }
+  public function ModelsCreated($sql){
+    return $this->connect()->exec($sql);
+  }
+  // Data binding
   public function bind($val, $param, $type = null)
   {
     if(is_null($type)){
@@ -40,22 +56,51 @@ class DBIntegration implements DBContext
     }
     return $this->stmt->bindParam($val, $param, $type);
   }
-  public function ModelsExecution(){
-    return $this->stmt->execute();
-  }
-  public function ModelsCount(){
-    return $this->stmt->rowCount() > 0;
-  }
-  public function ModelsCreated($sql){
-    return $this->connect()->exec($sql);
-  }
+
+  
+  ///// Controller Starts here. 
   public function ControllerPrepare($sql){
     return $this->stmt = $this->connect()->prepare($sql);
   }
   public function ControllerExecutable(){
     return $this->stmt->execute();
   }
-  public function JSONResponse(){
-    return json_encode(array("statusCode" => 200));
+  /////JSON Responses 
+  public function SuccessJSONResponse(){
+    return json_encode(array("statusCode" => "success"));
   }
+  public function InvalidJSONResponse(){
+    return json_encode(array("statusCode" => "invalid"));
+  }
+  public function NotFoundJSONResponse(){
+    return json_encode(array("statusCode" => "not found"));
+  }
+  /////Checking Server
+  public function CHECKSERVER(){
+    return $_SERVER["REQUEST_METHOD"] == "POST";
+  }
+  /////For Code Testing
+  public function teamCodeTester(){
+    return json_encode(array("TestCode" => 200));
+  }
+  // Data Encrypting
+  public function dataEncrypt(){
+    return password_hash($pass, PASSWORD_DEFAULT);
+  }
+  // Data Counting for controller
+  public function controller_row(){
+    return $this->stmt->rowCount() > 0;
+  }
+  // This is for saving token on cookies.
+  //Expires every 7 days
+  public function cookieOfLife($originalToken){
+    $argsCookie = array(
+      'expires' => time() + 60*60*24*7,
+      'path' => '/',
+      'secure' => true,
+      'httponly' => true,
+      'samesite' => 'None'
+    );
+    setcookie('Token', $originalToken, $argsCookie);
+}
 }

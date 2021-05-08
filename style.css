@@ -1,9 +1,5 @@
 
-/* .layer-1 .card
-{
-  margin-top: 25px;
-  border-radius: 15px;
-} */
+
 .layer-4 .card
 {
   margin-top: 25px;
@@ -12,7 +8,8 @@
   margin-left: auto;
   margin-right: auto;
 }
-#alink{
+#alink
+{
   color: grey;
 }
 #forpadding
@@ -20,15 +17,6 @@
   padding: 5px;
   width: 90%;
 }
-/* #logo
-{
-  width: 5%;
-}
-#toressimg
-{
-  margin-left: 10px;
-  width: 8%;
-} */
 .navbarimages
 {
   width: 25%;
@@ -58,16 +46,16 @@
 #forpadding #marginforul1
 {
   float: right;
-  
+
 }
 #marginforul1 li
 {
-  
+
   padding: 8px;
   background-color: yellow;
   border-radius: 10px;
   margin-right: 5px;
-  
+
 }
 #marginforul1 li:hover
 {
@@ -75,7 +63,7 @@
 }
 #marginforul1 a:hover
 {
-  color: yellow;
+  color: whitesmoke;
 }
 
 #forcontent4img img{
@@ -84,9 +72,6 @@
   margin-right: auto;
   width: 100%;
 }
-
-
-=======
 /* .layer-1 .card{
   margin-top: 25px;
   border-radius: 15px;
@@ -112,6 +97,9 @@
   text-decoration:underline;
 } */
 
+.cardcheck{
+border-radius: 18px;
+}
 
 .nav-sticky{
   z-index: 10;
@@ -119,20 +107,11 @@
   position: sticky;
   background: #fff;
 }
-=======
+
 
 /* hannah-5/6/21:Add /footer-starts here */
 
-#logo1
-{
-  width: 60px;
-  margin-right: 10px;
-}
 
-#logo2
-{
-  width: 90px;
-}
 
 .footer-section-content
 {
@@ -154,12 +133,21 @@
   text-decoration: none;
   line-height: 300%;
 }
-
+.card-top .img1 {
+  width: 60px;
+  height: auto;
+  margin-right: 10px;
+}
+.card-top .img2{
+    width: 90px;
+    height: auto;
+}
 .list-unstyled a:hover
 {
   color: #6c757d;
   text-decoration: underline;
 }
+.container-footer .card{
+  padding: 25px 50px;
+}
 /* hannah-5/6/21:Add content/footer-ends here */
-
-

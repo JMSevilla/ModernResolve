@@ -1,6 +1,6 @@
 
 
-  <?php include('libraries/resources/content.views.php'); ?>
+  <?php include('libraries/resources/content.php'); ?>
 
 
     
