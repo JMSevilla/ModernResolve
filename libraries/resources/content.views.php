@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="bg_card">
     <div class="card-body">
         <?php include("content_1/content_views.php"); ?>
     </div>
