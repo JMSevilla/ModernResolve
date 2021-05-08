@@ -3,7 +3,7 @@
             <div class="container row align-items-center">
                 <div class="col-md-6">
                     <div>
-                        <img src="https://a.edim.co/images_v2/landing/rebrand/translated_ltr/module_1_img_ltr_trans.webp" width="100%">
+                        <img src="img/learn.png" width="100%">
                     </div>
                 </div>
                 <div class="col-md-6">

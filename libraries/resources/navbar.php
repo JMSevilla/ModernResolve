@@ -1,5 +1,5 @@
 <!-- dito akiu nagalaw 05/06/21 -->
-<nav class="navbar navbar-expand-lg" id="paranavbar">
+<nav class="navbar navbar-expand-lg nav-sticky" id="paranavbar">
   
     <div class="container-fluid" id="forpadding">
       <div class="navbarimages">

@@ -46,16 +46,16 @@
 #forpadding #marginforul1
 {
   float: right;
-  
+
 }
 #marginforul1 li
 {
-  
+
   padding: 8px;
   background-color: yellow;
   border-radius: 10px;
   margin-right: 5px;
-  
+
 }
 #marginforul1 li:hover
 {
@@ -97,19 +97,21 @@
   text-decoration:underline;
 }
 
+.cardcheck{
+border-radius: 18px;
+}
+
+.nav-sticky{
+  z-index: 10;
+  top: 0;
+  position: sticky;
+  background: #fff;
+}
+=======
 
 /* hannah-5/6/21:Add /footer-starts here */
 
-#logo1
-{
-  width: 60px;
-  margin-right: 10px;
-}
 
-#logo2
-{
-  width: 90px;
-}
 
 .footer-section-content
 {
@@ -131,11 +133,21 @@
   text-decoration: none;
   line-height: 300%;
 }
-
+.card-top .img1 {
+  width: 60px;
+  height: auto;
+  margin-right: 10px;
+}
+.card-top .img2{
+    width: 90px;
+    height: auto;
+}
 .list-unstyled a:hover
 {
   color: #6c757d;
   text-decoration: underline;
 }
+.container-footer .card{
+  padding: 25px 50px;
+}
 /* hannah-5/6/21:Add content/footer-ends here */
-
