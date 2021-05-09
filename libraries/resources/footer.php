@@ -5,7 +5,7 @@
             <div class="container">
               <div class="card-top" style="margin-bottom: 16px">
                   <img src="img/toresstec.png" class="img-fluid img1" />
-                  <img src="img/toresstech.png" class="img-fluid img2" />
+                  <img src="img/torrestechlogo2.png" class="img-fluid img2" />
               </div>
               <div class="row ">
                   <div class="col-md-4" style="padding-right: 30px">

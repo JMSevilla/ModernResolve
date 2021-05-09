@@ -34,7 +34,7 @@
               </div>
             </li>
             <li>
-              <a href="" class="nav-link" id="alink"><h5>SignUp</h5></a>
+              <a href="signup.php" class="nav-link" id="alink"><h5>SignUp</h5></a>
             </li>
           </ul>
         </div>
