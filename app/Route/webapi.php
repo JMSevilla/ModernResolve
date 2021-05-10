@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Provider\WebRoute, Illuminate\Provide\lightweightRoute as lightweight;
+use Illuminate\Provider\WebRoute, Illuminate\Provider\lightweightRoute;
 
-class Route implements WebRoute, lightweight
+class Route implements WebRoute, lightweightRoute
 {
   public function root($config, $models, $controllers, $query, $interface){
     include_once "../config/" . $config;
