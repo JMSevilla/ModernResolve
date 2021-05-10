@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Provider\WebRoutebackend as webrouting;
+include_once "../Providers/interface.php";
 
-class Route implements webrouting 
-{
-  public function routebackend($config, $models, $controllers, $query, $interface){
+class web_api implements IRouteProvider{
+  public function middleware($config,$models, $controller, $queries){
     include_once "../config/" . $config;
     include_once "../Models/" . $models;
-    include_once "../Http/Controller/" . $controllers;
-    include_once "../DataQuery/" . $query;
-    include_once "../Providers/" . $interface;
+    include_once "../Http/Controller/" . $controller;
+    include_once "../DataQuery/" . $queries;
   }
 }
