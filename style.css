@@ -137,12 +137,29 @@ border-radius: 18px;
 
 
 
+.container-footer .card
+{
+  padding: 25px 50px;
+}
+
+.card-top .img1 {
+  width: 60px;
+  height: auto;
+  margin-right: 10px;
+}
+.card-top .img2{
+    width: 90px;
+    height: auto;
+}
+
 .footer-section-content
 {
   color: #343a40;
   font-size: 15px;
   text-align: justify;
+  padding-right: 30px;
 }
+
 
 .footer-section-title
 {
@@ -157,21 +174,88 @@ border-radius: 18px;
   text-decoration: none;
   line-height: 300%;
 }
-.card-top .img1 {
-  width: 60px;
-  height: auto;
-  margin-right: 10px;
-}
-.card-top .img2{
-    width: 90px;
-    height: auto;
-}
+
 .list-unstyled a:hover
 {
   color: #6c757d;
   text-decoration: underline;
 }
-.container-footer .card{
-  padding: 25px 50px;
-}
 /* hannah-5/6/21:Add content/footer-ends here */
+
+/* #stepper{
+  z-index: 12;
+  top: 0;
+  position: sticky;
+ 
+} */
+.signup h4
+{
+  text-align:center;
+  margin-bottom: 20px;
+}
+
+.signup .row .col-md-9
+{
+  margin-bottom: 20px;
+}
+
+.signup .container-address .col-md
+{
+  margin-left: 15%;
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.signupbtn
+{
+  background-color: #3c84f3;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 10px;  
+}
+
+.signupbtn:hover
+{
+  background-color: #1b6ceb;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 10px; 
+}
+
+.signup p
+{
+  text-align: center;
+}
+
+.signup p a:hover
+{
+  text-decoration: underline;
+}
+
+input[id=contact]::-webkit-inner-spin-button, 
+input[id=contact]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[id=age]
+{
+  width: 220px;
+  height: auto;
+}
+
+input[id=txtzip]
+{
+  width: 210px;
+  height: auto;
+}
+
+input[id=code]::-webkit-inner-spin-button, 
+input[id=code]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
