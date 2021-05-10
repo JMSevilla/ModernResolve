@@ -8,7 +8,7 @@ class postController extends DBIntegrate implements iPostInterface{
     if($this->ControllerPrepare(iController_Insertion($table))){
       $this->bind(":fname", $data['fname']);
       if($this->ControllerExecutable()){
-        echo $this->JSONResponse();
+        echo $this->SuccessJSONResponse();
       }
     }
   }

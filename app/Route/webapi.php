@@ -1,6 +1,6 @@
 <?php
 
-use App\Provider\WebRoute, App\Provide\lightweightRoute as lightweight;
+use Illuminate\Provider\WebRoute, Illuminate\Provide\lightweightRoute as lightweight;
 
 class Route implements WebRoute
 {
