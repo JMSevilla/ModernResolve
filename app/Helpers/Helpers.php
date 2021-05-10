@@ -7,5 +7,5 @@ if(isset($_POST['Trigger']) == 1){
 function provide_root(){
     include_once "../Route/webapi.php";
     $calls = new web_api();
-    $calls::middleware("db.php", "Post.php", "postController.php", "queries.php");
+    $calls::middleware("db.php", "Post.php", "postController.php", "queries.php", "PHPMailer.php", "SMTP.php", "Exception.php");
 }

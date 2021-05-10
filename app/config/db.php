@@ -100,4 +100,27 @@ class DBIntegration
     );
     setcookie('Token', $originalToken, $argsCookie);
 }
+//sending email *Please don't use this if not neccessary 
+public function emailsender($mail){
+  $mail->IsSMTP();
+  $mail->Mailer = 'smtp';
+  $mail->SMTPAuth = true;
+  $mail->Host = 'smtp.gmail.com'; 
+  $mail->Port = ""; //465
+  $mail->SMTPSecure = 'ssl';
+  $mail->Username = ""; //dev email ex: jm@gmail.com
+  $mail->Password = ""; //dev gmail password
+  $mail->IsHTML(true); // if you are going to send HTML formatted emails
+  $mail->From = "devopsbyte60@gmail.com";
+  $mail->FromName = "Resolve Technologies";
+  $mail->addAddress("devopsbyte60@gmail.com","JM");
+  $mail->Subject = "Thank you";
+  $mail->Body = file_get_contents("http://localhost/torreshtech/app/Http/templates/template.php");
+      try {
+        $mail->send();
+        echo json_encode(array("successsent" => "Message has been sent successfully"));
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+}
 }
