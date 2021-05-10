@@ -1,6 +1,6 @@
 
 
-  <?php include('libraries/resources/forms.php'); ?>
+  <?php include('libraries/resources/content.php'); ?>
 
 
 
