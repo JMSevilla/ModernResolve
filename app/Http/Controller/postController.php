@@ -1,9 +1,7 @@
 <?php
+spl_autoload_register('route_db');
 
-namespace App\PostController;
-use App\DatabaseIntegration\DBIntegration as DBIntegrate;
-use Illuminate\Provider\iPostInterface;
-class postController extends DBIntegrate implements iPostInterface{
+class postController extends DBIntegration {
   public function postControl($table,$data){
     if($this->ControllerPrepare(iController_Insertion($table))){
       $this->bind(":fname", $data['fname']);
@@ -12,4 +10,10 @@ class postController extends DBIntegrate implements iPostInterface{
       }
     }
   }
+}
+
+function route_db(){
+  include_once "../Providers/interface.php";
+  configRouting("db.php");
+  queriesRouting("queries.php");
 }

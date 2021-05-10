@@ -1,9 +1,6 @@
 <?php
-
-use Illuminate\Provider\iModelsInterface;
-use App\DatabaseIntegration\DBIntegration as DBIntegrate;
-use App\PostController\postController;
-class Post extends DBIntegrate implements iModelsInterface{
+spl_autoload_register('route_controller');
+class Post extends DBIntegration {
   public function postModels($table){
     if($this->model_prepare(models_check())){
       $this->bind(":mytable", $table);
@@ -24,4 +21,11 @@ class Post extends DBIntegrate implements iModelsInterface{
       }
     }
   }
+}
+
+function route_controller(){
+  include_once "../Providers/interface.php";
+  configRouting("db.php");
+  queriesRouting("queries.php");
+  controllersRouting("postController.php");
 }
