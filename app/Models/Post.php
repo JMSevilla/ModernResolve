@@ -1,5 +1,5 @@
 <?php
-spl_autoload_register('route_controller');
+
 class Post extends DBIntegration {
   public function postModels($table){
     if($this->model_prepare(models_check())){
@@ -21,11 +21,4 @@ class Post extends DBIntegration {
       }
     }
   }
-}
-
-function route_controller(){
-  include_once "../Providers/interface.php";
-  configRouting("db.php");
-  queriesRouting("queries.php");
-  controllersRouting("postController.php");
 }
