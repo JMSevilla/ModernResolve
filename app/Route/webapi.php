@@ -2,7 +2,7 @@
 
 use Illuminate\Provider\WebRoute, Illuminate\Provide\lightweightRoute as lightweight;
 
-class Route implements WebRoute
+class Route implements WebRoute, lightweight
 {
   public function root($config, $models, $controllers, $query, $interface){
     include_once "../config/" . $config;
