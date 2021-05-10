@@ -4,11 +4,8 @@ Please use this function plugins that i created to create your backend.
 Reminder !
 1. If you want to edit or add something please notify me. 
 */
-namespace App\DatabaseIntegration;
 
-use Illuminate\Provider\DBContext;
-use PDO;
-class DBIntegration implements DBContext
+class DBIntegration 
 {
   // Connection privates
   private $host = "localhost";

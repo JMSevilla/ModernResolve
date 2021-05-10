@@ -1,25 +1,21 @@
 <?php
 //backend providers.
-namespace Illuminate\Provider;
 
-interface DBContext
-{
-  public function connect();
+
+
+function configRouting($configRoute){
+  return include_once "../config/" . $configRoute;
 }
 
-interface WebRoute
-{
-  public function root($config, $models, $controllers, $query, $interface);
+function modelsRouting($modelsRoute){
+  return include_once "../Models/" . $modelsRoute;
 }
 
-interface lightweightRoute{
-  public function LRoot($config, $controller, $rootqueries, $rootinterface);
+function controllersRouting($ControllerRoutes){
+  return include_once "../Http/Controller/" . $ControllerRoutes;
 }
 
-interface iModelsInterface{
-  public function postModels($table);
-}
+function queriesRouting($queries){
+  return include_once "../DataQuery/" . $queries;
 
-interface iPostInterface{
-  public function postControl($table,$data);
 }
