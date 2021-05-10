@@ -11,9 +11,9 @@ use PDO;
 class DBIntegration implements DBContext
 {
   // Connection privates
-  private $host = "azuretorrestech28.mysql.database.azure.com";
-  private $username = "torresdb@azuretorrestech28";
-  private $pwd = "Syncdb123456";
+  private $host = "localhost";
+  private $username = "root";
+  private $pwd = "";
   private $mydb = "dbtorres";
   private $dataOutbound;
   private $stmt;
