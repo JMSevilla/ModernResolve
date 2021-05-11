@@ -100,7 +100,7 @@ class DBIntegration
     );
     setcookie('Token', $originalToken, $argsCookie);
 }
-//sending email *Please don't use this if not neccessary 
+//sending email *Please don't use this if not necessary 
 public function emailsender($mail){
   $mail->IsSMTP();
   $mail->Mailer = 'smtp';

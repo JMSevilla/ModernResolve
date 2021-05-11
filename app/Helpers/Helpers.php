@@ -1,8 +1,9 @@
 <?php
 spl_autoload_register('provide_root');
-if(isset($_POST['Trigger']) == 1){
-   $callback = new Post();
-   $callback->postModels($_POST['table']);
+if(isset($_POST['vueTrigger']) == 1){
+    echo json_encode(array("hello" => "hello din"));
+//    $callback = new Post();
+//    $callback->postModels($_POST['table']);
 }
 function provide_root(){
     include_once "../Route/webapi.php";
