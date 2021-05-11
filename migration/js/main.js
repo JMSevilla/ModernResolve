@@ -1,6 +1,10 @@
 import http from "./http.js";
 
 user();
+province();
+course();
+classCode();
+token();
 
 function user(){
   var obj = {
@@ -9,20 +13,31 @@ function user(){
   }
   http.buildData_construct(obj)
 }
-
-// $('#onsubmit').click(() => {
-//   var obj = {
-//     Trigger: 1,
-//     table: "test"
-//   }
-//   validate(obj)
-// })
-
-// function validate(obj){
-//   if(!obj.fname){
-//     alert("empty fields");
-//     return false;
-//   } else{
-//     http.buildData_construct(obj)
-//   }
-// }
+function province(){
+  var obj = {
+    provinceTrigger: 1,
+    table: "province"
+  }
+  http.buildData_construct(obj)
+}
+function course(){
+  var obj = {
+    courseTrigger: 1,
+    table: "course"
+  }
+  http.buildData_construct(obj)
+}
+function classCode(){
+  var obj = {
+    classCodeTrigger: 1,
+    table: "class_code"
+  }
+  http.buildData_construct(obj)
+}
+function token(){
+  var obj = {
+    tokenTrigger: 1,
+    table: "token"
+  }
+  http.buildData_construct(obj)
+}
