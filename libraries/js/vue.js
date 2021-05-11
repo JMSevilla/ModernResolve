@@ -15,13 +15,19 @@ ELEMENT.locale(ELEMENT.lang.en)
             bdate: '',
             age: '',
             contact:'',
+            address: '',
+            province: '',
+            city: '',
+            street: '',
             zipcode: '',
             email:'',
             password:'',
             confirm:'',            
             code: "",
             TaskTrigger: 1,
-            sex: ''
+            sex: '',
+            course: '',
+            table: 'user_table'
           },
           
 
@@ -61,25 +67,55 @@ ELEMENT.locale(ELEMENT.lang.en)
       //kay methods lang kayo gagalaw
       methods: {
         next() {
-          if(!this.task.classcode || !this.task.fname){
+          if(!this.task.classcode || !this.task.fname || !this.task.lname || !this.task.bdate || !this.task.age || !this.task.contact){
             this.$notify.error({
               title: 'Empty',
-              message: 'This is a success message',
+              message: 'fields are required!',
               offset: 100
             });
             return false;
-          } //else if
+          }
           else{
             //this.active++
             // http.buidData_Registration(this.task);
-            $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
-              var jsonbreaker = JSON.parse(response);
-              if(jsonbreaker.statusCode === 200){
-                // this.active++;
-                alert(this.task.sex)
-              } 
-            })
+            // $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
+            //   var jsonbreaker = JSON.parse(response);
+            //   if(jsonbreaker.statusCode === 200){
+                this.active++;
+              // } 
+            // })
           }
+      },
+      next_2() {
+        if(!this.task.address || !this.task.zipcode || !this.task.province || !this.task.city || !this.task.street) {
+          this.$notify.error({
+            title: 'Empty',
+            message: 'This is a success message',
+            offset: 100
+          });
+          return false;
+        }
+        else {
+          this.active++;
+        }
+      },
+      next_3() {
+        if(!this.task.course) {
+          this.$notify.error({
+            title: 'Empty',
+            message: 'This is a success message',
+            offset: 100
+          });
+          return false;
+        }
+        else {
+          this.active++;
+        }
+      },
+      next_4() {
+        $.post(this.app + this.Helpers + '/Helpers.php', this.task, response => {
+          console.log(response);
+        });
       },
       previous(){
        this.active--;
