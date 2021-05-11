@@ -1,10 +1,12 @@
 
-
+import http from "./http.js";
 ELEMENT.locale(ELEMENT.lang.en)
     new Vue({
       el: '#app',
       data: function() {
         return { 
+          app: 'app/',
+          Helpers: 'Helpers',
           active: 0,
           task:{
             classcode: '',
@@ -18,10 +20,10 @@ ELEMENT.locale(ELEMENT.lang.en)
             password:'',
             confirm:'',            
             code: "",
+            TaskTrigger: 1,
+            sex: ''
           },
-          radio:{
-            input: '1' 
-          },
+          
 
           value1: '' ,
           
@@ -59,8 +61,25 @@ ELEMENT.locale(ELEMENT.lang.en)
       //kay methods lang kayo gagalaw
       methods: {
         next() {
-          //0 + 1 = 1 + 1 = 2 + 1 = 3
-        if (this.active++ > 4) this.active = 0;
+          if(!this.task.classcode || !this.task.fname){
+            this.$notify.error({
+              title: 'Empty',
+              message: 'This is a success message',
+              offset: 100
+            });
+            return false;
+          } //else if
+          else{
+            //this.active++
+            // http.buidData_Registration(this.task);
+            $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
+              var jsonbreaker = JSON.parse(response);
+              if(jsonbreaker.statusCode === 200){
+                // this.active++;
+                alert(this.task.sex)
+              } 
+            })
+          }
       },
       previous(){
        this.active--;
