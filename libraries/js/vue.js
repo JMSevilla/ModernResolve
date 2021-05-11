@@ -15,6 +15,10 @@ ELEMENT.locale(ELEMENT.lang.en)
             bdate: '',
             age: '',
             contact:'',
+            address: '',
+            province: '',
+            city: '',
+            street: '',
             zipcode: '',
             email:'',
             password:'',
@@ -61,25 +65,53 @@ ELEMENT.locale(ELEMENT.lang.en)
       //kay methods lang kayo gagalaw
       methods: {
         next() {
-          if(!this.task.classcode || !this.task.fname){
+          if(!this.task.classcode || !this.task.fname || !this.task.lname 
+            || !this.task.bdate || !this.task.age || !this.task.contact){
             this.$notify.error({
               title: 'Empty',
               message: 'This is a success message',
               offset: 100
             });
             return false;
-          } //else if
+          }
           else{
             //this.active++
             // http.buidData_Registration(this.task);
-            $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
-              var jsonbreaker = JSON.parse(response);
-              if(jsonbreaker.statusCode === 200){
-                // this.active++;
-                alert(this.task.sex)
-              } 
-            })
+            // $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
+            //   var jsonbreaker = JSON.parse(response);
+            //   if(jsonbreaker.statusCode === 200){
+                this.active++;
+                
+              // } 
+            // })
           }
+      },
+      next_2() {
+        if(!this.task.address || !this.task.zipcode || !this.task.province || !this.task.city || !this.task.street) {
+          this.$notify.error({
+            title: 'Empty',
+            message: 'This is a success message',
+            offset: 100
+          });
+          return false;
+        }
+        else {
+          // this.active++;
+          alert(this.task.address);
+        }
+      },
+      next_3() {
+        if(!this.task.value3) {
+          this.$notify.error({
+            title: 'Empty',
+            message: 'This is a success message',
+            offset: 100
+          });
+          return false;
+        }
+        else {
+          this.active++;
+        }
       },
       previous(){
        this.active--;
