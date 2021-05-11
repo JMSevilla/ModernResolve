@@ -18,3 +18,20 @@ function iController_Insertion($table){
   ";
   return $sql;
 }
+
+// emman
+function iModels_table($table) {
+  $sql = "
+  CREATE TABLE IF NOT EXISTS ".$table." (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, classcode VARCHAR(100), firstname VARCHAR(100), lastname VARCHAR(100), birthdate DATE,
+  age VARCHAR(100), contactnumber VARCHAR(100), address VARCHAR(100), province VARCHAR(100), city VARCHAR(100), street VARCHAR(100), zipcode VARCHAR(100),
+  email VARCHAR(100), password VARCHAR(100), sex VARCHAR(100), course VARCHAR(100), code VARCHAR(100), created_time DATETIME DEFAULT CURRENT_TIMESTAMP)
+  )";
+  return $sql;
+}
+
+function iController_CreateUser($table) {
+  $sql = "
+    INSERT INTO ".$table." VALUES(default, :classcode, :firstname, :lastname, :birthdate, :age, :contact, :address, :province, :city,
+    :street, :zipcode, :email, :password, :sex, :course, :code, current_timestamp)";
+    return $sql;
+} 

@@ -25,7 +25,9 @@ ELEMENT.locale(ELEMENT.lang.en)
             confirm:'',            
             code: "",
             TaskTrigger: 1,
-            sex: ''
+            sex: '',
+            course: '',
+            table: 'user_table'
           },
           
 
@@ -65,11 +67,10 @@ ELEMENT.locale(ELEMENT.lang.en)
       //kay methods lang kayo gagalaw
       methods: {
         next() {
-          if(!this.task.classcode || !this.task.fname || !this.task.lname 
-            || !this.task.bdate || !this.task.age || !this.task.contact){
+          if(!this.task.classcode || !this.task.fname || !this.task.lname || !this.task.bdate || !this.task.age || !this.task.contact){
             this.$notify.error({
               title: 'Empty',
-              message: 'This is a success message',
+              message: 'fields are required!',
               offset: 100
             });
             return false;
@@ -81,7 +82,6 @@ ELEMENT.locale(ELEMENT.lang.en)
             //   var jsonbreaker = JSON.parse(response);
             //   if(jsonbreaker.statusCode === 200){
                 this.active++;
-                
               // } 
             // })
           }
@@ -96,12 +96,11 @@ ELEMENT.locale(ELEMENT.lang.en)
           return false;
         }
         else {
-          // this.active++;
-          alert(this.task.address);
+          this.active++;
         }
       },
       next_3() {
-        if(!this.task.value3) {
+        if(!this.task.course) {
           this.$notify.error({
             title: 'Empty',
             message: 'This is a success message',
@@ -112,6 +111,11 @@ ELEMENT.locale(ELEMENT.lang.en)
         else {
           this.active++;
         }
+      },
+      next_4() {
+        $.post(this.app + this.Helpers + '/Helpers.php', this.task, response => {
+          console.log(response);
+        });
       },
       previous(){
        this.active--;
