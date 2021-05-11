@@ -4,18 +4,17 @@
                                         <label class="mt-2">Courses</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <el-select v-model="value3" filterable placeholder="Courses">
-                                                <el-option
-                                                    id="txtcourse"
-                                                    v-for="item in options"
-                                                    :key="item.value"
-                                                    :label="item.label"
-                                                    :value="item.value">
-                                                </el-option>
-                                        </el-select>      
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        </select>     
                                     </div>   
                                 </div>
-                                <div style="display: inline; padding-left: 150px">
+                                <div style="display: inline;">
+                                    <center>
                                     <el-button class="signupbtn" @click="previous">Previous</el-button>
                                     <el-button class="signupbtn" @click="next">Next step</el-button>
+                                    </center>
                                 </div>

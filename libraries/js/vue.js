@@ -1,5 +1,6 @@
 
-import http from "./http.js";
+// import http from "./http.js";
+
 ELEMENT.locale(ELEMENT.lang.en)
     new Vue({
       el: '#app',
@@ -21,7 +22,8 @@ ELEMENT.locale(ELEMENT.lang.en)
             confirm:'',            
             code: "",
             TaskTrigger: 1,
-            sex: ''
+            sex: '',
+            city: ''
           },
           
 
@@ -68,22 +70,17 @@ ELEMENT.locale(ELEMENT.lang.en)
               offset: 100
             });
             return false;
-          } //else if
+          } 
           else{
-            //this.active++
-            // http.buidData_Registration(this.task);
-            $.post(this.app + this.Helpers + "/Helpers.php", this.task, (response) => {
-              var jsonbreaker = JSON.parse(response);
-              if(jsonbreaker.statusCode === 200){
-                // this.active++;
-                alert(this.task.sex)
-              } 
-            })
+            this.active++
           }
+      },
+      next2(){
+        alert(this.task.city)
+        this.active++
       },
       previous(){
        this.active--;
       },
-      
       }
     })
