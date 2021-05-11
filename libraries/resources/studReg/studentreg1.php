@@ -74,8 +74,8 @@
                                         <label>Gender</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <el-radio v-model="task.female" id="txtfemale" label="1">Female</el-radio>
-                                        <el-radio v-model="task.male" id="txtmale" label="2">Male</el-radio>
+                                        <el-radio v-model="task.sex"  label="female">Female</el-radio>
+                                        <el-radio v-model="task.sex"  label="male">Male</el-radio>
                                     </div>  
                                 </div>
                                 <div class="row">

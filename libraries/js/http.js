@@ -10,6 +10,11 @@ const requestInbound = {
     return $.post(state.app + state.helpers + "/Helpers.php", obj, (response) => {
       responseOutbound.dataResponse(resolve, response)
     })
+  },
+  userRegistration(obj, resolve){
+    return $.post(state.app + state.helpers + "/Helpers.php", obj, (response) => {
+      responseOutbound.dataResponse(resolve, response)
+    })
   }
 }
 
@@ -29,6 +34,17 @@ const handler = {
     })
     await promise.then(response => {
       console.log(response)
+    })
+  },
+  async buidData_Registration(obj){
+    await Promise.all([this.buildRegistration(obj)])
+  },
+  async buildRegistration(obj){
+    const promise = new Promise((resolve) => {
+      requestInbound.userRegistration(obj, resolve);
+    })
+    await promise.then(response => {
+      console.log(response);
     })
   }
 }
