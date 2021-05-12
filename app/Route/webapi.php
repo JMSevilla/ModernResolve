@@ -3,7 +3,7 @@
 include_once "../Providers/interface.php";
 
 class web_api implements IRouteProvider{
-  public function middleware($config,$models, $controller, $queries, $phpmailer, $smtp, $exception){
+  public function middleware($config,$models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer){
     include_once "../config/" . $config;
     include_once "../Models/" . $models;
     include_once "../Http/Controller/" . $controller;
@@ -11,5 +11,6 @@ class web_api implements IRouteProvider{
     include_once "../vendor/phpmailer/phpmailer/src/" . $phpmailer;
     include_once "../vendor/phpmailer/phpmailer/src/" . $smtp;
     include_once "../vendor/phpmailer/phpmailer/src/" . $exception;
+    include_once "../Providers/interface.php";
   }
 }

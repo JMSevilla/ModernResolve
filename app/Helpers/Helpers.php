@@ -20,7 +20,7 @@ if(isset($_POST['TaskTrigger']) == 1){
         'sex' => $_POST['sex'],
         'course' => $_POST['course'],
       ];
-
+      echo json_encode($data);
     //   $controller = new postController();
     //   $controller->controller_signup($data);
 }

@@ -5,7 +5,7 @@ province();
 course();
 classCode();
 token();
-
+codeverifier();
 function user(){
   var obj = {
     userTrigger: 1,
@@ -38,6 +38,14 @@ function token(){
   var obj = {
     tokenTrigger: 1,
     table: "token"
+  }
+  http.buildData_construct(obj)
+}
+
+function codeverifier(){
+  var obj= {
+    verifierCode: 1,
+    table: "codeverifier"
   }
   http.buildData_construct(obj)
 }
