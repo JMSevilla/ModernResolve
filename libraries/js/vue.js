@@ -1,5 +1,6 @@
 
-import http from "./http.js";
+// import http from "./http.js";
+
 ELEMENT.locale(ELEMENT.lang.en)
     new Vue({
       el: '#app',
@@ -173,6 +174,10 @@ ELEMENT.locale(ELEMENT.lang.en)
       charactersLength)));
         }
         return this.codeverification = result.join('');
+      },
+      next2(){
+        
+        this.active++
       },
       previous(){
        this.active--;

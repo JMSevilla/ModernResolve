@@ -12,7 +12,8 @@
                                         </select>     
                                     </div>   
                                 </div>
-                                <div style="display: inline; padding-left: 150px">
+                                <div style="display: inline;">
+                                    <center>
                                     <el-button class="signupbtn" @click="previous">Previous</el-button>
                                     <el-button class="signupbtn" @click="next_3">Next step</el-button>
                                 </div>
