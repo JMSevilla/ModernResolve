@@ -10,35 +10,6 @@ class postController extends DBIntegration {
       }
     }
   }
-
-  // emman
-    public function controller_signup($table, $data) {
-      if($this->CHECKSERVER()) {
-        if($this->ControllerPrepare(iController_CreateUser($table))) {
-          $this->bind(':classcode', $data['classcode']);
-          $this->bind(':firstname', $data['fname']);
-          $this->bind(':lastname', $data['lname']);
-          $this->bind(':birthdate', $data['bdate']);
-          $this->bind(':age', $data['age']);
-          $this->bind(':contact', $data['contact']);
-          $this->bind(':address', $data['address']);
-          $this->bind(':city', $data['city']);
-          $this->bind(':street', $data['street']);
-          $this->bind(':zipcode', $data['zipcode']);
-          $this->bind(':email', $data['email']);
-          $this->bind(':password', $data['password']);
-          $this->bind(':code', $data['code']);
-          $this->bind(':sex', $data['sex']);
-          $this->bind(':course', $data['course']);
-          $this->bind(':code', $data['code']);
-
-          if($this->ControllerExecutable()) {
-            echo $this->SuccessJSONResponse();
-          }
-        }
-      }
-    }
-
 }
 
 

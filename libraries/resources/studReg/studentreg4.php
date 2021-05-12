@@ -34,5 +34,5 @@
                                 </div>
                                 <div style="display: inline; padding-left: 150px">
                                     <el-button class="signupbtn" @click="previous">Previous</el-button>
-                                    <el-button class="signupbtn" @click="next_4">Next step</el-button>
+                                    <el-button class="signupbtn" @click="next">Next step</el-button>
                                 </div>
