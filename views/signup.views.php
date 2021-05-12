@@ -6,7 +6,7 @@
         <!-- stepper - jm -->
         <div class="container" style="margin-bottom: 25px; margin-top: 30px;">
             <el-steps :active="active" finish-status="success" id="stepper">
-                    <el-step title="Step 1" ></el-step>
+                    <el-step title="Step 1"></el-step>
                     <el-step title="Step 2"></el-step>
                     <el-step title="Step 3"></el-step>
                     <el-step title="Step 4"></el-step>

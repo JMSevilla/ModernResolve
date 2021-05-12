@@ -4,12 +4,17 @@
                                         <label class="mt-2">Class Code</label>
                                     </div>
                                     <div class="col-md-9">
+                                        
                                         <el-input
                                             placeholder="Enter your Class code"
                                             v-model="task.classcode"
                                             id="txtclasscode"
                                             clearable>
                                         </el-input>
+                                        
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>
+            
                                     </div>  
                                 </div>
                                 <div class="row">
@@ -23,6 +28,9 @@
                                             id="txtfname"
                                             clearable>
                                         </el-input>
+
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>
                                     </div>  
                                 </div>
                                 <div class="row">
@@ -36,11 +44,14 @@
                                             id="txtlname"
                                             clearable>
                                         </el-input>
+
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>
                                     </div>  
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label class="mt-2">Birthdate</label>
+                                    <label class="mt-2">Birtdate</label>
                                     </div>
                                     <div class="col-md-9">
                                         <el-date-picker
@@ -54,6 +65,8 @@
                                             placeholder="Select date and time">                                           
                                         </el-date-picker>
                                        
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>
                                     </div>  
                                 </div>
                                 <div class="row">
@@ -61,12 +74,15 @@
                                         <label class="mt-2">Age</label>
                                     </div>
                                     <div class="col-md-9">
+                                        
                                         <el-input 
                                             type="text" 
                                             v-model="task.age"  
                                             id="age"
                                             :min="16" :max="100">
                                         </el-input>
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>
                                     </div>  
                                 </div>
                                 <div class="row">
@@ -76,6 +92,8 @@
                                     <div class="col-md-9">
                                         <el-radio v-model="task.female" id="txtfemale" label="1">Female</el-radio>
                                         <el-radio v-model="task.male" id="txtmale" label="2">Male</el-radio>
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>  
                                     </div>  
                                 </div>
                                 <div class="row">
@@ -88,7 +106,8 @@
                                             v-model.number="task.contact" 
                                             id="contact">
                                         </el-input>
-                                                                  
+                                        <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
+                                            <i class="fas fa-exclamation-circle"></i></small>                        
                                     </div>  
                                 </div>
                                 <div style="display: inline; padding-left: 200px">
