@@ -5,14 +5,15 @@ ELEMENT.locale(ELEMENT.lang.en)
     new Vue({
       el: '#app',
       data: function() {
-        return { 
+        return {
           app: 'app/',
           Helpers: 'Helpers',
           active: 0,
           task:{
+            code:'',
             classcode: '',
-            fname: '',
-            lname: '' ,
+              fname: '',
+              lname: '' ,
             bdate: '',
             age: '',
             contact:'',
@@ -23,16 +24,16 @@ ELEMENT.locale(ELEMENT.lang.en)
             zipcode: '',
             email:'',
             password:'',
-            confirm:'',            
+            confirm:'',
             code: "",
             TaskTrigger: 1,
             sex: '',
             course: ''
           },
           codeverification: '',
-
+          provinceTesting: [],
           value1: '' ,
-          
+
           value: '',
           options: [{
             value: 'Option1',
@@ -60,7 +61,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             value: 'Option4',
             label: 'Option4'
           }],
-         } 
+         }
       },
       created(){
         this.makeverificationcode(9);
@@ -68,8 +69,53 @@ ELEMENT.locale(ELEMENT.lang.en)
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
       methods: {
+
+        oncodeentry(){
+          if(!this.task.code){
+            this.$notify.error({
+              title: 'Oops',
+              message: 'Please provide verification code',
+              offset: 100
+            });
+            return false;
+          }
+          else{
+            const loading = this.$loading({
+              lock: true,
+              text: 'Verifying. please wait...',
+              spinner: 'el-icon-loading',
+              background: 'rgba(0, 0, 0, 0.7)'
+            });
+            setTimeout(() => {
+              var objectListener = {
+              codeverifies: this.task.code,
+              table: 'codeverifier', verifyTrigger: true
+            }
+            $.post(this.app + this.Helpers + '/verificationCheckHelper.php', objectListener, (response) => {
+              var json = JSON.parse(response);
+              if(json.statusCode === "invalid"){
+                this.$notify.error({
+                  title: 'Oops',
+                  message: 'This code is invalid',
+                  offset: 100
+                });
+                loading.close()
+                return false;
+              }else{
+                this.$notify.success({
+                  title: 'Yey!',
+                  message: 'Youre successfully verified!',
+                  offset: 100
+                });
+                this.active++;
+                loading.close()
+              }
+            })
+            }, 3000)
+          }
+        },
         next() {
-          
+
           if(!this.task.classcode || !this.task.fname || !this.task.lname || !this.task.bdate || !this.task.age || !this.task.contact){
             this.$notify.error({
               title: 'Empty',
@@ -164,25 +210,25 @@ ELEMENT.locale(ELEMENT.lang.en)
          }, 5000)
         }
       },
-      
+
       makeverificationcode(length){
         var result           = [];
           var characters       = '0123456789';
           var charactersLength = characters.length;
           for ( var i = 0; i < length; i++ ) {
-            result.push(characters.charAt(Math.floor(Math.random() * 
+            result.push(characters.charAt(Math.floor(Math.random() *
       charactersLength)));
         }
         return this.codeverification = result.join('');
       },
       next2(){
-        
+
         this.active++
       },
       previous(){
        this.active--;
       },
-      
+
       ///class code checker
       classcodeChecker(){
         var obj = {

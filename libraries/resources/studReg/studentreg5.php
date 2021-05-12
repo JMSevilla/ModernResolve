@@ -4,14 +4,14 @@
                                         <label class="mt-2">Code</label>
                                     </div>
                                     <div class="col-md-9" >
-                                        <el-input 
+                                        <el-input
                                             id="txtcode"
-                                            type="number" 
+                                            type="number"
                                             v-model="task.code" >
-                                        </el-input>                            
-                                    </div>  
+                                        </el-input>
+                                    </div>
                                 </div>
                                 <div style="display: inline; padding-left: 150px">
                                     <el-button class="signupbtn" @click="previous">Previous</el-button>
-                                    <el-button class="signupbtn" @click="">Next step</el-button>
+                                    <el-button class="signupbtn" @click="oncodeentry">Next step</el-button>
                                 </div>

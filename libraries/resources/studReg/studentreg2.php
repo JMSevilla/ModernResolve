@@ -1,3 +1,6 @@
+<?php
+
+?>
 <h4>PERSONAL INFORMATION</h4>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -22,10 +25,8 @@
                                         </div>
                                         <div class="col-md">
                                         <select v-model="task.province" class="form-select" aria-label="Default select example">
-                                        <option selected>Province</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option v-for="item in provinceTesting" :key="item.province">{{item.province}}</option>
+
                                         </select>
                                         </div>
                                         <div class="col-md">
@@ -45,7 +46,7 @@
                                             </el-input>
                                         </div>
 
-                                    </div>    
+                                    </div>
                                 </div>
                                 <div style="display: inline;">
                                     <center>

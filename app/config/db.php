@@ -1,11 +1,11 @@
 <?php
-/* 
+/*
 Please use this function plugins that i created to create your backend.
 Reminder !
-1. If you want to edit or add something please notify me. 
+1. If you want to edit or add something please notify me.
 */
 
-class DBIntegration 
+class DBIntegration
 {
   // Connection privates
   private $host = "localhost";
@@ -54,8 +54,8 @@ class DBIntegration
     return $this->stmt->bindParam($val, $param, $type);
   }
 
-  
-  ///// Controller Starts here. 
+
+  ///// Controller Starts here.
   public function ControllerPrepare($sql){
     return $this->stmt = $this->connect()->prepare($sql);
   }
@@ -65,7 +65,7 @@ class DBIntegration
   public function ControllerQuery($sql){
     return $this->stmt = $this->connect()->query($sql);
   }
-  /////JSON Responses 
+  /////JSON Responses
   public function SuccessJSONResponse(){
     return json_encode(array("statusCode" => "success"));
   }
@@ -75,7 +75,7 @@ class DBIntegration
   public function NotFoundJSONResponse(){
     return json_encode(array("statusCode" => "not found"));
   }
-  
+
   /////Checking Server
   public function CHECKSERVER(){
     return $_SERVER["REQUEST_METHOD"] == "POST";
@@ -107,13 +107,13 @@ class DBIntegration
     );
     setcookie('Token', $originalToken, $argsCookie);
 }
-//sending email *Please don't use this if not necessary 
+//sending email *Please don't use this if not necessary
 public function emailsender($mail, $receiveremail, $codex){
   $mail->IsSMTP();
   $mail->Mailer = 'smtp';
   $mail->SMTPAuth = true;
-  $mail->Host = 'smtp.gmail.com'; 
-  $mail->Port = "465"; 
+  $mail->Host = 'smtp.gmail.com';
+  $mail->Port = 465;
   $mail->SMTPSecure = 'ssl';
   $mail->Username = "devopsbyte60@gmail.com"; //dev email ex: jm@gmail.com
   $mail->Password = "09663147803miguel"; //dev gmail password
@@ -131,7 +131,7 @@ public function emailsender($mail, $receiveremail, $codex){
   $mail->Body .= "</body></html>";
       try {
         $mail->send();
-        
+
     } catch (Exception $e) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }

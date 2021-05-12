@@ -12,7 +12,7 @@
                     <el-step title="Step 4"></el-step>
                     <el-step title="Step 5"></el-step>
             </el-steps>
-            
+
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-6">
                     <div v-if="active == 0">
@@ -30,34 +30,45 @@
                     <div v-else-if="active == 4">
                         <img src="img/verification.png" alt="" width="100%">
                     </div>
+                    <div v-else-if="active == 5">
+                      <img src="https://cdn.dribbble.com/users/2417352/screenshots/15567742/media/b50bb568968bee50d16250f94307eb87.png?compress=1&resize=1000x750" width="100%" alt="">
+                    </div>
                 </div>
-               
+
                 <div class="col-md-6">
                     <el-card shadow="always" style="border-radius: 15px">
                         <div v-if="active == 0">
                             <?php include("libraries/resources/studReg/studentreg1.php"); ?>
                         </div>
-           
+
                         <div v-else-if="active == 1">
                         <?php include("libraries/resources/studReg/studentreg2.php"); ?>
+                        <p>Already have an account? <a href="#">Login</a> </p>
                         </div>
-      
+
                      <div v-else-if="active == 2">
-                            
+
                      <?php include("libraries/resources/studReg/studentreg3.php"); ?>
+                     <p>Already have an account? <a href="#">Login</a> </p>
                         </div>
 
                         <div v-else-if="active == 3">
-                            
+
                         <?php include("libraries/resources/studReg/studentreg4.php"); ?>
+                        <p>Already have an account? <a href="#">Login</a> </p>
                         </div>
 
-                        <div v-else-if="active == 4">  
+                        <div v-else-if="active == 4">
                         <?php include("libraries/resources/studReg/studentreg5.php"); ?>
-                        </div>
-<!-- closing if rendering --> 
                         <p>Already have an account? <a href="#">Login</a> </p>
+                        </div>
+                        <div v-else-if="active == 5">
+                        <?php include("libraries/resources/studReg/finish.php"); ?>
+                        </div>
+<!-- closing if rendering -->
+
                     </el-card>
+
                 </div>
             </div>
         </div>

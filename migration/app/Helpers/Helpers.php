@@ -32,7 +32,7 @@ if(isset($_POST['tokenTrigger']) == 1){
 }
 if(isset($_POST['verifierCode']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), isdone char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
+    $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), email varchar(255), isdone char(1), sendattempt char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }

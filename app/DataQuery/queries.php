@@ -25,7 +25,7 @@ function iController_CreateUser($table) {
     INSERT INTO ".$table." VALUES(default, :classcode, :firstname, :lastname, :birthdate, :age, :contact, :address, :province, :city,
     :street, :zipcode, :email, :password, :sex, :course, :code, current_timestamp)";
     return $sql;
-} 
+}
 
 function classcodeCheckup($table){
   $sql = "
@@ -65,6 +65,42 @@ function sanitized_update_verification_code($table){
 function sanitized_sendAttempts($table){
   $sql = "
     select * from ".$table." where email=:email
+  ";
+  return $sql;
+}
+
+function sanitized_select_province($table){
+  $sql = "
+  select distinct province from ".$table."
+  ";
+  return $sql;
+}
+
+function verified_checker($table){
+  $sql = "
+    select vcode from ".$table." where vcode=:vcode and isdone=0
+  ";
+  return $sql;
+}
+
+function verifieduser($table){
+  $sql = "
+  update ".$table." set isdone = 1 where vcode=:vcode
+  ";
+  return $sql;
+}
+
+// Tokenization
+function tokenMigrate($table){
+  $sql = "
+  insert into ".$table." values(default, :token, :email, 1, current_timestamp, now() + INTERVAL 7 DAY)
+  ";
+  return $sql;
+}
+
+function tokenExpiry($table){
+  $sql = "
+  select itoken from ".$table." where dateOfValidation > tokenExpiration
   ";
   return $sql;
 }
