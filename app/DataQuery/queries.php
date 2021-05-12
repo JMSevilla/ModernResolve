@@ -18,3 +18,11 @@ function iController_Insertion($table){
   ";
   return $sql;
 }
+
+// emman
+function iController_CreateUser($table) {
+  $sql = "
+    INSERT INTO ".$table." VALUES(default, :classcode, :firstname, :lastname, :birthdate, :age, :contact, :address, :province, :city,
+    :street, :zipcode, :email, :password, :sex, :course, :code, current_timestamp)";
+    return $sql;
+} 

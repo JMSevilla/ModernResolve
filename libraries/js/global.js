@@ -1,5 +1,6 @@
 //modified by jonathan 05/11/2021
 
+<<<<<<< HEAD
 // for practice porpuse only
 // var oninputdata = document.getElementById('oninputdata')
 // $('#ontestsubmit').click(function(){
@@ -35,3 +36,5 @@ txtclasscode.addEventListener("keyup" , event =>{
 
 
 
+=======
+>>>>>>> b4a68d04b8b16d3d07767440cbca8b796cd81998

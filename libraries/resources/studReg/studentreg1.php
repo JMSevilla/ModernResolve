@@ -90,10 +90,15 @@
                                         <label>Gender</label>
                                     </div>
                                     <div class="col-md-9">
+<<<<<<< HEAD
                                         <el-radio v-model="task.female" id="txtfemale" label="1">Female</el-radio>
                                         <el-radio v-model="task.male" id="txtmale" label="2">Male</el-radio>
                                         <small class="removerequired" id="required" style="display: none; color: red">Required Fields!
                                             <i class="fas fa-exclamation-circle"></i></small>  
+=======
+                                        <el-radio v-model="task.sex"  label="female">Female</el-radio>
+                                        <el-radio v-model="task.sex"  label="male">Male</el-radio>
+>>>>>>> b4a68d04b8b16d3d07767440cbca8b796cd81998
                                     </div>  
                                 </div>
                                 <div class="row">

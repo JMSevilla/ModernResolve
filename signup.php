@@ -8,10 +8,12 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
 ></script>
 
+
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
 
+<<<<<<< HEAD
 <script src="libraries/js/global.js"></script>
 <script type="module" src="libraries/js/http.js"></script>
 <script type="module" src="libraries/js/main.js"></script>
@@ -19,3 +21,9 @@
 
 
 
+=======
+<script type="module" src="libraries/js/http.js"></script>
+<script type="module" src="libraries/js/main.js"></script>
+<script src="libraries/js/global.js"></script>
+<script type="module" src="libraries/js/vue.js"></script>
+>>>>>>> b4a68d04b8b16d3d07767440cbca8b796cd81998
