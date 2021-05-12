@@ -34,7 +34,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                                 $this->verificationSend($data['sendemail'], $data['vcode']);
                                                 echo $this->SuccessJSONResponse();
                                             }
-                                        } 
+                                        }
                                     }else{
                                         if($this->ControllerPrepare(verificationCodeEntry($table))){
                                             $this->bind(":vcode", $data['vcode']);
@@ -73,7 +73,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                         $this->verificationSend($data['sendemail'], $data['vcode']);
                                         echo $this->SuccessJSONResponse();
                                     }
-                                } 
+                                }
                             }else{
                                 if($this->ControllerPrepare(verificationCodeEntry($table))){
                                     $this->bind(":vcode", $data['vcode']);
@@ -104,7 +104,27 @@ class verificationController extends DBIntegration implements VerifierInterface 
     }
     public function verificationSend($email, $codex){
         $mail = new PHPMailer\PHPMailer\PHPMailer();
-        $this->emailsender($mail, $email, $codex); 
+        $this->emailsender($mail, $email, $codex);
     }
+      public function checkverified($table, $data){
+        if($this->CHECKSERVER()){
+          if($this->ControllerPrepare(verified_checker($table))){
+            $this->bind(":vcode", $data['codeverifies']);
+            $this->ControllerExecutable();
+            if($this->controller_fetch_row()){
+              //update isverified = 1
+                if($this->ControllerPrepare(verifieduser($table))){
+                  $this->bind(":vcode", $data['codeverifies']);
+                  if($this->ControllerExecutable()){
+                    echo $this->SuccessJSONResponse();
+                  }
+                }
+            }
+            else{
+              //not exist
+              echo $this->InvalidJSONResponse();
+            }
+          }
+        }
+      }
 }
-
