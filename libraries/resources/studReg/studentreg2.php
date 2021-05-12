@@ -21,7 +21,7 @@
                                             </el-input>
                                         </div>
                                         <div class="col-md">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select v-model="task.province" class="form-select" aria-label="Default select example">
                                         <option selected>Province</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
