@@ -62,6 +62,9 @@ class DBIntegration
   public function ControllerExecutable(){
     return $this->stmt->execute();
   }
+  public function ControllerQuery($sql){
+    return $this->stmt = $this->connect()->query($sql);
+  }
   /////JSON Responses 
   public function SuccessJSONResponse(){
     return json_encode(array("statusCode" => "success"));
@@ -72,6 +75,7 @@ class DBIntegration
   public function NotFoundJSONResponse(){
     return json_encode(array("statusCode" => "not found"));
   }
+  
   /////Checking Server
   public function CHECKSERVER(){
     return $_SERVER["REQUEST_METHOD"] == "POST";
@@ -88,6 +92,9 @@ class DBIntegration
   public function controller_row(){
     return $this->stmt->rowCount() > 0;
   }
+  public function controller_fetch_row(){
+    return $this->stmt->fetch(PDO::FETCH_ASSOC);
+  }
   // This is for saving token on cookies.
   //Expires every 7 days
   public function cookieOfLife($originalToken){
@@ -101,24 +108,30 @@ class DBIntegration
     setcookie('Token', $originalToken, $argsCookie);
 }
 //sending email *Please don't use this if not necessary 
-public function emailsender($mail){
+public function emailsender($mail, $receiveremail, $codex){
   $mail->IsSMTP();
   $mail->Mailer = 'smtp';
   $mail->SMTPAuth = true;
   $mail->Host = 'smtp.gmail.com'; 
-  $mail->Port = ""; //465
+  $mail->Port = "465"; 
   $mail->SMTPSecure = 'ssl';
-  $mail->Username = ""; //dev email ex: jm@gmail.com
-  $mail->Password = ""; //dev gmail password
+  $mail->Username = "devopsbyte60@gmail.com"; //dev email ex: jm@gmail.com
+  $mail->Password = "09663147803miguel"; //dev gmail password
   $mail->IsHTML(true); // if you are going to send HTML formatted emails
   $mail->From = "devopsbyte60@gmail.com";
   $mail->FromName = "Resolve Technologies";
-  $mail->addAddress("devopsbyte60@gmail.com","JM");
-  $mail->Subject = "Thank you";
-  $mail->Body = file_get_contents("http://localhost/torreshtech/app/Http/templates/template.php");
+  $mail->addAddress($receiveremail,"");
+  $mail->Subject = "Verification Code";
+  $mail->Body = '<html><body>';
+  $mail->Body .= "<center>";
+  $mail->Body .= "<img src='https://ph.joblum.com/uploads/2/1663.jpg' style='margin-bottom: 20px; width: 50%; height: auto;' alt='No Image Found'>";
+  $mail->Body .= "<h1 style='font-weight: bold; margin-bottom: 10px;'>Code : ". $codex ."</h1>";
+  $mail->Body .= "<p>Copy this code and paste it on our website for verification.</p>";
+  $mail->Body .= "</center>";
+  $mail->Body .= "</body></html>";
       try {
         $mail->send();
-        echo json_encode(array("successsent" => "Message has been sent successfully"));
+        
     } catch (Exception $e) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }

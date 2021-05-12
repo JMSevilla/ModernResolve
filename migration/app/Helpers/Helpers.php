@@ -30,12 +30,12 @@ if(isset($_POST['tokenTrigger']) == 1){
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
-// if(isset($_POST['courseTrigger']) == 1){
-//     // echo json_encode(array('helper' => 'call ok'));
-//     $column = '(courseID int NOT NULL auto_increment, created_at datetime default current_timestamp, PRIMARY KEY (courseID) )';
-//    $callback = new Post();
-//    $callback->postModels($_POST['table'], $column);
-// }
+if(isset($_POST['verifierCode']) == 1){
+    // echo json_encode(array('helper' => 'call ok'));
+    $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), isdone char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
+   $callback = new Post();
+   $callback->postModels($_POST['table'], $column);
+}
 function provide_root(){
     include_once "../Route/webapi.php";
     $calls = new web_api();
