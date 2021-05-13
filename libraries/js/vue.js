@@ -1,6 +1,6 @@
 
 // import http from "./http.js";
-
+ 
 ELEMENT.locale(ELEMENT.lang.en)
     new Vue({
       el: '#app',
@@ -35,42 +35,38 @@ ELEMENT.locale(ELEMENT.lang.en)
           value1: '' ,
 
           value: '',
-          options: [{
-            value: 'Option1',
-            label: 'Option1'
-          }, {
-            value: 'Option2',
-            label: 'Option2'
-          }, {
-            value: 'Option3',
-            label: 'Option3'
-          }, {
-            value: 'Option4',
-            label: 'Option4'
-          }],
-          options: [{
-            value: 'Option1',
-            label: 'Option1'
-          }, {
-            value: 'Option2',
-            label: 'Option2'
-          }, {
-            value: 'Option3',
-            label: 'Option3'
-          }, {
-            value: 'Option4',
-            label: 'Option4'
-          }],
+          options: [],
+          provinceGetterss:[]
          }
       },
       created(){
         this.makeverificationcode(9);
-        this.active = 5;
+        this._loadProvice();
+//        this.active = 5;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
       methods: {
-
+          _loadProvice: function(){
+              var objectListener = {
+                  loadProvinceTrigger: true,
+                  table: 'province'
+              }
+              $.post(this.app + this.Helpers + '/selectedProvince.php', objectListener, (response)=>{
+                  this.provinceGetterss = JSON.parse(response);
+                  console.log(response);
+              });
+          },
+          onprovince(){
+              var objectListener = {
+                  provinceTrigger: true,
+                  provinceData: this.task.province
+              }
+              $.post(this.app + this.Helpers + '/selectedProvince.php', objectListener, (response) => { 
+                 this.options = JSON.parse(response);
+//console.log(response)
+              });
+          },
         oncodeentry(){
           if(!this.task.code){
             this.$notify.error({
@@ -93,6 +89,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               table: 'codeverifier', verifyTrigger: true
             }
             $.post(this.app + this.Helpers + '/verificationCheckHelper.php', objectListener, (response) => {
+                console.log(response);
               var json = JSON.parse(response);
               if(json.statusCode === "invalid"){
                 this.$notify.error({
@@ -108,8 +105,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                   message: 'Youre successfully verified!',
                   offset: 100
                 });
+                localStorage.setItem('qrkey', JSON.stringify(this.task));
                 this.active++;
-                loading.close()
+                loading.close();
               }
             })
             }, 3000)

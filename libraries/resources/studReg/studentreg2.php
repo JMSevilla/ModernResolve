@@ -1,5 +1,8 @@
 <?php
-
+//    include_once 'app/config/db.php';
+//    $check = new DBIntegration();
+//    $query = "select distinct province from province";
+    
 ?>
 <h4>PERSONAL INFORMATION</h4>
                                 <div class="row">
@@ -24,18 +27,24 @@
                                             </el-input>
                                         </div>
                                         <div class="col-md">
-                                        <select v-model="task.province" class="form-select" aria-label="Default select example">
-                                        <option v-for="item in provinceTesting" :key="item.province">{{item.province}}</option>
-
-                                        </select>
+                                        <el-select style="width: 100%;" @change="onprovince" v-model="task.province" filterable placeholder="Select province">
+                                        <el-option
+                                          v-for="item in provinceGetterss"
+                                          :key="item.province"
+                                          :label="item.province"
+                                          :value="item.province">
+                                        </el-option>
+                                      </el-select>
                                         </div>
                                         <div class="col-md">
-                                        <select v-model="task.city" class="form-select" aria-label="Default select example">
-                                        <option selected>City</option>
-                                        <option value="Calamba">Calamba</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        </select>
+                                        <el-select style="width: 100%;" v-model="task.municipality" filterable placeholder="Select your municipality">
+                                        <el-option
+                                          v-for="item in options"
+                                          :key="item.municipality"
+                                          :label="item.municipality"
+                                          :value="item.municipality">
+                                        </el-option>
+                                      </el-select>
                                         </div>
                                         <div class="col-md">
                                             <el-input

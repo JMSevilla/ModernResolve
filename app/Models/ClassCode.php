@@ -1,9 +1,11 @@
 <?php
 
-
+use Providers\DataInterface\IClassCode;
+use DBContext\Connection\DBIntegration;
 class ClassCode extends DBIntegration implements IClassCode{
     public function classcodemodels($table){
-        if($this->ControllerPrepare(classcodeCheckup($table))){
+        $ql = new \lightBringer\Request\Queries\lightBringerBulk();
+        if($this->ControllerPrepare($ql->classcodeCheckup($table))){
             $data=['code' => $_POST['classcode']];
             $this->bind(":code", $data['code']);
             $this->ControllerExecutable();

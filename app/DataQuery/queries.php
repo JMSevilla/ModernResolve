@@ -1,18 +1,23 @@
 <?php
 
-function models_check(){
+namespace lightBringer\Request\Queries;
+use NightBringer\Request\Queries\Bulk;
+
+
+class lightBringerBulk extends Bulk{
+    public function models_check(){
   $sql = "show tables like :mytable";
   return $sql;
 }
 
-function iModel_tableCreation($table){
+public function iModel_tableCreation($table){
   $sql = "
   create table if not exists ". $table ." (id int(11) not null auto_increment primary key, firstname varchar(100), createdat datetime default current_timestamp)
   ";
   return $sql;
 }
 
-function iController_Insertion($table){
+public function iController_Insertion($table){
   $sql = "
   insert into ". $table ." values(default, :fname, current_timestamp)
   ";
@@ -20,87 +25,75 @@ function iController_Insertion($table){
 }
 
 // emman
-function iController_CreateUser($table) {
+public function iController_CreateUser($table) {
   $sql = "
     INSERT INTO ".$table." VALUES(default, :classcode, :firstname, :lastname, :birthdate, :age, :contact, :address, :province, :city,
     :street, :zipcode, :email, :password, :sex, :course, :code, current_timestamp)";
     return $sql;
 }
 
-function classcodeCheckup($table){
+public function classcodeCheckup($table){
   $sql = "
   select code from ".$table." where code=:code
   ";
   return $sql;
 }
 
-function verificationCodeEntry($table){
-  $sql = "
-    insert into ".$table." values(default, :vcode, :email, 0, 1, current_timestamp)
-  ";
-  return $sql;
+public function verificationCodeEntry($table){
+  return $this->NB_updateverification($table);
 }
 
-function checkemailifexist($usrtable){
-  $sql = "
-    select email_address from ".$usrtable." where email_address=:email
-  ";
-  return $sql;
+public function checkemailifexist($table, $column){
+  return $this->NB_CheckEmail($table, $column);
 }
 
-function detectVerificationCode($table){
-  $sql = "
-    select email from ".$table." where email=:email and isdone=0
-  ";
-  return $sql;
+public function detectVerificationCode($table){
+  return $this->NB_Detectverificationcode($table);
 }
 
-function sanitized_update_verification_code($table){
-  $sql = "
-    update ".$table." set vcode=:code, sendattempt=sendattempt+1 where email=:email
-  ";
-  return $sql;
+public function sanitized_update_verification_code($table){
+  return $this->NB_Sanitized_Update_verification_code($table);
 }
 
-function sanitized_sendAttempts($table){
-  $sql = "
-    select * from ".$table." where email=:email
-  ";
-  return $sql;
+public function sanitized_sendAttempts($table){
+  return $this->NB_verifyattempts($table);
 }
 
-function sanitized_select_province($table){
+public function sanitized_select_province($table){
   $sql = "
   select distinct province from ".$table."
   ";
   return $sql;
 }
 
-function verified_checker($table){
-  $sql = "
-    select vcode from ".$table." where vcode=:vcode and isdone=0
-  ";
-  return $sql;
+public function verified_checker($table){
+  return $this->NB_verified_checker($table);
 }
 
-function verifieduser($table){
-  $sql = "
-  update ".$table." set isdone = 1 where vcode=:vcode
-  ";
-  return $sql;
+public function verifieduser($table){
+  return $this->NB_verified_user($table);
+}
+
+public function selectedProvinceQuery($table, $column){
+    return $this->NB_Selected_Province($table, $column);
+}
+
+public function GetAll($table, $column){
+    return $this->NB_Province($table, $column);
 }
 
 // Tokenization
-function tokenMigrate($table){
+public function tokenMigrate($table){
   $sql = "
   insert into ".$table." values(default, :token, :email, 1, current_timestamp, now() + INTERVAL 7 DAY)
   ";
   return $sql;
 }
 
-function tokenExpiry($table){
+public function tokenExpiry($table){
   $sql = "
   select itoken from ".$table." where dateOfValidation > tokenExpiration
   ";
   return $sql;
+}
 }
