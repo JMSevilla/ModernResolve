@@ -1,5 +1,6 @@
 <?php
 
+
 class ClassCode extends DBIntegration implements IClassCode{
     public function classcodemodels($table){
         if($this->ControllerPrepare(classcodeCheckup($table))){
@@ -13,4 +14,5 @@ class ClassCode extends DBIntegration implements IClassCode{
             }
         }
     }
+
 }
