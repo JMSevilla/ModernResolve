@@ -10,7 +10,7 @@
                                             id="txtclasscode"
                                             clearable>
                                         </el-input>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -23,7 +23,7 @@
                                             id="txtfname"
                                             clearable>
                                         </el-input>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -36,7 +36,7 @@
                                             id="txtlname"
                                             clearable>
                                         </el-input>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -51,23 +51,23 @@
                                             value-format="yyyy/MM/dd"
                                             type="date"
                                             locale="en"
-                                            placeholder="Select date and time">                                           
+                                            placeholder="Select date and time">
                                         </el-date-picker>
-                                       
-                                    </div>  
+
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label class="mt-2">Age</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <el-input 
-                                            type="text" 
-                                            v-model="task.age"  
+                                        <el-input
+                                            type="text"
+                                            v-model="task.age"
                                             id="age"
                                             :min="16" :max="100">
                                         </el-input>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
@@ -76,19 +76,19 @@
                                     <div class="col-md-9">
                                         <el-radio v-model="task.sex"  label="female">Female</el-radio>
                                         <el-radio v-model="task.sex"  label="male">Male</el-radio>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label>Contact Number</label>
                                     </div>
                                     <div class="col-md-9" >
-                                        <el-input 
-                                            type="number" 
-                                            v-model.number="task.contact" 
+                                        <el-input
+                                            type="number"
+                                            v-model.number="task.contact"
                                             id="contact">
                                         </el-input>
-                                                                  
+                                                <p style="color: gray;">Format (ex: +639212142370)</p>
                                     </div>  
                                 </div>
                                 <div style="display: inline; padding-left: 200px">

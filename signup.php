@@ -2,6 +2,7 @@
 <?php include("libraries/resources/signupNavbar.php"); ?>
 <?php include("views/signup.views.php"); ?>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
   type="text/javascript"

@@ -65,6 +65,7 @@ ELEMENT.locale(ELEMENT.lang.en)
       },
       created(){
         this.makeverificationcode(9);
+        this.active = 5;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
@@ -127,7 +128,20 @@ ELEMENT.locale(ELEMENT.lang.en)
           else{
                 // this.active++;
                 this.classcodeChecker()
+                this.sendsms();
           }
+      },
+      //for test only , sms will not sent unless the number is registered on sms gateway.
+
+      sendsms(){
+        var xhr = new XMLHttpRequest();
+       xhr.open("GET", "https://platform.clickatell.com/messages/http/send?apiKey=Io2QKpQWQHKtn1Lz3HFPHQ==&to=" + this.task.contact + "&content=Thank+you+for+signing+up+on+torres+technology", true);
+       xhr.onreadystatechange = function(){
+           if (xhr.readyState == 4 && xhr.status == 200) {
+               console.log('success');
+           }
+       };
+       xhr.send();
       },
       next_2() {
         if(!this.task.address || !this.task.zipcode || !this.task.province || !this.task.city || !this.task.street) {
