@@ -104,3 +104,12 @@ function tokenExpiry($table){
   ";
   return $sql;
 }
+
+// Emman
+function get_course_query() {
+  $sql = "
+    select course_name from course
+  ";
+
+  return $sql;
+}
