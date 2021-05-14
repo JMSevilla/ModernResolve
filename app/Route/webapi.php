@@ -1,9 +1,11 @@
 <?php
 
-include_once "../Providers/interface.php";
+
+namespace Bridge\Routing;
+use Providers\DataInterface\IRouteProvider;
 
 class web_api implements IRouteProvider{
-  public function middleware($config,$models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer){
+  public function middleware($config,$models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer){
     include_once "../config/" . $config;
     include_once "../Models/" . $models;
     include_once "../Http/Controller/" . $controller;
@@ -11,6 +13,7 @@ class web_api implements IRouteProvider{
     include_once "../vendor/phpmailer/phpmailer/src/" . $phpmailer;
     include_once "../vendor/phpmailer/phpmailer/src/" . $smtp;
     include_once "../vendor/phpmailer/phpmailer/src/" . $exception;
-    include_once "../Providers/interface.php";
+    include_once "../Providers/" . $interfacer;
+    include_once "../Thrower/" . $nightbringer;
   }
 }

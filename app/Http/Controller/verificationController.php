@@ -1,9 +1,13 @@
 <?php
+namespace Illuminate\VerificationRequest;
+use Providers\DataInterface\VerifierInterface;
+use DBContext\Connection\DBIntegration;
 $emailsaved = "";
 class verificationController extends DBIntegration implements VerifierInterface {
-    public function verifyController($table, $usrtable, $data){
+    public function verifyController($table, $data, $column){
+        $ql = new \lightBringer\Request\Queries\lightBringerBulk();
         if($this->CHECKSERVER()){
-            if($this->ControllerPrepare(checkemailifexist($usrtable))){
+            if($this->ControllerPrepare($ql->checkemailifexist("user", $column))){
                $this->bind(":email", $data['sendemail']);
                $this->ControllerExecutable();
                if($this->controller_row()){
@@ -12,7 +16,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                    echo json_encode(array("existCode" => "emailexist"));
                }
                else{
-                if($this->ControllerPrepare(sanitized_sendAttempts("codeverifier"))){
+                if($this->ControllerPrepare($ql->sanitized_sendAttempts($table))){
                     $this->bind(":email", $data['sendemail']);
                     $this->ControllerExecutable();
                     if($this->controller_row()){
@@ -22,11 +26,11 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                 echo json_encode(array("limit" => "limit"));
                             }else{
                                 // Not 3 LIMITS
-                                if($this->ControllerPrepare(detectVerificationCode("codeverifier"))){
+                                if($this->ControllerPrepare($ql->detectVerificationCode($table))){
                                     $this->bind(":email", $data['sendemail']);
                                     $this->ControllerExecutable();
                                     if($this->controller_row()){
-                                        if($this->ControllerPrepare(sanitized_update_verification_code("codeverifier"))){
+                                        if($this->ControllerPrepare($ql->sanitized_update_verification_code("codeverifier"))){
                                             $this->bind(":code", $data['vcode']);
                                             $this->bind(":email", $data['sendemail']);
                                             if($this->ControllerExecutable()){
@@ -36,7 +40,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                             }
                                         }
                                     }else{
-                                        if($this->ControllerPrepare(verificationCodeEntry($table))){
+                                        if($this->ControllerPrepare($ql->verificationCodeEntry($table))){
                                             $this->bind(":vcode", $data['vcode']);
                                             $this->bind(":email", $data['sendemail']);
                                             if($this->ControllerExecutable()){
@@ -47,7 +51,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                            }
                                     }
                                 }else{
-                                    if($this->ControllerPrepare(verificationCodeEntry($table))){
+                                    if($this->ControllerPrepare($ql->verificationCodeEntry($table))){
                                         $this->bind(":vcode", $data['vcode']);
                                         $this->bind(":email", $data['sendemail']);
                                         if($this->ControllerExecutable()){
@@ -61,11 +65,11 @@ class verificationController extends DBIntegration implements VerifierInterface 
                         }
                     }else{
                         // Data Not exists in code verifier
-                        if($this->ControllerPrepare(detectVerificationCode("codeverifier"))){
+                        if($this->ControllerPrepare($ql->detectVerificationCode("codeverifier"))){
                             $this->bind(":email", $data['sendemail']);
                             $this->ControllerExecutable();
                             if($this->controller_row()){
-                                if($this->ControllerPrepare(sanitized_update_verification_code("codeverifier"))){
+                                if($this->ControllerPrepare($ql->sanitized_update_verification_code("codeverifier"))){
                                     $this->bind(":code", $data['vcode']);
                                     $this->bind(":email", $data['sendemail']);
                                     if($this->ControllerExecutable()){
@@ -75,7 +79,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                     }
                                 }
                             }else{
-                                if($this->ControllerPrepare(verificationCodeEntry($table))){
+                                if($this->ControllerPrepare($ql->verificationCodeEntry($table))){
                                     $this->bind(":vcode", $data['vcode']);
                                     $this->bind(":email", $data['sendemail']);
                                     if($this->ControllerExecutable()){
@@ -86,7 +90,7 @@ class verificationController extends DBIntegration implements VerifierInterface 
                                    }
                             }
                         }else{
-                            if($this->ControllerPrepare(verificationCodeEntry($table))){
+                            if($this->ControllerPrepare($ql->verificationCodeEntry($table))){
                                 $this->bind(":vcode", $data['vcode']);
                                 $this->bind(":email", $data['sendemail']);
                                 if($this->ControllerExecutable()){
@@ -103,17 +107,18 @@ class verificationController extends DBIntegration implements VerifierInterface 
         }
     }
     public function verificationSend($email, $codex){
-        $mail = new PHPMailer\PHPMailer\PHPMailer();
+        $mail = new \PHPMailer\PHPMailer\PHPMailer();
         $this->emailsender($mail, $email, $codex);
     }
       public function checkverified($table, $data){
+          $ql = new \lightBringer\Request\Queries\lightBringerBulk();
         if($this->CHECKSERVER()){
-          if($this->ControllerPrepare(verified_checker($table))){
+          if($this->ControllerPrepare($ql->verified_checker($table))){
             $this->bind(":vcode", $data['codeverifies']);
             $this->ControllerExecutable();
             if($this->controller_fetch_row()){
               //update isverified = 1
-                if($this->ControllerPrepare(verifieduser($table))){
+                if($this->ControllerPrepare($ql->verifieduser($table))){
                   $this->bind(":vcode", $data['codeverifies']);
                   if($this->ControllerExecutable()){
                     echo $this->SuccessJSONResponse();

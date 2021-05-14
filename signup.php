@@ -2,7 +2,6 @@
 <?php include("libraries/resources/signupNavbar.php"); ?>
 <?php include("views/signup.views.php"); ?>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
   type="text/javascript"
@@ -17,4 +16,10 @@
 <script type="module" src="libraries/js/http.js"></script>
 <script type="module" src="libraries/js/main.js"></script>
 <script src="libraries/js/global.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script>
+var qrcode = new QRCode("qrcode");
+qrcode.makeCode(localStorage.getItem('qrkey'));
+</script>
 <script type="module" src="libraries/js/vue.js"></script>
+

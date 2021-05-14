@@ -4,8 +4,10 @@ Please use this function plugins that i created to create your backend.
 Reminder !
 1. If you want to edit or add something please notify me.
 */
-
-class DBIntegration
+namespace DBContext\Connection;
+use Providers\DataInterface\IConnect;
+use PDO;
+class DBIntegration implements IConnect
 {
   // Connection privates
   private $host = "localhost";
@@ -94,6 +96,9 @@ class DBIntegration
   }
   public function controller_fetch_row(){
     return $this->stmt->fetch(PDO::FETCH_ASSOC);
+  }
+  public function controller_fetch_all(){
+    return $this->stmt->fetchall();
   }
   // This is for saving token on cookies.
   //Expires every 7 days

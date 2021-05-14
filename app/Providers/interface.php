@@ -1,7 +1,8 @@
 <?php
+namespace Providers\DataInterface;
 
 interface IRouteProvider{
-  public function middleware($config, $models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer);
+  public function middleware($config, $models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer);
 }
 
 interface sender{
@@ -13,21 +14,35 @@ interface IClassCode{
 }
 
 interface VerifyInterface{
-  public function verificationInterface($table);
+  public function verificationInterface($table, $column);
 }
 
 interface VerifierInterface{
-  public function verifyController($table, $usrtable, $data);
+  public function verifyController($table, $data, $column);
   public function checkverified($table, $data);
 }
 
 interface IProvince{
   public function provinceModel($table);
 }
-interface IProvinceController {
-  public function provinceStore($table);
-}
+
 
 interface check_verification_health{
   public function verify_health_code($table);
 }
+
+interface IProvinceSelection{
+    public function provinceModels($table, $column);
+}
+
+interface IProvinceController{
+    public function provinceStore($table, $column, $data);
+    public function provinceGet($table, $column);
+}
+interface InterfaceProvince_Load{
+    public function lodash($table, $column);
+}
+interface IConnect{
+    public function connect();
+}
+

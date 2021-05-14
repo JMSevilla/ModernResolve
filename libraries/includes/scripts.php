@@ -12,36 +12,6 @@
 
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
-
-<!-- <script>
-ELEMENT.locale(ELEMENT.lang.en)
-    new Vue({
-      el: '#app',
-      data: function() {
-        return { 
-          active: 0,
-          task: {
-            classcode: '',
-            fname:'',
-            lname:'',
-            bdate:'',
-            age: '', male: '', female: '',
-            address: '', street: '', 
-          },
-         }
-      },
-      methods: {
-        next() {
-          //0 + 1 = 1 + 1 = 2 + 1 = 3
-        if (this.active++ > 2) this.active = 0;
-      },
-      previous(){
-       this.active--;
-      }
-      }
-    })
-  </script> -->
-
 <script src="libraries/js/global.js"></script>
 <script type="module" src="libraries/js/http.js"></script>
 <script type="module" src="libraries/js/main.js"></script>
