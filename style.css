@@ -254,3 +254,160 @@ input[id=code]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+
+
+/* login   by ella on may 12 2021*/
+/* shadow */
+.login .col-md-6 .card-title{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  
+}
+
+.login .form-outline{
+  margin-bottom: 30px;
+  border-radius: 18px;
+}
+
+
+.login .card{
+  border-radius: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;}
+
+.login .col-md-6 img{
+  margin-left: -20%;
+  margin-top: 60px;
+  height: 400px;
+  width: 700px;
+}
+
+.login p a{
+  text-decoration: none;
+}
+
+.login p a:hover{
+text-decoration: underline;
+}
+
+.login button{
+text-transform: initial;
+width: 100px;
+height: 40px;
+border-radius: 5px;
+}
+
+.login .form-outline i{
+  position: absolute;
+}
+
+/* .login .form-control{
+  text-align: center;
+} */
+
+.login .user{
+  text-align: left;
+  text-indent: 30px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  width: 100%;
+  font-weight: 450;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #999;
+  padding: 6px 30px;
+  box-sizing: border-box;
+    
+}
+
+.login input, select, textarea{
+  outline: none;
+  appearance: unset!important;
+  -moz-appearance: unset!important;
+  -webkit-appearance: unset!important;
+  -o-appearance: unset!important;
+  -ms-appearance: unset!important;
+}
+
+.login [placeholder]:focus::-webkit-input-placeholder{
+  transition: text-indent 0.2s 0.2s ease;
+  text-indent: -200%;
+  opacity: 1;
+}
+
+.icon{
+padding: 10px;
+color: #828385;
+min-width: 50px;
+
+}
+
+
+/* login end */
+
+/* forgotpassword */
+
+.forgotpassword .col-md-6 img{
+  margin-left: -10%;
+  margin-top: 30px;
+}
+
+.forgotpassword .col-md-6 .card-title{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  
+}
+
+.forgotpassword .card{
+  border-radius: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.forgotpassword button{
+  text-transform: initial;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  }
+
+.modal-footer button{
+  text-transform: initial;
+}
+
+/* reset password */
+
+.resetpassword .col-md-6 img{
+  margin-left: -5%;
+  margin-top: 60px;
+}
+
+.resetpassword .col-md-6 .card-title{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  
+}
+
+.resetpassword .card{
+  border-radius: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.resetpassword button{
+  text-transform: initial;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  }
+/* reset end */
+/* ended on may 14 2021 */

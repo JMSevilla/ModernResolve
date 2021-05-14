@@ -30,7 +30,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="marginforul1">
             <li>
               <div>
-              <a href="" class="nav-link" id="alink"><h5>LogIn</h5></a>
+              <a href="login" class="nav-link" id="alink"><h5>LogIn</h5></a>
               </div>
             </li>
             <li>
