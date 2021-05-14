@@ -9,5 +9,5 @@ if(isset($_POST['verifyTrigger']) == true){
 function health_check(){
   include_once "../Route/webapi.php";
   $callback = new web_api();
-  $callback->middleware("Verify.php", "verificationController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interface.php', 'nightbringer.php');
+  $callback->middleware("Verify.php", "verificationController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interfaceVerify.php', 'nightbringer.php');
 }

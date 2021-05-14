@@ -9,7 +9,7 @@ include( dbroute('db.php') );
 include( nb_call('queries.php') );
 
 class provinceController extends lightBringerBulk implements IProvinceController{
-    public function provinceStore($table, $column, $data){
+    public function create($table, $column, $data){
         if(DBIntegrate::ControllerPrepare(lightBringerBulk::selectedProvinceQuery($table, $column))){
             DBIntegrate::bind(":province", $data['dataselected']);
             DBIntegrate::ControllerExecutable();
@@ -22,7 +22,7 @@ class provinceController extends lightBringerBulk implements IProvinceController
         }
         
     }
-    public function provinceGet($table, $column){
+    public function GetAll($table, $column){
             if(DBIntegrate::CHECKSERVER()){
                 if(DBIntegrate::ControllerQuery(lightBringerBulk::GetAll($table, $column))){
                     if(DBIntegrate::controller_row()){
@@ -33,5 +33,8 @@ class provinceController extends lightBringerBulk implements IProvinceController
                 }
             }
         }
+        public function GetById($id){}
+        public function patchById($table, $data){}
+        public function destroyById($id){}
 }
 

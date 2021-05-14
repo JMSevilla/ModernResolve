@@ -4,7 +4,7 @@ include( dbroute('db.php') );
 include_once "../DataQuery/queries.php";
 $emailsaved = "";
 class verificationController implements VerifierInterface {
-    public function verifyController($table, $data, $column){
+    public function create($table, $data, $column){
         if(DBIntegrate::CHECKSERVER()){
             if(DBIntegrate::ControllerPrepare(lightBringerBulk::checkemailifexist("user", $column))){
                 DBIntegrate::bind(":email", $data['sendemail']);
@@ -109,7 +109,7 @@ class verificationController implements VerifierInterface {
         $mail = new \PHPMailer\PHPMailer\PHPMailer();
         DBIntegrate::emailsender($mail, $email, $codex);
     }
-      public function checkverified($table, $data){
+      public function GetByEmail($table, $data){
         if(DBIntegrate::CHECKSERVER()){
           if(DBIntegrate::ControllerPrepare(lightBringerBulk::verified_checker($table))){
             DBIntegrate::bind(":vcode", $data['codeverifies']);
@@ -131,4 +131,7 @@ class verificationController implements VerifierInterface {
           }
         }
       }
+      public function GetAll($table) {}
+      public function patchById($data){}
+      public function destroyById($data){}
 }
