@@ -43,24 +43,24 @@
 
                         <div v-else-if="active == 1">
                         <?php include("libraries/resources/studReg/studentreg2.php"); ?>
-                        <p>Already have an account? <a href="#">Login</a> </p>
+                        <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
 
                      <div v-else-if="active == 2">
 
                      <?php include("libraries/resources/studReg/studentreg3.php"); ?>
-                     <p>Already have an account? <a href="#">Login</a> </p>
+                     <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
 
                         <div v-else-if="active == 3">
 
                         <?php include("libraries/resources/studReg/studentreg4.php"); ?>
-                        <p>Already have an account? <a href="#">Login</a> </p>
+                        <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
 
                         <div v-else-if="active == 4">
                         <?php include("libraries/resources/studReg/studentreg5.php"); ?>
-                        <p>Already have an account? <a href="#">Login</a> </p>
+                        <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
                         <div v-else-if="active == 5">
                         <?php include("libraries/resources/studReg/finish.php"); ?>
