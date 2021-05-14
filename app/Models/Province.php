@@ -5,8 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-use Illuminate\Request\provinceController;
-use Providers\DataInterface\IProvinceSelection,    Providers\DataInterface\InterfaceProvince_Load;
+
 
  class Province extends provinceController implements IProvinceSelection, InterfaceProvince_Load {
     public function provinceModels($table, $column){

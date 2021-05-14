@@ -1,8 +1,8 @@
 <?php
-namespace Providers\DataInterface;
+
 
 interface IRouteProvider{
-  public function middleware($config, $models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer);
+  public function middleware($models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer);
 }
 
 interface sender{
@@ -46,3 +46,6 @@ interface IConnect{
     public function connect();
 }
 
+interface IDBController{
+  public function dbroute($db);
+}

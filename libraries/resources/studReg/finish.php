@@ -10,8 +10,7 @@
   <center>
       <div style="width: 50%; height: auto; margin-bottom: 20px;" id="qrcode"></div>
       <h4>Scan Me!</h4>
-      <p>Scan this QR Code of yours to get all your data you've entered.</p>
-      <p>This QR code includes your email and password.</p>
+      <p>This QR code includes your personal API Key. Scan and save the api key.</p>
   </center>
   
   <p>You are now verified user, you can login to our website.</p>

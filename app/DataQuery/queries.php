@@ -1,8 +1,6 @@
 <?php
 
-namespace lightBringer\Request\Queries;
-use NightBringer\Request\Queries\Bulk;
-
+include( nightbringer('nightbringer.php') );
 
 class lightBringerBulk extends Bulk{
     public function models_check(){
@@ -40,23 +38,23 @@ public function classcodeCheckup($table){
 }
 
 public function verificationCodeEntry($table){
-  return $this->NB_updateverification($table);
+  return Bulk::NB_updateverification($table);
 }
 
 public function checkemailifexist($table, $column){
-  return $this->NB_CheckEmail($table, $column);
+  return Bulk::NB_CheckEmail($table, $column);
 }
 
 public function detectVerificationCode($table){
-  return $this->NB_Detectverificationcode($table);
+  return Bulk::NB_Detectverificationcode($table);
 }
 
 public function sanitized_update_verification_code($table){
-  return $this->NB_Sanitized_Update_verification_code($table);
+  return Bulk::NB_Sanitized_Update_verification_code($table);
 }
 
 public function sanitized_sendAttempts($table){
-  return $this->NB_verifyattempts($table);
+  return Bulk::NB_verifyattempts($table);
 }
 
 public function sanitized_select_province($table){
@@ -67,19 +65,19 @@ public function sanitized_select_province($table){
 }
 
 public function verified_checker($table){
-  return $this->NB_verified_checker($table);
+  return Bulk::NB_verified_checker($table);
 }
 
 public function verifieduser($table){
-  return $this->NB_verified_user($table);
+  return Bulk::NB_verified_user($table);
 }
 
 public function selectedProvinceQuery($table, $column){
-    return $this->NB_Selected_Province($table, $column);
+    return Bulk::NB_Selected_Province($table, $column);
 }
 
 public function GetAll($table, $column){
-    return $this->NB_Province($table, $column);
+    return Bulk::NB_Province($table, $column);
 }
 
 // Tokenization

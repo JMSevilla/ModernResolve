@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-use Bridge\Routing\web_api;
 
 spl_autoload_register("route_selection_province");
 if(isset($_POST['provinceTrigger']) == true){
@@ -20,5 +19,5 @@ if(isset($_POST['loadProvinceTrigger']) == true){
 function route_selection_province(){
     include_once "../Route/webapi.php";
     $callback = new web_api();
-    $callback->middleware("db.php", "Province.php", "provinceController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interface.php', 'nightbringer.php');
+    $callback->middleware("Province.php", "provinceController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interface.php', 'nightbringer.php');
 }

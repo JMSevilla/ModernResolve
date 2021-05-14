@@ -6,8 +6,6 @@
  * and open the template in the editor.
  */
 
-namespace NightBringer\Request\Queries;
-
 
 
 class Bulk  {
@@ -39,7 +37,7 @@ class Bulk  {
     }
     public function NB_updateverification($table){
         $sql = "
-        insert into ".$table." values(default, :vcode, :email, 0, 1, current_timestamp)
+        insert into ".$table." values(default, :vcode, :email, 0, 1, 'noapi', current_timestamp)
         ";
         return $sql;
     }
@@ -57,7 +55,7 @@ class Bulk  {
    }
    public function NB_verified_user($table){
        $sql = "
-        update ".$table." set isdone = 1 where vcode=:vcode
+        update ".$table." set isdone = 1, apikey=:key where vcode=:vcode
         ";
         return $sql;
    }
