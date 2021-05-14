@@ -96,4 +96,8 @@ public function tokenExpiry($table){
   ";
   return $sql;
 }
+
 }
+
+
+
