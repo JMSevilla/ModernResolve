@@ -13,10 +13,10 @@
             "dataselected" => $_POST['provinceData']
         ];
         $callback = new provinceController();
-        $callback->provinceStore($table, $column, $data);
+        $callback->create($table, $column, $data);
     }
     public function lodash($table, $column){
         $callback = new provinceController();
-        $callback->provinceGet($table, $column);
+        $callback->GetAll($table, $column);
     }
 } 

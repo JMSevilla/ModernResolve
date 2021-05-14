@@ -19,5 +19,5 @@ if(isset($_POST['loadProvinceTrigger']) == true){
 function route_selection_province(){
     include_once "../Route/webapi.php";
     $callback = new web_api();
-    $callback->middleware("Province.php", "provinceController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interface.php', 'nightbringer.php');
+    $callback->middleware("Province.php", "provinceController.php", "queries.php", 'PHPMailer.php', 'SMTP.php', 'Exception.php', 'interfaceProvince.php', 'nightbringer.php');
 }

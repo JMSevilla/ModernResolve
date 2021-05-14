@@ -9,13 +9,13 @@ class Verify extends verificationController implements VerifyInterface, check_ve
         ];
         // echo json_encode(array('checkemail' => $data));
         $callback = new verificationController();
-        $callback->verifyController($table, $data, $column);
+        $callback->create($table, $data, $column);
     }
     public function verify_health_code($table){
       $data=[
         'codeverifies' => $_POST['codeverifies'], 'key' => $_POST['key']
       ];
       $callback = new verificationController();
-      $callback->checkverified($table, $data);
+      $callback->GetByEmail($table, $data);
     }
 }

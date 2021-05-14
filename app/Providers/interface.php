@@ -1,5 +1,10 @@
 <?php
 
+/* 
+Create interface for single functions only.
+
+try practicing creating new interface file into our providers folder with multiple functions.
+*/
 
 interface IRouteProvider{
   public function middleware($models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer);
@@ -17,10 +22,7 @@ interface VerifyInterface{
   public function verificationInterface($table, $column);
 }
 
-interface VerifierInterface{
-  public function verifyController($table, $data, $column);
-  public function checkverified($table, $data);
-}
+
 
 interface IProvince{
   public function provinceModel($table);
@@ -35,10 +37,7 @@ interface IProvinceSelection{
     public function provinceModels($table, $column);
 }
 
-interface IProvinceController{
-    public function provinceStore($table, $column, $data);
-    public function provinceGet($table, $column);
-}
+
 interface InterfaceProvince_Load{
     public function lodash($table, $column);
 }
