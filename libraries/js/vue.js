@@ -28,7 +28,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             code: "",
             TaskTrigger: 1,
             sex: '',
-            course: ''
+            course: '', apikey: ''
           },
           codeverification: '',
           provinceTesting: [],
@@ -42,18 +42,34 @@ ELEMENT.locale(ELEMENT.lang.en)
       created(){
         this.makeverificationcode(9);
         this._loadProvice();
-//        this.active = 5;
+        this.task.apikey = this.qrgenapi();
+        this.active = 5;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
       methods: {
+        qrgenapi(){
+          var d = new Date().getTime();
+          if(window.performance && typeof window.performance.now === "function"){
+            d += performance.now();
+          }
+          var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+            /[xy]/g,
+            function (c) {
+              var r = (d + Math.random() * 16) % 16 | 0;
+              d = Math.floor(d / 16);
+              return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+            }
+          );
+          return uuid;
+        },
           _loadProvice: function(){
               var objectListener = {
                   loadProvinceTrigger: true,
                   table: 'province'
               }
               $.post(this.app + this.Helpers + '/selectedProvince.php', objectListener, (response)=>{
-                  this.provinceGetterss = JSON.parse(response);
+                   this.provinceGetterss = JSON.parse(response);
                   console.log(response);
               });
           },
@@ -63,8 +79,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                   provinceData: this.task.province
               }
               $.post(this.app + this.Helpers + '/selectedProvince.php', objectListener, (response) => { 
-                 this.options = JSON.parse(response);
-//console.log(response)
+                  this.options = JSON.parse(response);
+// console.log(response)
               });
           },
         oncodeentry(){
@@ -86,6 +102,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             setTimeout(() => {
               var objectListener = {
               codeverifies: this.task.code,
+              key: this.task.apikey,
               table: 'codeverifier', verifyTrigger: true
             }
             $.post(this.app + this.Helpers + '/verificationCheckHelper.php', objectListener, (response) => {
@@ -105,7 +122,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   message: 'Youre successfully verified!',
                   offset: 100
                 });
-                localStorage.setItem('qrkey', JSON.stringify(this.task));
+                localStorage.setItem('qrkey', JSON.stringify(this.task.apikey));
                 this.active++;
                 loading.close();
               }
@@ -126,7 +143,7 @@ ELEMENT.locale(ELEMENT.lang.en)
           else{
                 // this.active++;
                 this.classcodeChecker()
-                this.sendsms();
+                // this.sendsms();
           }
       },
       //for test only , sms will not sent unless the number is registered on sms gateway.
@@ -171,7 +188,7 @@ ELEMENT.locale(ELEMENT.lang.en)
         if(!this.task.email || !this.task.password || !this.task.confirm){
           this.$notify.error({
             title: 'Empty',
-            message: 'This is a success message',
+            message: 'Empty fields',
             offset: 100
           });
           return false;

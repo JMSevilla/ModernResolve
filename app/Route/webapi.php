@@ -1,12 +1,7 @@
 <?php
 
-
-namespace Bridge\Routing;
-use Providers\DataInterface\IRouteProvider;
-
 class web_api implements IRouteProvider{
-  public function middleware($config,$models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer){
-    include_once "../config/" . $config;
+  public function middleware($models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer){
     include_once "../Models/" . $models;
     include_once "../Http/Controller/" . $controller;
     include_once "../DataQuery/" . $queries;
@@ -16,4 +11,17 @@ class web_api implements IRouteProvider{
     include_once "../Providers/" . $interfacer;
     include_once "../Thrower/" . $nightbringer;
   }
+  
+}
+
+function dbroute($routes){
+  return "../config/" . $routes;
+}
+
+function nb_call($call){
+  return "../DataQuery/" . $call;
+}
+
+function nightbringer($call){
+  return "../Thrower/" . $call;
 }

@@ -4,25 +4,26 @@ Please use this function plugins that i created to create your backend.
 Reminder !
 1. If you want to edit or add something please notify me.
 */
-namespace DBContext\Connection;
-use Providers\DataInterface\IConnect;
-use PDO;
-class DBIntegration implements IConnect
+class config{
+  public static $host = "localhost";
+  public static $username = "root";
+  public static $pwd = "";
+  public static $mydb = "dbtorres";
+  public static $dataOutbound;
+  public static $stmt;
+}
+class DBIntegrate 
 {
   // Connection privates
-  private $host = "localhost";
-  private $username = "root";
-  private $pwd = "";
-  private $mydb = "dbtorres";
-  private $dataOutbound;
-  private $stmt;
+ 
 
   public function connect(){
+    
     try {
-    $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->mydb;
-    $this->dataOutbound = new PDO($dsn, $this->username, $this->pwd);
-    $this->dataOutbound->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $this->dataOutbound;
+    $dsn = "mysql:host=" . config::$host . ";dbname=" . config::$mydb;
+    config::$dataOutbound = new PDO($dsn, config::$username, config::$pwd);
+    config::$dataOutbound->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return config::$dataOutbound;
     }
     catch (PDOException $e) {
       die("could not connect" . $e->getMessage());
@@ -53,19 +54,19 @@ class DBIntegration implements IConnect
         $type = PDO::PARAM_STR;
       }
     }
-    return $this->stmt->bindParam($val, $param, $type);
+    return config::$stmt->bindParam($val, $param, $type);
   }
 
 
   ///// Controller Starts here.
   public function ControllerPrepare($sql){
-    return $this->stmt = $this->connect()->prepare($sql);
+    return config::$stmt = DBIntegrate::connect()->prepare($sql);
   }
   public function ControllerExecutable(){
-    return $this->stmt->execute();
+    return config::$stmt->execute();
   }
   public function ControllerQuery($sql){
-    return $this->stmt = $this->connect()->query($sql);
+    return config::$stmt = DBIntegrate::connect()->query($sql);
   }
   /////JSON Responses
   public function SuccessJSONResponse(){
@@ -92,13 +93,13 @@ class DBIntegration implements IConnect
   }
   // Data Counting for controller
   public function controller_row(){
-    return $this->stmt->rowCount() > 0;
+    return config::$stmt->rowCount() > 0;
   }
   public function controller_fetch_row(){
-    return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    return config::$stmt->fetch(PDO::FETCH_ASSOC);
   }
   public function controller_fetch_all(){
-    return $this->stmt->fetchall();
+    return config::$stmt->fetchall();
   }
   // This is for saving token on cookies.
   //Expires every 7 days

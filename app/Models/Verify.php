@@ -1,6 +1,6 @@
 <?php
-use Illuminate\VerificationRequest\verificationController;
-use Providers\DataInterface\VerifyInterface, Providers\DataInterface\check_verification_health;
+
+include( nb_call('queries.php') );
 class Verify extends verificationController implements VerifyInterface, check_verification_health{
     public function verificationInterface($table, $column){
         $data=[
@@ -13,7 +13,7 @@ class Verify extends verificationController implements VerifyInterface, check_ve
     }
     public function verify_health_code($table){
       $data=[
-        'codeverifies' => $_POST['codeverifies']
+        'codeverifies' => $_POST['codeverifies'], 'key' => $_POST['key']
       ];
       $callback = new verificationController();
       $callback->checkverified($table, $data);
