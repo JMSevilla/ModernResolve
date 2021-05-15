@@ -59,4 +59,24 @@ class Bulk  {
         ";
         return $sql;
    }
+
+
+    // Emman
+    public function NB_signupuser_query($table) {
+        $sql = "
+        insert into ".$table." values (default, :firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
+        :address, :email_address, :password, :is_verified, :is_type, :is_activate, null, current_timestamp)
+        ";
+    
+        return $sql;
+    }
+
+    public function NB_firstuser($table) {
+        $sql = "
+            select * from user where is_type = :is_type
+        ";
+
+        return $sql;
+    }
+
 }

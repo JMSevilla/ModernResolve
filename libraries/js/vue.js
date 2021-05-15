@@ -28,8 +28,11 @@ ELEMENT.locale(ELEMENT.lang.en)
             code: "",
             TaskTrigger: 1,
             sex: '',
-            course: '', apikey: ''
+            course: '', apikey: '',
+            signupMethod: true, //Emman
+            municipality: '' //Emman
           },
+
           codeverification: '',
           provinceTesting: [],
           value1: '' ,
@@ -43,7 +46,7 @@ ELEMENT.locale(ELEMENT.lang.en)
         this.makeverificationcode(9);
         this._loadProvice();
         this.task.apikey = this.qrgenapi();
-        this.active = 4;
+        // this.active = 4;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
@@ -117,6 +120,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 loading.close()
                 return false;
               }else{
+                this.signuprequest(); // Emman
                 this.$notify.success({
                   title: 'Yey!',
                   message: 'Youre successfully verified!',
@@ -130,6 +134,13 @@ ELEMENT.locale(ELEMENT.lang.en)
             }, 3000)
           }
         },
+        // Emman
+        signuprequest() {
+          $.post(this.app + this.Helpers + '/SignupHelpers.php', this.task, response => {
+            console.log(response);
+          });
+        },
+
         next() {
 
           if(!this.task.classcode || !this.task.fname || !this.task.lname || !this.task.bdate || !this.task.age || !this.task.contact){

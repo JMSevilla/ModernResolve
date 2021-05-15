@@ -38,3 +38,15 @@ interface IConnect{
 interface IDBController{
   public function dbroute($db);
 }
+
+
+
+
+// Emman
+Interface ISignupController {
+  public function signupuser_controller($table, $data);
+}
+
+Interface ISignupModel {
+  public function signup_model($table);
+}
