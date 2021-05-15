@@ -1,5 +1,7 @@
 <?php
-
+interface IRouteProvider{
+  public function middleware($models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer);
+}
 class web_api implements IRouteProvider{
   public function middleware($models, $controller, $queries, $phpmailer, $smtp, $exception, $interfacer, $nightbringer){
     include_once "../Models/" . $models;
@@ -23,5 +25,5 @@ function nb_call($call){
 }
 
 function nightbringer($call){
-  return "../Thrower/" . $call;
+  return "app/Thrower/" . $call;
 }

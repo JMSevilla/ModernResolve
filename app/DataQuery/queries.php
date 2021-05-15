@@ -1,6 +1,6 @@
 <?php
 
-include( nightbringer('nightbringer.php') );
+// include( nightbringer("nightbringer.php") );
 
 class lightBringerBulk extends Bulk{
     public function models_check(){
