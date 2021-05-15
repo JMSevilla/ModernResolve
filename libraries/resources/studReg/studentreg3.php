@@ -1,11 +1,13 @@
 <?php 
 
-    include_once "app/Http/Controller/courseController.php";
+    // include_once "app/Http/Controller/courseController.php";
 
-    $callback = new CourseController();
-    $courses = $callback->get_course();
+    // $callback = new CourseController();
+    // $courses = $callback->get_course();
     // print_r($courses);
-
+    // foreach($courses as $course):
+        
+    // endforeach;
 ?>
 
 
@@ -17,9 +19,7 @@
                                     <div class="col-md-9">
                                         <select v-model="task.course" class="form-select" aria-label="Default select example">
                                         <option selected>Course</option>
-                                        <?php foreach($courses as $course): ?>
-                                            <option value="<?php echo $course['course_name'] ?>"><?php echo $course['course_name'] ?></option>
-                                        <?php endforeach; ?>
+                                        
                                         </select>     
                                     </div>   
                                 </div>

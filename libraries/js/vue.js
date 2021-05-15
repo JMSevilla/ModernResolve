@@ -43,7 +43,7 @@ ELEMENT.locale(ELEMENT.lang.en)
         this.makeverificationcode(9);
         this._loadProvice();
         this.task.apikey = this.qrgenapi();
-        this.active = 5;
+        this.active = 4;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw

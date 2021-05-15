@@ -7,3 +7,12 @@ interface IProvinceController{
     public function patchById($table, $data);
     public function destroyById($id);
 }
+
+
+interface IProvinceSelection{
+    public function provinceModels($table, $column);
+}
+
+interface InterfaceProvince_Load{
+    public function lodash($table, $column);
+}
