@@ -8,9 +8,9 @@
         public function signupuser_controller($table, $data) {
             $istype = '1';
             if(DBIntegrate::ControllerPrepare(lightBringerBulk::firstuser_query($table))) {
-                DBIntegrate::bind(':is_type', $istype);
                 DBIntegrate::ControllerExecutable();
                 if(DBIntegrate::controller_row()) {
+
                     $isverified = '0';
                     $istype = '3';
                     $isactivate = '0';
