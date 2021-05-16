@@ -6,11 +6,11 @@
         <!-- stepper - jm -->
         <div class="container" style="margin-bottom: 25px; margin-top: 30px;">
             <el-steps :active="active" finish-status="success" id="stepper">
-                    <el-step title="Step 1" ></el-step>
-                    <el-step title="Step 2"></el-step>
-                    <el-step title="Step 3"></el-step>
-                    <el-step title="Step 4"></el-step>
-                    <el-step title="Step 5"></el-step>
+                    <el-step title="Personal Information" ></el-step>
+                    <el-step title="Address"></el-step>
+                    <el-step title="Credentials"></el-step>
+                    <el-step title="Account Verification"></el-step>
+                    <el-step title="Finish"></el-step>
             </el-steps>
 
             <div class="row" style="margin-top: 30px;">
@@ -22,15 +22,12 @@
                         <img src="img/map1.png" alt="" width="100%">
                     </div>
                     <div v-else-if="active == 2">
-                        <img src="img/courses.png" alt="" width="100%">
-                    </div>
-                    <div v-else-if="active == 3">
                         <img src="img/account.png" alt="" width="100%">
                     </div>
-                    <div v-else-if="active == 4">
+                    <div v-else-if="active == 3">
                         <img src="img/verification.png" alt="" width="100%">
                     </div>
-                    <div v-else-if="active == 5">
+                    <div v-else-if="active == 4">
                       <img src="https://cdn.dribbble.com/users/2417352/screenshots/15567742/media/b50bb568968bee50d16250f94307eb87.png?compress=1&resize=1000x750" width="100%" alt="">
                     </div>
                 </div>
@@ -46,23 +43,17 @@
                         <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
 
-                     <div v-else-if="active == 2">
-
-                     <?php include("libraries/resources/studReg/studentreg3.php"); ?>
-                     <p>Already have an account? <a href="login">Login</a> </p>
-                        </div>
-
-                        <div v-else-if="active == 3">
+                        <div v-else-if="active == 2">
 
                         <?php include("libraries/resources/studReg/studentreg4.php"); ?>
                         <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
 
-                        <div v-else-if="active == 4">
+                        <div v-else-if="active == 3">
                         <?php include("libraries/resources/studReg/studentreg5.php"); ?>
                         <p>Already have an account? <a href="login">Login</a> </p>
                         </div>
-                        <div v-else-if="active == 5">
+                        <div v-else-if="active == 4">
                         <?php include("libraries/resources/studReg/finish.php"); ?>
                         </div>
 <!-- closing if rendering -->

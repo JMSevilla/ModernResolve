@@ -237,7 +237,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                 offset: 100
               });
               this.active++;
-             } else {
+             } else if(jsondestroyer.existCode === "emailexist"){
+              loading.close();
+              this.$notify.error({
+                title: 'Oops!',
+                message: "This email already exists.",
+                offset: 100
+              });
+             }
+             else {
               loading.close();
               this.$notify.success({
                 title: 'Yey!',

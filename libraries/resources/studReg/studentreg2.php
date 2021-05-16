@@ -4,7 +4,7 @@
 //    $query = "select distinct province from province";
     
 ?>
-<h4>PERSONAL INFORMATION</h4>
+<h4>ADDRESS</h4>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label class="mt-2">Address:</label>
