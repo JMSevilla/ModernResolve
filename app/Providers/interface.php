@@ -50,3 +50,11 @@ Interface ISignupController {
 Interface ISignupModel {
   public function signup_model($table);
 }
+
+Interface ILoginController {
+  public function loginuser_controller($table, $data);
+}
+
+Interface ILogin {
+  public function loginuser_model($table);
+}

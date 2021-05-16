@@ -108,6 +108,10 @@ public function firstuser_query($table) {
   return BULK::NB_firstuser($table);
 }
 
+public function loginuser_query($table) {
+  return BULK::NB_loginuser($table);
+}
+
 }
 
 
