@@ -15,6 +15,11 @@ const requestInbound = {
     return $.post(state.app + state.helpers + "/Helpers.php", obj, (response) => {
       responseOutbound.dataResponse(resolve, response)
     })
+  },
+  loginUser(obj, resolve) {
+    return $.post(state.app + state.helpers + "/LoginHelpers", obj, response => {
+      responseOutbound.dataResponse(resolve, response);
+    });
   }
 }
 
@@ -46,6 +51,17 @@ const handler = {
     await promise.then(response => {
       console.log(response);
     })
+  },
+  async build_Login(obj) {
+    await Promise.all([this.buildLogin(obj)]);
+  },
+  async buildLogin(obj) {
+    const promise = new Promise(resolve => {
+      requestInbound.loginUser(obj, resolve);
+    });
+    await promise.then(response => {
+      console.log(response);
+    });
   }
 }
 

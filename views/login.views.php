@@ -14,11 +14,11 @@
                             <h4 class="card-title">Log In</h5>
                             <div class="form-outline">
                                 <i class="fas fa-user icon"></i>
-                                <input type="text" id="form1" class="user" placeholder="Enter your email" />
+                                <input type="text" id="email_login" class="user" placeholder="Enter your email" />
                             </div>
                             <div class="form-outline">
                                 <i class="fas fa-lock icon"></i>
-                                <input type="password" id="form1" class="user" placeholder="Password" />
+                                <input type="password" id="password_login" class="user" placeholder="Password" />
                             </div>
                             <div class="form-check">
                                 <input
@@ -32,7 +32,7 @@
                             <div>
                                 <center>
                                     <div style="margin-bottom: 70px; margin-top: 40px">
-                                    <button type="submit" class="btn btn-primary">Log In</button>
+                                    <button type="submit" id="btnLogin" class="btn btn-primary">Log In</button>
                                     </div>
                                     <p><a href="forgotpass">Forgot Password?</a></p>
                                     <p>Don't have an account? <a href="signup">Sign Up</a></p>          

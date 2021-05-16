@@ -79,4 +79,12 @@ class Bulk  {
         return $sql;
     }
 
+    public function NB_loginuser($table) {
+        $sql = "
+            select * from ".$table." where email_address = :email
+        ";
+
+        return $sql;
+    }
+    
 }
