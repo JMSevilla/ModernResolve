@@ -48,6 +48,7 @@
                                         </div>
                                         <div class="col-md">
                                             <el-input
+                                                type="number"
                                                 placeholder="Zip Code"
                                                 v-model="task.zipcode"
                                                 id="txtzip"
@@ -59,7 +60,7 @@
                                 </div>
                                 <div style="display: inline;">
                                     <center>
-                                    <el-button class="signupbtn" @click="previous">Previous</el-button>
-                                    <el-button class="signupbtn" @click="next2">Next step</el-button>
+                                    <el-button type="primary" @click="previous">Previous</el-button>
+                                    <el-button type="primary" @click="next2">Next step</el-button>
                                     </center>
                                 </div>

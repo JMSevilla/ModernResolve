@@ -62,10 +62,11 @@
                                     </div>
                                     <div class="col-md-9">
                                         <el-input
-                                            type="text"
+                                            type="number" 
                                             v-model="task.age"
                                             id="age"
-                                            :min="16" :max="100">
+                                            :min="16" :max="100"
+                                            clearable>
                                         </el-input>
                                     </div>
                                 </div>
@@ -80,17 +81,22 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label>Contact Number</label>
+                                        <label class="mt-2">Contact Number</label>
                                     </div>
                                     <div class="col-md-9" >
                                         <el-input
                                             type="number"
                                             v-model.number="task.contact"
-                                            id="contact">
+                                            id="contact"
+                                            oninput="if(value.length > 12) value=value.slice(0, 12)"
+                                            clearable>
+                                            
                                         </el-input>
                                                 <p style="color: gray;">Format (ex: +639212142370)</p>
                                     </div>  
                                 </div>
-                                <div style="display: inline; padding-left: 200px">
-                                    <el-button class="signupbtn" @click="next">Next step</el-button>
-                                </div>
+                                <center>
+                                    <div style="display: inline">
+                                        <el-button type="primary" @click="next">Next step</el-button>
+                                    </div>
+                                </center>

@@ -19,16 +19,6 @@
                             <div class="form-outline">
                                 <i class="fas fa-lock icon"></i>
                                 <input type="password" id="password_login" class="user" placeholder="Password" />
-                            </div>
-                            <div class="form-check">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    value=""
-                                    id="flexCheckDefault"
-                                />
-                                <label class="form-check-label" for="flexCheckDefault">Keep me signed in</label>
-                            </div>
                             <div>
                                 <center>
                                     <div style="margin-bottom: 70px; margin-top: 40px">

@@ -25,6 +25,7 @@
                                 </div>
                                 <div style="display: inline;">
                                     <center>
-                                    <el-button class="signupbtn" @click="previous">Previous</el-button>
-                                    <el-button class="signupbtn" @click="next_3">Next step</el-button>
+                                        <el-button type="primary" @click="previous">Previous</el-button>
+                                        <el-button type="primary" @click="next_3">Next step</el-button>
+                                    </center>
                                 </div>

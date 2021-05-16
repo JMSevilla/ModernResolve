@@ -183,6 +183,8 @@ border-radius: 18px;
   position: sticky;
  
 } */
+
+/* hannah */
 .signup h4
 {
   text-align:center;
@@ -194,6 +196,10 @@ border-radius: 18px;
   margin-bottom: 20px;
 }
 
+.signup .row .col-md-10
+{
+  margin-bottom: 20px;
+}
 .signup .container-address .col-md
 {
   margin-left: 15%;
@@ -201,34 +207,25 @@ border-radius: 18px;
   width: auto;
 }
 
-.signupbtn
+.signup .row p
 {
-  background-color: #3c84f3;
-  color: #fff;
-  margin-top: 15px;
-  margin-bottom: 10px;  
-}
-
-.signupbtn:hover
-{
-  background-color: #1b6ceb;
-  color: #fff;
-  margin-top: 15px;
-  margin-bottom: 10px; 
-}
-
-.signup p
-{
+  margin-top: 25px;
   text-align: center;
+
+  
+}
+.signup .row p a
+{
+  text-decoration: none;
 }
 
-.signup p a:hover
+.signup .row p a:hover
 {
   text-decoration: underline;
 }
 
-input[id=contact]::-webkit-inner-spin-button, 
-input[id=contact]::-webkit-outer-spin-button { 
+input[id=age]::-webkit-inner-spin-button, 
+input[id=age]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -241,20 +238,37 @@ input[id=age]
   height: auto;
 }
 
-input[id=txtzip]
-{
-  width: 210px;
-  height: auto;
-}
-
-input[id=code]::-webkit-inner-spin-button, 
-input[id=code]::-webkit-outer-spin-button { 
+input[id=contact]::-webkit-inner-spin-button, 
+input[id=contact]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
 }
 
+input[id=txtzip]
+{
+  width: 210px;
+  height: auto;
+}
+
+input[id=txtzip]::-webkit-inner-spin-button, 
+input[id=txtzip]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[id=txtcode]::-webkit-inner-spin-button, 
+input[id=txtcode]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+/* hannah */
 
 /* login   by ella on may 12 2021*/
 /* shadow */
