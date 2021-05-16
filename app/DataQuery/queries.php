@@ -2,6 +2,8 @@
 
 // include( nightbringer("nightbringer.php") );
 
+include_once("../Thrower/nightbringer.php");
+
 class lightBringerBulk extends Bulk{
     public function models_check(){
   $sql = "show tables like :mytable";
@@ -93,6 +95,17 @@ public function tokenExpiry($table){
   select itoken from ".$table." where dateOfValidation > tokenExpiration
   ";
   return $sql;
+}
+
+
+
+// Emman
+public function signupuser_query($table) {
+  return BULK::NB_signupuser_query($table);
+}
+
+public function firstuser_query($table) {
+  return BULK::NB_firstuser($table);
 }
 
 }
