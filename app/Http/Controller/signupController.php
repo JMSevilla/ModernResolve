@@ -42,7 +42,7 @@
                 DBIntegrate::bind(':class_code', $data['class_code']);
                 DBIntegrate::bind(':address', $data['address']);
                 DBIntegrate::bind(':email_address', $data['email_address']);
-                DBIntegrate::bind(':password', $data['password']);
+                DBIntegrate::bind(':password', DBIntegrate::dataEncrypt($data['password']));
                 DBIntegrate::bind(':is_verified', $isverified);
                 DBIntegrate::bind(':is_type', $istype);
                 DBIntegrate::bind(':is_activate', $isactivate);
@@ -69,7 +69,7 @@
                 DBIntegrate::bind(':class_code', $data['class_code']);
                 DBIntegrate::bind(':address', $data['address']);
                 DBIntegrate::bind(':email_address', $data['email_address']);
-                DBIntegrate::bind(':password', $data['password']);
+                DBIntegrate::bind(':password', DBIntegrate::dataEncrypt($data['password']));
                 DBIntegrate::bind(':is_verified', $isverified);
                 DBIntegrate::bind(':is_type', $istype);
                 DBIntegrate::bind(':is_activate', $isactivate);

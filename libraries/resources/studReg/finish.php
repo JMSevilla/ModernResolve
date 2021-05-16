@@ -15,7 +15,8 @@
   
   <p>You are now verified user, you can login to our website.</p>
   <center>
-    <el-button style="width: 45%; padding: 15px;" type="primary" round>Login</el-button>
+    <!-- <el-button style="width: 45%; padding: 15px;" type="primary" round>Login</el-button> -->
+    <a href="login.php" style="width: 45%; padding: 15px;" class="btn btn-primary-dark">Login</a>
   </center>
 </div>
 

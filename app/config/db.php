@@ -88,7 +88,7 @@ class DBIntegrate
     return json_encode(array("TestCode" => 200));
   }
   // Data Encrypting
-  public function dataEncrypt(){
+  public function dataEncrypt($pass){
     return password_hash($pass, PASSWORD_DEFAULT);
   }
   // Data Counting for controller
