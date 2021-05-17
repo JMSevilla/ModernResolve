@@ -30,7 +30,9 @@ ELEMENT.locale(ELEMENT.lang.en)
             sex: '',
             course: '', apikey: '',
             signupMethod: true, //Emman
-            municipality: '' //Emman
+            municipality: '', //Emman
+            isHide: false //hannah
+
           },
 
           codeverification: '',
@@ -46,7 +48,7 @@ ELEMENT.locale(ELEMENT.lang.en)
         this.makeverificationcode(9);
         this._loadProvice();
         this.task.apikey = this.qrgenapi();
-        // this.active = 5;
+        // this.active = 3;
       },
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
