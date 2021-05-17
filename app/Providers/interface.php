@@ -53,6 +53,7 @@ Interface ISignupModel {
 
 Interface ILoginController {
   public function loginuser_controller($table, $data);
+  public function tokenization($table, $data);
 }
 
 Interface ILogin {

@@ -86,5 +86,22 @@ class Bulk  {
 
         return $sql;
     }
-    
+    public function NB_token($table){
+        $sql = "
+        insert into ".$table." values(default, :token, :email, 1, 1, current_timestamp, now() + INTERVAL 7 DAY)
+        ";
+        return $sql;
+    }
+    public function NB_scantoken($table){
+        $sql = "
+        select * from ".$table." where email=:email 
+        ";
+        return $sql;
+    }
+    public function NB_valid_token_updater($table){
+        $sql = "
+        update ".$table." set is_valid=0, isnew=0 where email=:email
+        ";
+        return $sql;
+    }
 }

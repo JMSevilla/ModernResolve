@@ -78,7 +78,12 @@ class DBIntegrate
   public function NotFoundJSONResponse(){
     return json_encode(array("statusCode" => "not found"));
   }
-
+  public function NotVerifiedResponse(){ 
+    return json_encode(array("statusCode" => "not verified"));
+  }
+  public function NotActivate(){
+    return json_encode(array("statusCode" => "not active"));
+  }
   /////Checking Server
   public function CHECKSERVER(){
     return $_SERVER["REQUEST_METHOD"] == "POST";
