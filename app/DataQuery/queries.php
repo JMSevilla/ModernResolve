@@ -84,20 +84,16 @@ public function GetAll($table, $column){
 
 // Tokenization
 public function tokenMigrate($table){
-  $sql = "
-  insert into ".$table." values(default, :token, :email, 1, current_timestamp, now() + INTERVAL 7 DAY)
-  ";
-  return $sql;
+  return BULK::NB_token($table);
 }
 
 public function tokenExpiry($table){
-  $sql = "
-  select itoken from ".$table." where dateOfValidation > tokenExpiration
-  ";
-  return $sql;
+ return BULK::NB_scantoken($table);
 }
 
-
+public function valid_token_updater($table){
+  return BULK::NB_valid_token_updater($table);
+}
 
 // Emman
 public function signupuser_query($table) {

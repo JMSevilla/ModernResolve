@@ -6,6 +6,7 @@
     class LoginController extends DBIntegrate implements ILoginController {
 
         public function loginuser_controller($table, $data) {
+            $user = new LoginController();
             if(DBIntegrate::CHECKSERVER()) {
                 DBIntegrate::ControllerPrepare(lightBringerBulk::loginuser_query($table));
                 DBIntegrate::bind(':email', $data['email']);
@@ -20,21 +21,25 @@
                             if($isverified == '1') {
                                 if($isactivate == '1') {
                                     if($istype == '3') {
+                                        
+                                        $user->tokenization("token",$data);
                                         echo json_encode(array('type' => 'Student'));
                                     }
                                     else if($istype == '2') {
+                                        $user->tokenization("token",$data);
                                         echo json_encode(array('type' => 'Teacher'));
                                     }
                                     else {
+                                        $user->tokenization("token",$data);
                                         echo json_encode(array('type' => 'Admin'));
                                     }
                                 }
                                 else {
-                                    echo DBIntegrate::InvalidJSONResponse();
+                                    echo DBIntegrate::NotActivate();
                                 }
                             }
                             else {
-                                echo DBIntegrate::InvalidJSONResponse();
+                                echo DBIntegrate::NotVerifiedResponse();
                             }
                         }
                         else {
@@ -42,10 +47,20 @@
                         }
                     }
                     else {
-                        echo DBIntegrate::InvalidJSONResponse();
+                        echo DBIntegrate::NotFoundJSONResponse();
                     }
                 }
             }
         }
-
+        public function tokenization($table, $data){
+            if(DBIntegrate::CHECKSERVER()) {
+                if(DBIntegrate::ControllerPrepare(lightBringerBulk::tokenMigrate($table))){
+                    DBIntegrate::bind(':token', $data['oauth']);
+                    DBIntegrate::bind(':email', $data['email']);
+                    if(DBIntegrate::ControllerExecutable()) {
+                        DBIntegrate::cookieOfLife($data['oauth']);
+                    }
+                }
+            }
+        }
     }
