@@ -425,3 +425,110 @@ min-width: 50px;
   }
 /* reset end */
 /* ended on may 14 2021 */
+/* hannah */
+
+
+#navbarAdminImages #logo
+{
+  width: 70px;
+}
+
+#navbarAdminImages #logo2
+{
+  margin-left: 10px;
+  width:100px;
+}
+#navbarAdminmenu{
+  padding-left: 40px;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+
+#navbarSide #notification, #message, #navbarDropdown
+{
+  padding-left: 5%;
+  font-size: 1.5em;
+  color: #808080;
+}
+
+
+.searchbar .searchbar1
+{
+  margin-right: 10px;
+  width: 300px;
+  border-radius: 20px;
+  display: block;
+  border: none;
+  border: 1px solid #d9d9d9;
+  padding: 6px 10px;
+ 
+  
+}
+.searchbar .searchbar1, select,textarea 
+{
+  outline: none;
+  text-align: center;
+}
+
+.admin .row h3, h2{
+  text-align: center;
+}
+
+.admin .card
+{
+  border-radius: 15px;
+}
+
+.admin .container2 #usericons{
+  float:left;
+  font-size: 4em;
+  padding-left: 10%;
+}
+.admin .container2 .text a
+{
+  text-decoration: none;
+  color: #000000;
+}
+
+.admin .container2 .text
+{
+  float:left;
+  padding-left: 20px;
+
+}
+.admin .row .content1 p{
+  text-align: justify;
+  padding: 5px 100px;
+}
+
+.admin .footerAdmin .links a
+{
+  font-size: 13px;
+  color: #6c757d;
+  text-decoration: none;
+}
+.admin .footerAdmin .links a:hover
+{
+  text-decoration: underline;
+}
+
+.content1 #classbtn
+{
+  text-transform: initial;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.admin .row .rightside2 p{
+  text-align: justify;
+  padding: 5px 30px;
+}
+.rightside2 #classbtn
+{
+  text-transform: initial;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 5px 30px;
+}
