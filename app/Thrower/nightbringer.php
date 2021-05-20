@@ -104,4 +104,10 @@ class Bulk  {
         ";
         return $sql;
     }
+    public function NB_current_date_updater_token($table){
+        $sql = "
+        update ".$table." set dateOfValidation=current_timestamp where email=:email
+        ";  
+        return $sql;
+    }
 }

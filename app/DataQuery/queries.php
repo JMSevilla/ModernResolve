@@ -95,6 +95,10 @@ public function valid_token_updater($table){
   return BULK::NB_valid_token_updater($table);
 }
 
+public function date_valid_token($table){
+  return BULK::NB_current_date_updater_token($table);
+}
+
 // Emman
 public function signupuser_query($table) {
   return BULK::NB_signupuser_query($table);
