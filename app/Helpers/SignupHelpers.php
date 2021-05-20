@@ -4,7 +4,7 @@
     spl_autoload_register('signup_route');
 
     if(isset($_POST['signupMethod']) == true) {
-        $table = 'user';
+        $table = 'sproc_insert';
         SignupModel::signup_model($table);
     }
 

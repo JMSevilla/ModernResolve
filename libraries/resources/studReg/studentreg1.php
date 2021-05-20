@@ -44,6 +44,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <el-date-picker
+                                            v-on:input="calage()"
                                             width="500px"
                                             v-model="task.bdate"
                                             id="txtbdate"
@@ -66,7 +67,7 @@
                                             v-model="task.age"
                                             id="age"
                                             :min="16" :max="100"
-                                            clearable>
+                                            disabled>
                                         </el-input>
                                     </div>
                                 </div>

@@ -41,7 +41,8 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           value: '',
           options: [],
-          provinceGetterss:[]
+          provinceGetterss:[],
+          agecalculation: ''
          }
       },
       created(){
@@ -301,6 +302,29 @@ ELEMENT.locale(ELEMENT.lang.en)
             this.active++;
           }
         })
+      },
+
+      // Emman
+      calage() {
+        const data = {
+          bdate: this.task.bdate,
+          agecal: true
+        }
+        $.post(this.app + this.Helpers + '/AgeHelpers.php', data, response => {
+          let a = JSON.parse(response);
+          if(a.age < 18) {
+            this.$notify.error({
+              title: 'Oops',
+              message: 'Please select your birth date',
+              offset: 100
+            });
+            return false;
+          }
+          else {
+            this.task.age = a.age;
+          }
+        });
       }
+
       }
     })
