@@ -63,9 +63,13 @@ class Bulk  {
 
     // Emman
     public function NB_signupuser_query($table) {
+        // $sql = "
+        // insert into ".$table." values (default, :firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
+        // :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi', current_timestamp)
+        // ";
         $sql = "
-        insert into ".$table." values (default, :firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
-        :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi', current_timestamp)
+            CALL ".$table." (:firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
+            :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi')
         ";
     
         return $sql;
