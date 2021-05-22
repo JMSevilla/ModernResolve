@@ -5,7 +5,7 @@ Reminder !
 1. If you want to edit or add something please notify me.
 */
 class config{
-  public static $host = "localhost";
+  public static $host = "127.0.0.1";
   public static $username = "root";
   public static $pwd = "";
   public static $mydb = "dbtorres";
