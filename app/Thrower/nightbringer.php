@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -63,15 +63,15 @@ class Bulk  {
 
     // Emman
     public function NB_signupuser_query($table) {
-        // $sql = "
-        // insert into ".$table." values (default, :firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
-        // :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi', current_timestamp)
-        // ";
         $sql = "
-            CALL ".$table." (:firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code, :class_code,
-            :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi')
+        insert into ".$table." values (default, :firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code,
+        :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi', current_timestamp)
         ";
-    
+        // $sql = "
+        //     CALL ".$table." (:firstname, :lastname, :birth_date, :age, :gender, :contact_number, :province, :municipality, :zip_code,
+        //     :address, :email_address, :password, :is_verified, :is_type, :is_activate, 0, 'noneapi')
+        // ";
+
         return $sql;
     }
 
@@ -98,7 +98,7 @@ class Bulk  {
     }
     public function NB_scantoken($table){
         $sql = "
-        select * from ".$table." where email=:email 
+        select * from ".$table." where email=:email
         ";
         return $sql;
     }
@@ -111,7 +111,25 @@ class Bulk  {
     public function NB_current_date_updater_token($table){
         $sql = "
         update ".$table." set dateOfValidation=current_timestamp where email=:email
-        ";  
+        ";
         return $sql;
+    }
+    public function NB_getClassCodeID($table){
+      $sql = "
+      select class_codeID from ".$table." where code=:code
+      ";
+      return $sql;
+    }
+    public function NB_getuserID($table){
+      $sql = "
+      select userID from ".$table." where email_address=:email
+      ";
+      return $sql;
+    }
+    public function NB_class_code_mapping_create($table){
+      $sql = "
+      insert into ".$table." values(default, :classID, :uid, current_timestamp)
+      ";
+      return $sql;
     }
 }
