@@ -1,12 +1,12 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light nav-sticky" style="border-bottom: 1px solid #d9d9d9">
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-sticky" style="border-bottom: 1px solid #d9d9d9" id="navbarAdminHead">
   <!-- Container wrapper -->
   
   <div class="container-fluid" id="forpadding">
     <!-- Toggle button -->
     
       <!-- <div class="col-md-8"> -->
-        <button
+        <!-- <button
         class="navbar-toggler"
         type="button"
         data-mdb-toggle="collapse"
@@ -16,7 +16,7 @@
         aria-label="Toggle navigation"
         >
         <i class="fas fa-bars"></i>
-        </button>
+        </button> -->
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,11 +26,11 @@
             <img src="img/torrestechlogo2.png" alt="" id="logo2">
           </a>
           <!-- Left links -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarAdminmenu">
-            <li class="nav-item" style="margin-right: 15px">
+          <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarAdminmenu">
+            <li class="nav-item <?php echo(basename($_SERVER['PHP_SELF']) =="homeAdmin.php")?"active":""; ?>" style="margin-right: 15px">
               <a class="nav-link" href="homeAdmin">Home</a>
             </li>
-            <li class="nav-item" style="margin-right: 15px">
+            <li class="nav-item <?php echo(basename($_SERVER['PHP_SELF']) =="userAdmin.php")?"active":""; ?>" style="margin-right: 15px">
               <a class="nav-link" href="userAdmin">Users</a>
             </li>
             <li class="nav-item" style="margin-right: 15px">
@@ -39,10 +39,7 @@
             <li class="nav-item" style="margin-right: 15px">
               <a class="nav-link" href="#">Calendar</a>
             </li>
-            <li class="nav-item" style="margin-right: 15px">
-              <a class="nav-link" href="#">Courses</a>
-            </li>
-          </ul>
+          </ul> -->
           <!-- Left links -->
         </div>
       <!-- </div> -->

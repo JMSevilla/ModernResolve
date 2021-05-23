@@ -425,18 +425,17 @@ min-width: 50px;
   }
 /* reset end */
 /* ended on may 14 2021 */
+
 /* hannah */
-
-
 #navbarAdminImages #logo
 {
-  width: 70px;
+  width: 10%;
 }
 
 #navbarAdminImages #logo2
 {
   margin-left: 10px;
-  width:100px;
+  width:15%;
 }
 #navbarAdminmenu{
   padding-left: 40px;
@@ -470,14 +469,18 @@ min-width: 50px;
   outline: none;
   text-align: center;
 }
-
+/* .admin .container
+{
+  background-color: #1a237e;
+  position: relative;
+} */
 .admin .row h3, h2{
   text-align: center;
 }
 
 .admin .card
 {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .admin .container2 #usericons{
@@ -530,5 +533,47 @@ min-width: 50px;
   border-radius: 5px;
   margin-right: 10px;
   margin-left: 10px;
-  padding: 5px 30px;
+  width: 30%;
 }
+
+#navbarAdminmenu .nav-link:hover::after{
+  color: #1a237e;
+}
+
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: auto;
+}
+
+.admin .el-menu-item a{
+  color: #000000;
+  text-decoration: none;
+}
+
+
+.admin .el-menu-vertical-demo{
+  position: fixed;
+}
+
+.admin .el-menu-vertical-demo span{
+  font-size: 1.2em;
+}
+
+#navbarAdminHead
+{
+  height: 15%;
+}
+
+.admin .card-content
+{
+ margin-left: -14%;
+ margin-right: -3%;
+}
+
+.admin .el-table
+{
+ margin-left: -9%;
+ 
+}
+/* hannah */

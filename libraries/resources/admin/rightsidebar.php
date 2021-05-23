@@ -1,4 +1,4 @@
-<div class="card" style="margin-bottom: 10px" >
+<div class="card" style="margin-bottom: 5px" >
     <!-- <el-calendar v-model="value" id="calendars" >
     </el-calendar> -->
     <h2>Calendar</h2>
@@ -16,7 +16,7 @@
                 Integer eleifend eu nibh sit amet blandit. Ut ultrices leo erat, ut 
             </p>
             <center>
-                <div style="padding: 20px" >
+                <div style="inline; padding: 20px" >
                     <button type="submit" class="btn btn-primary btn-sm fs-6" id="classbtn" >Add</button>
                     <button type="submit" class="btn btn-primary btn-sm fs-6" id="classbtn">Delete</button>
                 </div>

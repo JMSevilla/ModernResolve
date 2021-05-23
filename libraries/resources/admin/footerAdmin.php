@@ -9,8 +9,8 @@
         <a href="#" >Contact Us</a> 
         <a href="#" >Facebook</a>
     </p> 
-    <p class="footer-section-content" id="demo1" >
-        Torres Technology Corporation &copy;
+    <p class="footer-section-content1" id="demo1" >
+        Torres Technology Center Corporation &copy;
         <script> document.write(new Date().getFullYear())</script>
     </p>
 </div>
