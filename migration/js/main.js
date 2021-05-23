@@ -2,7 +2,7 @@ import http from "./http.js";
 
 user();
 province();
-course();
+classCodeMap();
 classCode();
 token();
 codeverifier();
@@ -20,10 +20,10 @@ function province(){
   }
   http.buildData_construct(obj)
 }
-function course(){
+function classCodeMap(){
   var obj = {
-    courseTrigger: 1,
-    table: "course"
+    classCodeMapTrigger: 1,
+    table: "class_code_map"
   }
   http.buildData_construct(obj)
 }

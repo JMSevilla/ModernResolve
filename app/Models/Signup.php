@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     // Emman
     include_once "../Http/Controller/signupController.php";

@@ -29,11 +29,11 @@ class Post extends DBIntegration {
             die("user table creation failed: " . $th->getMessage());
           }
         }
-        if ($table === 'course') {
+        if ($table === 'class_code_map') {
           $sql = iModel_tableCreation($table,$column);
           try {
             $this->ModelsCreated($sql);
-            echo json_encode(array('courseTable' => 'Created'));
+            echo json_encode(array('classCodeMapTable' => 'Created'));
           } catch (PDOException $th) {
             die("user table creation failed: " . $th->getMessage());
           }

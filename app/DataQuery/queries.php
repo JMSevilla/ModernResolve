@@ -34,7 +34,7 @@ public function iController_CreateUser($table) {
 
 public function classcodeCheckup($table){
   $sql = "
-  select code from ".$table." where code=:code
+  select code from ".$table." where code=:code and status='open'
   ";
   return $sql;
 }
@@ -112,7 +112,16 @@ public function loginuser_query($table) {
   return BULK::NB_loginuser($table);
 }
 
+
+//Class Code ID Mapping
+public function classCodeMapping($table){
+  return BULK::NB_getClassCodeID($table);
 }
 
-
-
+public function userIDGetter($table){
+  return BULK::NB_getuserID($table);
+}
+public function create_classcode_mapping($table){
+  return BULK::NB_class_code_mapping_create($table);
+}
+}

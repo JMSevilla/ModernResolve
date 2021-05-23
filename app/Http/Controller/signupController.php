@@ -1,8 +1,8 @@
-<?php 
+<?php
 
     // Emman
     include_once "../DataQuery/queries.php";
-    
+
     class SignupController extends lightBringerBulk implements ISignupController {
 
         public function signupuser_controller($table, $data) {
@@ -39,7 +39,6 @@
                 DBIntegrate::bind(':province', $data['province']);
                 DBIntegrate::bind(':municipality', $data['municipality']);
                 DBIntegrate::bind(':zip_code', $data['zip_code']);
-                DBIntegrate::bind(':class_code', $data['class_code']);
                 DBIntegrate::bind(':address', $data['address']);
                 DBIntegrate::bind(':email_address', $data['email_address']);
                 DBIntegrate::bind(':password', DBIntegrate::dataEncrypt($data['password']));
@@ -66,7 +65,6 @@
                 DBIntegrate::bind(':province', $data['province']);
                 DBIntegrate::bind(':municipality', $data['municipality']);
                 DBIntegrate::bind(':zip_code', $data['zip_code']);
-                DBIntegrate::bind(':class_code', $data['class_code']);
                 DBIntegrate::bind(':address', $data['address']);
                 DBIntegrate::bind(':email_address', $data['email_address']);
                 DBIntegrate::bind(':password', DBIntegrate::dataEncrypt($data['password']));
@@ -76,9 +74,45 @@
 
                 if(DBIntegrate::ControllerExecutable()) {
                     echo DBIntegrate::SuccessJSONResponse();
+                    $this->fetch_data_classCODE($data);
                     // echo json_encode('emman borrico');
                 }
             }
         }
+        public function fetch_data_classCODE($data) {
+          if(DBIntegrate::ControllerPrepare(lightBringerBulk::classCodeMapping("class_code"))){
+            DBIntegrate::bind(":code", $data['class_code']);
+            DBIntegrate::ControllerExecutable();
+            if(DBIntegrate::controller_row()){
+              if($row = DBIntegrate::controller_fetch_row()){
+                $classcodeID = $row['class_codeID'];
+                $this->fetch_data_userID($data, $classcodeID);
+              }
+            }
+          }
+        }
+        public function fetch_data_userID($data, $classcodeID){
+          if(DBIntegrate::ControllerPrepare(lightBringerBulk::userIDGetter("user"))){
+            DBIntegrate::bind(":email", $data['email_address']);
+            DBIntegrate::ControllerExecutable();
+            if(DBIntegrate::controller_row()){
+              if($row = DBIntegrate::controller_fetch_row()){
+                $userid = $row['userID'];
 
+                 $this->class_code_mapping($userid, $classcodeID);
+              }
+            }
+          }
+        }
+        public function class_code_mapping($userid, $classcodeID){
+          if(DBIntegrate::ControllerPrepare(lightBringerBulk::create_classcode_mapping("class_code_map"))){
+              DBIntegrate::bind(":classID",$classcodeID, PDO::PARAM_INT);
+              DBIntegrate::bind(":uid",$userid, PDO::PARAM_INT);
+              if(DBIntegrate::ControllerExecutable()){
+                echo DBIntegrate::SuccessJSONResponse();
+              }
+          }
+        }
     }
+
+    // create_classcode_mapping

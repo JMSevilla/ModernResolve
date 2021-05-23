@@ -1,10 +1,10 @@
-<?php 
+<?php
 
     // Emman
     spl_autoload_register('signup_route');
 
     if(isset($_POST['signupMethod']) == true) {
-        $table = 'sproc_insert';
+        $table = 'user';
         SignupModel::signup_model($table);
     }
 
