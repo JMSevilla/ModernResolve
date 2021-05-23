@@ -56,11 +56,20 @@ class Post extends DBIntegration {
             die("user table creation failed: " . $th->getMessage());
           }
         }
-        if($table === 'codeverifier'){
+        if($table === 'verifierCode'){
           $sql = iModel_tableCreation($table,$column);
           try {
             $this->ModelsCreated($sql);
             echo json_encode(array('codeVerifier' => 'Created'));
+          } catch (PDOException $th) {
+            die("user table creation failed: " . $th->getMessage());
+          }
+        }
+        if($table === 'post'){
+          $sql = iModel_tableCreation($table,$column);
+          try {
+            $this->ModelsCreated($sql);
+            echo json_encode(array('postTable' => 'Created'));
           } catch (PDOException $th) {
             die("user table creation failed: " . $th->getMessage());
           }

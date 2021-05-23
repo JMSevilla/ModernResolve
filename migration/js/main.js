@@ -5,7 +5,9 @@ province();
 classCodeMap();
 classCode();
 token();
-codeverifier();
+verifierCode();
+__post();
+// like();
 function user(){
   var obj = {
     userTrigger: 1,
@@ -42,10 +44,26 @@ function token(){
   http.buildData_construct(obj)
 }
 
-function codeverifier(){
+function verifierCode(){
   var obj= {
     verifierCode: 1,
-    table: "codeverifier"
+    table: "verifierCode"
   }
   http.buildData_construct(obj)
 }
+
+function __post(){
+  var obj= {
+    postTrigger: 1,
+    table: "post"
+  }
+  http.buildData_construct(obj)
+}
+
+// function like(){
+//   var obj= {
+//     likeTrigger: 1,
+//     table: "like"
+//   }
+//   http.buildData_construct(obj)
+// }

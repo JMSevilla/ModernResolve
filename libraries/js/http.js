@@ -60,7 +60,12 @@ const handler = {
       requestInbound.loginUser(obj, resolve);
     });
     await promise.then(response => {
-      console.log(response);
+      // console.log(response);
+      let hammer = JSON.parse(response);
+      if (hammer.type == 'Admin') {
+        // console.log('condition ok');
+        window.location.href = "http://localhost/modernresolve/homeadmin";
+      }
     });
   }
 }

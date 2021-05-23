@@ -20,13 +20,13 @@ if(isset($_POST['classCodeTrigger']) == 1){
 }
 if(isset($_POST['tokenTrigger']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(tokenID int NOT NULL auto_increment, itoken varchar(60000), email varchar(255), is_valid char, date_expired datetime, created_at datetime default current_timestamp, PRIMARY KEY (tokenID) )';
+    $column = '(tokenID int NOT NULL auto_increment, itoken varchar(60000), email varchar(255), is_valid char, isnew char, dateOfValidation datetime, tokenExpiration datetime, PRIMARY KEY (tokenID) )';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
 if(isset($_POST['verifierCode']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), email varchar(255), isdone char(1), sendattempt char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
+    $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), email varchar(255), isdone char(1), apikey varchar(255), sendattempt char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
@@ -36,6 +36,18 @@ if(isset($_POST['classCodeMapTrigger']) == 1){
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
+if(isset($_POST['postTrigger']) == 1){
+    // echo json_encode(array('helper' => 'call ok'));
+    $column = '(postID int NOT NULL auto_increment, teacherID int, classCodeID int, created_at datetime default current_timestamp, PRIMARY KEY (postID) )';
+   $callback = new Post();
+   $callback->postModels($_POST['table'], $column);
+}
+// if(isset($_POST['likeTrigger']) == 1){
+//     // echo json_encode(array('helper' => 'call ok'));
+//     $column = '(likeID int NOT NULL auto_increment, created_at datetime default current_timestamp, PRIMARY KEY (likeID) )';
+//    $callback = new Post();
+//    $callback->postModels($_POST['table'], $column);
+// }
 function provide_root(){
     include_once "../Route/webapi.php";
     $calls = new web_api();

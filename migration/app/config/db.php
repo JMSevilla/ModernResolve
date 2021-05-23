@@ -8,9 +8,12 @@ Reminder !
 class DBIntegration 
 {
   // Connection privates
-  private $host = "azuretorrestech28.mysql.database.azure.com";
-  private $username = "torresdb@azuretorrestech28";
-  private $pwd = "Syncdb123456";
+  // private $host = "azuretorrestech28.mysql.database.azure.com";
+  private $host = "localhost";
+  // private $username = "torresdb@azuretorrestech28";
+  private $username = "root";
+  // private $pwd = "Syncdb123456";
+  private $pwd = "";
   private $mydb = "dbtorres";
   private $dataOutbound;
   private $stmt;
