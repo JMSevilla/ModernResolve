@@ -5,9 +5,12 @@ Reminder !
 1. If you want to edit or add something please notify me.
 */
 class config{
-  public static $host = "azuretorrestech28.mysql.database.azure.com";
-  public static $username = "torresdb@azuretorrestech28";
-  public static $pwd = "Syncdb123456";
+  // public static $host = "azuretorrestech28.mysql.database.azure.com";
+  public static $host = "localhost";
+  // public static $username = "torresdb@azuretorrestech28";
+  public static $username = "root";
+  // public static $pwd = "Syncdb123456";
+  public static $pwd = "";
   public static $mydb = "dbtorres";
   public static $dataOutbound;
   public static $stmt;
