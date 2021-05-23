@@ -14,8 +14,8 @@
                       Tenetur odio molestias temporibus alias ipsa possimus repellendus saepe facere,
                       quis totam qui repellat consectetur quia inventore autem impedit obcaecati molestiae soluta!
                       </p>
-                      <p class="footer-section-content" id="demo1" >
-                          Torres Technology Corporation &copy;
+                      <p class="footer-section-content1" id="demo1" >
+                          Torres Technology Center Corporation &copy;
                           <script> document.write(new Date().getFullYear())</script>
                       </p>
                   </div>

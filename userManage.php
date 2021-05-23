@@ -1,6 +1,6 @@
 <?php include("libraries/includes/links.php") ?>
 <?php include("libraries/resources/adminNavbar.php"); ?>
-<?php include("views/userAdmin.views.php"); ?>
+<?php include("views/admin/usermanage.views.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
   type="text/javascript"
@@ -17,3 +17,4 @@
 <script src="libraries/js/global.js"></script>
 <script type="module" src="libraries/js/vueAdmin.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
