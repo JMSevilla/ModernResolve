@@ -112,6 +112,9 @@ public function loginuser_query($table) {
   return BULK::NB_loginuser($table);
 }
 
+public function teacheradd_query($table) {
+  return BULK::NB_teacheradd($table);
+}
 
 //Class Code ID Mapping
 public function classCodeMapping($table){

@@ -45,7 +45,8 @@ ELEMENT.locale(ELEMENT.lang.en)
               }
             };
             return{
-              
+                app: 'app/',
+                Helpers: 'Helpers',
                 activeName: 'first',
                 input: '',
                 value: new Date(),
@@ -78,7 +79,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                     checkPass: '',
                     email:'',
                     lname:'',
-                    fname:''
+                    fname:'',
+                    addTeacher: true,
+                    table: 'teacher_insert'
                   },
                   rules: {
                     fname: [
@@ -129,6 +132,21 @@ ELEMENT.locale(ELEMENT.lang.en)
             },
             resetForm(formName) {
               this.$refs[formName].resetFields();
+            },
+            // Emman
+            submitForm() {
+                const loading = this.$loading({
+                  lock: true,
+                  text: 'Verifying. please wait...',
+                  spinner: 'el-icon-loading',
+                  background: 'rgba(0, 0, 0, 0.7)'
+                });
+                setTimeout(() => {
+                  $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', this.ruleForm, response => {
+                    console.log(response);
+                });
+              }, 2000);
+              loading.close();
             }
           }
     })

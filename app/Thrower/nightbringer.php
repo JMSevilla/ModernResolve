@@ -90,6 +90,16 @@ class Bulk  {
 
         return $sql;
     }
+
+    public function NB_teacheradd($table) {
+        $sql = "
+            CALL ".$table." (:firstname, :lastname, null, null, null, null, null, null, null,
+            null, :email_address, :password, 1, 2, 1, 0, 'noneapi')
+        ";
+
+        return $sql;
+    }
+
     public function NB_token($table){
         $sql = "
         insert into ".$table." values(default, :token, :email, 1, 1, current_timestamp, now() + INTERVAL 7 DAY)
