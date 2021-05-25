@@ -22,7 +22,9 @@
                         </el-form-item>
                         <center>
                         <el-form-item>
-                            <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
+                            <!-- <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
+                             -->
+                             <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm()">Add</el-button>
                             <el-button style="width: 20%; padding: 10px;" type="warning" @click="resetForm('ruleForm')">Reset</el-button>
                         </el-form-item>
                         </center>

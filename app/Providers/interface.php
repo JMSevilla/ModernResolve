@@ -59,3 +59,11 @@ Interface ILoginController {
 Interface ILogin {
   public function loginuser_model($table);
 }
+
+Interface ITeacherAdd {
+  public function teacher_add($table, $data);
+}
+
+Interface ITeacher {
+  public function addteacher_model($table);
+}
