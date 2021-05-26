@@ -1,67 +1,12 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light nav-sticky" style="border-bottom: 1px solid #d9d9d9" id="navbarAdminHead">
-  <!-- Container wrapper -->
-  
-  <div class="container-fluid" id="forpadding">
-    <!-- Toggle button -->
+<!-- Just an image -->
+<nav class="navbar navbar-light bg-light nav-sticky" style="border-bottom: 1px solid #d9d9d9; padding:0;" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <img src="img/toresstec.png" alt="" id="logo" height="50" style="margin-left: 20px">
+        <img src="img/torrestechlogo2.png" alt="" id="logo2" height="40">
+    </a>
     
-      <!-- <div class="col-md-8"> -->
-        <!-- <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-        <i class="fas fa-bars"></i>
-        </button> -->
-
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Navbar brand -->
-          <a class="navbar-brand mt-2 mt-lg-0" id="navbarAdminImages">
-            <img src="img/toresstec.png" alt="" id="logo">
-            <img src="img/torrestechlogo2.png" alt="" id="logo2">
-          </a>
-          <!-- Left links -->
-          <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarAdminmenu">
-            <li class="nav-item <?php echo(basename($_SERVER['PHP_SELF']) =="homeAdmin.php")?"active":""; ?>" style="margin-right: 15px">
-              <a class="nav-link" href="homeAdmin">Home</a>
-            </li>
-            <li class="nav-item <?php echo(basename($_SERVER['PHP_SELF']) =="userAdmin.php")?"active":""; ?>" style="margin-right: 15px">
-              <a class="nav-link" href="userAdmin">Users</a>
-            </li>
-            <li class="nav-item" style="margin-right: 15px">
-              <a class="nav-link" href="#">Class</a>
-            </li>
-            <li class="nav-item" style="margin-right: 15px">
-              <a class="nav-link" href="#">Calendar</a>
-            </li>
-          </ul> -->
-          <!-- Left links -->
-        </div>
-      <!-- </div> -->
-  
-    
-    <!-- Collapsible wrapper -->
-      <!-- <div class="col-md-4"> -->
-    <!-- Right elements -->
-        <div class="d-flex align-items-center" id="navbarSide">
-          <!-- Icon -->
-          <div class="searchbar" >
-            <input type="search" id="txtsearch" class="searchbar1"placeholder="Search"
-            aria-label="Search" />
-          </div>
-          <a class="text-reset me-3" href="#">
-            <i id="notification"class="fas fa-bell"></i>
-          </a>
-          <a class="text-reset me-3" href="#">
-            <i id="message" class="fas fa-envelope"></i>
-          </a>
-          <!-- Avatar -->
-          <form class="nav-item me-3 me-lg-0 dropdown">
+    <form class="nav-item me-3 me-lg-0 dropdown" id="navbarRightAlignExample">
               <a       
                 style="margin-top: 15px"
                 class="nav-link dropdown-toggle"
@@ -69,29 +14,23 @@
                 id="navbarDropdown"
                 role="button"
                 data-mdb-toggle="dropdown"
-                aria-expanded="false"
+                aria-expanded="false"  
               >
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user"  ></i>
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 140px !important; min-width: 140px; max-width: 140px;">
                 <li>
-                  <a class="dropdown-item" href="#">My Profile </a>
+                  <a class="dropdown-item" href="#" data-mdb-toggle="modal"data-mdb-target="#staticBackdrop">Reset Password </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="profileAdmin">Profile </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">Logout</a>
                 </li>
               </ul>
           </form>
-        </div>
-      <!-- </div> -->
-    <!-- Right elements -->
-    
+      
   </div>
-  <!-- Container wrapper -->
- 
 </nav>
-<!-- Navbar -->
-
+<?php include("libraries/resources/admin/resetadminModal.php"); ?>

@@ -1,4 +1,4 @@
-<el-dialog
+<el-dialog 
   title="Create Account"
   :visible.sync="dialogVisible"
   :before-close="handleClose">

@@ -6,7 +6,7 @@
                     <?php include("libraries/resources/admin/leftsidebar.php"); ?>
                 </div>
                 <div class="col-md-10" >
-                    <?php include("libraries/resources/admin/teacherTable.php"); ?>
+                    <?php include("libraries/resources/admin/profile.php"); ?>
                 </div>
 
             </div>
