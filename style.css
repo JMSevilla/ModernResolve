@@ -444,11 +444,12 @@ min-width: 50px;
 }
 
 
-#navbarSide #notification, #message, #navbarDropdown
+#navbarRightAlignExample #notification, #message, #navbarDropdown
 {
-  padding-left: 5%;
+  padding: 0%;
   font-size: 1.5em;
   color: #808080;
+  margin-right: 90px;
 }
 
 
@@ -469,11 +470,8 @@ min-width: 50px;
   outline: none;
   text-align: center;
 }
-/* .admin .container
-{
-  background-color: #1a237e;
-  position: relative;
-} */
+
+
 .admin .row h3, h2{
   text-align: center;
 }
@@ -542,8 +540,8 @@ min-width: 50px;
 
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: auto;
+  width: 220px;
+  min-height: 100%;
 }
 
 .admin .el-menu-item a{
@@ -557,23 +555,51 @@ min-width: 50px;
 }
 
 .admin .el-menu-vertical-demo span{
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
-#navbarAdminHead
+.admin .el-dialog
 {
-  height: 15%;
+  border-radius: 10px ;
 }
 
-.admin .card-content
-{
- margin-left: -14%;
- margin-right: -3%;
+/* admin profile */
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+input[id=contact]::-webkit-inner-spin-button, 
+input[id=contact]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+input[id=txtzip]::-webkit-inner-spin-button, 
+input[id=txtzip]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
-.admin .el-table
-{
- margin-left: -9%;
- 
-}
 /* hannah */

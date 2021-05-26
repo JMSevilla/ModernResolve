@@ -54,24 +54,25 @@ ELEMENT.locale(ELEMENT.lang.en)
                 dialogVisible: false,
                 centerDialogvisible: false,
                 labelPosition: 'left',
+                imageUrl: '',
+                radio1: 'Deactivate',
+                resetteachdialogVisible: false,
+                resetlabelPosition: 'left',
                 tableDataTeach: [{
                   date: '2021-05-03',
                   fname: 'Hannah',
                   lname: 'Ubaldo',
                   email: 'hannah@email.com',
-                  address: 'bacoor'
                 }, {
                   date: '2021-05-02',
                   fname: 'Ella',
                   lname: 'Marie',
                   email: 'ella@email.com',
-                  address: 'imus'
                 }, {
                   date: '2021-05-01',
                   fname: 'Alden',
                   lname: 'Lacerna',
                   email: 'alden@email.com',
-                  address: 'dasma'
                 }],
                 search: '',
                   ruleForm: {
@@ -98,9 +99,25 @@ ELEMENT.locale(ELEMENT.lang.en)
                     ],
                     checkPass: [
                       { validator: validatePass2, trigger: 'blur' }
-                    ],
-                    
-                  },               
+                    ],                    
+                  },  
+                  profile: {
+                    fname:'',
+                    lname:'',
+                    bdate: '',
+                    age: '',
+                    sex:'',
+                    contact:'',
+                    address:'',
+                    street:'',
+                    province:'',
+                    municipality:'',
+                    zipcode:''
+                  },
+                  reset: {
+                    pass:'',
+                    checkPass:''
+                  }             
             }
 
             
@@ -113,13 +130,13 @@ ELEMENT.locale(ELEMENT.lang.en)
             handleSelect(key, keyPath) {
               console.log(key, keyPath);
             },
-            handleClose(done) {
-              this.$confirm('Are you sure to exit?')
-                .then(_ => {
-                  done();
-                })
-                .catch(_ => {});
-            },
+            // handleClose(done) {
+            //   this.$confirm('Are you sure to exit?')
+            //     .then(_ => {
+            //       done();
+            //     })
+            //     .catch(_ => {});
+            // },
             submitForm(formName) {
               this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -147,6 +164,22 @@ ELEMENT.locale(ELEMENT.lang.en)
                 });
               }, 2000);
               loading.close();
+            },
+            //hananh
+            handleAvatarSuccess(res, file) {
+              this.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload(file) {
+              const isJPG = file.type === 'image/jpeg';
+              const isLt2M = file.size / 1024 / 1024 < 2;
+      
+              if (!isJPG) {
+                this.$message.error('Avatar picture must be JPG format!');
+              }
+              if (!isLt2M) {
+                this.$message.error('Avatar picture size can not exceed 2MB!');
+              }
+              return isJPG && isLt2M;
             }
           }
     })

@@ -1,9 +1,3 @@
-<div class="card" style="margin-bottom: 5px" >
-    <!-- <el-calendar v-model="value" id="calendars" >
-    </el-calendar> -->
-    <h2>Calendar</h2>
-</div>
-
 <div class="card" style="margin-bottom: 10px">
     <div class="rightside2">
         <div class="row" style="margin-top: 10px;">
