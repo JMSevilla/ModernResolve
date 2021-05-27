@@ -55,9 +55,12 @@ ELEMENT.locale(ELEMENT.lang.en)
                 centerDialogvisible: false,
                 labelPosition: 'left',
                 imageUrl: '',
-                radio1: 'Deactivate',
                 resetteachdialogVisible: false,
+                resetadmindialogVisible: false,
+                provinceDialog: false,
                 resetlabelPosition: 'left',
+                provincelabelPosition: 'left',
+                dialogTableVisible: false,
                 tableDataTeach: [{
                   date: '2021-05-03',
                   fname: 'Hannah',
@@ -117,19 +120,35 @@ ELEMENT.locale(ELEMENT.lang.en)
                   reset: {
                     pass:'',
                     checkPass:''
-                  }             
+                  },  
+                  resetadmin:{
+                    oldpass:'',
+                    newpass:'',
+                    checkPass:''
+                  },
+                  add:{
+                    province:'',
+                    province1:'',
+                    municipality:''
+                  },
+                  gridData: [{
+                    date: '2016-05-02',
+                    name: 'John Smith',
+                  },
+                  ]
+
             }
 
             
         },
         
         methods: {
-            handleClick(tab, event) {
-              console.log(tab, event);
-            },
-            handleSelect(key, keyPath) {
-              console.log(key, keyPath);
-            },
+            // handleClick(tab, event) {
+            //   console.log(tab, event);
+            // },
+            // handleSelect(key, keyPath) {
+            //   console.log(key, keyPath);
+            // },
             // handleClose(done) {
             //   this.$confirm('Are you sure to exit?')
             //     .then(_ => {

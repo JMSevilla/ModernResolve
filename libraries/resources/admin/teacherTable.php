@@ -6,7 +6,6 @@
   <el-table
       :data="tableDataTeach.filter(data => !search || data.fname.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%; margin-top: 10px"
-      default-sort = "{prop: 'date', order: 'descending'}"
       border>
       <el-table-column
           label="#"
@@ -22,7 +21,7 @@
         label="Lastname">
       </el-table-column>
       <el-table-column
-          label="Email"
+          label="Email Address"
           prop="email">
           </el-table-column>
       <el-table-column
@@ -42,19 +41,20 @@
           </template>
           <template slot-scope="scope" style="inline" >
           <center>
-              <el-radio-group v-model="radio1" size="mini">
-                  <el-radio-button label="Deactivate"></el-radio-button>
-                  <el-radio-button label="Activate"></el-radio-button>
-                </el-radio-group>
+          <el-button-group size="mini"> 
+            <el-button type="primary" size="mini" >Deactivate</el-button>
+            <el-button size="mini" >Activate</el-button>
+          </el-button-group>
               <el-button
+              style="margin-left:10px"
               size="mini"
               type="warning"
               @click="resetteachdialogVisible = true"
-              round>Reset Password</el-button>
+              >Reset Password</el-button>
               <el-button 
               size="mini"  
               type="danger" 
-              round>Delete</el-button>
+              >Delete</el-button>
           </template>
           </center>
       </el-table-column>
