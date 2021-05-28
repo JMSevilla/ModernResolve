@@ -61,48 +61,10 @@
                         clearable>
                     </el-input>
                 </el-form-item>
-                <el-form-item label="Address">
-                    <el-input
-                        style="margin-bottom: 10px"
-                        placeholder="House No. / Bldg No."
-                        v-model="profile.address"
-                        clearable>
-                    </el-input>
-                    <el-input
-                        style="margin-bottom: 10px"
-                        placeholder="Street"
-                        v-model="profile.street"
-                        clearable>
-                    </el-input>
-                    <el-select style="width: 100%; margin-bottom: 10px" @change="onprovince" v-model="profile.province" filterable placeholder="Select province">
-                        <el-option
-                            v-for="item in provinceGetterss"
-                            :key="item.province"
-                            :label="item.province"
-                            :value="item.province">
-                        </el-option>
-                    </el-select>
-                    <el-select style="width: 100%; margin-bottom: 10px" v-model="profile.municipality" filterable placeholder="Select your municipality">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.municipality"
-                            :label="item.municipality"
-                            :value="item.municipality">
-                        </el-option>
-                    </el-select>
-                    <el-input
-                        style="width: 100%"
-                        type="number"
-                        placeholder="Zip Code"
-                        v-model="profile.zipcode"
-                        id="txtzip"
-                        clearable>
-                    </el-input>
-
-                </el-form-item>
+    
             </el-form>
             
-            <el-button type="primary" style="width: 100%"  size="medium" round>Save Changes</el-button> </div>
+            <el-button type="primary" style="width: 100%"  size="medium" round @click="updateAdminProf()">Save Changes</el-button> </div>
             
             <div> 
           </div>
