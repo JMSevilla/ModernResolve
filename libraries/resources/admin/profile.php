@@ -3,10 +3,11 @@
     <h3>Admin Profile</h3>
   </div>
 
-  <el-card shadow="always" style="border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.14) 0px 10px 36px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 1px; width:70%; margin-left:15%">
+  <el-card shadow="always" style="border-radius: 25px; width:70%; margin-left:15%">
       
         <center>
-            <el-upload
+            <i class="el-icon-user-solid" id="adminprofile"></i>
+            <!-- <el-upload
                 class="avatar-uploader"
                 action="https://jsonplaceholder.typicode.com/posts/"
                 :show-file-list="false"
@@ -16,7 +17,7 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
           
-          <div> <el-button type="primary" style="margin-top: 10px" size="mini" round>Change Profile Photo</el-button> </div>
+          <div> <el-button type="primary" style="margin-top: 10px" size="mini" round>Change Profile Photo</el-button> </div> -->
           </center>
           <div class="container" style="margin-top: 20px; width: 100%">
             <el-form  :label-position="labelPosition" label-width="22%">
