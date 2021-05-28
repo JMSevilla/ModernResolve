@@ -453,25 +453,6 @@ min-width: 50px;
 }
 
 
-.searchbar .searchbar1
-{
-  margin-right: 10px;
-  width: 300px;
-  border-radius: 20px;
-  display: block;
-  border: none;
-  border: 1px solid #d9d9d9;
-  padding: 6px 10px;
- 
-  
-}
-.searchbar .searchbar1, select,textarea 
-{
-  outline: none;
-  text-align: center;
-}
-
-
 .admin .row h3, h2{
   text-align: center;
 }
@@ -486,6 +467,22 @@ min-width: 50px;
   font-size: 4em;
   padding-left: 10%;
 }
+
+#navbarIcon 
+{
+  font-size: 1.8em;
+}
+.profileicon
+{
+  text-decoration: none;
+  color: #606266;
+}
+#usermanagelink 
+{
+  text-decoration: none;
+  color: #606266;
+}
+
 .admin .container2 .text a
 {
   text-decoration: none;
@@ -540,7 +537,7 @@ min-width: 50px;
 
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 220px;
+  width: 235px;
   min-height: 100%;
 }
 
@@ -554,6 +551,12 @@ min-width: 50px;
   position: fixed;
 }
 
+.admin #adminnavbar
+{
+  z-index: 10;
+  top: 0;
+  position: sticky;
+}
 .admin .el-menu-vertical-demo span{
   font-size: 1.1em;
 }
@@ -564,6 +567,13 @@ min-width: 50px;
 }
 
 /* admin profile */
+
+#adminprofile
+{
+  font-size: 6em;
+  color:  #909399;
+}
+
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

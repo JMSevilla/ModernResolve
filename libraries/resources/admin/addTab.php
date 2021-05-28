@@ -1,6 +1,6 @@
 <!-- <div class="container" style="margin-bottom: 30px" > -->
 <div class="row" >
-            <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tabs v-model="activeName">
                 <el-tab-pane name="first">
                     <span slot="label"><i class="el-icon-s-custom" ></i> Teacher</span>
                     <el-form :label-position="labelPosition">
@@ -20,9 +20,10 @@
                         <el-form-item label="Confirm" prop="checkPass">
                             <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" show-password></el-input>
                         </el-form-item>
+                        
                         <center>
-                            <!-- <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
-                             -->
+                            <!-- <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button> -->
+                            
                             <el-button style="width: 20%; padding: 10px;"  type="primary" @click="submitForm()">Add</el-button>
                             <el-button style="width: 20%; padding: 10px;" @click="resetForm('ruleForm')">Reset</el-button>
                         </center>

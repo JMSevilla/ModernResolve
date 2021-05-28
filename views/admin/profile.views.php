@@ -1,6 +1,7 @@
 <div class="admin">
     <div id="admin">
-        <div class="container-fluid" style="margin-bottom: 30px;">
+        <div class="admin" style="margin-bottom: 30px;">
+            <?php include("libraries/resources/adminNavbar.php"); ?>
             <div class="row ">
                 <div class="col-md-2">
                     <?php include("libraries/resources/admin/leftsidebar.php"); ?>

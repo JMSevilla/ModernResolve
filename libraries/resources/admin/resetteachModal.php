@@ -1,8 +1,7 @@
 <el-dialog
   title="Change Password"
   :visible.sync="resetteachdialogVisible"
-  width="30%"
-  :before-close="handleClose" >
+  width="30%">
     <el-form :model="reset" status-icon label-width="130px" :label-position="resetlabelPosition">
       <el-form-item label="Password" prop="pass">
       <el-input type="password" v-model="reset.pass" autocomplete="off" show-password></el-input>
