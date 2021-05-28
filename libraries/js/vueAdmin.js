@@ -141,10 +141,6 @@ ELEMENT.locale(ELEMENT.lang.en)
 
             
         },
-
-        mounted: function() {
-          this.getallteacher();
-        },
         
         methods: {
             // handleClick(tab, event) {
@@ -163,43 +159,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             submitForm(formName) {
               this.$refs[formName].validate((valid) => {
                 if (valid) {
-                  const loading = this.$loading({
-                    lock: true,
-                    text: 'Verifying. please wait...',
-                    spinner: 'el-icon-loading',
-                    background: 'rgba(0, 0, 0, 0.7)'
-                  });
-                  setTimeout(() => {
-                    const data = {
-                      email: this.ruleForm.email,
-                      fname: this.ruleForm.fname,
-                      lname: this.ruleForm.lname,
-                      pass: this.ruleForm.pass,
-                      addTeacher: true,
-                      table: 'teacher_insert'
-                    }
-                    $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-                      console.log(response);
-                      let statRes = JSON.parse(response);
-                      if(statRes.statusCode === 'invalid') {
-                        this.$notify.error({
-                          title: 'Oops!',
-                          message: 'This email already exists!',
-                          offset: 100
-                        });
-                        loading.close();
-                      }
-                      else {
-                        this.$notify.success({
-                          title: 'Yey!',
-                          message: 'New teacher added!',
-                          offset: 100
-                        });
-                        loading.close();
-                        this.formClear();
-                      }
-                    });
-                  }, 3000);
+                  alert('submit!');
                 } else {
                   console.log('error submit!!');
                   return false;
@@ -210,69 +170,19 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.$refs[formName].resetFields();
             },
             // Emman
-            formClear() {
-              this.ruleForm.fname = '';
-              this.ruleForm.lname = '';
-              this.ruleForm.email = '';
-              this.ruleForm.pass = '';
-              this.ruleForm.checkPass = '';
-            },
-            async getallteacher() {
-              const data = {
-                allT: true
-              }
-              const response = await $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data);
-              let res = JSON.parse(response);
-              this.tableDataTeach = res;
-            },
-            delConfirm() {
-              this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
-                confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel',
-                type: 'warning',
-                center: true
-              }).then(() => {
-                this.$message({
-                  type: 'success',
-                  message: 'Delete completed',
-                  center: true
+            submitForm() {
+                const loading = this.$loading({
+                  lock: true,
+                  text: 'Verifying. please wait...',
+                  spinner: 'el-icon-loading',
+                  background: 'rgba(0, 0, 0, 0.7)'
                 });
-              }).catch(() => {
-                this.$message({
-                  type: 'info',
-                  message: 'Delete canceled',
-                  center: true
+                setTimeout(() => {
+                  $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', this.ruleForm, response => {
+                    console.log(response);
                 });
-              });
-            },
-            delTeacher(userID) {
-              const data = {
-                teacherD: true,
-                table: 'user',
-                userID
-              }
-              console.log(userID);
-              $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-                console.log(response);
-
-              });
-            },
-            btnResetPass(id) {
-              const data = {
-                id,
-                getId: true,
-                table: 'user'
-              }
-              $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-                console.log(response);
-                let res = JSON.parse(response);
-                this.reset.id = res.userID;
-              });
-            },
-            updatePassAdmin() {
-              $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', this.reset, response => {
-                console.log(response);
-              });
+              }, 2000);
+              loading.close();
             },
             //hananh
             handleAvatarSuccess(res, file) {
@@ -292,5 +202,3 @@ ELEMENT.locale(ELEMENT.lang.en)
             }
           }
     })
-
-    

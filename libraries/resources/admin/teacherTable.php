@@ -4,30 +4,28 @@
   </div>
 
   <el-table
-      :model="tableDataTeach"
       :data="tableDataTeach.filter(data => !search || data.fname.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%; margin-top: 10px"
-      default-sort = "{prop: 'date', order: 'descending'}"
       border>
       <el-table-column
-          prop="userID"
           label="#"
+          type="index"
           >
       </el-table-column>
       <el-table-column
-        prop="firstname"
+        prop="fname"
         label="Firstname">
       </el-table-column>
       <el-table-column
-        prop="lastname"
+        prop="lname"
         label="Lastname">
       </el-table-column>
       <el-table-column
-          label="Email"
-          prop="email_address">
+          label="Email Address"
+          prop="email">
           </el-table-column>
       <el-table-column
-        prop="created_at"
+        prop="date"
         label="Date"
         sortable
         width="110">
@@ -43,20 +41,20 @@
           </template>
           <template slot-scope="scope" style="inline" >
           <center>
-              <el-radio-group v-model="radio1" size="mini">
-                  <el-radio-button label="Deactivate"></el-radio-button>
-                  <el-radio-button label="Activate"></el-radio-button>
-                </el-radio-group>
+          <el-button-group size="mini"> 
+            <el-button type="primary" size="mini" >Deactivate</el-button>
+            <el-button size="mini" >Activate</el-button>
+          </el-button-group>
               <el-button
+              style="margin-left:10px"
               size="mini"
               type="warning"
-              @click="resetteachdialogVisible = true, btnResetPass(scope.row.userID)"
-              round>Reset Password</el-button>
+              @click="resetteachdialogVisible = true"
+              >Reset Password</el-button>
               <el-button 
               size="mini"  
               type="danger" 
-              @click="delTeacher(scope.row.userID)"
-              round>Delete</el-button>
+              >Delete</el-button>
           </template>
           </center>
       </el-table-column>
