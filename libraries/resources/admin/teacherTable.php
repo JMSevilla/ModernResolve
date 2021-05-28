@@ -8,24 +8,25 @@
       style="width: 100%; margin-top: 10px"
       border>
       <el-table-column
+          prop="userID"
           label="#"
           type="index"
           >
       </el-table-column>
       <el-table-column
-        prop="fname"
+        prop="firstname"
         label="Firstname">
       </el-table-column>
       <el-table-column
-        prop="lname"
+        prop="lastname"
         label="Lastname">
       </el-table-column>
       <el-table-column
           label="Email Address"
-          prop="email">
+          prop="email_address">
           </el-table-column>
       <el-table-column
-        prop="date"
+        prop="created_at"
         label="Date"
         sortable
         width="110">
@@ -42,18 +43,19 @@
           <template slot-scope="scope" style="inline" >
           <center>
           <el-button-group size="mini"> 
-            <el-button type="primary" size="mini" >Deactivate</el-button>
-            <el-button size="mini" >Activate</el-button>
+            <el-button v-on:click="" type="primary" size="mini" >Deactivate</el-button>
+            <el-button size="mini">Activate</el-button>
           </el-button-group>
               <el-button
               style="margin-left:10px"
               size="mini"
               type="warning"
-              @click="resetteachdialogVisible = true"
+              @click="resetteachdialogVisible = true, btnResetPass(scope.row.userID)"
               >Reset Password</el-button>
               <el-button 
               size="mini"  
               type="danger" 
+              @click="delConfirm(scope.row.userID)"
               >Delete</el-button>
           </template>
           </center>

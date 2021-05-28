@@ -115,7 +115,46 @@ public function loginuser_query($table) {
 public function teacheradd_query($table) {
   return BULK::NB_teacheradd($table);
 }
+public function checkemail_query() {
+  return BULK::NB_teacheremail();
+}
 
+public function teacherdel_query($table) {
+  return BULK::NB_teacherdel($table);
+}
+
+public function allteacher_query() {
+  return BULK::NB_allteacher();
+}
+
+public function getidteacher_query($table) {
+  return BULK::NB_getidteacher($table);
+}
+
+public function Upassadmin_query($table) {
+  return BULK::NB_updatepassadmin($table);
+}
+
+public function getprofad_query($table) {
+  return BULK::NB_getprofadmin($table);
+}
+
+public function editadminprofile_query($table) {
+  return BULK::NB_editprofadmin($table);
+}
+
+public function checkemailad_query($table) {
+  return BULK::NB_checkemailad($table);
+}
+
+public function changepassad_query($table) {
+  return BULK::NB_changepassad($table);
+}
+
+public function inprov_query($table) {
+  return BULK::NB_inprov($table);
+}
+ 
 //Class Code ID Mapping
 public function classCodeMapping($table){
   return BULK::NB_getClassCodeID($table);
