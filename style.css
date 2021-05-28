@@ -18,8 +18,9 @@
 }
 #forpadding
 {
-  padding: 5px;
+  padding: 0px;
   width: 90%;
+  /* height: 20 px; */
 }
 .navbarimages
 {
@@ -27,6 +28,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .navbarimages #logo{
   width: 20%;
 }
@@ -427,6 +429,7 @@ min-width: 50px;
 /* ended on may 14 2021 */
 
 /* hannah */
+
 #navbarAdminImages #logo
 {
   width: 10%;
@@ -450,6 +453,8 @@ min-width: 50px;
   font-size: 1.5em;
   color: #808080;
 }
+
+
 
 
 .searchbar .searchbar1
@@ -560,10 +565,7 @@ min-width: 50px;
   font-size: 1.2em;
 }
 
-#navbarAdminHead
-{
-  height: 15%;
-}
+
 
 .admin .card-content
 {
@@ -577,3 +579,120 @@ min-width: 50px;
  
 }
 /* hannah */
+
+/* navbar for teacher/ student by ella*/
+#navbarSupportedContent ul{
+  margin-left: 15px;
+}
+#navbarSupportedContent li{
+  margin-right: 30px;
+}
+#navbarSupportedContent li a{
+  position: inherit;
+  font-size: 1.5em;
+  font-weight: 700px;
+}
+
+#navbarDropdownMenuLink{
+  color: #797575;
+  margin-right: 5%;
+  text-decoration: none;
+}
+#navbarSupportedContent #teacherHome:hover{
+  position: relative;
+  transition: 0.4s;
+  color: rgb(10, 10, 10);
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+#navbarSupportedContent #teacherClass:hover{
+  position: relative;
+  transition: 0.4s;
+  color: rgb(10, 10, 10);
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+#navbarSupportedContent #teacherCalendar:hover{
+  position: relative;
+  transition: 0.4s;
+  color: rgb(10, 10, 10);
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+#navbarSupportedContent .nav-link:start{
+  color: rgb(10, 10, 10);
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+/* teacher class */
+.teacher .card{
+  width: 95%;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 100%;
+
+}
+.teacher .card-body{
+  padding-top: 5px;
+  margin-bottom: 115px;
+}
+
+.teacher #col1, #col2{
+  border-right: 1px solid rgb(187, 184, 184);
+  height: 100px;
+}
+
+.teacher .el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+  float: right;
+  text-align: center;
+}
+.teacher .el-icon-arrow-down {
+  font-size: 12px;
+}
+
+.teacher .dropdownmenu{
+  width: 95%;
+  margin-top: 5px;
+  /* margin-right  : 15px; */
+  font-size: 2em;
+  border-bottom: 1px solid rgb(187, 184, 184);
+}
+
+/* .teacher .buttons{
+  position: absolute;
+  bottom: 10px;
+}
+
+.teacher .btns{
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 1em;
+} */
+
+.teacher .classtabs{
+  position: absolute;
+  margin-top: 100px;
+}
+
+/* .teacher .tabpane{
+  font-size-adjust: 3em;
+} */
+
+/* .teacher .tabpane{
+  color: yellowgreen;
+} */
+
+.teacher h4{
+  text-align: center;
+}
+
+.teacher .btnAddClass{
+  margin-top: 10px;
+  float: right;
+}
