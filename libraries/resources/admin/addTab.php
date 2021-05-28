@@ -21,9 +21,7 @@
                             <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" show-password></el-input>
                         </el-form-item>
                         <center>
-                            <!-- <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
-                             -->
-                            <el-button style="width: 20%; padding: 10px;"  type="primary" @click="submitForm()">Add</el-button>
+                            <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button> 
                             <el-button style="width: 20%; padding: 10px;" @click="resetForm('ruleForm')">Reset</el-button>
                         </center>
                         </el-form>

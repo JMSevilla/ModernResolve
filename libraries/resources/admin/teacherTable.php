@@ -4,29 +4,30 @@
   </div>
 
   <el-table
+      :model="tableDataTeach"
       :data="tableDataTeach.filter(data => !search || data.fname.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%; margin-top: 10px"
       default-sort = "{prop: 'date', order: 'descending'}"
       border>
       <el-table-column
+          prop="userID"
           label="#"
-          type="index"
           >
       </el-table-column>
       <el-table-column
-        prop="fname"
+        prop="firstname"
         label="Firstname">
       </el-table-column>
       <el-table-column
-        prop="lname"
+        prop="lastname"
         label="Lastname">
       </el-table-column>
       <el-table-column
           label="Email"
-          prop="email">
+          prop="email_address">
           </el-table-column>
       <el-table-column
-        prop="date"
+        prop="created_at"
         label="Date"
         sortable
         width="110">
@@ -49,11 +50,12 @@
               <el-button
               size="mini"
               type="warning"
-              @click="resetteachdialogVisible = true"
+              @click="resetteachdialogVisible = true, btnResetPass(scope.row.userID)"
               round>Reset Password</el-button>
               <el-button 
               size="mini"  
               type="danger" 
+              @click="delTeacher(scope.row.userID)"
               round>Delete</el-button>
           </template>
           </center>

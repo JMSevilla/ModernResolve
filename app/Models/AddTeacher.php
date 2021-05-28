@@ -15,4 +15,33 @@
             TeacherController::teacher_add($table, $data);
         }
 
+        public function getall_teacher_model() {
+            TeacherController::getall_teacher();
+        }
+
+        public function deleteteacher_model($table) {
+            $data = [
+                'userID' => $_POST['userID']
+            ];
+
+            TeacherController::delete_teacher($table, $data);
+        }
+
+        public function getidT_model($table) {
+            $data = [
+                'id' => $_POST['id']
+            ];
+
+            TeacherController::getid_teacher($table, $data);
+        }
+
+        public function updatepassadmin_model($table) {
+            $data = [
+                'id' => $_POST['id'],
+                'password' => $_POST['pass']
+            ];
+
+            TeacherController::updatepass_admin($table, $data);
+        }
+
     }

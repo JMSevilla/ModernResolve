@@ -100,6 +100,46 @@ class Bulk  {
         return $sql;
     }
 
+    public function NB_teacheremail() {
+        $sql = "
+            select email_address from user where email_address = :email
+        ";
+
+        return $sql;
+    }
+
+    public function NB_teacherdel($table) {
+        $sql = "
+            delete from ".$table." where userID = :id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_allteacher() {
+        $sql = "
+            select * from user where is_type = '2'
+        ";
+
+        return $sql;
+    }
+
+    public function NB_getidteacher($table) {
+        $sql = "
+            select * from ".$table." where userID = :id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_updatepassadmin($table) {
+        $sql = "
+            update ".$table." set password = :password where userID = :id
+        ";
+
+        return $sql;
+    }
+
     public function NB_token($table){
         $sql = "
         insert into ".$table." values(default, :token, :email, 1, 1, current_timestamp, now() + INTERVAL 7 DAY)

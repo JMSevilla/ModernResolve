@@ -11,7 +11,7 @@
       <el-input type="password" v-model="reset.checkPass" autocomplete="off" show-password></el-input>
       </el-form-item>
       <center>
-      <el-button style="width: 100%; padding: 10px;" type="primary">Confirm</el-button>
+      <el-button style="width: 100%; padding: 10px;" type="primary" @click="updatePassAdmin()">Confirm</el-button>
       </center>    
     </el-form>
 </el-dialog>
