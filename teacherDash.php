@@ -1,6 +1,6 @@
 <?php include("libraries/includes/links.php") ?>
-<?php include("libraries/resources/userNavbar.php"); ?>
-<?php include("views/teacherViews/teacherHome.views.php"); ?>
+
+<?php include("views/teacherViews/teacherDash.views.php"); ?>
 <?php include("libraries/includes/scriptslogin.php") ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
