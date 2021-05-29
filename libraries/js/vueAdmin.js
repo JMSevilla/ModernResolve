@@ -89,11 +89,40 @@ ELEMENT.locale(ELEMENT.lang.en)
                 callback();
               }
             };
+            var validateProvinceAdmin = (rule, value, callback) => {
+              if (value === '') {
+                callback(new Error('Please input the province'));
+              }else {
+                callback();
+              }
+            };
+            var validateMunicipalityAdmin = (rule, value, callback) => {
+              if (value === '') {
+                callback(new Error('Please input the municipality'));
+              }else {
+                callback();
+              }
+            };
+            var validateEditProvinceAdmin = (rule, value, callback) => {
+              if(value === '') {
+                callback(new Error('Please input the province'));
+              }else {
+                callback();
+              }
+            };
+            var validateEditMunicipalityAdmin = (rull, value, callback) => {
+              if(value === '') {
+                callback(new Error('Please input the municipality'));
+              }else {
+                callback();
+              }
+            };
             return{
                 app: 'app/',
                 Helpers: 'Helpers',
                 activeName: 'first',
                 input: '',
+                value1: true,
                 value: new Date(),
                 activeIndex: '1',
                 dialogVisible: false,
@@ -106,6 +135,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 resetlabelPosition: 'left',
                 provincelabelPosition: 'left',
                 dialogTableVisible: false,
+                provinceModalAd: false,
                 tableDataTeach: [],
                 search: '',
                   ruleForm: {
@@ -151,6 +181,22 @@ ELEMENT.locale(ELEMENT.lang.en)
                       { validator: validatePass3Resetadmin, trigger: 'blur' }
                     ],    
                   },
+                  addaddress:{
+                    province1: [
+                      { validator: validateProvinceAdmin, trigger: 'blur' }
+                    ],
+                    municipality: [
+                      { validator: validateMunicipalityAdmin, trigger: 'blur' }
+                    ]
+                  },
+                  modaladdress:{
+                    province: [
+                      { validator: validateEditProvinceAdmin, trigger: 'blur' }
+                    ],
+                    municipality: [
+                      { validator: validateEditMunicipalityAdmin, trigger: 'blur' }
+                    ]
+                  },
                   profile: {
                     fname:'',
                     lname:'',
@@ -182,12 +228,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                     province1:'',
                     municipality:''
                   },
-                  tableDataAddress: [{
-                    province: 'Cavite',
-                    municipality: 'Bacoor',
-                  }],
+                  tableDataAddress: [],
                   search: '',
                   modal:{
+                    provID: '',
                     province:'',
                     municipality:''
                   }
@@ -201,6 +245,7 @@ ELEMENT.locale(ELEMENT.lang.en)
         created: function() {
           this.getallteacher();
           this.getadminprof();
+          this.provMuni();
         },
         
         methods: {
@@ -306,24 +351,13 @@ ELEMENT.locale(ELEMENT.lang.en)
                   center: true
                 });
               }).catch(() => {
-                this.$notify.error({
+                this.$notify({
+                  type: 'info',
                   message: 'Delete canceled',
                   center: true
                 });
               });
             },
-            // delTeacher(userID) {
-            //   const data = {
-            //     teacherD: true,
-            //     table: 'user',
-            //     userID
-            //   }
-            //   console.log(userID);
-            //   $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-            //     console.log(response);
-            //     this.getallteacher();
-            //   });
-            // },
             btnResetPass(id) {
               const data = {
                 id,
@@ -451,15 +485,124 @@ ELEMENT.locale(ELEMENT.lang.en)
                 }
               });
             },
-            insertprovinceAdmin() {
+            insertprovinceAdmin(formName) {
+              this.$refs[formName].validate((valid) => {
+                if (valid) {
+                  const loading = this.$loading({
+                    lock: true,
+                    text: 'Verifying. please wait...',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                  });
+                  setTimeout(() => {
+                    const data = {
+                      province: this.add.province1,
+                      municipality: this.add.municipality,
+                      addprov: true,
+                      table: 'province'
+                    }
+                    $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                      console.log(response);
+                      let statRes = JSON.parse(response);
+                      if(statRes.statusCode === 'success') {
+                        this.$notify.success({
+                          title: 'Yey!',
+                          message: 'New province and municipality added!',
+                          offset: 100
+                        });
+                        loading.close();
+                        this.provMuni();
+                        this.provinceDialog = false;
+                        this.add.province1 = '';
+                        this.add.municipality = '';
+                      }
+                    });
+                  }, 3000);
+                } else {
+                  console.log('error submit!!');
+                  return false;
+                }
+              });
+            },
+            async provMuni() {
               const data = {
-                province: this.add.province1,
-                municipality: this.add.municipality,
-                addprov: true,
-                table: 'province'
+                table: 'province',
+                provT: true
+              }
+              const response = await $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data);
+              let res = JSON.parse(response);
+              this.tableDataAddress = res;
+            },
+            getaddressbyId(id) {
+              const data = {
+                id,
+                table: 'province',
+                addressGet: true
               }
               $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-                console.log(response);
+                const res = JSON.parse(response);
+                this.modal.provID = res.provinceID;
+                this.modal.province = res.province;
+                this.modal.municipality = res.municipality;
+              });
+            },
+            editAddressAdmin(formName) {
+              this.$refs[formName].validate((valid) => {
+                if (valid) {
+                  const data = {
+                    id: this.modal.provID,
+                    province: this.modal.province,
+                    municipality: this.modal.municipality,
+                    table: 'province',
+                    editAd: true
+                  }
+                  $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                    let res = JSON.parse(response);
+                    if(res.statusCode === 'success') {
+                      this.$notify.success({
+                        title: 'Yey!',
+                        message: 'Updated province and municipality!',
+                        offset: 100
+                      });
+                    }
+                    this.provMuni();
+                    this.modal.province = '';
+                    this.modal.municipality = '';
+                    this.provinceModalAd = false;
+                  });
+                } else {
+                  console.log('error submit!!');
+                  return false;
+                }
+              });
+              
+            },
+            deleteAddressAdmin(id) {
+              this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning',
+                center: true
+              }).then(() => {
+                const data = {
+                  id,
+                  deleteAd: true,
+                  table: 'province'
+                }
+                $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                  this.provMuni();
+                });
+                this.$notify({
+                  type: 'success',
+                  message: 'Delete completed',
+                  center: true
+                });
+              }).catch(() => {
+                this.$notify({
+                  type: 'info',
+                  message: 'Delete canceled',
+                  center: true
+                });
               });
             },
             //hananh

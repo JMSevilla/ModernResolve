@@ -45,6 +45,26 @@
         $table = $_POST['table'];
         AddTeacherModel::insertprovince_model($table);
     }
+
+    if(isset($_POST['provT']) == true) {
+        $table = $_POST['table'];
+        AddTeacherModel::getallprovmuni_model($table);
+    }
+
+    if(isset($_POST['addressGet']) == true) {
+        $table = $_POST['table'];
+        AddTeacherModel::getbyIdAddress_model($table);
+    }
+
+    if(isset($_POST['editAd']) == true) {
+        $table = $_POST['table'];
+        AddTeacherModel::updateaddressbyId_modal($table);
+    }
+
+    if(isset($_POST['deleteAd']) == true) {
+        $table = $_POST['table'];
+        AddTeacherModel::deleteAddressbyId_model($table);
+    }
     
     function teacher_route() {
         include_once "../Models/AddTeacher.php";

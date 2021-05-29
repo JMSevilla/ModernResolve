@@ -10,7 +10,7 @@
     border>
     <el-table-column
           label="#"
-          type="index"
+          prop="provinceID"
           >
       </el-table-column>
     <el-table-column
@@ -31,44 +31,37 @@
           placeholder="Type to search"/>
       </template>
       <template slot-scope="scope">
-        <el-popover
-            placement="right"
-            width="400"
-            trigger="click">
-            <center> <h5>Edit Here</h5></center>
-            <div class="row">
-            <div class="col-md-3">
-                <label class="mt-3"> Province</label> 
-            </div>
-            <div class="col-md-9">
-                <el-input
-                    v-model="modal.province"
-                    clearable 
-                    style="margin-bottom: 20px; margin-top: 10px">
-                </el-input> 
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-md-3">    
-            <label class="mt-2"> Municipality</label>
-            </div>
-            <div class="col-md-9">
-                <el-input
-                    v-model="modal.municipality"
-                    clearable>
-                </el-input>
-            </div>
-            </div>
-            <center><el-button style="width: 30%; padding: 7px; margin-top: 20px" type="primary">Save</el-button></center>
+      <el-dialog
+        title="Edit Here"
+        :visible.sync="provinceModalAd"
+        width="30%">
+          <el-form :model="modal" :rules="modaladdress" ref="modal" status-icon label-width="130px" :label-position="provincelabelPosition">
+              <el-form-item label="Province" prop="province">
+                  <el-input
+                      v-model="modal.province"
+                      clearable>
+                  </el-input>
+              </el-form-item>
+              <el-form-item label="Municipality" prop="municipality">
+                  <el-input
+                      v-model="modal.municipality"
+                      clearable>
+                  </el-input>
+              </el-form-item>
+            <center>
+            <el-button style="width: 100%; padding: 10px;" type="primary" @click="editAddressAdmin('modal')">Save</el-button>
+            </center>    
+          </el-form>
+      </el-dialog>
             <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)"
+            @click="provinceModalAd = true, getaddressbyId(scope.row.provinceID)"
             type="primary" icon="el-icon-edit" circle
             slot="reference"></el-button>
         </el-popover>
         <el-button
           size="mini"
-          @click="ondelete(scope.$index, scope.row)"
+          @click="deleteAddressAdmin(scope.row.provinceID)"
           type="danger" icon="el-icon-delete" circle></el-button>
       </template>
     </el-table-column>

@@ -128,5 +128,44 @@
                 }
             }
         }
+
+        public function getall_prov_muni($table) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::getprovmuni_query($table));
+            if(DBIntegrate::ControllerExecutable()) {
+                $provmuni = DBIntegrate::controller_fetch_all();
+
+                echo json_encode($provmuni);
+            }
+        }
+
+        public function getbyIdAddress_controller($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::getbyIdAddress_query($table));
+            DBIntegrate::bind(':id', $data['id']);
+            if(DBIntegrate::ControllerExecutable()) {
+                if(DBIntegrate::controller_row()) {
+                    $provinceid = DBIntegrate::controller_fetch_row();
+
+                    echo json_encode($provinceid);
+                }
+            }
+        }
+
+        public function updateaddressbyId_controller($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::updatebyIdAddress_query($table));
+            DBIntegrate::bind(':id', $data['id']);
+            DBIntegrate::bind(':province', $data['province']);
+            DBIntegrate::bind(':municipality', $data['municipality']);
+            if(DBIntegrate::ControllerExecutable()) {
+                echo DBIntegrate::SuccessJSONResponse();
+            }
+        }
+
+        public function deleteAddressbyId_controller($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::deleteAddressbyId_query($table));
+            DBIntegrate::bind(':id', $data['id']);
+            if(DBIntegrate::ControllerExecutable()) {
+                echo DBIntegrate::SuccessJSONResponse();
+            }
+        }
  
     }
