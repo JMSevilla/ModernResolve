@@ -1,8 +1,5 @@
 <?php include("libraries/includes/links.php") ?>
-<?php include("libraries/resources/userNavbar.php"); ?>
-<?php include("views/teacherViews/teacherCalendar.views.php"); ?>
-<?php include("libraries/includes/scriptslogin.php") ?>
-
+<?php include("views/teacherViews/profile.views.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
   type="text/javascript"
@@ -19,3 +16,4 @@
 <script src="libraries/js/global.js"></script>
 <script type="module" src="libraries/js/vueTeacher.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+

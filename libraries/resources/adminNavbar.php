@@ -14,7 +14,7 @@
       <el-dropdown-item icon="el-icon-switch-button">Logout</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
+  <span>Admin</span>
   </el-menu-item>
-  
 </el-menu>
 <?php include("libraries/resources/admin/resetadminModal.php"); ?>
