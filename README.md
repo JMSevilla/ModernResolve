@@ -5,7 +5,6 @@
 <img src="https://avatars.githubusercontent.com/u/44269169?v=4" alt="No image" width="50" />
 <img src="https://avatars.githubusercontent.com/u/80442981?v=4" alt="No image" width="50" />
 <img src="https://avatars.githubusercontent.com/u/68839178?v=4" alt="No image" width="50" />
-<img src="https://avatars.githubusercontent.com/u/80738230?v=4" alt="No image" width="50" />
 <img src="https://avatars.githubusercontent.com/u/83711852?v=4" alt="No image" width="50" />
 <img src="https://avatars.githubusercontent.com/u/68364780?v=4" alt="No image" width="50" />
 <img src="https://avatars.githubusercontent.com/u/83801230?v=4" alt="No image" width="50" />
