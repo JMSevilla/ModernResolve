@@ -1,5 +1,28 @@
 <?php
 
+class SprocModelClass extends DBIntegration{
+  public function sprocModelFunction(){
+     
+
+      try {
+        $this->ModelsCreated(sproc_insertQuery());
+        echo json_encode(array('sproc_insert' => 'Created'));
+      } catch (PDOException $th) {
+        die("TeacherInsertSproc creation failed: " . $th->getMessage());
+      }
+
+      try {
+        $this->ModelsCreated(TeacherInsertSprocQuery());
+        echo json_encode(array('TeacherInsertSproc' => 'Created'));
+      } catch (PDOException $th) {
+        die("TeacherInsertSproc creation failed: " . $th->getMessage());
+      }
+    
+    }
+    
+    
+}
+
 class Post extends DBIntegration {
   public function postModels($table, $column){
     if($this->model_prepare(models_check())){

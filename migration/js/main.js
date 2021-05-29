@@ -1,5 +1,5 @@
 import http from "./http.js";
-
+sproc();
 user();
 province();
 classCodeMap();
@@ -8,6 +8,13 @@ token();
 verifierCode();
 __post();
 // like();
+
+function sproc(){
+  var obj= {
+    sprocTrigger: 1
+  }
+  http.buildData_construct(obj)
+}
 function user(){
   var obj = {
     userTrigger: 1,

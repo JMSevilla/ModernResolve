@@ -5,7 +5,6 @@ class postController extends DBIntegration {
     if($this->ControllerPrepare(iController_Insertion($table))){
       $this->bind(":fname", $data['fname']);
       if($this->ControllerExecutable()){
-        sendEmail();
         echo $this->SuccessJSONResponse();
       }
     }
