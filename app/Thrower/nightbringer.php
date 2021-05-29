@@ -181,6 +181,38 @@ class Bulk  {
         return $sql;
     }
 
+    public function NB_getProvMuni($table) {
+        $sql = "
+            select * from $table
+        ";
+
+        return $sql;
+    }
+
+    public function NB_getbyIdAddress($table) {
+        $sql = "
+            select * from $table where provinceID = :id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_editaddressbyid($table) {
+        $sql = "
+            update $table set province = :province, municipality = :municipality where provinceID = :id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_deleteAddressbyId($table) {
+        $sql = "
+            delete from $table where provinceID = :id
+        ";
+
+        return $sql;
+    }
+
     public function NB_token($table){
         $sql = "
         insert into ".$table." values(default, :token, :email, 1, 1, current_timestamp, now() + INTERVAL 7 DAY)

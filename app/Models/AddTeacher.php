@@ -85,4 +85,34 @@
             TeacherController::insertprov_admin($table, $data);
         }
 
+        public function getallprovmuni_model($table) {
+            TeacherController::getall_prov_muni($table);
+        }
+
+        public function getbyIdAddress_model($table) {
+            $data = [
+                'id' => $_POST['id']
+            ];
+
+            TeacherController::getbyIdAddress_controller($table, $data);
+        }
+
+        public function updateaddressbyId_modal($table) {
+            $data = [
+                'id' => $_POST['id'],
+                'province' => $_POST['province'],
+                'municipality' => $_POST['municipality']
+            ];
+
+            TeacherController::updateaddressbyId_controller($table, $data);
+        }
+
+        public function deleteAddressbyId_model($table) {
+            $data = [
+                'id' => $_POST['id']
+            ];
+
+            TeacherController::deleteAddressbyId_controller($table, $data);
+        }
+
     }

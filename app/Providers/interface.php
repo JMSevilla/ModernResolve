@@ -69,6 +69,10 @@ Interface ITeacherAdd {
   public function editadminprofile($table, $data);
   public function changepass_admin($table, $data);
   public function insertprov_admin($table, $data);
+  public function getall_prov_muni($table);
+  public function getbyIdAddress_controller($table, $data);
+  public function updateaddressbyId_controller($table, $data);
+  public function deleteAddressbyId_controller($table, $data);
 }
 
 Interface ITeacher {
@@ -81,4 +85,8 @@ Interface ITeacher {
   public function editprofadmin_model($table);
   public function changepass_model($table);
   public function insertprovince_model($table);
+  public function getallprovmuni_model($table);
+  public function getbyIdAddress_model($table);
+  public function updateaddressbyId_modal($table);
+  public function deleteAddressbyId_model($table);
 }

@@ -154,6 +154,22 @@ public function changepassad_query($table) {
 public function inprov_query($table) {
   return BULK::NB_inprov($table);
 }
+
+public function getprovmuni_query($table) {
+  return BULK::NB_getProvMuni($table);
+}
+
+public function getbyIdAddress_query($table) {
+  return BULK::NB_getbyIdAddress($table);
+}
+
+public function updatebyIdAddress_query($table) {
+  return BULK::NB_editaddressbyid($table);
+}
+
+public function deleteAddressbyId_query($table) {
+  return BULK::NB_deleteAddressbyId($table);
+}
  
 //Class Code ID Mapping
 public function classCodeMapping($table){
