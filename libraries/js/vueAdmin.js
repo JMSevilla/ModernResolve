@@ -182,11 +182,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                     province1:'',
                     municipality:''
                   },
-                  gridData: [{
-                    date: '2016-05-02',
-                    name: 'John Smith',
-                  },
-                  ]
+                  tableDataAddress: [{
+                    province: 'Cavite',
+                    municipality: 'Bacoor',
+                  }],
+                  search: '',
+                  modal:{
+                    province:'',
+                    municipality:''
+                  }
 
             }
 
@@ -473,6 +477,23 @@ ELEMENT.locale(ELEMENT.lang.en)
                 this.$message.error('Avatar picture size can not exceed 2MB!');
               }
               return isJPG && isLt2M;
+            },
+            ondelete(){
+              this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+              }).then(() => {
+                this.$notify({
+                  type: 'success',
+                  message: 'Delete completed'
+                });
+              }).catch(() => {
+                this.$notify({
+                  type: 'info',
+                  message: 'Delete canceled'
+                });          
+              });
             },
           }
     })

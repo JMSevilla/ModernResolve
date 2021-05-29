@@ -479,7 +479,11 @@ min-width: 50px;
   text-decoration: none;
   color: #606266;
 }
-#usermanagelink 
+#usermanagelink, #homeAdminlink, #addressTablelink 
+{
+  text-decoration: none;
+  color: #606266;
+}
 {
   text-decoration: none;
   color: #606266;
