@@ -1,12 +1,13 @@
 <div class="admin">
     <div id="admin">
-        <div class="container" style="margin-top: 10px; margin-bottom: 30px; margin-right:-20%; margin-left: 5%">
+        <div class="" style="margin-bottom: 30px;">
+        <?php include("libraries/resources/adminNavbar.php"); ?>
             <div class="row ">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?php include("libraries/resources/admin/leftsidebar.php"); ?>
                 </div>
-                <div class="col-md-9" >
-                    <?php include("libraries/resources/admin/teacherTab.php"); ?>
+                <div class="col-md-10" >
+                    <?php include("libraries/resources/admin/teacherTable.php"); ?>
                 </div>
 
             </div>

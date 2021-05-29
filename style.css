@@ -447,38 +447,14 @@ min-width: 50px;
 }
 
 
-#navbarSide #notification, #message, #navbarDropdown
+#navbarRightAlignExample #notification, #message, #navbarDropdown
 {
-  padding-left: 5%;
+  padding: 0%;
   font-size: 1.5em;
   color: #808080;
+  margin-right: 90px;
 }
 
-
-
-
-.searchbar .searchbar1
-{
-  margin-right: 10px;
-  width: 300px;
-  border-radius: 20px;
-  display: block;
-  border: none;
-  border: 1px solid #d9d9d9;
-  padding: 6px 10px;
- 
-  
-}
-.searchbar .searchbar1, select,textarea 
-{
-  outline: none;
-  text-align: center;
-}
-/* .admin .container
-{
-  background-color: #1a237e;
-  position: relative;
-} */
 .admin .row h3, h2{
   text-align: center;
 }
@@ -493,6 +469,22 @@ min-width: 50px;
   font-size: 4em;
   padding-left: 10%;
 }
+
+#navbarIcon 
+{
+  font-size: 1.8em;
+}
+.profileicon
+{
+  text-decoration: none;
+  color: #606266;
+}
+#usermanagelink 
+{
+  text-decoration: none;
+  color: #606266;
+}
+
 .admin .container2 .text a
 {
   text-decoration: none;
@@ -547,8 +539,8 @@ min-width: 50px;
 
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: auto;
+  width: 235px;
+  min-height: 100%;
 }
 
 .admin .el-menu-item a{
@@ -561,23 +553,50 @@ min-width: 50px;
   position: fixed;
 }
 
+.admin #adminnavbar
+{
+  z-index: 10;
+  top: 0;
+  position: sticky;
+}
 .admin .el-menu-vertical-demo span{
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 
-
-.admin .card-content
+.admin .el-dialog
 {
- margin-left: -14%;
- margin-right: -3%;
+  border-radius: 10px ;
 }
 
-.admin .el-table
+
+/* admin profile */
+
+#adminprofile
 {
- margin-left: -9%;
- 
+  font-size: 6em;
+  color:  #909399;
 }
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+}
+
 /* hannah */
 
 /* navbar for teacher/ student by ella*/
@@ -696,3 +715,26 @@ min-width: 50px;
   margin-top: 10px;
   float: right;
 }
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+input[id=contact]::-webkit-inner-spin-button, 
+input[id=contact]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+input[id=txtzip]::-webkit-inner-spin-button, 
+input[id=txtzip]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+/* hannah */
+

@@ -1,5 +1,5 @@
 <?php include("libraries/includes/links.php") ?>
-<?php include("views/admin/usermanage.views.php"); ?>
+<?php include("views/admin/profile.views.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
   type="text/javascript"

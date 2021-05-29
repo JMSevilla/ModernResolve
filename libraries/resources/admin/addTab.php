@@ -1,8 +1,8 @@
 <!-- <div class="container" style="margin-bottom: 30px" > -->
 <div class="row" >
-            <el-tabs v-model="activeName" @tab-click="handleClick" >
+            <el-tabs v-model="activeName">
                 <el-tab-pane name="first">
-                    <span slot="label"><i class="el-icon-s-custom" ></i> Teachers</span>
+                    <span slot="label"><i class="el-icon-s-custom" ></i> Teacher</span>
                     <el-form :label-position="labelPosition">
                     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
                         <el-form-item label="First Name" prop="fname">
@@ -21,12 +21,8 @@
                             <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" show-password></el-input>
                         </el-form-item>
                         <center>
-                        <el-form-item>
-                            <!-- <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
-                             -->
-                             <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm()">Add</el-button>
-                            <el-button style="width: 20%; padding: 10px;" type="warning" @click="resetForm('ruleForm')">Reset</el-button>
-                        </el-form-item>
+                            <el-button style="width: 20%; padding: 10px;" type="primary" @click="submitForm('ruleForm')">Add</el-button>
+                            <el-button style="width: 20%; padding: 10px;" @click="resetForm('ruleForm')">Reset</el-button>
                         </center>
                         </el-form>
                 </el-tab-pane>
