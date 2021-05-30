@@ -29,7 +29,7 @@ if(isset($_POST['tokenTrigger']) == 1){
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
-if(isset($_POST['verifierCode']) == 1){
+if(isset($_POST['codeverifier']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
     $column = '(codeID int NOT NULL auto_increment, vcode varchar(50), email varchar(255), isdone char(1), apikey varchar(255), sendattempt char(1), created_at datetime default current_timestamp, PRIMARY KEY (codeID) )';
    $callback = new Post();
@@ -37,7 +37,7 @@ if(isset($_POST['verifierCode']) == 1){
 }
 if(isset($_POST['classCodeMapTrigger']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(class_code_mapID int NOT NULL auto_increment, userID int, created_at datetime default current_timestamp, PRIMARY KEY (class_code_mapID) )';
+    $column = '(class_code_mapID int NOT NULL auto_increment, class_codeID, userID int, created_at datetime default current_timestamp, PRIMARY KEY (class_code_mapID) )';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
