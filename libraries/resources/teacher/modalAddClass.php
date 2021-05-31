@@ -2,8 +2,7 @@
 <el-dialog
     title="Class Code"
     :visible.sync="dialogVisible"
-    width="35%"
-    :before-close="handleClose">
+    width="35%">
     
     <el-input placeholder="Enter Class Code" v-model="input"></el-input>
 

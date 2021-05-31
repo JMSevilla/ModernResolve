@@ -64,7 +64,9 @@ const handler = {
       let hammer = JSON.parse(response);
       if (hammer.type == 'Admin') {
         // console.log('condition ok');
-        window.location.href = "http://localhost/modernresolve/homeadmin";
+
+          window.location.href = "http://localhost/modernresolve/homeadmin";
+
       }
     });
   }

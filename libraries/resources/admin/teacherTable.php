@@ -52,12 +52,12 @@
               size="mini"
               type="warning"
               @click="resetteachdialogVisible = true, btnResetPass(scope.row.userID)"
-              >Reset Password</el-button>
+              round>Reset Password</el-button>
               <el-button 
               size="mini"  
               type="danger" 
               @click="delConfirm(scope.row.userID)"
-              >Delete</el-button>
+              round>Delete</el-button>
           </template>
           </center>
       </el-table-column>
