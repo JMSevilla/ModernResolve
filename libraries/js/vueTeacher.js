@@ -8,6 +8,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 className: '',
                 activeName: 'first',
                 resetteacherdialogVisible: false,
+                resetlabelPosition:'left',
                 resetteacher:{
                     oldpass:'',
                     newpass:'',

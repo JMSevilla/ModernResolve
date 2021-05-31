@@ -138,6 +138,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 provinceModalAd: false,
                 tableDataTeach: [],
                 search: '',
+                tableDataHome:[],
                   ruleForm: {
                     pass: '',
                     checkPass: '',

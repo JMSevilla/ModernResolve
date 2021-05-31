@@ -49,7 +49,7 @@
                   </el-input>
               </el-form-item>
             <center>
-            <el-button style="width: 100%; padding: 10px;" type="primary" @click="editAddressAdmin('modal')">Save</el-button>
+            <el-button style="width: 100%; padding: 10px;  margin-top: 15px" type="primary" @click="editAddressAdmin('modal')">Save</el-button>
             </center>    
           </el-form>
       </el-dialog>
