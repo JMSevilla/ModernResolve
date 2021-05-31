@@ -649,18 +649,13 @@ min-width: 50px;
 
 /* teacher class  ELLA*/
 .teacher .card{
-  width: 95%;
+  /* width: 80%; */
   margin-top: 20px;
-  margin-left: 30px;
+  /* margin-left: 0px; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   /* height: auto; */
 }
 
-.teacher #card2{
-  width: 93.5%;
-  margin-right: 100px;
-  margin-left: 40px;
-}
 .teacher .card-body{
   padding-top: 5px;
   margin-bottom: 115px;
@@ -674,57 +669,34 @@ min-width: 50px;
   height: 80px;
 } */
 
-.teacher .el-dropdown-link {
-  cursor: pointer;
-  color: #409EFF;
-  float: right;
-  text-align: center;
-}
-.teacher .el-icon-arrow-down {
-  font-size: 12px;
-}
-
-.teacher .dropdownmenu{
-  width: 95%;
-  margin-top: 5px;
-  /* margin-right  : 15px; */
-  font-size: 2em;
-  border-bottom: 1px solid rgb(187, 184, 184);
-}
-
-/* .teacher .buttons{
-  position: absolute;
-  bottom: 10px;
-}
-
-.teacher .btns{
-  margin-left: 10px;
-  margin-right: 20px;
-  font-size: 1em;
-} */
-
 .teacher .classtabs{
   position: absolute;
   margin-top: -80px;
 }
 
-/* .teacher .tabpane{
-  font-size-adjust: 3em;
+/* .teacher h4{
+  text-align: center;
 } */
-
-/* .teacher .tabpane{
-  color: yellowgreen;
-} */
-
-.teacher h4{
-  /* text-align: center; */
-}
 
 .teacher .btnAddClass{
   margin-top: 10px;
   float: right;
 }
 
+.teacher #select{
+ border: none;
+ width: 450px;
+ height: 60px;
+ font-size: 2em;
+ color: #303133;
+}
+
+.teacher #col1{
+  border-bottom: 1px solid rgb(211, 208, 208);
+  width: 450px;
+}
+
+/* switch */
 .onoffswitch {
 	position: relative; width: 78px;
 	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -748,20 +720,20 @@ min-width: 50px;
 	 
 	.onoffswitch-inner:before, .onoffswitch-inner:after {
 	display: block; float: left; width: 50%; height: 18px; padding: 0; line-height: 18px;
-	font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	font-size: 8px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
 	box-sizing: border-box;
 	}
 
   /* switch */
 	.onoffswitch-inner:before {
-	content: "Unlock";
-	padding-left: 7px;
+	content: "LOCKED";
+	padding-left: 12px;
 	background-color: #EEEEEE; color: #999999;
 	}
 	 
 	.onoffswitch-inner:after {
-	content: "Locked";
-	padding-right: 7px;
+	content: "UNLOCKED";
+	padding-right: 4px;
 	background-color: #EEEEEE; color: #999999;
 	text-align: right;
 	}
@@ -807,4 +779,3 @@ input[id=txtzip]::-webkit-outer-spin-button {
 }
 
 /* hannah */
-
