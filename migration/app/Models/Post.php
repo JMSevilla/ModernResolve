@@ -79,11 +79,11 @@ class Post extends DBIntegration {
             die("user table creation failed: " . $th->getMessage());
           }
         }
-        if($table === 'verifierCode'){
+        if($table === 'codeverifier'){
           $sql = iModel_tableCreation($table,$column);
           try {
             $this->ModelsCreated($sql);
-            echo json_encode(array('codeVerifier' => 'Created'));
+            echo json_encode(array('codeverifier' => 'Created'));
           } catch (PDOException $th) {
             die("user table creation failed: " . $th->getMessage());
           }
