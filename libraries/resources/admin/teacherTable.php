@@ -46,7 +46,7 @@
             <el-button v-on:click="" type="primary" size="mini" >Deactivate</el-button>
             <el-button size="mini">Activate</el-button>
           </el-button-group> -->
-          <label for=""><el-switch v-model="value1" active-text="Activate"></el-switch></label>
+          <el-switch @change="onactivateordeactivate(scope.row.userID)" v-model="value1" :active-text="is_activate_indicator"></el-switch>
               <el-button
               style="margin-left:10px"
               size="mini"

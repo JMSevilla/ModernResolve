@@ -182,4 +182,8 @@ public function userIDGetter($table){
 public function create_classcode_mapping($table){
   return BULK::NB_class_code_mapping_create($table);
 }
+//user activation
+public function user_activation($table){
+  return BULK::NB_uActivation($table);
+}
 }
