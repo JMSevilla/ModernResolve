@@ -78,6 +78,22 @@
             }
         }
 
+        // age calculation 
+        public function agecal_auto($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::getprofad_query($table));
+            DBIntegrate::bind(':email', $data['email']);
+            if(DBIntegrate::ControllerExecutable()) {
+                $date = DBIntegrate::controller_fetch_row();
+
+                $dob = $data['bdate'];
+                $today = date("Y-m-d");
+                $diff = date_diff(date_create($dob), date_create($today));
+                $age = $diff->format('%y');
+                
+                echo json_encode(array("age" => $age));
+            }
+        }
+
         public function editadminprofile($table, $data) {
             if(DBIntegrate::CHECKSERVER()) {
                 DBIntegrate::ControllerPrepare(lightBringerBulk::editadminprofile_query($table));
@@ -85,7 +101,7 @@
                 DBIntegrate::bind(':firstname', $data['firstname']);
                 DBIntegrate::bind(':lastname', $data['lastname']);
                 DBIntegrate::bind(':birthdate', $data['birthdate']);
-                DBIntegrate::bind(':age', $data['age']);
+                // DBIntegrate::bind(':age', $data['age']);
                 DBIntegrate::bind(':gender', $data['gender']);
                 DBIntegrate::bind(':contactnumber', $data['contactnumber']);
                 if(DBIntegrate::ControllerExecutable()) {

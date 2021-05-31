@@ -30,11 +30,11 @@
                 <el-form-item label="Birthdate">
                     <el-date-picker
                     
-                        v-on:input="calage()"
+                        v-on:input="cal()"
                         width= "500px"
                         v-model="profile.bdate"
-                        format="yyyy/MM/dd"
-                        value-format="yyyy/MM/dd"
+                        format="yyyy-MM-dd"
+                        value-format="yyyy-MM-dd"
                         type="date"
                         locale="en"
                         placeholder="Select date and time">

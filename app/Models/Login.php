@@ -13,4 +13,12 @@
             LoginController::loginuser_controller($table, $data);
         }
 
+        // public function istypelogin_M($table) {
+        //     $data = [
+        //         'email' => $_POST['istypeUser']
+        //     ];
+
+        //     LoginController::istypelogin_C($table, $data);
+        // }
+
     }

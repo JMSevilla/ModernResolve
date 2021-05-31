@@ -65,6 +65,11 @@
         $table = $_POST['table'];
         AddTeacherModel::deleteAddressbyId_model($table);
     }
+
+    if(isset($_POST['ageprofcal']) == true) {
+        $table = $_POST['table'];
+        AddTeacherModel::agecalauto_model($table);
+    }
     
     function teacher_route() {
         include_once "../Models/AddTeacher.php";

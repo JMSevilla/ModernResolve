@@ -167,10 +167,20 @@ public function updatebyIdAddress_query($table) {
   return BULK::NB_editaddressbyid($table);
 }
 
+// teacher dashboard
+public function updateteachProfile_query($table) {
+  return BULK::NB_updateteachProfile($table);
+}
+
 public function deleteAddressbyId_query($table) {
   return BULK::NB_deleteAddressbyId($table);
 }
  
+// login token route
+// public function istypeUser($table) {
+//   return BULK::NB_istypeUser($table);
+// }
+
 //Class Code ID Mapping
 public function classCodeMapping($table){
   return BULK::NB_getClassCodeID($table);
