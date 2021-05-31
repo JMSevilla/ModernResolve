@@ -13,7 +13,7 @@
             <el-input type="password" v-model="resetteacher.checkPass" autocomplete="off" show-password></el-input>
         </el-form-item>
       <center>
-      <el-button style="width: 100%; padding: 10px;" type="primary" @click="onConfirmadmin('resetadmin')">Confirm</el-button>
+      <el-button style="width: 100%; padding: 10px; margin-top: 15px" type="primary" @click="onConfirmadmin('resetadmin')">Confirm</el-button>
       </center>    
     </el-form>
 </el-dialog>

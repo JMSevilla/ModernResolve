@@ -31,10 +31,8 @@ ELEMENT.locale(ELEMENT.lang.en)
             course: '', apikey: '',
             signupMethod: true, //Emman
             municipality: '', //Emman
-            isHide: false //hannah
-
           },
-
+          isHide: false, //hannah
           codeverification: '',
           provinceTesting: [],
           value1: '' ,

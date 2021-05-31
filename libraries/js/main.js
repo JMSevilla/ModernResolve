@@ -11,6 +11,7 @@ $('#onsubmit').click(() => {
 function validate(obj){
   if(!obj.fname){
     alert("empty fields");
+    
     return false;
   } else{
     http.buildData_construct(obj)
@@ -44,7 +45,7 @@ $('#btnLogin').click(() => {
 
 const validateLogin = data => {
   if(!data.email || !data.password) {
-    alert('Fields are required!');
+    alert("Please input data!")
     return false;
   }
   else {
@@ -71,3 +72,4 @@ function tokenscan() {
     console.log(response);
   })
 }
+
