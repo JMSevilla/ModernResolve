@@ -274,4 +274,11 @@ class Bulk  {
       ";
       return $sql;
     }
+    // user activation
+    public function NB_uActivation($table){
+        $sql = "
+            update ".$table." set is_activate = :indicator where userID=:id
+        ";  
+        return $sql;
+    }
 }

@@ -10,6 +10,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 className: '',
                 activeName: 'first',
                 resetteacherdialogVisible: false,
+                resetlabelPosition:'left',
                 resetteacher:{
                     oldpass:'',
                     newpass:'',
@@ -34,7 +35,16 @@ ELEMENT.locale(ELEMENT.lang.en)
                     zipcode:'',
                     hiName: ''
                   },
-                value1: true
+                value1: true,
+
+                options: [{
+                  value: 'Option1',
+                  label: 'Information technology'
+                }, {
+                  value: 'Option2',
+                  label: 'Option2'
+                },],
+                value: ''
               
             }
         },

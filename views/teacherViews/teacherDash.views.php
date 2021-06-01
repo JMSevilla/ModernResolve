@@ -1,25 +1,29 @@
 <div class="teacher">
     <div id="teacher">
-        <div class="container-fluid" style="margin-top: -2px; margin-bottom: 30px">
-            <?php include("libraries/resources/userNavbar.php"); ?>
+    <?php include("libraries/resources/userNavbar.php"); ?>
+        <div class="container">
+            
                 <div class="row" >  
                     <div class="card">
                         <div class="card-body" id="rowcard1">
                             <div class="row">
                                 <div class="col" id="col1">
-                                    <el-dropdown class="dropdownmenu">
-                                        <span class="el-dropdown-link">
-                                            Select Class<i class="el-icon-arrow-down el-icon--right"></i>
-                                        </span>
-                                            <el-dropdown-menu slot="dropdown" class="dropdownmenu">
-                                            <el-dropdown-item>Action 1</el-dropdown-item>
-                                            <el-dropdown-item>Action 2</el-dropdown-item>
-                                            </el-dropdown-menu>
-                                    </el-dropdown>
+                                    <div style="margin-top: 10px">
+                                        <template id="selectclass">
+                                            <el-select v-model="value" clearable placeholder="Select Class Name" id="select">
+                                                <el-option
+                                                v-for="item in options"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                                </el-option>
+                                            </el-select>
+                                        </template>
+                                    </div>
                                 </div>
 
                                 <div class="col" id="col2">
-                                    <div style="margin-top: 35px; font-size:1em">
+                                    <div style="margin-top: 35px; font-size:1em; margin-left: 20px">
                                         <label for="" style="color: gray;">Class Code:</label>
                                         <span style="margin-right: 10px">test</span>
                                         <div class="onoffswitch">
@@ -33,15 +37,19 @@
                                 </div>
                                 <div class="col">
                                     <el-button class="btnAddClass" type="info" icon="el-icon-circle-plus" @click="dialogVisible = true">Add Class</el-button>
-                                        <?php include("libraries/resources/teacher/modalAddClass.php"); ?>                                    </div>
+                                        <?php include("libraries/resources/teacher/modalAddClass.php"); ?>    
+                                    <div style="display: inline; position: absolute; bottom: 10px; margin-left: 100px">
+                                        <el-button>Quiz</el-button>
+                                        <el-button>Assignment</el-button>
+                                    </div>                            
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                     
-                <div class="row" style="margin-top: -30px">
-                    <div class="card" id="card2">
+                <div class="row">
+                    <div class="card" id="rowcard2">
                         <div class="card-body">
                             <template>
                                 <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">

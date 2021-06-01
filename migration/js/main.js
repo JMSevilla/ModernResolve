@@ -5,7 +5,7 @@ province();
 classCodeMap();
 classCode();
 token();
-verifierCode();
+codeverifier();
 __post();
 // like();
 
@@ -51,10 +51,10 @@ function token(){
   http.buildData_construct(obj)
 }
 
-function verifierCode(){
+function codeverifier(){
   var obj= {
-    verifierCode: 1,
-    table: "verifierCode"
+    codeverifier: 1,
+    table: "codeverifier"
   }
   http.buildData_construct(obj)
 }

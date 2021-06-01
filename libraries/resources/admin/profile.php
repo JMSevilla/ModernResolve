@@ -3,7 +3,7 @@
     <h3>Admin Profile</h3>
   </div>
 
-  <el-card shadow="always" style="border-radius: 25px; width:70%; margin-left:15%">
+  <el-card shadow="always" style="border-radius: 25px; width:60%; margin-left:20%">
       
         <center>
             <i class="el-icon-user-solid" id="adminprofile"></i>
@@ -20,7 +20,7 @@
           <div> <el-button type="primary" style="margin-top: 10px" size="mini" round>Change Profile Photo</el-button> </div> -->
           </center>
           <div class="container" style="margin-top: 20px; width: 100%">
-            <el-form  :label-position="labelPosition" label-width="22%">
+            <el-form  :label-position="labelPosition" label-width="24%">
                 <el-form-item label="First Name">
                     <el-input v-model="profile.fname"></el-input>
                 </el-form-item>
