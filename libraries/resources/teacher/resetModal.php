@@ -2,7 +2,7 @@
   title="Change Password"
   :visible.sync="resetteacherdialogVisible"
   width="30%">
-     <el-form :model="resetteacher" status-icon label-width="130px" :label-position="resetlabelPosition">
+     <el-form :model="resetteacher" :rules="rulesteacher" ref="resetteacher" status-icon label-width="130px" :label-position="resetlabelPosition">
         <el-form-item label="Old Password" prop="oldpass">
             <el-input type="password" v-model="resetteacher.oldpass" autocomplete="off" show-password></el-input>
         </el-form-item>  
@@ -14,8 +14,7 @@
         </el-form-item>
       <center>
 
-      <!-- <el-button style="width: 100%; padding: 10px;" type="primary" @click="onConfirmadmin('resetadmin')">Confirm</el-button> -->
-      <el-button style="width: 100%; padding: 10px;" type="primary" @click="updatepassTeacherdash()">Confirm</el-button>
+      <el-button style="width: 100%; padding: 10px; margin-top: 15px" type="primary" @click="updatepassTeacherdash('resetteacher')">Confirm</el-button>
 
       </center>    
     </el-form>
