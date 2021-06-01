@@ -40,13 +40,18 @@
               size="medium"
               placeholder="Type to search"/>
           </template>
-          <template slot-scope="scope" style="inline" >
+          <template slot-scope="scope" style="display: inline;" >
           <center>
           <!-- <el-button-group size="mini"> 
             <el-button v-on:click="" type="primary" size="mini" >Deactivate</el-button>
             <el-button size="mini">Activate</el-button>
           </el-button-group> -->
-          <el-switch @change="onactivateordeactivate(scope.row.userID)" v-model="value1" :active-text="is_activate_indicator"></el-switch>
+          <div v-if="scope.row.is_activate == 1">
+            <el-button @click="ondeactivate(scope.row.userID)" type="danger" plain>Deactivate</el-button>
+          </div>
+          <div v-else>
+          <el-button @click="onactivate(scope.row.userID)" type="success" plain>Activate</el-button>
+          </div>
               <el-button
               style="margin-left:10px"
               size="mini"

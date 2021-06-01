@@ -63,7 +63,10 @@ const handler = {
       console.log(response);
       let hammer = JSON.parse(response);
       if (hammer.type == 'Admin') {
-        // console.log('condition ok');
+         console.log('condition ok');
+
+
+          window.location.href = "http://localhost/torrestech/modernresolve/homeadmin";
 
         console.log('Admin Login!');
         setTimeout(() => window.location.href = "http://localhost/modernresolve/homeadmin", 1000);
@@ -77,6 +80,7 @@ const handler = {
       }
       else {
         alert('Invalid email and password!');
+
 
       }
     });

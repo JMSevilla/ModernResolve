@@ -111,7 +111,7 @@ class DBIntegrate
   }
   // This is for saving token on cookies.
   //Expires every 7 days
-  public function cookieOfLife($originalToken){
+  public function cookieOfLife_Admin($originalToken){
     $argsCookie = array(
       'expires' => time() + 60*60*24*7,
       'path' => '/',
@@ -119,7 +119,27 @@ class DBIntegrate
       'httponly' => true,
       'samesite' => 'None'
     );
-    setcookie('Token', $originalToken, $argsCookie);
+    setcookie('Token_Admin', $originalToken, $argsCookie);
+}
+public function cookieOfLife_Student($originalToken){
+  $argsCookie = array(
+    'expires' => time() + 60*60*24*7,
+    'path' => '/',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'None'
+  );
+  setcookie('Token_Student', $originalToken, $argsCookie);
+}
+public function cookieOfLife_Teacher($originalToken){
+  $argsCookie = array(
+    'expires' => time() + 60*60*24*7,
+    'path' => '/',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'None'
+  );
+  setcookie('Token_Teacher', $originalToken, $argsCookie);
 }
 //sending email *Please don't use this if not necessary
 public function emailsender($mail, $receiveremail, $codex){

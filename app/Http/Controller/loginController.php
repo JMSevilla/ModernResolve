@@ -21,17 +21,17 @@
                             if($isverified == '1') {
                                 if($isactivate == '1') {
                                     if($istype == '3') {
-                                        
-                                        $user->tokenization("token",$data);
-                                        echo json_encode(array('type' => 'Student'));
+                                        DBIntegrate::cookieOfLife_Student($data['oauth']);
                                     }
                                     else if($istype == '2') {
-                                        $user->tokenization("token",$data);
+                                        // $user->tokenization("token",$data);
                                         echo json_encode(array('type' => 'Teacher'));
+                                        DBIntegrate::cookieOfLife_Teacher($data['oauth']);
                                     }
                                     else {
-                                        $user->tokenization("token",$data);
+                                        // $user->tokenization("token",$data);
                                         echo json_encode(array('type' => 'Admin'));
+                                        DBIntegrate::cookieOfLife_Admin($data['oauth']);
                                     }
                                 }
                                 else {
@@ -58,7 +58,7 @@
                     DBIntegrate::bind(':token', $data['oauth']);
                     DBIntegrate::bind(':email', $data['email']);
                     if(DBIntegrate::ControllerExecutable()) {
-                        DBIntegrate::cookieOfLife($data['oauth']);
+                        // DBIntegrate::cookieOfLife($data['oauth']);
                     }
                 }
             }

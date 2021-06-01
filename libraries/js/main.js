@@ -54,20 +54,11 @@ const validateLogin = data => {
 }
 
 
-
-token_update_datevalidate();
-function token_update_datevalidate(){
-  var onstate = {
-    token_validate_update: true, table: 'token', email: localStorage.getItem('eml')
-  }
-  $.post('app/Helpers/token_current_date_updater.php', onstate, (response)=> {
-    tokenscan();
-  })
-}
+tokenscan()
 function tokenscan() {
   let state = "";
   $.post('app/session/global_token_scanner.php', state={
-    token_scanning: true, table: 'token', email: localStorage.getItem('eml')
+    token_scanning: true
   }, function(response){
     console.log(response);
   })
