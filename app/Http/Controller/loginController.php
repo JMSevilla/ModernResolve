@@ -63,4 +63,21 @@
                 }
             }
         }
+
+
+        // token login 
+        // public function istypelogin_C($table, $data) {
+        //     if(DBIntegrate::CHECKSERVER()) {
+        //         DBIntegrate::ControllerPrepare(lightBringerBulk::istypeUser($table));
+        //         DBIntegrate::bind(':email', $data['email']);
+        //         if(DBIntegrate::ControllerExecutable()) {
+        //             if(DBintegrate::controller_row()) {
+        //                 $usertype = DBIntegrate::controller_fetch_row();
+        //                 $type = $usertype['is_type'];
+                        
+        //                 echo json_encode(array('type' => $type));
+        //             }
+        //         }
+        //     }
+        // }
     }

@@ -65,7 +65,22 @@ const handler = {
       if (hammer.type == 'Admin') {
          console.log('condition ok');
 
+
           window.location.href = "http://localhost/torrestech/modernresolve/homeadmin";
+
+        console.log('Admin Login!');
+        setTimeout(() => window.location.href = "http://localhost/modernresolve/homeadmin", 1000);
+      }
+      else if(hammer.type == 'Teacher') {
+        // console.log('Teacher Login!');
+        setTimeout(() => window.location.href = "http://localhost/modernresolve/teacherdash", 1000);
+      }
+      else if(hammer.type == 'Student') {
+        // console.log('Student Login!');
+      }
+      else {
+        alert('Invalid email and password!');
+
 
       }
     });
