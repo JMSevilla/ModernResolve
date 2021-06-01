@@ -151,7 +151,7 @@ class Bulk  {
     public function NB_editprofadmin($table) {
         $sql = "
             update ".$table." set firstname = :firstname, lastname = :lastname, 
-            birth_date = :birthdate, age = :age, gender = :gender, contact_number = :contactnumber where email_address = :email
+            birth_date = :birthdate, gender = :gender, contact_number = :contactnumber where email_address = :email
         ";
 
         return $sql;
@@ -212,6 +212,25 @@ class Bulk  {
 
         return $sql;
     }
+
+    // Teacher dashboard
+    public function NB_updateteachProfile($table) {
+        $sql = "
+            update $table set firstname = :firstname, lastname = :lastname, birth_date = :birth_date, gender = :gender, 
+            contact_number = :contact_number, province = :province, municipality = :municipality, address = :address where email_address = :email           
+        ";
+
+        return $sql;
+    }
+
+    // login token route
+    // public function NB_istypeUser($table) {
+    //     $sql = "
+    //         select * from $table where email_address = :email
+    //     ";
+
+    //     return $sql;
+    // }
 
     public function NB_token($table){
         $sql = "

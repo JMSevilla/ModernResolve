@@ -14,7 +14,7 @@
       <el-dropdown-item icon="el-icon-switch-button">Logout</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
-  <span>Hi, Ella!</span>
+  <span>Hi, {{ profile.hiName }}!</span>
   </el-menu-item>
 </el-menu>
 <?php include("libraries/resources/teacher/resetModal.php"); ?>

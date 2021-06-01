@@ -210,7 +210,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                     street:'',
                     province:'',
                     municipality:'',
-                    zipcode:''
+                    zipcode:'',
+                    adminName: ''
                   },
                   reset: {
                     pass:'',
@@ -503,9 +504,25 @@ ELEMENT.locale(ELEMENT.lang.en)
                 this.profile.fname = res.firstname;
                 this.profile.lname = res.lastname;
                 this.profile.bdate = res.birth_date;
-                this.profile.age = res.age;
+                // this.profile.age = res.age;
                 this.profile.sex = res.gender;
                 this.profile.contact = res.contact_number;
+                this.profile.adminName = res.firstname;
+                this.cal();
+              });
+            },
+            cal() {
+              let eml = localStorage.getItem('eml');
+              const data = {
+                email: eml,
+                bdate: this.profile.bdate,
+                ageprofcal: true,
+                table: 'user'
+              }
+              $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                let a = JSON.parse(response);
+                console.log(a);
+                this.profile.age = a.age;
               });
             },
             updateAdminProf() {
@@ -517,13 +534,31 @@ ELEMENT.locale(ELEMENT.lang.en)
                 firstname: this.profile.fname,
                 lastname: this.profile.lname,
                 birthdate: this.profile.bdate,
-                age: this.profile.age,
+                // age: this.profile.age,
                 gender: this.profile.sex,
                 contactnumber: this.profile.contact
               }
-              $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
-                console.log(response);
-              })
+              const loading = this.$loading({
+                lock: true,
+                text: 'Verifying. please wait...',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+              });
+              setTimeout(() => {
+                $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                  console.log(response);
+                  let res = JSON.parse(response);
+                  if(res.statusCode === 'success') {
+                    this.$notify.success({
+                      title: 'Yey!',
+                      message: 'Admin profile updated!',
+                      offset: 100
+                    });
+                    loading.close();
+                    this.getadminprof();
+                  }
+                });
+              }, 3000);
             },
             onConfirmadmin(formName) {
               this.$refs[formName].validate((valid) => {

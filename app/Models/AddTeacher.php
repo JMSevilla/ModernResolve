@@ -58,7 +58,7 @@
                 'firstname' => $_POST['firstname'],
                 'lastname' => $_POST['lastname'],
                 'birthdate' => $_POST['birthdate'],
-                'age' => $_POST['age'],
+                // 'age' => $_POST['age'],
                 'gender' => $_POST['gender'],
                 'contactnumber' => $_POST['contactnumber']
             ];
@@ -113,6 +113,15 @@
             ];
 
             TeacherController::deleteAddressbyId_controller($table, $data);
+        }
+
+        public function agecalauto_model($table) {
+            $data = [
+                'email' => $_POST['email'],
+                'bdate' => $_POST['bdate']
+            ];
+
+            TeacherController::agecal_auto($table, $data);
         }
 
     }

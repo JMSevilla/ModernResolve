@@ -73,6 +73,7 @@ Interface ITeacherAdd {
   public function getbyIdAddress_controller($table, $data);
   public function updateaddressbyId_controller($table, $data);
   public function deleteAddressbyId_controller($table, $data);
+  public function agecal_auto($table, $data);
 }
 
 Interface ITeacher {
@@ -89,4 +90,17 @@ Interface ITeacher {
   public function getbyIdAddress_model($table);
   public function updateaddressbyId_modal($table);
   public function deleteAddressbyId_model($table);
+  public function agecalauto_model($table);
+}
+
+Interface ITeacherDashboard {
+  public function getpassteacher_controller($table, $data);
+  public function updatePassTeacherDash_controller($table, $data);
+  public function updateProfileTeacherDash_controller($table, $data);
+}
+
+Interface ITeacherModel {
+  public function getpassteacher_model($table);
+  public function updatePassTeacherDash_model($table);
+  public function updateProfileTeacherDash_model($table);
 }
