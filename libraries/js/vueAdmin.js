@@ -341,82 +341,81 @@ ELEMENT.locale(ELEMENT.lang.en)
                
               }
             },
-            onactivateordeactivate(id){
-              
-              if(this.value1 == true){
-                this.$confirm('This will activate user. Continue?', 'Warning', {
-                  confirmButtonText: 'OK',
-                  cancelButtonText: 'Cancel',
-                  type: 'warning'
-                }).then(() => {
-                  const loading = this.$loading({
-                    lock: true,
-                    text: 'Activating',
-                    spinner: 'el-icon-loading',
-                    background: 'rgba(0, 0, 0, 0.7)'
-                  });
-                  setTimeout(() => {
-                this.is_activate_indicator = "Deactivate";
-                var objActivate = {
-                  actT: true,
-                  val: 1,
-                  uid: id
-                }
-                $.post(this.app + this.Helpers + '/userActivation.php', objActivate, (response) => {
-                  var jsondestroy = JSON.parse(response)
-                  if(jsondestroy.statusCode == "success"){
-                    loading.close()
-                    this.$notify.success({
-                      title: 'Success',
-                      message: 'user is activated',
-                      offset: 100
-                    });
-                  this.getallteacher()
-                  }
-                })
-                  }, 3000)
-                }).catch(() => {
-                  this.getallteacher()
-                })
-                
-              }else if(this.value1 == false){
-                this.$confirm('This will deactivate user. Continue?', 'Warning', {
-                  confirmButtonText: 'OK',
-                  cancelButtonText: 'Cancel',
-                  type: 'warning'
-                }).then(() => {
-                  const loading = this.$loading({
-                    lock: true,
-                    text: 'Deactivating',
-                    spinner: 'el-icon-loading',
-                    background: 'rgba(0, 0, 0, 0.7)'
-                  });
-                  setTimeout(() => {
-                    this.is_activate_indicator = "Activate";
-                var objdeActivate = {
-                  actT: true,
-                  val: 0,
-                  uid: id
-                }
-                $.post(this.app + this.Helpers + '/userActivation.php', objdeActivate, (response) => {
-                  var jsondestroy = JSON.parse(response)
-                  if(jsondestroy.statusCode == "success"){
-                    loading.close()
-                    this.$notify.warning({
-                      title: 'Success',
-                      message: 'user is Deactivated',
-                      offset: 100
-                    });
-                    this.getallteacher()
-                  }
-                  
-                })
-                  }, 3000)
-                }).catch(() => {
-                  this.getallteacher()
-                })
-                
+            ondeactivate(id){
+              this.$confirm('This will deactivate user. Continue?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+              }).then(() => {
+                const loading = this.$loading({
+                  lock: true,
+                  text: 'Deactivating',
+                  spinner: 'el-icon-loading',
+                  background: 'rgba(0, 0, 0, 0.7)'
+                });
+                setTimeout(() => {
+                  this.is_activate_indicator = "Activate";
+              var objdeActivate = {
+                actT: true,
+                val: 0,
+                uid: id
               }
+              $.post(this.app + this.Helpers + '/userActivation.php', objdeActivate, (response) => {
+                var jsondestroy = JSON.parse(response)
+                if(jsondestroy.statusCode == "success"){
+                  loading.close()
+                  this.$notify.warning({
+                    title: 'Success',
+                    message: 'user is Deactivated',
+                    offset: 100
+                  });
+                  this.getallteacher()
+                }
+                
+              })
+                }, 3000)
+              }).catch(() => {
+                this.getallteacher()
+              })
+            },
+            onactivate(id){
+              
+
+              this.$confirm('This will activate user. Continue?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+              }).then(() => {
+                const loading = this.$loading({
+                  lock: true,
+                  text: 'Activating',
+                  spinner: 'el-icon-loading',
+                  background: 'rgba(0, 0, 0, 0.7)'
+                });
+                setTimeout(() => {
+              this.is_activate_indicator = "Deactivate";
+              var objActivate = {
+                actT: true,
+                val: 1,
+                uid: id
+              }
+              $.post(this.app + this.Helpers + '/userActivation.php', objActivate, (response) => {
+                var jsondestroy = JSON.parse(response)
+                if(jsondestroy.statusCode == "success"){
+                  loading.close()
+                  this.$notify.success({
+                    title: 'Success',
+                    message: 'user is activated',
+                    offset: 100
+                  });
+                this.getallteacher()
+                }
+              })
+                }, 3000)
+              }).catch(() => {
+                this.getallteacher()
+              })
+
             },
             delConfirm(userID) {
               this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
