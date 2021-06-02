@@ -265,7 +265,23 @@ ELEMENT.locale(ELEMENT.lang.en)
             //     })
             //     .catch(_ => {});
             // },
-           
+            onlogoutadmin(){
+            
+              var ask = confirm("Are you sure you want to logout ?");
+              if(ask === true) {
+                var logdestroy = {
+                  logtruncateAdmin: true
+                }
+                $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
+                  console.log(response)
+                  let res = JSON.parse(response);
+                  if(res == "logout_admin") {
+                    window.location.href = "http://localhost/modernresolve/login";                 
+                  }
+                })
+              }
+            },
+
             submitForm(formName) {
               this.$refs[formName].validate((valid) => {
                 if (valid) {

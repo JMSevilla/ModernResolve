@@ -45,7 +45,16 @@ $('#btnLogin').click(() => {
 
 const validateLogin = data => {
   if(!data.email || !data.password) {
-    alert("Please input data!")
+    // alert("Please input data!")
+    document.getElementById("email_login").style.boxShadow = "0 0 0 0 #ff0040";
+    document.getElementById("email_login").style.border = "1px red solid";
+    document.getElementById("error").style.display = "inline";
+    document.getElementById("password_login").style.boxShadow = "0 0 0 0 #ff0040";
+    document.getElementById("password_login").style.border = "1px red solid";
+    document.getElementById("error1").style.display = "inline";
+
+     
+  
     return false;
   }
   else {
