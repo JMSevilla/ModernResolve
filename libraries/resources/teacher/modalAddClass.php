@@ -2,15 +2,14 @@
 <el-dialog
     title="Add Class"
     :visible.sync="dialogVisible"
-    width="30%">
-    <el-form :model="addclass" :rules="rulesaddclass" ref="addclass" status-icon label-width="90px" :label-position="resetlabelPosition">
-        <el-form-item label="Class Name" prop="addclass">
-            <el-input type="classname" v-model="addclass.addclass" autocomplete="off"></el-input>
-        </el-form-item>  
-      
-       <center>
-        <el-button style="width: 100%; padding: 10px; margin-top: 15px" type="primary" @click="confirmAddclass('addclass')" >Confirm</el-button>
-       </center>
-    </el-form>
+
+    width="35%">
+    
+    <el-input placeholder="Enter Class name" v-model="classTask.classname"></el-input>
+
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="onaddclassname()">Confirm</el-button>
+    </span>
 
 </el-dialog>

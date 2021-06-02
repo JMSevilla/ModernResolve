@@ -281,4 +281,29 @@ class Bulk  {
         ";  
         return $sql;
     }
+    //adding class code
+    public function NB_Add_ClassCode($table){
+        $sql = " 
+            insert into ".$table." values(default, :code, 'open', :name, current_timestamp)
+        ";
+        return $sql;
+    }
+    public function NB_GetLatestClassCode($table){
+        $sql = "
+            select max(class_codeID) as aydi from ".$table."
+        ";
+        return $sql;
+    }
+    public function NB_getcurrentuserid($table){
+        $sql = "
+            select userID from ".$table." where email_address=:emailadd
+        ";
+        return $sql;
+    }
+    public function NB_addclasscode_mapping($table){
+        $sql = "
+        insert into ".$table." values (default, :classcodeid, :userid, current_timestamp)
+        ";
+        return $sql;
+    }
 }

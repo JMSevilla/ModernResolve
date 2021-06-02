@@ -196,4 +196,19 @@ public function create_classcode_mapping($table){
 public function user_activation($table){
   return BULK::NB_uActivation($table);
 }
+//adding class query
+public function add_dynamic_classcode($table){
+  return BULK::NB_Add_ClassCode($table);
+}
+//get max id for class code
+public function get_maxID_classcode($table){
+  return BULK::NB_GetLatestClassCode($table);
+}
+public function get_current_userID($table){
+  return BULK::NB_getcurrentuserid($table);
+}
+//add class code mapping
+public function add_class_code_mapping($table){
+  return BULK::NB_addclasscode_mapping($table);
+}
 }

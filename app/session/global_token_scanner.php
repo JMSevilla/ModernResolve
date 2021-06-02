@@ -14,3 +14,8 @@ if(isset($_POST['token_scanning']) == true){
         echo json_encode('there is no existing token');
     }
 }
+
+if(isset($_POST['logtruncate']) == true){
+    unset($_COOKIE['Token_Teacher']);
+    echo json_encode("logout_teacher");
+}

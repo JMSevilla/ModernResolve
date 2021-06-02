@@ -70,6 +70,11 @@ ELEMENT.locale(ELEMENT.lang.en)
                     zipcode:'',
                     hiName: ''
                   },
+                 classTask: {
+                  classname:'',
+                  generatedClassCode: '',
+                  classCodeTrigger: true, currentUser: localStorage.getItem('eml')
+                 },
                 value1: true,
 
                 options: [{
@@ -102,9 +107,64 @@ ELEMENT.locale(ELEMENT.lang.en)
             
         created: function(){
           this.getpassTeacherdash();
+          this.generate_token(5)
         },
         
         methods: {
+          onlogoutuser(){
+            
+            var ask = confirm("Are you sure you want to logout ?");
+            if(ask === true) {
+              var logdestroy = {
+                logtruncate: true
+              }
+              $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
+                console.log(response)
+              })
+            }
+          },
+          onaddclassname(){
+            if(!this.classTask.classname){
+              this.$notify.warning({
+                title: 'Oops',
+                message: 'Empty fields.',
+                offset: 100
+              });
+              return false;
+            }
+            else {
+              const loading = this.$loading({
+                lock: true,
+                text: 'Loading',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+              });
+              setTimeout(() => {
+                $.post(this.app + this.Helpers + "/classCodexHelpers.php", this.classTask, (response) => {
+                 var jsondestroy = JSON.parse(response);
+                 if(jsondestroy.class_success === "success"){
+                  this.$notify.success({
+                    title: 'Success',
+                    message: 'Successfully Added',
+                    offset: 100
+                  });
+                  //other actions.
+                 }
+                })
+              }, 5000)
+              
+            }
+          },
+          generate_token(length){
+            //edit the token allowed characters
+            var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
+            var b = [];
+            for (var i=0; i<length; i++) {
+                var j = (Math.random() * (a.length-1)).toFixed(0);
+                b[i] = a[j];
+            }
+            return this.classTask.generatedClassCode = b.join("");
+          },
               handleClick(tab, event) {
                 console.log(tab, event);
               },
