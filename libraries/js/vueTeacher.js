@@ -114,17 +114,28 @@ ELEMENT.locale(ELEMENT.lang.en)
           onlogoutuser(){
             
             var ask = confirm("Are you sure you want to logout ?");
-            if(ask === true) {
+            if(ask == true) {
+              
               var logdestroy = {
                 logtruncate: true
               }
               $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
-                console.log(response)
-                let res = JSON.parse(response);
-                if(res == "logout_teacher") {
-                  window.location.href = "http://localhost/modernresolve/login";                 
+                var jsondestruct = JSON.parse(response)
+                if(jsondestruct.logs == "logout"){
+                  const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                  });
+                  setTimeout(() => {
+                    loading.close()
+                    window.location.href="http://localhost/torrestech/modernresolve"
+                  }, 3000)
+                  
                 }
               })
+              
             }
           },
           onaddclassname(){
@@ -147,6 +158,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 $.post(this.app + this.Helpers + "/classCodexHelpers.php", this.classTask, (response) => {
                  var jsondestroy = JSON.parse(response);
                  if(jsondestroy.class_success === "success"){
+                  loading.close()
                   this.$notify.success({
                     title: 'Success',
                     message: 'Successfully Added',
