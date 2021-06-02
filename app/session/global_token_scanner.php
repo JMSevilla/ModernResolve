@@ -16,6 +16,13 @@ if(isset($_POST['token_scanning']) == true){
 }
 
 if(isset($_POST['logtruncate']) == true){
-    unset($_COOKIE['Token_Teacher']);
+    setcookie("Token_Teacher", '', 1, '/');
+    // unset($_COOKIE['Token_Teacher']);
     echo json_encode("logout_teacher");
+}
+
+if(isset($_POST['logtruncateAdmin']) == true){
+    setcookie("Token_Admin", '', 1, '/');
+    // unset($_COOKIE['Token_Teacher']);
+    echo json_encode("logout_admin");
 }
