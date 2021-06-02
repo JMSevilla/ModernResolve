@@ -120,6 +120,10 @@ ELEMENT.locale(ELEMENT.lang.en)
               }
               $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
                 console.log(response)
+                let res = JSON.parse(response);
+                if(res == "logout_teacher") {
+                  window.location.href = "http://localhost/modernresolve/login";                 
+                }
               })
             }
           },
@@ -186,6 +190,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.bdate = res.birth_date;
                   this.profile.sex = res.gender;
                   this.profile.contact = res.contact_number;
+                  this.profile.province = res.province;
+                  this.profile.municipality = res.municipality
                   this.profile.street = res.address;
                   this.profile.hiName = res.firstname;
                   this.calteacherage();
@@ -194,44 +200,53 @@ ELEMENT.locale(ELEMENT.lang.en)
               updatepassTeacherdash(formName) {
                 this.$refs[formName].validate((valid) => {
                   if (valid) {
-                    let eml = localStorage.getItem('eml');
-                    const data = {
-                    email: eml,
-                    table: 'user',
-                    editpassT: true,
-                    old: this.resetteacher.oldpass,
-                    pass: this.resetteacher.newpass
-                }
-                $.post(this.app + this.Helpers + '/TeacherDashboardHelpers.php', data, response => {
-                  let statRes = JSON.parse(response);
-                  if(statRes.statusCode === 'success') {
-                    this.$notify.success({
-                      title: 'Yey!',
-                      message: 'Password updated!',
-                      offset: 100
+                    const loading = this.$loading({
+                      lock: true,
+                      text: 'Verifying. please wait...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
                     });
-                    this.resetteacher.oldpass = '';
-                    this.resetteacher.newpass = '';
-                    this.resetteacher.checkPass = '';
-                    this.resetteacherdialogVisible = false;
-                  }
-                  else if(statRes.statusCode === 'not found'){
-                    this.$notify.error({
-                      title: 'Oops!',
-                      message: 'Wrong password!',
-                      offset: 100
-                    });
-                    
-                    return false;
-                  }
-                });
+                    setTimeout(() => {
+                      let eml = localStorage.getItem('eml');
+                      const data = {
+                        email: eml,
+                        table: 'user',
+                        editpassT: true,
+                        old: this.resetteacher.oldpass,
+                        pass: this.resetteacher.newpass
+                      }
+                      $.post(this.app + this.Helpers + '/TeacherDashboardHelpers.php', data, response => {
+                        console.log(response);
+                        let statRes = JSON.parse(response);
+                        if(statRes.statusCode === 'success') {
+                          this.$notify.success({
+                            title: 'Yey!',
+                            message: 'Password updated!',
+                            offset: 100
+                          });
+                          loading.close();
+                          this.resetteacher.oldpass = '';
+                          this.resetteacher.newpass = '';
+                          this.resetteacher.checkPass = '';
+                          this.resetteacherdialogVisible = false;
+                        }
+                        else if(statRes.statusCode === 'not found'){
+                          this.$notify.error({
+                            title: 'Oops!',
+                            message: 'Wrong password!',
+                            offset: 100
+                          });
+                          loading.close();
+                          return false;
+                        }
+                      });
+                    }, 3000);
                   } else {
-                    console.log('error submit!!');
-                    return false;
+                      return false;
                   }
                 });
-                
               },
+              
               updateprofTeacherdash() {
                 const loading = this.$loading({
                   lock: true,
@@ -255,7 +270,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });
                 }, 5000);
               },
-              
+      
               calteacherage() {
                 let eml = localStorage.getItem('eml');
                 const data = {

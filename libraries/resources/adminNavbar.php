@@ -11,7 +11,7 @@
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item @click.native="resetadmindialogVisible = true" icon="el-icon-key">  Reset Password </el-dropdown-item>
       <a class="profileicon" href="profileAdmin"><el-dropdown-item icon="el-icon-user"> Profile </el-dropdown-item></a>
-      <el-dropdown-item icon="el-icon-switch-button">Logout</el-dropdown-item>
+      <el-dropdown-item icon="el-icon-switch-button" @click.native="onlogoutadmin">Logout</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
   <span>{{ profile.adminName }}</span>

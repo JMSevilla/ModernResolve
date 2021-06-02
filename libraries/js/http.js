@@ -73,7 +73,7 @@ const handler = {
       }
       else if(hammer.type == 'Teacher') { //catch
         // console.log('Teacher Login!');
-        setTimeout(() => window.location.href = "http://localhost/modernresolve/teacherdash", 1000);
+        window.location.href = "http://localhost/modernresolve/teacherdash";
       }
       else if(hammer.type == 'Student') {
         // console.log('Student Login!');
