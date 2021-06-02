@@ -3,6 +3,39 @@ ELEMENT.locale(ELEMENT.lang.en)
         el:'#teacher',
         
         data: function(){
+          var validatePass1ResetTeach = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the old password'));
+            }else {
+              callback();
+            }
+          };
+          var validatePass2ResetTeach = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the new password'));
+            } else {
+              if (this.resetteacher.checkPass !== '') {
+                this.$refs.resetteacher.validateField('checkPass');
+              }
+              callback();
+            }
+          };
+          var validatePass3ResetTeach = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the password again'));
+            } else if (value !== this.resetteacher.newpass) {
+              callback(new Error('Password Mismatch!'));
+            } else {
+              callback();
+            }
+          };
+          var validateaddclass = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the Class Name'));
+            }else {
+              callback();
+            }
+          };
             return{
                 app: 'app/',
                 Helpers: 'Helpers',
@@ -17,7 +50,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                     checkPass:'',
                   },
                 labelPosition: 'left',
-                
+                addclass:{
+                  addclass:'',
+                },
                 profile: {
                     table: 'user',
                     editprofT: true,
@@ -49,7 +84,23 @@ ELEMENT.locale(ELEMENT.lang.en)
                   value: 'Option2',
                   label: 'Option2'
                 },],
-                value: ''
+                value: '',
+                rulesteacher:{
+                  oldpass: [
+                    { validator: validatePass1ResetTeach, trigger: 'blur' }
+                  ],
+                  newpass: [
+                    { validator: validatePass2ResetTeach, trigger: 'blur' }
+                  ],
+                  checkPass: [
+                    { validator: validatePass3ResetTeach, trigger: 'blur' }
+                  ],    
+                },
+                rulesaddclass:{
+                  addclass: [
+                    { validator: validateaddclass, trigger: 'blur' }
+                  ],    
+                },
               
             }
         },
@@ -140,18 +191,46 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.calteacherage();
                 });
               },
-              updatepassTeacherdash() {
-                let eml = localStorage.getItem('eml');
-                const data = {
-                  email: eml,
-                  table: 'user',
-                  editpassT: true,
-                  old: this.resetteacher.oldpass,
-                  pass: this.resetteacher.newpass
+              updatepassTeacherdash(formName) {
+                this.$refs[formName].validate((valid) => {
+                  if (valid) {
+                    let eml = localStorage.getItem('eml');
+                    const data = {
+                    email: eml,
+                    table: 'user',
+                    editpassT: true,
+                    old: this.resetteacher.oldpass,
+                    pass: this.resetteacher.newpass
                 }
                 $.post(this.app + this.Helpers + '/TeacherDashboardHelpers.php', data, response => {
-                  console.log(response);
+                  let statRes = JSON.parse(response);
+                  if(statRes.statusCode === 'success') {
+                    this.$notify.success({
+                      title: 'Yey!',
+                      message: 'Password updated!',
+                      offset: 100
+                    });
+                    this.resetteacher.oldpass = '';
+                    this.resetteacher.newpass = '';
+                    this.resetteacher.checkPass = '';
+                    this.resetteacherdialogVisible = false;
+                  }
+                  else if(statRes.statusCode === 'not found'){
+                    this.$notify.error({
+                      title: 'Oops!',
+                      message: 'Wrong password!',
+                      offset: 100
+                    });
+                    
+                    return false;
+                  }
                 });
+                  } else {
+                    console.log('error submit!!');
+                    return false;
+                  }
+                });
+                
               },
               updateprofTeacherdash() {
                 const loading = this.$loading({
@@ -211,7 +290,17 @@ ELEMENT.locale(ELEMENT.lang.en)
                     this.profile.age = a.age;
                   }
                 });
-              }
+              },
+              confirmAddclass(formName) {
+                this.$refs[formName].validate((valid) => {
+                  if (valid) {
+                    alert('submit!');
+                  } else {
+                    console.log('error submit!!');
+                    return false;
+                  }
+                });
+              },
           }
     })
 

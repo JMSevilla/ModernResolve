@@ -15,10 +15,12 @@
                                 <div class="form-outline">
                                     <i class="fas fa-user icon"></i>
                                     <input type="text" id="email_login" class="user" placeholder="Enter your email" required />
+                                    <small id="error" style="display:none; color: #ff0040" > Please input email address</small>
                                 </div>
                                 <div class="form-outline">
                                     <i class="fas fa-lock icon"></i>
                                     <input type="password" id="password_login" class="user" placeholder="Password" required/>
+                                    <small id="error1" style="display:none; color: #ff0040" > Please input password</small>
                                 <div>
                                     <center>
                                         <div style="margin-bottom: 70px; margin-top: 40px">

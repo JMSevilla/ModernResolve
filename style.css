@@ -484,10 +484,6 @@ min-width: 50px;
   text-decoration: none;
   color: #606266;
 }
-{
-  text-decoration: none;
-  color: #606266;
-}
 
 .admin .container2 .text a
 {
@@ -687,6 +683,7 @@ min-width: 50px;
   float: right;
 }
 
+
 .teacher #select{
  border: none;
  width: 450px;
@@ -762,6 +759,7 @@ min-width: 50px;
   /* end of switch */
 /* end ELLA */
 
+/* hannah */
 .avatar {
   width: 150px;
   height: 150px;
@@ -782,4 +780,17 @@ input[id=txtzip]::-webkit-outer-spin-button {
     margin: 0; 
 }
 
+.admin #buttonstyle
+{
+  size: 500px;
+}
+
+
+/* teacher dash modification */
+.teacher .el-dialog
+{
+  border-radius: 10px ;
+}
+
 /* hannah */
+
