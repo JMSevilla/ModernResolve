@@ -14,7 +14,7 @@
       <el-dropdown-item icon="el-icon-switch-button" @click.native="onlogoutadmin">Logout</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
-  <span>{{ profile.adminName }}</span>
+  <span>Hi, {{ profile.adminName }}!</span>
   </el-menu-item>
 </el-menu>
 <?php include("libraries/resources/admin/resetadminModal.php"); ?>

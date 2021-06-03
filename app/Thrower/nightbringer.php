@@ -223,6 +223,24 @@ class Bulk  {
         return $sql;
     }
 
+    public function NB_classcodeselectteach($table) {
+        $sql = "
+            select class_code.name from $table 
+            inner join class_code on class_code_map.class_codeID = class_code.class_codeID
+            where userID = :userID
+        ";
+
+        return $sql;
+    }
+
+    public function NB_classcodeget($table) {
+        $sql = "
+            select code from $table where name = :name
+        ";
+
+        return $sql;
+    }
+
     // login token route
     // public function NB_istypeUser($table) {
     //     $sql = "

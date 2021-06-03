@@ -28,3 +28,11 @@ if(isset($_POST['logtruncate']) == true){
         'logs' => 'logout'
     ));
 }
+
+if(isset($_POST['logtruncateAdmin']) == true){
+    unset($_COOKIE['Token_Admin']);
+    setcookie('Token_Admin', null, -1, '/');
+    echo json_encode(array(
+        'logs' => 'logout'
+    ));
+}

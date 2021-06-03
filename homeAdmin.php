@@ -1,3 +1,4 @@
+<?php include("app/session/adminToken.php"); ?>
 <?php include("libraries/includes/links.php") ?>
 <?php include("views/admin/home.views.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -10,12 +10,12 @@
                                 <div class="col" id="col1">
                                     <div style="margin-top: 10px">
                                         <template id="selectclass">
-                                            <el-select v-model="value" clearable placeholder="Select Class Name" id="select">
+                                            <el-select v-model="value" @change="getcodeteacher()" clearable placeholder="Select Class Name" id="select">
                                                 <el-option
                                                 v-for="item in options"
-                                                :key="item.value"
-                                                :label="item.label"
-                                                :value="item.value">
+                                                :key="item.name"
+                                                :label="item.name"
+                                                :value="item.name">
                                                 </el-option>
                                             </el-select>
                                         </template>
@@ -25,7 +25,7 @@
                                 <div class="col" id="col2">
                                     <div style="margin-top: 35px; font-size:1em; margin-left: 20px">
                                         <label for="" style="color: gray;">Class Code:</label>
-                                        <span style="margin-right: 10px">test</span>
+                                        <span style="margin-right: 10px">{{ teacherclasscode }}</span>
                                         <div class="onoffswitch">
                                             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
                                             <label class="onoffswitch-label" for="myonoffswitch">
