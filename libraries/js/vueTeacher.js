@@ -133,7 +133,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                     window.location.href="http://localhost/torrestech/modernresolve"
                   }, 3000)
                   
-                }
+                } //other dashboards with logout . please replace this jsondestruct logs == logout below
+                
               })
               
             }
