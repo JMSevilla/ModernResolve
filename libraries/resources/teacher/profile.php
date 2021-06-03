@@ -62,7 +62,7 @@
                 </el-form-item>
 
                 <el-form-item label="Address">
-                    <el-select style="width: 100%; margin-bottom: 10px" @change="onprovince" v-model="profile.province" filterable placeholder="Select province">
+                    <!-- <el-select style="width: 100%; margin-bottom: 10px" @change="onprovince" v-model="profile.province" filterable placeholder="Select province">
                         <el-option
                             v-for="item in provinceGetterss"
                             :key="item.province"
@@ -78,12 +78,26 @@
                             :label="item.municipality"
                             :value="item.municipality">
                         </el-option>
-                    </el-select>
+                    </el-select> -->
                     <el-input
-                    style="margin-bottom: 10px"
-                    placeholder="House no. Street Name"
-                    v-model="profile.street"
-                    clearable>
+                        style="margin-bottom: 10px"
+                        placeholder="Province"
+                        v-model="profile.province"
+                        clearable>
+                    </el-input>
+
+                    <el-input
+                        style="margin-bottom: 10px"
+                        placeholder="Municipality"
+                        v-model="profile.municipality"
+                        clearable>
+                    </el-input>
+
+                    <el-input
+                        style="margin-bottom: 10px"
+                        placeholder="House no. Street Name"
+                        v-model="profile.street"
+                        clearable>
                     </el-input>
                 </el-form-item>
             </el-form>

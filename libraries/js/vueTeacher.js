@@ -68,8 +68,12 @@ ELEMENT.locale(ELEMENT.lang.en)
                     province:'',
                     municipality:'',
                     zipcode:'',
-                    hiName: ''
+                    hiName: '',
                   },
+
+                  teacherID: '', //emman
+                  teacherclasscode: '',
+
                  classTask: {
                   classname:'',
                   generatedClassCode: '',
@@ -77,13 +81,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                  },
                 value1: true,
 
-                options: [{
-                  value: 'Option1',
-                  label: 'Information technology'
-                }, {
-                  value: 'Option2',
-                  label: 'Option2'
-                },],
+                options: [],
+
                 value: '',
                 rulesteacher:{
                   oldpass: [
@@ -111,6 +110,34 @@ ELEMENT.locale(ELEMENT.lang.en)
         },
         
         methods: {
+
+          // select class code
+          selectCode(userID) {
+            const data = {
+              userID,
+              table: 'class_code_map',
+              selectTrig: true
+            }
+            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+              let res = JSON.parse(response);
+              console.log(res);
+              this.options = res;
+            });
+          },
+
+          getcodeteacher() {
+            const data = {
+              classname: this.value,
+              table: 'class_code',
+              codeTrig: true
+            }
+            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+              let res = JSON.parse(response);
+              console.log(res.code);
+              this.teacherclasscode = res.code;
+            });
+          },
+
           onlogoutuser(){
             
             var ask = confirm("Are you sure you want to logout ?");
@@ -207,7 +234,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.municipality = res.municipality
                   this.profile.street = res.address;
                   this.profile.hiName = res.firstname;
+                  // this.teacherID = res.userID;
                   this.calteacherage();
+                  this.selectCode(res.userID);
                 });
               },
               updatepassTeacherdash(formName) {
@@ -298,6 +327,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.age = a.age;
                 });
               },
+
               calageteacherdash() {
                 const data = {
                   bdate: this.profile.bdate,

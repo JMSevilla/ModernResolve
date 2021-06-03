@@ -104,3 +104,13 @@ Interface ITeacherModel {
   public function updatePassTeacherDash_model($table);
   public function updateProfileTeacherDash_model($table);
 }
+
+interface ITeacherClassCode {
+  public function teachclasscode($table, $data);
+  public function classcodeget_controller($table, $data);
+}
+
+interface ITeachCodeModel {
+  public function teachclasscode_model($table);
+  public function classcodeget_model($table);
+}

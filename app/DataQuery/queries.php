@@ -175,7 +175,15 @@ public function updateteachProfile_query($table) {
 public function deleteAddressbyId_query($table) {
   return BULK::NB_deleteAddressbyId($table);
 }
+
+public function classcodeselectteach_query($table) {
+  return BULK::NB_classcodeselectteach($table);
+}
  
+public function classcodeget_query($table) {
+  return BULK::NB_classcodeget($table);
+}
+
 // login token route
 // public function istypeUser($table) {
 //   return BULK::NB_istypeUser($table);
