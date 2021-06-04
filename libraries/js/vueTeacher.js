@@ -44,6 +44,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                 activeName: 'first',
                 resetteacherdialogVisible: false,
                 resetlabelPosition:'left',
+                EditdialogVisible:false,
+                modalpostdialogVisible:false,
+                textarea:'',
+                commentInput:'',
                 resetteacher:{
                     oldpass:'',
                     newpass:'',
@@ -77,8 +81,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                  classTask: {
                   classname:'',
                   generatedClassCode: '',
-                  classCodeTrigger: true, currentUser: localStorage.getItem('eml')
-                 },
+                  classCodeTrigger: true, currentUser: localStorage.getItem('eml'),
+                  editclassname:'',
+                },
                 value1: true,
 
                 options: [],
@@ -99,8 +104,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   addclass: [
                     { validator: validateaddclass, trigger: 'blur' }
                   ],    
-                },
-              
+                },              
             }
         },
             

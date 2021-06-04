@@ -1,4 +1,5 @@
 
+
 #qrcode{
     width: 50%;
     height: auto;
@@ -599,7 +600,7 @@ min-width: 50px;
 
 /* hannah */
 
-/* navbar for teacher/ student by ella*/
+/* navbar for/ student by ella*/
 #navbarSupportedContent ul{
   margin-left: 15px;
 }
@@ -647,8 +648,8 @@ min-width: 50px;
   font-weight: bold;
 }
 
-/* teacher class  ELLA*/
-.teacher .card{
+/* class  ELLA*/
+ .card{
   /* width: 80%; */
   margin-top: 20px;
   /* margin-left: 0px; */
@@ -656,44 +657,33 @@ min-width: 50px;
   /* height: auto; */
 }
 
-.teacher .card-body{
+ /* .card-body{
   padding-top: 5px;
-  margin-bottom: 115px;
-}
-.teacher #rowcard1{
-  height: 60px;
-}
-
-/* .teacher #col1, #col2{
-  border-right: 1px solid rgb(187, 184, 184);
-  height: 80px;
+  margin-bottom: 80px;
 } */
 
-.teacher .classtabs{
-  position: absolute;
-  margin-top: -80px;
+.classtabs{
+  /* position: absolute; */
+  margin-top: -50px;
 }
 
-/* .teacher h4{
-  text-align: center;
-} */
-
-.teacher .btnAddClass{
+ .btnAddClass{
   margin-top: 10px;
   float: right;
 }
 
 
-.teacher #select{
+ #select{
  border: none;
- width: 450px;
+ /* width: 400px; */
+ border-bottom: 1px solid rgb(211, 208, 208);
  height: 60px;
  font-size: 2em;
  color: #303133;
 }
 
-.teacher #col1{
-  border-bottom: 1px solid rgb(211, 208, 208);
+ #col1{
+  
   width: 450px;
 }
 
@@ -786,11 +776,57 @@ input[id=txtzip]::-webkit-outer-spin-button {
 }
 
 
-/* teacher dash modification */
-.teacher .el-dialog
+/* dash modification */
+ .el-dialog
 {
   border-radius: 10px ;
 }
+ /* .verticalline
+{
+  border-left: 7px solid #4da6ff;
+  height: 70px;
+  position: absolute;
+  z-index: 1;
+  top: 15;
+  border-radius: 50px;
+  
+} */
 
+ #teacherpost
+{
+  padding: 5px;
+  font-size: 2.8em;
+  color:  #f8f8f8;
+}
+ #teacherpost1
+{
+  padding: 5px;
+  font-size: 1.9em;
+  color:  #f8f8f8;
+}
+
+ #textbutton
+{
+  color: #606266;
+  font-size: 1.2rem;
+  font-weight: 400;
+  vertical-align: middle;
+  margin-top: 10px;
+}
+ #teacherwritepost
+{
+  color: #606266;
+  font-size: 1rem;
+}
+
+ #textareapost
+{
+  min-height: 180px !important;
+}
+
+#buttongroup
+{
+  width:50%;
+}
 /* hannah */
 

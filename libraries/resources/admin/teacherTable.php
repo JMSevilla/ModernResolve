@@ -60,12 +60,12 @@
                 size="mini"
                 type="warning"
                 @click="resetteachdialogVisible = true, btnResetPass(scope.row.userID)"
-                round>Reset Password</el-button>
+                plain round>Reset Password</el-button>
                 <el-button 
                 size="mini"  
                 type="danger" 
                 @click="delConfirm(scope.row.userID)"
-                round>Delete</el-button>
+                plain round>Delete</el-button>
                 
           </div>
             <!-- </center> -->
