@@ -1,6 +1,6 @@
 
 <el-dialog
-    title="Add Class"
+    title="Create a Class"
     :visible.sync="dialogVisible"
 
     width="35%">
