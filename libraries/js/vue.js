@@ -52,6 +52,7 @@ ELEMENT.locale(ELEMENT.lang.en)
       /// Dito kayo gawa ng request. same process.
       //kay methods lang kayo gagalaw
       methods: {
+      
         qrgenapi(){
           var d = new Date().getTime();
           if(window.performance && typeof window.performance.now === "function"){

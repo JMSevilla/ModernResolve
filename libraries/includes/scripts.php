@@ -13,6 +13,7 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
 <script src="libraries/js/global.js"></script>
+
 <script type="module" src="libraries/js/http.js"></script>
 <script type="module" src="libraries/js/main.js"></script>
 <!-- hannah-5/6/21:Add footer-starts here-->

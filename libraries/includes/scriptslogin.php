@@ -5,5 +5,4 @@
 ></script>
 
 <script type="module" src="libraries/js/http.js"></script>
-<script type="module" src="libraries/js/main.js"></script>
 <script src="libraries/js/global.js"></script>

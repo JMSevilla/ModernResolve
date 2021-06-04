@@ -72,8 +72,12 @@ ELEMENT.locale(ELEMENT.lang.en)
                     province:'',
                     municipality:'',
                     zipcode:'',
-                    hiName: ''
+                    hiName: '',
                   },
+
+                  teacherID: '', //emman
+                  teacherclasscode: '',
+
                  classTask: {
                   classname:'',
                   generatedClassCode: '',
@@ -82,13 +86,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                 },
                 value1: true,
 
-                options: [{
-                  value: 'Option1',
-                  label: 'Information technology'
-                }, {
-                  value: 'Option2',
-                  label: 'Option2'
-                },],
+                options: [],
+
                 value: '',
                 rulesteacher:{
                   oldpass: [
@@ -115,16 +114,60 @@ ELEMENT.locale(ELEMENT.lang.en)
         },
         
         methods: {
+
+          // select class code
+          selectCode(userID) {
+            const data = {
+              userID,
+              table: 'class_code_map',
+              selectTrig: true
+            }
+            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+              let res = JSON.parse(response);
+              console.log(res);
+              this.options = res;
+            });
+          },
+
+          getcodeteacher() {
+            const data = {
+              classname: this.value,
+              table: 'class_code',
+              codeTrig: true
+            }
+            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+              let res = JSON.parse(response);
+              console.log(res.code);
+              this.teacherclasscode = res.code;
+            });
+          },
+
           onlogoutuser(){
             
             var ask = confirm("Are you sure you want to logout ?");
-            if(ask === true) {
+            if(ask == true) {
+              
               var logdestroy = {
                 logtruncate: true
               }
               $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
-                console.log(response)
+                var jsondestruct = JSON.parse(response)
+                if(jsondestruct.logs == "logout"){
+                  const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                  });
+                  setTimeout(() => {
+                    loading.close()
+                    window.location.href="http://localhost/torrestech/modernresolve"
+                  }, 3000)
+                  
+                } //other dashboards with logout . please replace this jsondestruct logs == logout below
+                
               })
+              
             }
           },
           onaddclassname(){
@@ -147,6 +190,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 $.post(this.app + this.Helpers + "/classCodexHelpers.php", this.classTask, (response) => {
                  var jsondestroy = JSON.parse(response);
                  if(jsondestroy.class_success === "success"){
+                  loading.close()
                   this.$notify.success({
                     title: 'Success',
                     message: 'Successfully Added',
@@ -190,52 +234,65 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.bdate = res.birth_date;
                   this.profile.sex = res.gender;
                   this.profile.contact = res.contact_number;
+                  this.profile.province = res.province;
+                  this.profile.municipality = res.municipality
                   this.profile.street = res.address;
                   this.profile.hiName = res.firstname;
+                  // this.teacherID = res.userID;
                   this.calteacherage();
+                  this.selectCode(res.userID);
                 });
               },
               updatepassTeacherdash(formName) {
                 this.$refs[formName].validate((valid) => {
                   if (valid) {
-                    let eml = localStorage.getItem('eml');
-                    const data = {
-                    email: eml,
-                    table: 'user',
-                    editpassT: true,
-                    old: this.resetteacher.oldpass,
-                    pass: this.resetteacher.newpass
-                }
-                $.post(this.app + this.Helpers + '/TeacherDashboardHelpers.php', data, response => {
-                  let statRes = JSON.parse(response);
-                  if(statRes.statusCode === 'success') {
-                    this.$notify.success({
-                      title: 'Yey!',
-                      message: 'Password updated!',
-                      offset: 100
+                    const loading = this.$loading({
+                      lock: true,
+                      text: 'Verifying. please wait...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
                     });
-                    this.resetteacher.oldpass = '';
-                    this.resetteacher.newpass = '';
-                    this.resetteacher.checkPass = '';
-                    this.resetteacherdialogVisible = false;
-                  }
-                  else if(statRes.statusCode === 'not found'){
-                    this.$notify.error({
-                      title: 'Oops!',
-                      message: 'Wrong password!',
-                      offset: 100
-                    });
-                    
-                    return false;
-                  }
-                });
+                    setTimeout(() => {
+                      let eml = localStorage.getItem('eml');
+                      const data = {
+                        email: eml,
+                        table: 'user',
+                        editpassT: true,
+                        old: this.resetteacher.oldpass,
+                        pass: this.resetteacher.newpass
+                      }
+                      $.post(this.app + this.Helpers + '/TeacherDashboardHelpers.php', data, response => {
+                        console.log(response);
+                        let statRes = JSON.parse(response);
+                        if(statRes.statusCode === 'success') {
+                          this.$notify.success({
+                            title: 'Yey!',
+                            message: 'Password updated!',
+                            offset: 100
+                          });
+                          loading.close();
+                          this.resetteacher.oldpass = '';
+                          this.resetteacher.newpass = '';
+                          this.resetteacher.checkPass = '';
+                          this.resetteacherdialogVisible = false;
+                        }
+                        else if(statRes.statusCode === 'not found'){
+                          this.$notify.error({
+                            title: 'Oops!',
+                            message: 'Wrong password!',
+                            offset: 100
+                          });
+                          loading.close();
+                          return false;
+                        }
+                      });
+                    }, 3000);
                   } else {
-                    console.log('error submit!!');
-                    return false;
+                      return false;
                   }
                 });
-                
               },
+              
               updateprofTeacherdash() {
                 const loading = this.$loading({
                   lock: true,
@@ -259,7 +316,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });
                 }, 5000);
               },
-              
+      
               calteacherage() {
                 let eml = localStorage.getItem('eml');
                 const data = {
@@ -274,6 +331,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.age = a.age;
                 });
               },
+
               calageteacherdash() {
                 const data = {
                   bdate: this.profile.bdate,

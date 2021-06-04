@@ -6,14 +6,14 @@ Reminder !
 */
 class config{
   // public static $host = "azuretorrestech28.mysql.database.azure.com";
-  // public static $host = "azuretorrestech28.mysql.database.azure.com";
   public static $host = "localhost";
+  // public static $host = "azuretorrestech28.mysql.database.azure.com";
   // public static $username = "torresdb@azuretorrestech28";
-  // public static $username = "torresdb@azuretorrestech28";
-   public static $username = "root";
-   public static $pwd = "";
+  public static $username = "root";
+  //  public static $username = "torresdb@azuretorrestech28";
+  //  public static $pwd = "Syncdb123456";
   // public static $pwd = "Syncdb123456";
-  // public static $pwd = "Syncdb123456";
+  public static $pwd = "";
   public static $mydb = "dbtorres";
   public static $dataOutbound;
   public static $stmt;

@@ -265,7 +265,36 @@ ELEMENT.locale(ELEMENT.lang.en)
             //     })
             //     .catch(_ => {});
             // },
-           
+
+            onlogoutadmin(){
+            
+              var ask = confirm("Are you sure you want to logout ?");
+              if(ask == true) {
+                
+                var logdestroy = {
+                  logtruncateAdmin: true
+                }
+                $.post("app/session/global_token_scanner.php", logdestroy, (response) => {
+                  var jsondestruct = JSON.parse(response)
+                  if(jsondestruct.logs == "logout"){
+                    const loading = this.$loading({
+                      lock: true,
+                      text: 'Loading',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                    });
+                    setTimeout(() => {
+                      loading.close()
+                      window.location.href="http://localhost/torrestech/modernresolve"
+                    }, 3000)
+                    
+                  } //other dashboards with logout . please replace this jsondestruct logs == logout below
+                  
+                })
+                
+              }
+            },
+
             submitForm(formName) {
               this.$refs[formName].validate((valid) => {
                 if (valid) {

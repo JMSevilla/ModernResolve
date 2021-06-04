@@ -63,13 +63,16 @@ const validateLogin = data => {
 }
 
 
-tokenscan()
-function tokenscan() {
+ tokenscan()
+
+  function tokenscan() {
   let state = "";
   $.post('app/session/global_token_scanner.php', state={
     token_scanning: true
   }, function(response){
-    console.log(response);
+    var jsondestroy = JSON.parse(response)
+    if(jsondestroy.teacher === 'exist') {
+      window.location.href = "http://localhost/torrestech/modernresolve/teacherdash"
+    }
   })
 }
-

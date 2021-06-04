@@ -1,5 +1,5 @@
 <!-- <div class="teacher"> -->
-    <div id="teacher">
+ <div id="teacher">
     <?php include("libraries/resources/userNavbar.php"); ?>
         <div class="container">
             <div class="row justify-content-center">
@@ -13,9 +13,9 @@
                                                 <el-select id="select" v-model="value" @change="getcodeteacher()" clearable placeholder="Select Class Name">
                                                     <el-option
                                                     v-for="item in options"
-                                                    :key="item.value"
-                                                    :label="item.label"
-                                                    :value="item.value">
+                                                    :key="item.name"
+                                                    :label="item.name"
+                                                    :value="item.name">
                                                     </el-option>
                                                 </el-select>
                                             </template>
