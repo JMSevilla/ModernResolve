@@ -830,3 +830,9 @@ input[id=txtzip]::-webkit-outer-spin-button {
 }
 /* hannah */
 
+/* alden */
+#assigntextarea
+{
+  min-height: 200px !important;
+}
+/* alden */

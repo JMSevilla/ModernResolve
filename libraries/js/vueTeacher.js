@@ -48,6 +48,14 @@ ELEMENT.locale(ELEMENT.lang.en)
                 modalpostdialogVisible:false,
                 textarea:'',
                 commentInput:'',
+                assignDialogVisible: false,
+                assignLabelPosition: 'top',
+                assignment: {
+                  title: '',
+                  instructions: '',
+                  date: '',
+                  time: '',
+                },
                 resetteacher:{
                     oldpass:'',
                     newpass:'',
