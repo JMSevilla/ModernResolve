@@ -9,7 +9,7 @@
                 'id' => $_POST['userID']
             ];
 
-            TeacherCodeSelect::teachclasscode($table, $data);
+            TeacherClassCodeController::teachclasscode($table, $data);
         }
 
         public function classcodeget_model($table) {
@@ -17,7 +17,7 @@
                 'name' => $_POST['classname']
             ];
 
-            TeacherCodeSelect::classcodeget_controller($table, $data);
+            TeacherClassCodeController::classcodeget_controller($table, $data);
         }
 
     }

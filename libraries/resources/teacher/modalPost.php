@@ -5,7 +5,7 @@
         <el-avatar :size="55"  icon="el-icon-user-solid" id="teacherpost"></el-avatar>
       </div>
       <div class="col-md-10" style="margin-top:15px;" id="teacherwritepost">
-        Teacher
+        {{ fetch.fullname }}
       </div>
     </div>
   </span>
@@ -14,13 +14,13 @@
       id="textareapost"
       style="margin-top: -20px;"
       type="textarea"
-      v-model="textarea"
+      v-model="post.description"
     >
     </el-input>
     
   <span slot="footer" class="dialog-footer" style="inline" >  
     <div>
-    <el-button type="primary" @click="" style="width:100%"  size="medium" >Post</el-button>
+    <el-button type="primary" @click="writePost()" style="width:100%"  size="medium" >Post</el-button>
     </div>
   </span>
   <!-- </div> -->
