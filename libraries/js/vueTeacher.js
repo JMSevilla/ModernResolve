@@ -112,7 +112,21 @@ ELEMENT.locale(ELEMENT.lang.en)
                   addclass: [
                     { validator: validateaddclass, trigger: 'blur' }
                   ],    
-                },              
+                },
+                activeMem: 'first',
+                studentTableData: [{
+                  name: '',
+                }], 
+
+                ownerTableData: [{
+                  name: ''
+                }], 
+                teacherTableData: [{
+                  name: 'hello'
+                }, {
+                  name: 'Wanda',
+                }], 
+                
             }
         },
             
@@ -371,6 +385,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
+              // handleClick(tab, event) {
+              //   console.log(tab, event);
+              // }
           }
     })
 

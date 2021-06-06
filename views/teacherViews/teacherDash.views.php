@@ -74,6 +74,11 @@
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="el-icon-user" ></i> Members</span>
+                                <div class="card" style="height: auto; margin-bottom: 30px" >
+                                    <div class="card-body">
+                                        <?php include("libraries/resources/teacher/teacherMembers.php"); ?>
+                                    </div>
+                                </div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="prog" name="third">
                             <span slot="label"> <i class="el-icon-s-data" ></i> Progress</span>
