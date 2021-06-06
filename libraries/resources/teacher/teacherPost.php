@@ -1,6 +1,6 @@
 <div>
         <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-1" >
                         <el-avatar :size="55"  icon="el-icon-user-solid" id="teacherpost"></el-avatar>
                 </div>
                 <div class="col-md">

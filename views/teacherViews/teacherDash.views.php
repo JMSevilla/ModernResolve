@@ -58,7 +58,8 @@
                                                 </div>
                                                     <div class="d-flex" style="justify-content: flex-end; padding-top: 100px; margin-right: 10px">
                                                         <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked">Quiz</el-button>
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets">Assignment</el-button>
+                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
+                                                        <?php include("libraries/resources/teacher/assignmentModal.php"); ?>
                                                     </div>  
                                             </div>                                      
                                         </div>
@@ -86,6 +87,11 @@
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="el-icon-user" ></i> Members</span>
+                                <div class="card" style="height: auto; margin-bottom: 30px" >
+                                    <div class="card-body">
+                                        <?php include("libraries/resources/teacher/teacherMembers.php"); ?>
+                                    </div>
+                                </div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="prog" name="third">
                             <span slot="label"> <i class="el-icon-s-data" ></i> Progress</span>

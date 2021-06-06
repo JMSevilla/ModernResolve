@@ -49,6 +49,14 @@ ELEMENT.locale(ELEMENT.lang.en)
                 modalpostdialogVisible:false,
                 textarea:'',
                 commentInput:'',
+                assignDialogVisible: false,
+                assignLabelPosition: 'top',
+                assignment: {
+                  title: '',
+                  instructions: '',
+                  date: '',
+                  time: '',
+                },
                 resetteacher:{
                     oldpass:'',
                     newpass:'',
@@ -122,7 +130,21 @@ ELEMENT.locale(ELEMENT.lang.en)
                   addclass: [
                     { validator: validateaddclass, trigger: 'blur' }
                   ],    
-                },              
+                },
+                activeMem: 'first',
+                studentTableData: [{
+                  name: '',
+                }], 
+
+                ownerTableData: [{
+                  name: ''
+                }], 
+                teacherTableData: [{
+                  name: 'hello'
+                }, {
+                  name: 'Wanda',
+                }], 
+                
             }
         },
             
@@ -499,10 +521,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
-
-              click() {
-                console.log('clickkkkk!!');
-              }
+          
+              // handleClick(tab, event) {
+              //   console.log(tab, event);
+              // }
           }
     })
 
