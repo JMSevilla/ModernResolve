@@ -36,6 +36,25 @@ ELEMENT.locale(ELEMENT.lang.en)
               callback();
             }
           };
+          var validatePassStudReset = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the password'));
+            } else {
+              if (this.resetstudent.checkPass !== '') {
+                this.$refs.resetstudent.validateField('checkPass');
+              }
+              callback();
+            }
+          };
+          var validatePassStudReset1 = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('Please input the password again'));
+            } else if (value !== this.resetstudent.pass) {
+              callback(new Error('Password Mismatch!'));
+            } else {
+              callback();
+            }
+          };
             return{
                 app: 'app/',
                 Helpers: 'Helpers',
@@ -51,6 +70,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                 commentInput:'',
                 assignDialogVisible: false,
                 assignLabelPosition: 'top',
+                resetStuddialogVisible:false,
+                resetStudlabelPosition:'left',
                 assignment: {
                   title: '',
                   instructions: '',
@@ -62,6 +83,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                     newpass:'',
                     checkPass:'',
                   },
+                resetstudent:{
+                  pass:'',
+                  checkPass:'',
+                },
                 labelPosition: 'left',
                 addclass:{
                   addclass:'',
@@ -131,19 +156,63 @@ ELEMENT.locale(ELEMENT.lang.en)
                     { validator: validateaddclass, trigger: 'blur' }
                   ],    
                 },
+                rulesresetstudent:{
+                  pass: [
+                    { validator: validatePassStudReset, trigger: 'blur' }
+                  ],
+                  checkPass: [
+                    { validator: validatePassStudReset1, trigger: 'blur' }
+                  ] 
+                },
+                rulesAssignment: {
+                  title: [
+                    {  required: true, message: 'Please input data', trigger: 'blur' },
+                  ],
+                  instructions: [
+                    { required: true, message: 'Please input data', trigger: 'change' }
+                  ],
+                  date: [
+                    { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
+                  ],
+                  time: [
+                    { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
+                  ],
+                  lock: [
+                    {required: true, message: 'Please click the checkbox', trigger: 'change' }
+                  ],
+                },
+                rulesclassTask:{
+                  classname: [
+                    {  required: true, message: 'Please input class name', trigger: 'blur' },
+                  ]
+                },
                 activeMem: 'first',
                 studentTableData: [{
-                  name: '',
-                }], 
-
+                  Avatar:'',
+                  name: 'John Doe',
+                  email:'johndoe@email.com'
+                },
+                {
+                  Avatar:'',
+                  name: 'me',
+                  email:'me@email.com'
+                },
+                {
+                  Avatar:'',
+                  name: 'test',
+                  email:'iba@email.com'
+                }],
+                searchStudent: '',
                 ownerTableData: [{
-                  name: ''
+                  Avatar:'',
+                  name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
-                teacherTableData: [{
-                  name: 'hello'
-                }, {
-                  name: 'Wanda',
-                }], 
+                // teacherTableData: [{
+                //   name: 'hello'
+                // }, {
+                //   name: 'Wanda',
+                // }], 
+
                 
             }
         },
@@ -326,40 +395,36 @@ ELEMENT.locale(ELEMENT.lang.en)
               
             }
           },
-          onaddclassname(){
-            if(!this.classTask.classname){
-              this.$notify.warning({
-                title: 'Oops',
-                message: 'Empty fields.',
-                offset: 100
-              });
-              return false;
-            }
-            else {
-              const loading = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.7)'
-              });
-              setTimeout(() => {
-                $.post(this.app + this.Helpers + "/classCodexHelpers.php", this.classTask, (response) => {
-                 var jsondestroy = JSON.parse(response);
-                 if(jsondestroy.class_success === "success"){
-                  loading.close()
-                  this.$notify.success({
-                    title: 'Success',
-                    message: 'Successfully Added',
-                    offset: 100
+          onaddclassname(formName){
+            this.$refs[formName].validate((valid) => {
+              if (valid) {
+                  const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
                   });
-                  this.classTask.classname = '';
-                  this.dialogVisible = false;
-                  //other actions.
-                 }
-                })
-              }, 5000)
-              
-            }
+                  setTimeout(() => {
+                    $.post(this.app + this.Helpers + "/classCodexHelpers.php", this.classTask, (response) => {
+                     var jsondestroy = JSON.parse(response);
+                     if(jsondestroy.class_success === "success"){
+                      loading.close()
+                      this.$notify.success({
+                        title: 'Success',
+                        message: 'Successfully Added',
+                        offset: 100
+                      });
+                       this.classTask.classname = '';
+                       this.dialogVisible = false;
+                      //other actions.
+                     }
+                    })
+                  }, 5000)
+              } else {
+                console.log('error submit!!');
+                return false;
+              }
+            });
           },
           generate_token(length){
             //edit the token allowed characters
@@ -521,10 +586,46 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
-          
-              // handleClick(tab, event) {
-              //   console.log(tab, event);
-              // }
+              // hannah reset student
+              resetStudent(formName) {
+                this.$refs[formName].validate((valid) => {
+                  if (valid) {
+                    alert('submit!');
+                  } else {
+                    console.log('error submit!!');
+                    return false;
+                  }
+                });
+              },
+              // hannah remove student
+              deleteStud() {
+                this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+                  confirmButtonText: 'OK',
+                  cancelButtonText: 'Cancel',
+                  type: 'warning'
+                }).then(() => {
+                  this.$notify({
+                    type: 'success',
+                    message: 'Delete completed'
+                  });
+                }).catch(() => {
+                  this.$notify({
+                    type: 'info',
+                    message: 'Delete canceled'
+                  });          
+                });
+              },
+              //assigment
+              assignConfirm(formName) {
+                this.$refs[formName].validate((valid) => {
+                  if (valid) {
+                    alert('submit!');
+                  } else {
+                    console.log('error submit!!');
+                    return false;
+                  }
+                });
+              },
           }
     })
 

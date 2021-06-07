@@ -649,7 +649,7 @@ min-width: 50px;
 }
 
 /* class  ELLA*/
- .card{
+ #teacherCard{
   /* width: 80%; */
   margin-top: 20px;
   /* margin-left: 0px; */
@@ -664,7 +664,7 @@ min-width: 50px;
 
 .classtabs{
   /* position: absolute; */
-  margin-top: -50px;
+  margin-top: -40px;
 }
 
  .btnAddClass{
@@ -833,6 +833,6 @@ input[id=txtzip]::-webkit-outer-spin-button {
 /* alden */
 #assigntextarea
 {
-  min-height: 200px !important;
+  min-height: 150px !important;
 }
 /* alden */

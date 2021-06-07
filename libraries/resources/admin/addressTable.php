@@ -11,6 +11,7 @@
     <el-table-column
           label="#"
           prop="provinceID"
+          type="index"
           >
       </el-table-column>
     <el-table-column
