@@ -184,6 +184,18 @@ public function classcodeget_query($table) {
   return BULK::NB_classcodeget($table);
 }
 
+public function writepost_query($table) {
+  return BULK::NB_writepost($table);
+}
+
+public function fetchpost_query($table) {
+  return BULK::NB_fetchpost($table);
+}
+
+public function lockedclassname_query($table) {
+  return BULK::NB_lockedclassname($table);
+}
+
 // login token route
 // public function istypeUser($table) {
 //   return BULK::NB_istypeUser($table);

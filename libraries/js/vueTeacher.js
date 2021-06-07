@@ -58,6 +58,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             return{
                 app: 'app/',
                 Helpers: 'Helpers',
+                is_activate_indicator: '',
                 dialogVisible: false,
                 className: '',
                 activeName: 'first',
@@ -108,8 +109,25 @@ ELEMENT.locale(ELEMENT.lang.en)
                     hiName: '',
                   },
 
+                  post: {
+                    userID: '',
+                    class_codeID: '',
+                    description: '',
+                    files: 'filename',
+                    writeTrig: true,
+                    name: 'Emman'
+                  },
+
+                  // fetch: {
+                  //   firstname: '',
+                  //   description: '',
+                  //   created_at: ''
+                  // },
+                  fetch: [],
+
                   teacherID: '', //emman
                   teacherclasscode: '',
+                  status: '',
 
                  classTask: {
                   classname:'',
@@ -208,6 +226,7 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           // select class code
           selectCode(userID) {
+            this.post.userID = userID;
             const data = {
               userID,
               table: 'class_code_map',
@@ -215,7 +234,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             }
             $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
               let res = JSON.parse(response);
-              console.log(res);
+              console.log(response);
               this.options = res;
             });
           },
@@ -228,8 +247,123 @@ ELEMENT.locale(ELEMENT.lang.en)
             }
             $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
               let res = JSON.parse(response);
+              console.log(response);
               console.log(res.code);
+              this.post.class_codeID = res.class_codeID;
               this.teacherclasscode = res.code;
+              this.status = res.status;
+              this.fetchpost();
+            });
+          },
+
+
+
+          // post 
+          writePost() {
+            $.post(this.app + this.Helpers + '/PostHelpers.php', this.post, response => {
+              console.log(response);
+              this.post.description = '';
+              this.modalpostdialogVisible = false;
+              console.log(this.post.class_codeID);
+            });            
+          },
+
+          fetchpost() {
+            var data = {
+              id: this.post.class_codeID,
+              fetchTrig: true
+            }
+            $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.fetch = res;
+            });
+          },
+
+          locked(id){
+            this.$confirm('This will unlocked class. Continue?', 'Warning', {
+              confirmButtonText: 'OK',
+              cancelButtonText: 'Cancel',
+              type: 'warning'
+            }).then(() => {
+              const loading = this.$loading({
+                lock: true,
+                text: 'Activating',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+              });
+              setTimeout(() => {
+            this.is_activate_indicator = "Unlocked";
+            var data = {
+              id,
+              table: 'class_code',
+              status: 'close',
+              lockedTrig: true
+            }
+            $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
+              var jsondestroy = JSON.parse(response)
+              if(jsondestroy.statusCode == "success"){
+                loading.close()
+                this.$notify.success({
+                  title: 'Success',
+                  message: 'class is locked',
+                  offset: 100
+                });
+                this.getcodeteacher();
+              }
+            })
+              }, 3000)
+            })
+
+          },
+          unlocked(id){
+            this.$confirm('This will locked class. Continue?', 'Warning', {
+              confirmButtonText: 'OK',
+              cancelButtonText: 'Cancel',
+              type: 'warning'
+            }).then(() => {
+              const loading = this.$loading({
+                lock: true,
+                text: 'Activating',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+              });
+              setTimeout(() => {
+            this.is_activate_indicator = "Locked";
+            var data = {
+              id,
+              table: 'class_code',
+              status: 'open',
+              lockedTrig: true
+            }
+            $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
+              var jsondestroy = JSON.parse(response)
+              if(jsondestroy.statusCode == "success"){
+                loading.close()
+                this.$notify.success({
+                  title: 'Success',
+                  message: 'Class is unlocked',
+                  offset: 100
+                });
+                this.getcodeteacher();
+              }
+            })
+              }, 3000)
+            })
+
+          },
+
+          editclassname(){
+            var data = {
+              classname: this.classTask.classname,
+              id,
+              table: 'class_code',
+              editclassTrig: true
+            }
+            $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+              console.log(response);
+              this.EditdialogVisible = false;
             });
           },
 
@@ -280,6 +414,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                         message: 'Successfully Added',
                         offset: 100
                       });
+                       this.classTask.classname = '';
+                       this.dialogVisible = false;
                       //other actions.
                      }
                     })
@@ -325,7 +461,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   this.profile.municipality = res.municipality
                   this.profile.street = res.address;
                   this.profile.hiName = res.firstname;
-                  // this.teacherID = res.userID;
+                
                   this.calteacherage();
                   this.selectCode(res.userID);
                 });

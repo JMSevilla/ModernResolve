@@ -23,12 +23,25 @@
                                         <div class="col-md-3" style="margin-top: 15px">
                                             <label for="" style="color: gray;">Class Code:</label>
                                             <span style="margin-right: 10px">{{ teacherclasscode }}</span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+                                            <!-- <div class="onoffswitch" v-if="status == 'open'">
+                                                <input @click="locked(post.class_codeID)" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
                                                 <label class="onoffswitch-label" for="myonoffswitch">
                                                     <span class="onoffswitch-inner"></span>
                                                     <span class="onoffswitch-switch"></span>
                                                 </label>
+                                            </div>
+                                            <div class="onoffswitch" v-else>
+                                                <input @click="unlocked(post.class_codeID)" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
+                                                <label class="onoffswitch-label" for="myonoffswitch">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div> -->
+                                            <div v-if="status == 'open'">
+                                            <el-button @click="locked(post.class_codeID)" type="danger" plain round size="mini">Locked</el-button>
+                                            </div>
+                                            <div v-else>
+                                            <el-button @click="unlocked(post.class_codeID)" type="success" plain round size="mini">Unlocked</el-button>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
