@@ -235,7 +235,34 @@ class Bulk  {
 
     public function NB_classcodeget($table) {
         $sql = "
-            select code from $table where name = :name
+            select class_codeID, code, status from $table where name = :name
+        ";
+
+        return $sql;
+    }
+
+    public function NB_writepost($table) {
+        $sql = "
+            insert into $table values (default, :userID, :class_codeID, :description, :files, current_timestamp)
+        ";
+
+        return $sql;
+    }
+
+    public function NB_fetchpost($table) {
+        $sql = "
+            select concat(user.firstname, ' ',user.lastname) as fullname, class_code.name, post.created_at, post.description from $table
+            inner join post on post.class_codeID = class_code.class_codeID
+            inner join user on post.userID = user.userID
+            where class_code.class_codeID = :id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_lockedclassname($table) {
+        $sql = "
+            update $table set status = :status where class_codeID = :id
         ";
 
         return $sql;
