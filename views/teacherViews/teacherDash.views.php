@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card" id="teacherCard" >
                             <div class="card-body">
                                 <div class="container">
                                     <div class="row justify-content-center pt-1" style="margin: 0 -60px 0 -50px">
@@ -56,25 +56,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding: 0 5px"> 
+                <div class="row" style="padding: 0 4px"> 
                     <template>
                         <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane class="tabpane" id="post"name="first"  >
-                            <span slot="label"><i class="el-icon-edit-outline" ></i> Post</span>
-                                <div class="card" style="height: 15%;" >
+                            <span slot="label"><i class="fas fa-edit"></i> Post</span>
+                                <div class="card" id="teacherCard" >
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherWrite.php"); ?>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <div class="card" id="teacherCard">
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherPost.php"); ?>
                                     </div>
                                 </div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
-                            <span slot="label"> <i class="el-icon-user" ></i> Members</span>
-                                <div class="card" style="height: auto; margin-bottom: 30px" >
+                            <span slot="label"> <i class="fas fa-users"></i> Members</span>
+                                <div class="card" style="height: auto; margin-bottom: 30px" id="teacherCard" >
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherMembers.php"); ?>
                                     </div>
