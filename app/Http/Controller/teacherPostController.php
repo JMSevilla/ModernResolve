@@ -22,22 +22,28 @@
             DBIntegrate::ControllerPrepare(lightBringerBulk::fetchpost_query($table));
             DBIntegrate::bind(':id', $data['id']);
             if(DBIntegrate::ControllerExecutable()) {
-                $row = DBIntegrate::controller_fetch_row();
-
-                echo json_encode($row);
+                if(DBIntegrate::controller_row()) {
+                    while($row = DBIntegrate::controller_fetch_all()) {
+                        // $arr['name'] = $row['name'];
+                        // $arr['fullname'] = $row['fullname'];
+                        // $arr['description'] = $row['description'];
+                        // $arr['created_at'] = $row['created_at'];
+                        echo json_encode($row);
+                    }
+                }
             }
         }
         
 
-        public function editclass_controller($table, $data) {
-            if(DBIntegrate::CHECKSERVER()) {
-                DBIntegrate::ControllerPrepare(lightBringerBulk::editclassname_query());
-                DBIntegrate::bind(':id', $data['id']);
-                if(DBIntegrate::ControllerExecutable()) {
-                    echo DBIntegrate::SuccessJSONResponse();
-                }
-            }
-        }
+        // public function editclass_controller($table, $data) {
+        //     if(DBIntegrate::CHECKSERVER()) {
+        //         DBIntegrate::ControllerPrepare(lightBringerBulk::editclassname_query());
+        //         DBIntegrate::bind(':id', $data['id']);
+        //         if(DBIntegrate::ControllerExecutable()) {
+        //             echo DBIntegrate::SuccessJSONResponse();
+        //         }
+        //     }
+        // }
 
         public function lockedclass_controller($table, $data) {
             if(DBIntegrate::CHECKSERVER()) {

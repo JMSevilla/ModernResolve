@@ -1,11 +1,11 @@
-<el-dialog :visible.sync="modalpostdialogVisible" width="40%">
+<el-dialog :visible.sync="modalpostdialogVisible" width="40%" v-for="">
   <span slot="title"> 
     <div class="row">
       <div class="col-md-2">
         <el-avatar :size="55"  icon="el-icon-user-solid" id="teacherpost"></el-avatar>
       </div>
       <div class="col-md-10" style="margin-top:15px;" id="teacherwritepost">
-        {{ fetch.fullname }}
+        {{ profile.fname}} {{ profile.lname }} posted to {{ value }}
       </div>
     </div>
   </span>
