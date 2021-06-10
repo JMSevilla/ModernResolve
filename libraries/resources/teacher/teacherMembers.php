@@ -3,7 +3,7 @@
     <el-tab-pane label="Student" name="first">
             <template>
             <el-table
-            :data="studentTableData.filter(data => !searchStudent || data.name.toLowerCase().includes(searchStudent.toLowerCase()) || data.email.toLowerCase().includes(searchStudent.toLowerCase()))"
+            :data="studentTableData.filter(data => !searchStudent || data.fullname.toLowerCase().includes(searchStudent.toLowerCase()) || data.email.toLowerCase().includes(searchStudent.toLowerCase()))"
             style="width: 100%">
                 <el-table-column
                     prop="Avatar"
@@ -12,7 +12,7 @@
                 </el-table-column>
 
                 <el-table-column
-                    prop="name"
+                    prop="fullname"
                     width="250">
                         <!-- <div style="display:flex">
                             <h6 > John Doe </h6>
@@ -52,10 +52,10 @@
                 
                 <div style="float:right">
                     <el-button plain
-                    @click="deleteStud()">Remove from Class</el-button>
+                    @click="deleteStud(scope.row.userID)">Remove from Class</el-button>
                     <el-button type="warning" 
                     plain 
-                    @click="resetStuddialogVisible = true">Reset Password</el-button>
+                    @click="resetpass_members(scope.row.userID), resetStuddialogVisible = true">Reset Password</el-button>
                 </div>
                     <!-- </center> -->
                 </template>

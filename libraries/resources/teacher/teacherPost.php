@@ -5,18 +5,18 @@
                 </div>
                 <div class="col-md">
                         <div style="display:flex">
-                                <h6 >{{ fetch.fullname }} </h6> &nbsp 
+                                <h6 >{{ item.fullname }} </h6> &nbsp 
                                 <h6 >posted to</h6> &nbsp
-                                <h6  style="text-decoration: underline">{{ fetch.name }}</h6>
+                                <h6  style="text-decoration: underline">{{ item.name }}</h6>
                         </div>
                         <div>
-                                <small>{{ fetch.created_at }}</small>
+                                <small>{{ item.created_at }}</small>
                         </div>
                 
                 </div>
         </div>  
         <div class="pt-4">     
-                <p>{{ fetch.description }}</p>
+                <p>{{ item.description }}</p>
                 <div style="background-color: #f8f8f8; width: 100%; padding: 30px">
                 <a href="">click here...</a></div>
 
@@ -39,3 +39,4 @@
 
         
 </div>
+<br><br>

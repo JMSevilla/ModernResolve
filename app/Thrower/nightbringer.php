@@ -268,6 +268,25 @@ class Bulk  {
         return $sql;
     }
 
+
+    public function NB_fetchmembers($table) {
+        $sql = "
+            select u.userID, concat(u.firstname, ' ',u.lastname) as fullname, u.email_address as email from $table as cc 
+            inner join user as u on cc.userID = u.userID
+            where cc.class_codeID = :classcode_id and u.is_type = '3'
+        ";
+
+        return $sql;
+    }
+
+    public function NB_deletemembers($table) {
+        $sql = "
+            delete from $table where userID = :id AND class_codeID = :classcode_id
+        ";
+
+        return $sql;
+    }
+
     // login token route
     // public function NB_istypeUser($table) {
     //     $sql = "

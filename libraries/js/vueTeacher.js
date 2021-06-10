@@ -86,6 +86,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                 resetstudent:{
                   pass:'',
                   checkPass:'',
+                  id: '',
+                  updatePass: true,
+                  table: 'user'
                 },
                 labelPosition: 'left',
                 addclass:{
@@ -115,15 +118,18 @@ ELEMENT.locale(ELEMENT.lang.en)
                     description: '',
                     files: 'filename',
                     writeTrig: true,
-                    name: 'Emman'
+                    name: ''
                   },
 
-                  // fetch: {
-                  //   firstname: '',
-                  //   description: '',
-                  //   created_at: ''
-                  // },
                   fetch: [],
+                  
+                  chngpss_member: {
+                    pass:'',
+                    checkPass:'',
+                    id: '',
+                    updatePass: true,
+                    table: 'user'
+                  },
 
                   teacherID: '', //emman
                   teacherclasscode: '',
@@ -187,26 +193,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                   ]
                 },
                 activeMem: 'first',
-                studentTableData: [{
-                  Avatar:'',
-                  name: 'John Doe',
-                  email:'johndoe@email.com'
-                },
-                {
-                  Avatar:'',
-                  name: 'me',
-                  email:'me@email.com'
-                },
-                {
-                  Avatar:'',
-                  name: 'test',
-                  email:'iba@email.com'
-                }],
+                studentTableData: [],
                 searchStudent: '',
                 ownerTableData: [{
                   Avatar:'',
                   name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
+
+                classowner: []
+
                 // teacherTableData: [{
                 //   name: 'hello'
                 // }, {
@@ -253,6 +248,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.teacherclasscode = res.code;
               this.status = res.status;
               this.fetchpost();
+              this.teachermembers(res.class_codeID);
             });
           },
 
@@ -281,8 +277,23 @@ ELEMENT.locale(ELEMENT.lang.en)
             });
           },
 
+          teachermembers(id) {
+            console.log('id:: ' + id);
+            var obj = {
+              classcode_id: id,
+              table: 'class_code_map',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.studentTableData = res;
+            });
+          },
+
           locked(id){
-            this.$confirm('This will unlocked class. Continue?', 'Warning', {
+            this.$confirm('This will locked class. Continue?', 'Warning', {
               confirmButtonText: 'OK',
               cancelButtonText: 'Cancel',
               type: 'warning'
@@ -318,7 +329,7 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           },
           unlocked(id){
-            this.$confirm('This will locked class. Continue?', 'Warning', {
+            this.$confirm('This will unlocked class. Continue?', 'Warning', {
               confirmButtonText: 'OK',
               cancelButtonText: 'Cancel',
               type: 'warning'
@@ -354,18 +365,18 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           },
 
-          editclassname(){
-            var data = {
-              classname: this.classTask.classname,
-              id,
-              table: 'class_code',
-              editclassTrig: true
-            }
-            $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
-              console.log(response);
-              this.EditdialogVisible = false;
-            });
-          },
+          // editclassname(){
+          //   var data = {
+          //     classname: this.classTask.classname,
+          //     id,
+          //     table: 'class_code',
+          //     editclassTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+          //     console.log(response);
+          //     this.EditdialogVisible = false;
+          //   });
+          // },
 
           onlogoutuser(){
             
@@ -417,6 +428,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                        this.classTask.classname = '';
                        this.dialogVisible = false;
                       //other actions.
+                      this.selectCode(this.post.userID);
                      }
                     })
                   }, 5000)
@@ -586,27 +598,73 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
-              // hannah reset student
+
+              resetpass_members(id) {
+                const data = {
+                  id,
+                  getId: true,
+                  table: 'user'
+                }
+                $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                  console.log(response);
+                  let res = JSON.parse(response);
+                  this.resetstudent.id = res.userID;
+                });
+              },
+              // hannah reset student front
               resetStudent(formName) {
                 this.$refs[formName].validate((valid) => {
                   if (valid) {
-                    alert('submit!');
+                    const loading = this.$loading({
+                      lock: true,
+                      text: 'Verifying. please wait...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                    });
+                    setTimeout(() => {
+                      $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', this.resetstudent, response => {
+                        console.log(response);
+                        let statRes = JSON.parse(response);
+                        if(statRes.statusCode === 'success') {
+                          this.$notify.success({
+                            title: 'Yey!',
+                            message: 'Password updated!',
+                            offset: 100
+                          });
+                          loading.close();
+                          this.resetStuddialogVisible = false;
+                          this.resetstudent.pass = '';
+                          this.resetstudent.checkPass = '';
+                        }
+                      });
+                    }, 3000);
                   } else {
-                    console.log('error submit!!');
                     return false;
                   }
                 });
               },
               // hannah remove student
-              deleteStud() {
+              deleteStud(id) {
+                console.log('id: ' + id);
+                console.log('cc: ' + this.post.class_codeID);
                 this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
                   confirmButtonText: 'OK',
                   cancelButtonText: 'Cancel',
                   type: 'warning'
                 }).then(() => {
-                  this.$notify({
-                    type: 'success',
-                    message: 'Delete completed'
+                  var delstud = {
+                    id,
+                    classcode_id: this.post.class_codeID,
+                    table: 'class_code_map',
+                    delMemberTrig: true 
+                  }
+                  $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', delstud, response => {
+                    console.log(response);
+                    this.$notify({
+                      type: 'success',
+                      message: 'Delete completed'
+                    });
+                    this.teachermembers(this.post.class_codeID);
                   });
                 }).catch(() => {
                   this.$notify({
@@ -615,6 +673,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });          
                 });
               },
+
               //assigment
               assignConfirm(formName) {
                 this.$refs[formName].validate((valid) => {

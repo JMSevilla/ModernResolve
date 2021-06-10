@@ -79,7 +79,7 @@
                                         <?php include("libraries/resources/teacher/teacherWrite.php"); ?>
                                     </div>
                                 </div>
-                                <div class="card" id="teacherCard">
+                                <div class="card" id="teacherCard" v-for="(item, index) in fetch">
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherPost.php"); ?>
                                     </div>

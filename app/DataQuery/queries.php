@@ -196,6 +196,14 @@ public function lockedclassname_query($table) {
   return BULK::NB_lockedclassname($table);
 }
 
+public function fetch_members($table) {
+  return BULK::NB_fetchmembers($table);
+}
+
+public function deletemembers_query($table) {
+  return BULK::NB_deletemembers($table);
+}
+
 // login token route
 // public function istypeUser($table) {
 //   return BULK::NB_istypeUser($table);
