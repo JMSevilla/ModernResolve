@@ -38,10 +38,10 @@
                                                 </label>
                                             </div> -->
                                             <div v-if="status == 'open'">
-                                            <el-button @click="locked(post.class_codeID)" type="danger" plain round size="mini">Locked</el-button>
+                                            <el-button @click="locked(post.class_codeID)" type="danger" plain size="mini">Locked</el-button>
                                             </div>
                                             <div v-else>
-                                            <el-button @click="unlocked(post.class_codeID)" type="success" plain round size="mini">Unlocked</el-button>
+                                            <el-button @click="unlocked(post.class_codeID)" type="success" plain size="mini">Unlocked</el-button>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -74,7 +74,7 @@
                         <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane class="tabpane" id="post"name="first"  >
                             <span slot="label"><i class="fas fa-edit"></i> Post</span>
-                                <div class="card" id="teacherCard" >
+                                <!-- <div class="card" id="teacherCard" >
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherWrite.php"); ?>
                                     </div>
@@ -83,7 +83,7 @@
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherPost.php"); ?>
                                     </div>
-                                </div>
+                                </div> -->
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="fas fa-users"></i> Members</span>
