@@ -10,7 +10,7 @@
                                     <div class="row justify-content-center pt-1" style="margin: 0 -60px 0 -50px">
                                         <div class="col-md-4" >
                                             <template>
-                                                <el-select id="select" v-model="value" @change="getcodeteacher()" clearable placeholder="Select Class Name">
+                                                <el-select id="select" v-model="value" @change="getcodeteacher()" placeholder="Select Class Name">
                                                     <el-option
                                                     v-for="item in options"
                                                     :key="item.name"
@@ -40,8 +40,10 @@
                                             <div v-if="status == 'open'">
                                             <el-button @click="locked(post.class_codeID)" type="danger" plain size="mini">Locked</el-button>
                                             </div>
-                                            <div v-else>
+                                            <div v-else-if="status == 'close'">
                                             <el-button @click="unlocked(post.class_codeID)" type="success" plain size="mini">Unlocked</el-button>
+                                            </div>
+                                            <div v-else>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -74,24 +76,30 @@
                         <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane class="tabpane" id="post"name="first"  >
                             <span slot="label"><i class="fas fa-edit"></i> Post</span>
-                                <!-- <div class="card" id="teacherCard" >
+                                <div v-if="status == 'open' || status  == 'close'">
+                                <div class="card" id="teacherCard" >
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherWrite.php"); ?>
                                     </div>
                                 </div>
+                                </div>
+                                <div v-else></div>
                                 <div class="card" id="teacherCard" v-for="(item, index) in fetch">
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherPost.php"); ?>
                                     </div>
-                                </div> -->
+                                </div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="fas fa-users"></i> Members</span>
+                            <div v-if="status == 'open' || status == 'close'">
                                 <div class="card" style="height: auto; margin-bottom: 30px" id="teacherCard" >
                                     <div class="card-body">
                                         <?php include("libraries/resources/teacher/teacherMembers.php"); ?>
                                     </div>
                                 </div>
+                            </div>
+                            <div v-else></div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="prog" name="third">
                             <span slot="label"> <i class="el-icon-s-data" ></i> Progress</span>

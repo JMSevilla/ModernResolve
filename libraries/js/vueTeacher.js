@@ -194,13 +194,16 @@ ELEMENT.locale(ELEMENT.lang.en)
                 },
                 activeMem: 'first',
                 studentTableData: [],
+                teacherTableData: [],
                 searchStudent: '',
                 ownerTableData: [{
                   Avatar:'',
                   name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
 
-                classowner: []
+                classowner: [],
+
+                editclass: ''
 
                 // teacherTableData: [{
                 //   name: 'hello'
@@ -231,6 +234,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               let res = JSON.parse(response);
               console.log(response);
               this.options = res;
+              this.discuss = 1;
             });
           },
 
@@ -249,6 +253,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.status = res.status;
               this.fetchpost();
               this.teachermembers(res.class_codeID);
+              this.classteacher(res.class_codeID);
             });
           },
 
@@ -261,6 +266,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.post.description = '';
               this.modalpostdialogVisible = false;
               console.log(this.post.class_codeID);
+              this.fetchpost();
             });            
           },
 
@@ -282,6 +288,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             var obj = {
               classcode_id: id,
               table: 'class_code_map',
+              type: '3',
               fetchingTrig: true
             }
             $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
@@ -289,6 +296,38 @@ ELEMENT.locale(ELEMENT.lang.en)
               let res = JSON.parse(response);
               console.log(res);
               this.studentTableData = res;
+            });
+          },
+
+          classteacher(id) {
+            console.log('id:: ' + id);
+            var obj = {
+              classcode_id: id,
+              table: 'class_code_map',
+              type: '2',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.teacherTableData = res;
+            });
+          },
+
+          editclassname() {
+            var editclass = {
+              value: this.value,
+              c_user: this.classTask.currentUser,
+              classname: this.editclass,
+              table: 'class_code',
+              editclassTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherdashboardHelpers.php', editclass, response => {
+              console.log(response);
+              this.selectCode(this.post.userID);
+              this.editclass = '';
+              this.EditdialogVisible = false;
             });
           },
 

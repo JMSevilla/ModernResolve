@@ -6,7 +6,8 @@
 
         public function fetchingmembers_model($table) {
             $data = [
-                'classcode_id' => $_POST['classcode_id']
+                'classcode_id' => $_POST['classcode_id'],
+                'type' => $_POST['type']
             ];
 
             TeacherMembersController::fetchmembers($table, $data);

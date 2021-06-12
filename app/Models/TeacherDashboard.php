@@ -39,4 +39,15 @@
             TeacherDashController::updateProfileTeacherDash_controller($table, $data);
         }
 
+        // edit class name
+        public function editclassnameteacher_model($table) {
+            $data = [
+                'value' => $_POST['value'],
+                'c_user' => $_POST['c_user'],
+                'classname' => $_POST['classname']
+            ];
+
+            TeacherDashController::editclassnameteacher_controller($table, $data);
+        }
+
     }

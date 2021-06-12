@@ -8,6 +8,7 @@
         public function fetchmembers($table, $data) {
             DBIntegrate::ControllerPrepare(lightBringerBulk::fetch_members($table));
             DBIntegrate::bind(':classcode_id', $data['classcode_id']);
+            DBIntegrate::bind('type', $data['type']);
             if(DBIntegrate::ControllerExecutable()) {
                 $row = DBIntegrate::controller_fetch_all();
 
