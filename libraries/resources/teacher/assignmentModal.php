@@ -43,7 +43,7 @@
             </el-form-item>
             <br>
             <hr>
-            <br>
+            <!-- <br> -->
             <span>
                 <el-button>Attach Files</el-button> 
                 <span style="float: right">

@@ -8,6 +8,8 @@ ELEMENT.locale(ELEMENT.lang.en)
             return{
                 resetstudentdialogVisible: false,
                 resetlabelPosition: 'left',
+                assignDialogVisible: false,
+                assignLabelPosition: 'top',
                 resetstudent:{
                     oldpass:'',
                     newpass:'',
@@ -51,10 +53,12 @@ ELEMENT.locale(ELEMENT.lang.en)
                     Avatar:'',
                     name: 'Juan Dela Cruz  (Class Owner)',
                   }],
+                textarea: '',
+
             }        
         },
         methods: {
-
+         
           
           },
         
