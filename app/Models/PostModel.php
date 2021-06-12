@@ -23,13 +23,13 @@
             TeacherPostController::fetchpost_controller($table, $data);
         }
 
-        public function editclass_model($table) {
-            $data = [
-                'id' => $_POST['id']
-            ];
+        // public function editclass_model($table) {
+        //     $data = [
+        //         'id' => $_POST['id']
+        //     ];
 
-            TeacherPostController::editclass_controller($table, $data);
-        }
+        //     TeacherPostController::editclass_controller($table, $data);
+        // }
 
         public function lockedclass_model($table) {
             $data = [

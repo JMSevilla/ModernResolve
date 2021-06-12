@@ -17,6 +17,12 @@
         TeacherDashboardModel::updateProfileTeacherDash_model($table);
     }
 
+    // edit class name
+    if(isset($_POST['editclassTrig']) == true) {
+        $table = $_POST['table'];
+        TeacherDashboardModel::editclassnameteacher_model($table);
+    }
+
     function teacherdash_route() {
         include_once "../Models/TeacherDashboard.php";
         include_once "../Providers/interface.php";

@@ -10,7 +10,7 @@
     </span>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item @click.native="resetstudentdialogVisible = true" icon="el-icon-key">  Reset Password </el-dropdown-item>
-      <a class="profileicon" href="profileTeacher"><el-dropdown-item icon="el-icon-user"> Profile </el-dropdown-item></a>
+      <a class="profileicon" href="profileStudent"><el-dropdown-item icon="el-icon-user"> Profile </el-dropdown-item></a>
       <el-dropdown-item icon="el-icon-switch-button" @click.native="onlogoutuser">Logout</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>

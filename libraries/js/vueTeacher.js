@@ -87,6 +87,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                 resetstudent:{
                   pass:'',
                   checkPass:'',
+                  id: '',
+                  updatePass: true,
+                  table: 'user'
                 },
                 labelPosition: 'left',
                 addclass:{
@@ -116,15 +119,18 @@ ELEMENT.locale(ELEMENT.lang.en)
                     description: '',
                     files: 'filename',
                     writeTrig: true,
-                    name: 'Emman'
+                    name: ''
                   },
 
-                  // fetch: {
-                  //   firstname: '',
-                  //   description: '',
-                  //   created_at: ''
-                  // },
                   fetch: [],
+                  
+                  chngpss_member: {
+                    pass:'',
+                    checkPass:'',
+                    id: '',
+                    updatePass: true,
+                    table: 'user'
+                  },
 
                   teacherID: '', //emman
                   teacherclasscode: '',
@@ -188,53 +194,17 @@ ELEMENT.locale(ELEMENT.lang.en)
                   ]
                 },
                 activeMem: 'first',
-                studentTableData: [{
-                  Avatar:'',
-                  name: 'John Doe',
-                  email:'johndoe@email.com'
-                },
-                {
-                  Avatar:'',
-                  name: 'me',
-                  email:'me@email.com'
-                },
-                {
-                  Avatar:'',
-                  name: 'test',
-                  email:'iba@email.com'
-                }],
+                studentTableData: [],
+                teacherTableData: [],
                 searchStudent: '',
                 ownerTableData: [{
                   Avatar:'',
                   name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
-                quiz:{
-                  title:'',
-                  instructions:'',
-                  textTF:'',
-                  responsesTF: '',
-                  gradingTF:'',
-                  textMC:'',
-                  gradingMC:'',
-                  textSA:'',
-                  gradingSA:'',
-                  textFill:'',
-                  gradingFill:'',
-                  textMA:'',
-                  gradingMA:'',
-                  textMT:'',
-                  gradingMT:'',
-                  inputMT1:'',
-                  inputMT2:''
 
-                },
-                // dynamicValidateForm: {
-                //   domains: [{
-                //     key: 1,
-                //     value: ''
-                //   }],
-                //   email: ''
-                // },
+               
+                classowner: [],
+                editclass: '',
                 quiztype: [{
                   value: 'True/False',
                   label: 'True/False'
@@ -329,6 +299,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               let res = JSON.parse(response);
               console.log(response);
               this.options = res;
+              this.discuss = 1;
             });
           },
 
@@ -346,6 +317,8 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.teacherclasscode = res.code;
               this.status = res.status;
               this.fetchpost();
+              this.teachermembers(res.class_codeID);
+              this.classteacher(res.class_codeID);
             });
           },
 
@@ -358,6 +331,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.post.description = '';
               this.modalpostdialogVisible = false;
               console.log(this.post.class_codeID);
+              this.fetchpost();
             });            
           },
 
@@ -374,8 +348,56 @@ ELEMENT.locale(ELEMENT.lang.en)
             });
           },
 
+          teachermembers(id) {
+            console.log('id:: ' + id);
+            var obj = {
+              classcode_id: id,
+              table: 'class_code_map',
+              type: '3',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.studentTableData = res;
+            });
+          },
+
+          classteacher(id) {
+            console.log('id:: ' + id);
+            var obj = {
+              classcode_id: id,
+              table: 'class_code_map',
+              type: '2',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.teacherTableData = res;
+            });
+          },
+
+          editclassname() {
+            var editclass = {
+              value: this.value,
+              c_user: this.classTask.currentUser,
+              classname: this.editclass,
+              table: 'class_code',
+              editclassTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherdashboardHelpers.php', editclass, response => {
+              console.log(response);
+              this.selectCode(this.post.userID);
+              this.editclass = '';
+              this.EditdialogVisible = false;
+            });
+          },
+
           locked(id){
-            this.$confirm('This will unlocked class. Continue?', 'Warning', {
+            this.$confirm('This will locked class. Continue?', 'Warning', {
               confirmButtonText: 'OK',
               cancelButtonText: 'Cancel',
               type: 'warning'
@@ -411,7 +433,7 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           },
           unlocked(id){
-            this.$confirm('This will locked class. Continue?', 'Warning', {
+            this.$confirm('This will unlocked class. Continue?', 'Warning', {
               confirmButtonText: 'OK',
               cancelButtonText: 'Cancel',
               type: 'warning'
@@ -447,18 +469,18 @@ ELEMENT.locale(ELEMENT.lang.en)
 
           },
 
-          editclassname(){
-            var data = {
-              classname: this.classTask.classname,
-              id,
-              table: 'class_code',
-              editclassTrig: true
-            }
-            $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
-              console.log(response);
-              this.EditdialogVisible = false;
-            });
-          },
+          // editclassname(){
+          //   var data = {
+          //     classname: this.classTask.classname,
+          //     id,
+          //     table: 'class_code',
+          //     editclassTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+          //     console.log(response);
+          //     this.EditdialogVisible = false;
+          //   });
+          // },
 
           onlogoutuser(){
             
@@ -510,6 +532,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                        this.classTask.classname = '';
                        this.dialogVisible = false;
                       //other actions.
+                      this.selectCode(this.post.userID);
                      }
                     })
                   }, 5000)
@@ -669,8 +692,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
-              //reset student
-              resetStudent(formName) {
+              confirmAddclass(formName) {
                 this.$refs[formName].validate((valid) => {
                   if (valid) {
                     alert('submit!');
@@ -680,16 +702,74 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
-              //remove student
-              deleteStud() {
+
+              resetpass_members(id) {
+                const data = {
+                  id,
+                  getId: true,
+                  table: 'user'
+                }
+                $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', data, response => {
+                  console.log(response);
+                  let res = JSON.parse(response);
+                  this.resetstudent.id = res.userID;
+                });
+              },
+              // hannah reset student front
+              resetStudent(formName) {
+                this.$refs[formName].validate((valid) => {
+                  if (valid) {
+                    const loading = this.$loading({
+                      lock: true,
+                      text: 'Verifying. please wait...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                    });
+                    setTimeout(() => {
+                      $.post(this.app + this.Helpers + '/AddTeacherHelpers.php', this.resetstudent, response => {
+                        console.log(response);
+                        let statRes = JSON.parse(response);
+                        if(statRes.statusCode === 'success') {
+                          this.$notify.success({
+                            title: 'Yey!',
+                            message: 'Password updated!',
+                            offset: 100
+                          });
+                          loading.close();
+                          this.resetStuddialogVisible = false;
+                          this.resetstudent.pass = '';
+                          this.resetstudent.checkPass = '';
+                        }
+                      });
+                    }, 3000);
+                  } else {
+                    return false;
+                  }
+                });
+              },
+
+              // hannah remove student
+                deleteStud(id) {
+                console.log('id: ' + id);
+                console.log('cc: ' + this.post.class_codeID);
                 this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
                   confirmButtonText: 'OK',
                   cancelButtonText: 'Cancel',
                   type: 'warning'
                 }).then(() => {
-                  this.$notify({
-                    type: 'success',
-                    message: 'Delete completed'
+                  var delstud = {
+                    id,
+                    classcode_id: this.post.class_codeID,
+                    table: 'class_code_map',
+                    delMemberTrig: true 
+                  }
+                  $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', delstud, response => {
+                    console.log(response);
+                    this.$notify({
+                      type: 'success',
+                      message: 'Delete completed'
+                    });
+                    this.teachermembers(this.post.class_codeID);
                   });
                 }).catch(() => {
                   this.$notify({
@@ -698,6 +778,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });          
                 });
               },
+
               //assigment
               assignConfirm(formName) {
                 this.$refs[formName].validate((valid) => {

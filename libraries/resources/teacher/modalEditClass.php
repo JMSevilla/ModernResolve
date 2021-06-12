@@ -5,11 +5,11 @@
 
     width="35%">
     
-    <el-input  v-model="classTask.editclassname"></el-input>
+    <el-input  v-model="editclass"></el-input>
 
     <span slot="footer" class="dialog-footer">
-        <el-button @click="editclassname()">Cancel</el-button>
-        <el-button type="primary" >Confirm</el-button>
+        <el-button>Cancel</el-button>
+        <el-button @click="editclassname()" type="primary" >Confirm</el-button>
     </span>
 
 </el-dialog>
