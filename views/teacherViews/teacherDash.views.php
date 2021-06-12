@@ -57,7 +57,7 @@
                                                     </div>
                                                 </div>
                                                     <div class="d-flex" style="justify-content: flex-end; padding-top: 100px; margin-right: 10px">
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked">Quiz</el-button>
+                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked" onclick="location.href='teacherQuiz'">Quiz</el-button>
                                                         <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
                                                         <?php include("libraries/resources/teacher/assignmentModal.php"); ?>
                                                     </div>  

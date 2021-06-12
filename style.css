@@ -836,3 +836,45 @@ input[id=txtzip]::-webkit-outer-spin-button {
   min-height: 150px !important;
 }
 /* alden */
+
+/* hannah teacher quiz dash */
+.trueResponse
+{
+  border: solid 1px black;
+}
+
+#TFContainer
+{
+  border: solid 1px #E4E7ED;
+  border-radius: 5px;
+}
+
+#TFText
+{
+  padding-left: 2%;
+}
+
+#TFRadio
+{
+  float: right;
+  margin-top: 14px;
+  margin-right: 25px;
+}
+
+#MCText
+{
+  border: none;
+  outline: none;
+  width: 90%;
+  padding-left: 2%;
+  color: #606266;
+}
+
+input[id=grading]::-webkit-inner-spin-button, 
+input[id=grading]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
