@@ -68,7 +68,7 @@
     <el-tab-pane label="Teacher" name="second">
     <template>
             <el-table
-            :data="ownerTableData"
+            :data="teacherTableData"
             style="width: 100%">
             <el-table-column
                 prop="Avatar"
@@ -77,7 +77,7 @@
                 </el-table-column>
 
                 <el-table-column
-                    prop="name">
+                    prop="fullname">
                         <!-- <div class="row" style="display:flex">
                             <h6 > Juan Dela Cruz </h6>
                         </div> -->
@@ -85,7 +85,7 @@
                             <small>Class Owner</small>
                         </div> -->
                 </el-table-column>
-                <small>Class Owner</small>
+                <!-- <small>Class Owner</small> -->
             </template>
 
             <!-- <template>

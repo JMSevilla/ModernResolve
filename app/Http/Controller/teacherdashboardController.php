@@ -59,4 +59,17 @@
             }
         }
 
+        // edit class name 
+        public function editclassnameteacher_controller($table, $data) {
+            if(DBIntegrate::CHECKSERVER()) {
+                DBIntegrate::ControllerPrepare(lightBringerBulk::editclassname_query($table));
+                DBIntegrate::bind(':value', $data['value']);
+                DBIntegrate::bind(':user', $data['c_user']);  
+                DBIntegrate::bind(':classname', $data['classname']);
+                if(DBIntegrate::ControllerExecutable()) {
+                    echo DBIntegrate::SuccessJSONResponse();
+                }          
+            }
+        }
+
     }

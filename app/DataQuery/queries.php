@@ -204,6 +204,11 @@ public function deletemembers_query($table) {
   return BULK::NB_deletemembers($table);
 }
 
+// edit class name
+public function editclassname_query($table) {
+  return BULK::NB_editclassname($table);
+}
+
 // login token route
 // public function istypeUser($table) {
 //   return BULK::NB_istypeUser($table);

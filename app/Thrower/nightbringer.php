@@ -254,7 +254,7 @@ class Bulk  {
             select concat(user.firstname, ' ',user.lastname) as fullname, class_code.name, post.created_at, post.description from $table
             inner join post on post.class_codeID = class_code.class_codeID
             inner join user on post.userID = user.userID
-            where class_code.class_codeID = :id
+            where class_code.class_codeID = :id order by postID desc
         ";
 
         return $sql;
@@ -273,7 +273,7 @@ class Bulk  {
         $sql = "
             select u.userID, concat(u.firstname, ' ',u.lastname) as fullname, u.email_address as email from $table as cc 
             inner join user as u on cc.userID = u.userID
-            where cc.class_codeID = :classcode_id and u.is_type = '3'
+            where cc.class_codeID = :classcode_id and u.is_type = :type
         ";
 
         return $sql;
@@ -282,6 +282,18 @@ class Bulk  {
     public function NB_deletemembers($table) {
         $sql = "
             delete from $table where userID = :id AND class_codeID = :classcode_id
+        ";
+
+        return $sql;
+    }
+
+    public function NB_editclassname($table) {
+        $sql = "
+            update $table as cc 
+            inner join class_code_map as ccm on cc.class_codeID = ccm.class_codeID
+            inner join user as u on ccm.userID = u.userID
+            set name = :classname 
+            where cc.name = :value and u.email_address = :user
         ";
 
         return $sql;
