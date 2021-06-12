@@ -48,17 +48,17 @@
                                             <div class="container">
                                                 <div class="d-flex" style="justify-content: flex-end;">
                                                     <div>
-                                                        <el-button size="medium" style="width: 110px"class="btnAddClass" type="info" icon="el-icon-circle-plus" @click="dialogVisible = true">Add Class</el-button>
+                                                        <el-button size="medium" style="width: 110px; padding: 10px"class="btnAddClass" type="info" icon="el-icon-circle-plus" @click="dialogVisible = true">Add Class</el-button>
                                                         <?php include("libraries/resources/teacher/modalAddClass.php"); ?> 
                                                     </div> &nbsp
                                                     <div>
-                                                        <el-button size="medium" style="margin-right: 10px; width: 110px" class="btnAddClass" type="info" icon="el-icon-remove" @click="EditdialogVisible = true">Edit Class</el-button>
+                                                        <el-button size="medium" style="margin-right: 10px; width: 110px; padding: 10px" class="btnAddClass" type="info" icon="el-icon-remove" @click="EditdialogVisible = true">Edit Class</el-button>
                                                         <?php include("libraries/resources/teacher/modalEditClass.php"); ?>  
                                                     </div>
                                                 </div>
-                                                    <div class="d-flex" style="justify-content: flex-end; padding-top: 100px; margin-right: 10px">
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked">Quiz</el-button>
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
+                                                    <div class="d-flex" style="justify-content: flex-end; padding-top: 100px; margin-right: 10px; padding-bottom: 5px">
+                                                        <el-button size="medium" style="width: 110px; padding: 10px; z-index: 1; position:relative" icon="el-icon-document-checked">Quiz</el-button>
+                                                        <el-button size="medium" style="width: 120px; padding: 10px; z-index: 1; position:relative" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
                                                         <?php include("libraries/resources/teacher/assignmentModal.php"); ?>
                                                     </div>  
                                             </div>                                      

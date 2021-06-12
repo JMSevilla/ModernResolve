@@ -25,10 +25,10 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="container">
-                                                    <div class="d-flex" style="justify-content: flex-end; padding-top: 100px; margin-right: 10px">
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked">Quiz</el-button>
-                                                        <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
-                                                        <!-- <?php include("libraries/resources/teacher/assignmentModal.php"); ?> -->
+                                                    <div class="d-flex" style="justify-content: flex-end; padding-top: 130px; margin-right: 10px; padding-bottom: 10px">
+                                                        <el-button size="medium" style="width: 110px; padding: 10px; z-index: 1; position:relative" icon="el-icon-document-checked">Quiz</el-button>
+                                                        <el-button size="medium" style="width: 120px; padding: 10px; z-index: 1; position:relative" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
+                                                        <?php include("libraries/resources/student/assignmentModal.php"); ?>
                                                     </div>  
                                             </div>                                      
                                         </div>
@@ -43,16 +43,17 @@
                         <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane class="tabpane" id="post"name="first"  >
                             <span slot="label"><i class="fas fa-edit"></i> Post</span>
-                                <!-- <div class="card" id="teacherCard" > -->
-                                    <!-- <div class="card-body">
-
-                                    </div>
-                                </div>
-                                <div class="card" id="teacherCard">
+                                <!-- <div class="card" id="teacherCard" >
                                     <div class="card-body">
 
                                     </div>
                                 </div> -->
+                                <div class="card" id="teacherCard" >
+                                    <div class="card-body">
+                                    <?php include("libraries/resources/student/studentPost.php"); ?>
+
+                                    </div>
+                                </div>
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="fas fa-users"></i> Members</span>
