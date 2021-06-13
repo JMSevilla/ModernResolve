@@ -4,12 +4,12 @@
   width="50%"> <hr style="margin-top: -20px">
   <span>
         <el-form :label-position="assignLabelPosition" label-width="100px" :model="assignment" :rules="rulesAssignment" ref="assignment">
-            <el-form-item label="Assignment Title" prop="title" required>
+            <el-form-item label="Assignment Title" prop="title">
                  <el-input 
                     v-model="assignment.title">
                  </el-input>
             </el-form-item>
-            <el-form-item label="Instructions" prop="instructions" required>
+            <el-form-item label="Instructions" prop="instructions">
                 <el-input 
                     type="textarea" 
                     id="assigntextarea" 
@@ -38,8 +38,8 @@
                 </el-form-item>
                 </el-col>
             </el-form-item>
-            <el-form-item prop="lock" style="margin-top: 30px" >
-                <el-checkbox label="Lock after due date"></el-checkbox>    
+            <el-form-item prop="type" style="margin-top: 30px"  >
+                <el-checkbox label="Lock after due date" name="type" v-model="assignment.type"></el-checkbox>    
             </el-form-item>
             <br>
             <hr>

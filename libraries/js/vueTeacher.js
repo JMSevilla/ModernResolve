@@ -77,6 +77,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   instructions: '',
                   date: '',
                   time: '',
+                  type:[],
                 },
                 resetteacher:{
                     oldpass:'',
@@ -183,8 +184,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                   time: [
                     { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
                   ],
-                  lock: [
-                    {required: true, message: 'Please click the checkbox', trigger: 'change' }
+                  type: [
+                    {type: 'array',required: true, message: 'Please click the checkbox', trigger: 'change' }
                   ],
                 },
                 rulesclassTask:{
@@ -201,19 +202,80 @@ ELEMENT.locale(ELEMENT.lang.en)
                   name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
 
+               
                 classowner: [],
-
-                editclass: ''
-
-                // teacherTableData: [{
-                //   name: 'hello'
-                // }, {
-                //   name: 'Wanda',
-                // }], 
-
-                
+                editclass: '',
+                quiztype: [{
+                  value: 'True/False',
+                  label: 'True/False'
+                }, {
+                  value: 'Multiple Choice',
+                  label: 'Multiple Choice'
+                }, {
+                  value: 'Short Answer',
+                  label: 'Short Answer'
+                }, {
+                  value: 'Fill in the blanks',
+                  label: 'Fill in the blanks'
+                },{
+                  value: 'Multiple Answer',
+                  label: 'Multiple Answer'
+                }],
+                value: '',
+                valueTF:'',
+                key: 1,
+                valueMC:'',
+                valueMA:[],
+                num:'',
+                num2: '',
+                num3:'',
+                num4:'',
+                num5:'',
+                indicator:'',
+                mc: '',
+                textMc1:'',
+                textMc2:'',
+                textMc3:'',
+                textMc4:'',
+                textMc5:'',
+                dynamicValidateForm: {
+                  domains: [{
+                    key: 1,
+                    textTF: '',
+                    valueTF:'',
+                    gradingTF:''
+                  }],
+                  domains1: [{
+                    key: 1,
+                    textMC: '',
+                    textMc1:'',
+                    textMc2:'',
+                    textMc3:'',
+                    textMc4:'',
+                    textMc5:'',
+                    valueMC:'',
+                    gradingMC:''
+                  }],
+                  domains2: [{
+                    key: 1,
+                    textSA: '',
+                    gradingSA:''
+                  }],
+                  domains3: [{
+                    key: 1,
+                    textFill: '',
+                    gradingFill:''
+                  }],
+                  domains4: [{
+                    key: 1,
+                    textMA: '',
+                    valueMA:[],
+                    gradingMA:''
+                  }],
+                }
             }
         },
+        
             
         created: function(){
           this.getpassTeacherdash();
@@ -222,6 +284,9 @@ ELEMENT.locale(ELEMENT.lang.en)
         
         methods: {
 
+          click() {
+            console.log('lll');
+          },
           // select class code
           selectCode(userID) {
             this.post.userID = userID;
@@ -682,8 +747,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
+
               // hannah remove student
-              deleteStud(id) {
+                deleteStud(id) {
                 console.log('id: ' + id);
                 console.log('cc: ' + this.post.class_codeID);
                 this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
@@ -724,6 +790,86 @@ ELEMENT.locale(ELEMENT.lang.en)
                   }
                 });
               },
+              addDomain() {
+                this.dynamicValidateForm.domains.push({
+                  key: Date.now(),
+                  selectTF:'',
+                  textTF: '',
+                  valueTF:'',
+                  gradingTF:''
+                });
+                console.log(this.dynamicValidateForm);
+              },
+              addDomain1() {
+                this.dynamicValidateForm.domains1.push({
+                  key: Date.now(),
+                  selectMC:'',
+                  textMC: '',
+                  valueMC:'',
+                  gradingMC:''
+                });
+                console.log(this.dynamicValidateForm);
+              },
+              addDomain2() {
+                this.dynamicValidateForm.domains2.push({
+                  key: Date.now(),
+                  selectSA:'',
+                  textSA: '',
+                  valueSA:'',
+                  gradingSA:''
+                });
+                console.log(this.dynamicValidateForm);
+              },
+              addDomain3() {
+                this.dynamicValidateForm.domains3.push({
+                  key: Date.now(),
+                  textFill: '',
+                  gradingFill:''
+                });
+                console.log(this.dynamicValidateForm);
+              },
+              addDomain4() {
+                this.dynamicValidateForm.domains4.push({
+                  key: Date.now(),
+                  textFill: '',
+                  gradingFill:''
+                });
+                console.log(this.dynamicValidateForm);
+              },
+              removeDomain(item) {
+                var index = this.dynamicValidateForm.domains.indexOf(item);
+                if (index !== -1) {
+                  this.dynamicValidateForm.domains.splice(index, 1);
+                }
+              },
+              selQue() {
+                this.dynamicValidateForm.domains.selectTF = this.value;
+                this.indicator = this.value;
+                // this.mc = this.value;
+                console.log(this.dynamicValidateForm.domains.selectTF);
+                console.log('sample: ' + this.indicator);
+              },
+              btnS() {       
+                if(this.value == 'True/False') {
+                  this.num += 1;
+                }
+                else if(this.value == 'Multiple Choice') {
+                  this.num2 += 1;
+                }
+                else if(this.value == 'Short Answer') {
+                  this.num3 += 1;
+                }
+                else if(this.value == 'Fill in the blanks') {
+                  this.num4 += 1;
+                }
+                else if(this.value == 'Multiple Answer') {
+                  this.num5 += 1;
+                }
+                else this.num2 = '';
+                // this.num = this.textsample;
+                // console.log('text: ' +this.num);
+                // this.textsample = '';
+              },              
           }
     })
 
