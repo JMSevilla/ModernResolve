@@ -10,7 +10,7 @@
                                     <div class="row justify-content-center pt-1" style="margin: 0 -60px 0 -50px">
                                         <div class="col-md-4" >
                                             <template>
-                                                <el-select id="select" v-model="value" clearable placeholder="Select Class Name">
+                                                <el-select id="select" v-model="value" @change="getcodestudent()" placeholder="Select Class Name">
                                                     <el-option
                                                     v-for="item in options"
                                                     :key="item.name"
@@ -21,7 +21,7 @@
                                             </template>
                                         </div>
                                         <div class="col-md-3" style="margin-top: 15px">
-                                            <label for="" style="color: gray;">Class Code:</label>
+                                            <label for="" style="color: gray;">Class Code: {{ studentclasscode }}</label>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="container">
@@ -43,12 +43,12 @@
                         <el-tabs  class="classtabs" v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane class="tabpane" id="post"name="first"  >
                             <span slot="label"><i class="fas fa-edit"></i> Post</span>
-                                <!-- <div class="card" id="teacherCard" >
+                                <div class="card" id="teacherCard" v-if="value">
                                     <div class="card-body">
-
+                                        <?php include("libraries/resources/student/studentWrite.php") ?>
                                     </div>
-                                </div> -->
-                                <div class="card" id="teacherCard" >
+                                </div>
+                                <div class="card" id="teacherCard" v-for="(item, index) in fetch">
                                     <div class="card-body">
                                     <?php include("libraries/resources/student/studentPost.php"); ?>
 
@@ -57,7 +57,7 @@
                         </el-tab-pane>
                         <el-tab-pane class="tabpane" id="mem" name="second">
                             <span slot="label"> <i class="fas fa-users"></i> Members</span>
-                                <div class="card" style="height: auto; margin-bottom: 30px" id="teacherCard" >
+                                <div class="card" style="height: auto; margin-bottom: 30px" id="teacherCard" v-if="value">
                                     <div class="card-body">
                                         <?php include("libraries/resources/student/studentMembers.php"); ?>
                                     </div>

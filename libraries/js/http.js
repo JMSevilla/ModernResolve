@@ -76,7 +76,8 @@ const handler = {
         setTimeout(() => window.location.href = "http://localhost/torrestech/modernresolve/teacherdash", 1000);
       }
       else if(hammer.type == 'Student') {
-        // console.log('Student Login!');
+        console.log('Student Login!');
+        window.location.href = "http://localhost/torrestech/modernresolve/studentDash";
       }
       else {
         alert('Invalid email and password!');

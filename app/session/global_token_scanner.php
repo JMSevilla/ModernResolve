@@ -36,3 +36,11 @@ if(isset($_POST['logtruncateAdmin']) == true){
         'logs' => 'logout'
     ));
 }
+
+if(isset($_POST['logtruncateStudent']) == true){
+    unset($_COOKIE['Token_Student']);
+    setcookie('Token_Student', null, -1, '/');
+    echo json_encode(array(
+        'logs' => 'logout'
+    ));
+}

@@ -21,6 +21,7 @@
                             if($isverified == '1') {
                                 if($isactivate == '1') {
                                     if($istype == '3') {
+                                        echo json_encode(array('type' => 'Student'));
                                         DBIntegrate::cookieOfLife_Student($data['oauth']);
                                     }
                                     else if($istype == '2') {

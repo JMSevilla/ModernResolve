@@ -202,6 +202,11 @@ ELEMENT.locale(ELEMENT.lang.en)
                   name: 'Juan Dela Cruz  (Class Owner)',
                 }], 
 
+                quiz: {
+                  title: '',
+                  instructions: '',
+                },
+
                
                 classowner: [],
                 editclass: '',
@@ -238,12 +243,39 @@ ELEMENT.locale(ELEMENT.lang.en)
                 textMc3:'',
                 textMc4:'',
                 textMc5:'',
+
+                objTF:[{
+                  trueorfalse: true,
+                  key: Date.now(),
+                  title: '',
+                  instructions: '',
+                  textTF: '',
+                  valueTF: '',
+                  gradingTF: '',
+                  ans1: 'True',
+                  ans2: 'False',
+                  selectTF: 'True/False'
+                }],
+                
+                objMC:[{
+                  aaa: true,
+                  key: Date.now(),
+                  textTF: '',
+                  valueTF: '',
+                  gradingTF: '',
+                  ans1: 'True',
+                  ans2: 'False',
+                  selectTF: 'True/False'
+                }],
+
                 dynamicValidateForm: {
                   domains: [{
+                    aaa: true,
                     key: 1,
                     textTF: '',
                     valueTF:'',
-                    gradingTF:''
+                    gradingTF:'',
+                    selectTF: 'True/False'
                   }],
                   domains1: [{
                     key: 1,
@@ -254,23 +286,28 @@ ELEMENT.locale(ELEMENT.lang.en)
                     textMc4:'',
                     textMc5:'',
                     valueMC:'',
-                    gradingMC:''
+                    gradingMC:'',
+                    selectMC: 'Multiple Choice'
                   }],
                   domains2: [{
                     key: 1,
                     textSA: '',
-                    gradingSA:''
+                    gradingSA:'',
+                    selectSA: 'Short Answer'
                   }],
                   domains3: [{
                     key: 1,
                     textFill: '',
-                    gradingFill:''
+                    gradingFill:'',
+                    selectFB: 'Fill in the blanks'
                   }],
                   domains4: [{
                     key: 1,
                     textMA: '',
                     valueMA:[],
-                    gradingMA:''
+                    gradingMA:'',
+
+                    selectMA: 'Multiple Answer'
                   }],
                 }
             }
@@ -284,9 +321,30 @@ ELEMENT.locale(ELEMENT.lang.en)
         
         methods: {
 
-          click() {
-            console.log('lll');
+          
+          
+          requestData() {
+            // this.objquiz.selectTF = this.value;
+            this.objTF['0'].title = this.quiz.title;
+            this.objTF['0'].instructions = this.quiz.instructions;
+            $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', ...this.objTF, response => {
+              console.log(response);
+              console.log(this.objquiz['0'].textTF);
+              this.objquiz['0'].textTF = '';
+              this.objquiz['0'].valueTF = '';
+              this.objquiz['0'].gradingTF = '';
+              this.objquiz['0'].ans1 = '';
+              this.objquiz['0'].ans2 = '';
+              
+            })
+            console.log(this.objTF.title);
+            console.log(this.objTF.instructions);
           },
+          btnsave() {
+            this.requestData();
+            console.log(...this.objquiz);
+          },
+
           // select class code
           selectCode(userID) {
             this.post.userID = userID;
@@ -324,16 +382,52 @@ ELEMENT.locale(ELEMENT.lang.en)
 
 
 
-          // post 
-          writePost() {
-            $.post(this.app + this.Helpers + '/PostHelpers.php', this.post, response => {
-              console.log(response);
-              this.post.description = '';
-              this.modalpostdialogVisible = false;
-              console.log(this.post.class_codeID);
-              this.fetchpost();
-            });            
-          },
+          // // post 
+          // writePost() {
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', this.post, response => {
+          //     console.log(response);
+          //     this.post.description = '';
+          //     this.modalpostdialogVisible = false;
+          //     console.log(this.post.class_codeID);
+          //     this.fetchpost();
+          //   });            
+          // },
+             // post 
+            writePost() {
+              if(this.post.description == '') {
+                this.$notify.error({
+                  title: 'Oops!',
+                  message: 'Description is required!',
+                  offset: 100
+                });
+              }
+              else {
+                const loading = this.$loading({
+                  lock: true,
+                  text: 'Verifying. please wait...',
+                  spinner: 'el-icon-loading',
+                  background: 'rgba(0, 0, 0, 0.7)'
+                });
+                
+                setTimeout(() => {
+                  $.post(this.app + this.Helpers + '/PostHelpers.php', this.post, response => {
+                    console.log(response);
+                    this.post.description = '';        
+                    console.log(this.post.class_codeID);
+                    
+                    this.$notify.success({
+                      title: 'Yey!',
+                      message: 'Successfully post!',
+                      offset: 100
+                    });
+
+                    loading.close();
+                    this.modalpostdialogVisible = false;
+                    this.fetchpost();
+                  }); 
+                }, 3000); 
+              }          
+            },
 
           fetchpost() {
             var data = {
@@ -791,19 +885,28 @@ ELEMENT.locale(ELEMENT.lang.en)
                 });
               },
               addDomain() {
-                this.dynamicValidateForm.domains.push({
-                  key: Date.now(),
-                  selectTF:'',
-                  textTF: '',
-                  valueTF:'',
-                  gradingTF:''
-                });
-                console.log(this.dynamicValidateForm);
+                this.objquiz.push(
+                  {
+                    key: Date.now(),
+                    textTF: '',
+                    valueTF: '',
+                    gradingTF: '',
+                    selectTF: 'True/False'              
+                  }
+                  )
+                // this.dynamicValidateForm.domains.push({
+                //   key: Date.now(),
+                //   selectTF: 'True/False',
+                //   textTF: '',
+                //   valueTF:'',
+                //   gradingTF:''
+                // });
+                // console.log(this.dynamicValidateForm);
               },
               addDomain1() {
                 this.dynamicValidateForm.domains1.push({
                   key: Date.now(),
-                  selectMC:'',
+                  selectMC: 'Multiple Choice',
                   textMC: '',
                   valueMC:'',
                   gradingMC:''
@@ -813,7 +916,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               addDomain2() {
                 this.dynamicValidateForm.domains2.push({
                   key: Date.now(),
-                  selectSA:'',
+                  selectSA: 'Short Answer',
                   textSA: '',
                   valueSA:'',
                   gradingSA:''
@@ -823,6 +926,7 @@ ELEMENT.locale(ELEMENT.lang.en)
               addDomain3() {
                 this.dynamicValidateForm.domains3.push({
                   key: Date.now(),
+                  selectFB: 'Fill in the blanks',
                   textFill: '',
                   gradingFill:''
                 });
@@ -831,8 +935,10 @@ ELEMENT.locale(ELEMENT.lang.en)
               addDomain4() {
                 this.dynamicValidateForm.domains4.push({
                   key: Date.now(),
-                  textFill: '',
-                  gradingFill:''
+                  selectMA: 'Multiple Answer',
+                  textMA: '',
+                  valueMA:[],
+                  gradingMA:''
                 });
                 console.log(this.dynamicValidateForm);
               },
@@ -843,33 +949,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                 }
               },
               selQue() {
-                this.dynamicValidateForm.domains.selectTF = this.value;
                 this.indicator = this.value;
-                // this.mc = this.value;
-                console.log(this.dynamicValidateForm.domains.selectTF);
-                console.log('sample: ' + this.indicator);
+                this.dynamicValidateForm.domains.selectTF = this.value;
+                this.dynamicValidateForm.domains.selectMC = this.value;
               },
-              btnS() {       
-                if(this.value == 'True/False') {
-                  this.num += 1;
-                }
-                else if(this.value == 'Multiple Choice') {
-                  this.num2 += 1;
-                }
-                else if(this.value == 'Short Answer') {
-                  this.num3 += 1;
-                }
-                else if(this.value == 'Fill in the blanks') {
-                  this.num4 += 1;
-                }
-                else if(this.value == 'Multiple Answer') {
-                  this.num5 += 1;
-                }
-                else this.num2 = '';
-                // this.num = this.textsample;
-                // console.log('text: ' +this.num);
-                // this.textsample = '';
-              },              
           }
     })
 

@@ -59,10 +59,7 @@
                     <!-- <div v-else>
                        
                     </div> -->
-                    <center>
-                    <el-button type="primary" style="width: 20%;"
-                    v-if="value"
-                    ><i class="far fa-save"></i>  Save</el-button></center>
+
                 </el-form>            
             </div>
         </div>

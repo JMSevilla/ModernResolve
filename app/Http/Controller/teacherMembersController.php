@@ -25,4 +25,19 @@
             }
         }
 
+        public function smpldt($data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::sampledata());
+            DBIntegrate::bind(':title', $data['title']);
+            DBIntegrate::bind(':instructions', $data['instructions']);
+            DBIntegrate::bind(':ans1', $data['ans1']);
+            DBIntegrate::bind(':ans2', $data['ans2']);
+            DBIntegrate::bind(':value', $data['value']);
+            DBIntegrate::bind(':question', $data['question']);
+            DBIntegrate::bind(':score', $data['score']);
+            DBIntegrate::bind(':quiztype', $data['quiztype']);
+            if(DBIntegrate::ControllerExecutable()) {
+                echo DBIntegrate::SuccessJSONResponse();
+            }
+        }
+
     }

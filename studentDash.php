@@ -1,3 +1,7 @@
+<?php 
+include('app/session/studentToken.php');
+?>
+
 <?php include("libraries/includes/links.php") ?>
 
 <?php include("views/studentViews/studentDash.views.php"); ?>

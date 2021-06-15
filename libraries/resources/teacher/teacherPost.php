@@ -7,7 +7,7 @@
                         <div style="display:flex">
                                 <h6 >{{ item.fullname }} </h6> &nbsp 
                                 <h6 >posted to</h6> &nbsp
-                                <h6  style="text-decoration: underline">{{ item.name }}</h6>
+                                <h6>{{ item.name }}</h6>
                         </div>
                         <div>
                                 <small>{{ item.created_at }}</small>
