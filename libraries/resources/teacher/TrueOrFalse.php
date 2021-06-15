@@ -2,7 +2,7 @@
     <el-row :gutter="12">
     <el-form :model="dynamicValidateForm" ref="dynamicValidateForm"  class="demo-dynamic">
         <el-form-item
-            v-for="(domain, index) in dynamicValidateForm.domains"
+            v-for="(domain, index) in objTF"
             :key="domain.key"
             :prop="'domains.' + index + '.value'"
         >
@@ -42,8 +42,13 @@
         </el-form-item>
         <el-form-item>
         <center>
-            <el-button @click="addDomain" style="width: 20%" type="info" icon="el-icon-circle-plus">Add Question</el-button>
-        </center>
+                    <el-button type="primary" style="width: 20%;"
+                    v-if="value"
+                    @click="btnsave()"
+                    ><i class="far fa-save"></i>  Save</el-button></center>
+        <!-- <center> -->
+            <!-- <el-button @click="addDomain" style="width: 20%" type="info" icon="el-icon-circle-plus">Add Question</el-button> -->
+        <!-- </center> -->
         </el-form-item>
         </el-form>
     </el-row>

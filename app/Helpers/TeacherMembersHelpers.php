@@ -12,6 +12,10 @@
         TeacherMembers::deletemembers_model($table);
     }
 
+    if(isset($_POST['trueorfalse']) == true) {
+        TeacherMembers::smplmodel();
+    }
+
     function members_route() {
         include_once "../Models/Members.php";
         // include_once "../Providers/interface.php";

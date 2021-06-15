@@ -10,6 +10,14 @@ class lightBringerBulk extends Bulk{
   return $sql;
 }
 
+public function sampledata() {
+  $sql = "
+    insert into sampledata values (default, :title, :instructions, :ans1, :ans2, :value, :question, :score, :quiztype)
+  ";
+
+  return $sql;
+}
+
 public function iModel_tableCreation($table){
   $sql = "
   create table if not exists ". $table ." (id int(11) not null auto_increment primary key, firstname varchar(100), createdat datetime default current_timestamp)

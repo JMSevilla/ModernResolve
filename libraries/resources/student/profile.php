@@ -29,7 +29,7 @@
                 </el-form-item>
                 <el-form-item label="Birthdate">
                     <el-date-picker
-                        v-on:input="calageteacherdash()"
+                        v-on:input="calagestudentdash()"
                         width= "500px"
                         v-model="profile.bdate"
                         format="yyyy-MM-dd"
@@ -103,7 +103,7 @@
             </el-form>
             <center>
             <el-button round onclick="location.href='studentDash'" style="width: 25%">Cancel</el-button>
-            <el-button type="primary"  style="width: 25%" round @click="updateprofTeacherdash()">Save Changes</el-button> </div>
+            <el-button type="primary"  style="width: 25%" round @click="updateprofStudentdash()">Save Changes</el-button> </div>
 
             </center>
             
