@@ -37,13 +37,13 @@ if(isset($_POST['codeverifier']) == 1){
 }
 if(isset($_POST['classCodeMapTrigger']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(class_code_mapID int NOT NULL auto_increment, class_codeID, userID int, created_at datetime default current_timestamp, PRIMARY KEY (class_code_mapID) )';
+    $column = '(class_code_mapID int NOT NULL auto_increment, class_codeID int, userID int, created_at datetime default current_timestamp, PRIMARY KEY (class_code_mapID), FOREIGN KEY(userID) REFERENCES user(userID), FOREIGN KEY(class_codeID) REFERENCES class_code(class_codeID))';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
 if(isset($_POST['postTrigger']) == 1){
     // echo json_encode(array('helper' => 'call ok'));
-    $column = '(postID int NOT NULL auto_increment, teacherID int, classCodeID int, created_at datetime default current_timestamp, PRIMARY KEY (postID) )';
+    $column = '(postID int NOT NULL auto_increment, userID int, class_codeID int, created_at datetime default current_timestamp, PRIMARY KEY (postID),  FOREIGN KEY (userID) REFERENCES user(userID), FOREIGN KEY (class_codeID) REFERENCES class_code(class_codeID) )';
    $callback = new Post();
    $callback->postModels($_POST['table'], $column);
 }
