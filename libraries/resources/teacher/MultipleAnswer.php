@@ -1,7 +1,7 @@
 <el-row :gutter="12">
 <el-form :model="dynamicValidateForm" ref="dynamicValidateForm"  class="demo-dynamic">
     <el-form-item
-        v-for="(domain, index) in dynamicValidateForm.domains4"
+        v-for="(domain, index) in objMA"
         :key="domain.key"
         :prop="'domains.' + index + '.value'"
     >
@@ -26,19 +26,19 @@
                 <span style="float: right;font-size: 12px; color: #606266">Correct Answer</span>
             </div>
             <div id="TFContainer" style="margin-bottom: 10px">
-                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="domain.valueMA" value="1">
+                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="objMA.choice1" value="1">
             </div>
             <div id="TFContainer" style="margin-bottom: 10px">
-                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="domain.valueMA" value="2">
+                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="objMA.choice2" value="2">
             </div> 
             <div id="TFContainer" style="margin-bottom: 10px">
-                <input type="text" id="MCText" placeholder="Enter Answer">  <input id="TFRadio" type="checkbox"  v-model="domain.valueMA" value="3">
+                <input type="text" id="MCText" placeholder="Enter Answer">  <input id="TFRadio" type="checkbox"  v-model="objMA.choice3" value="3">
             </div> 
             <div id="TFContainer" style="margin-bottom: 10px">
-                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="domain.valueMA" value="4">
+                <input type="text" id="MCText" placeholder="Enter Answer"> <input id="TFRadio" type="checkbox"  v-model="objMA.choice4" value="4">
             </div> 
             <div id="TFContainer" style="margin-bottom: 10px">
-                <input type="text" id="MCText" placeholder="Enter Answer" >  <input id="TFRadio" type="checkbox"  v-model="domain.valueMA" value="5">
+                <input type="text" id="MCText" placeholder="Enter Answer" >  <input id="TFRadio" type="checkbox"  v-model="objMA.choice5" value="5">
             </div>  
             <div> 
                 <p style="font-size: 14px; color: #606266"  >Grading</p>   
@@ -53,9 +53,22 @@
         </el-col>
     </el-form-item>
     <el-form-item>
-    <center>
-        <el-button @click="addDomain4" style="width: 20%" type="info" icon="el-icon-circle-plus">Add Question</el-button>
-    </center>
+        <center>
+            <el-button 
+                @click="addMultipleAnswer()" 
+                type="secondary" 
+                icon="el-icon-circle-plus">
+                Add Question
+                </el-button>
+                    
+            <el-button 
+                type="primary" 
+                style="width: 15%;"
+                v-if="value"
+                @click="btnsave()">
+                <i class="far fa-save" style="margin-right: 8px"></i>Save
+            </el-button>     
+        </center>
     </el-form-item>
     </el-form>
 </el-row>

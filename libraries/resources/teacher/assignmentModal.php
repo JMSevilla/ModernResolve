@@ -38,9 +38,9 @@
                 </el-form-item>
                 </el-col>
             </el-form-item>
-            <el-form-item prop="type" style="margin-top: 30px"  >
+            <!-- <el-form-item prop="type" style="margin-top: 30px"  >
                 <el-checkbox label="Lock after due date" name="type" v-model="assignment.type"></el-checkbox>    
-            </el-form-item>
+            </el-form-item> -->
             <br>
             <hr>
             <!-- <br> -->

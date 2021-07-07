@@ -72,7 +72,7 @@ const validateLogin = data => {
   }, function(response){
     var jsondestroy = JSON.parse(response)
     if(jsondestroy.teacher === 'exist') {
-      window.location.href = "http://localhost/torrestech/modernresolve/teacherdash"
+      window.location.href = "http://localhost/torrestech/modernresolve/teacherdashboard"
     }
   })
 }

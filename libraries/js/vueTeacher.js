@@ -117,9 +117,11 @@ ELEMENT.locale(ELEMENT.lang.en)
                     userID: '',
                     class_codeID: '',
                     description: '',
-                    files: 'filename',
+                    files: '',
                     writeTrig: true,
-                    name: ''
+                    name: '',
+                    ccid:localStorage.getItem('ccid'),
+                    uid: localStorage.getItem('uid')
                   },
 
                   fetch: [],
@@ -204,7 +206,10 @@ ELEMENT.locale(ELEMENT.lang.en)
 
                 quiz: {
                   title: '',
-                  instructions: '',
+                  instruction: '',
+                  // quiztitletrigger: true,
+                  // table: 'quiz_title_map',
+                  // islock: 'open',
                 },
 
                
@@ -244,141 +249,325 @@ ELEMENT.locale(ELEMENT.lang.en)
                 textMc4:'',
                 textMc5:'',
 
-                objTF:[{
-                  trueorfalse: true,
+                file:'',
+                classname:[],
+                nameclass: localStorage.getItem('name'),
+                ccid: localStorage.getItem('ccid'),
+                uid: localStorage.getItem('uid'),
+                t_id: localStorage.getItem('tID'),
+                //quiz in new teacher dash
+                objTF: [{
+                    key: Date.now(),
+                    // titleID:localStorage.getItem('tID'),
+                    quiztype:'True/False',
+                    question:'',
+                    choice1:'True',
+                    choice2:'False',
+                    choice3:'',
+                    choice4:'',
+                    choice5:'',
+                    points:'',
+                    answer:'',
+                  }],
+
+                objMC: [{
                   key: Date.now(),
-                  title: '',
-                  instructions: '',
-                  textTF: '',
-                  valueTF: '',
-                  gradingTF: '',
-                  ans1: 'True',
-                  ans2: 'False',
-                  selectTF: 'True/False'
-                }],
-                
-                objMC:[{
-                  aaa: true,
-                  key: Date.now(),
-                  textTF: '',
-                  valueTF: '',
-                  gradingTF: '',
-                  ans1: 'True',
-                  ans2: 'False',
-                  selectTF: 'True/False'
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Multiple Choice',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
                 }],
 
-                dynamicValidateForm: {
-                  domains: [{
-                    aaa: true,
-                    key: 1,
-                    textTF: '',
-                    valueTF:'',
-                    gradingTF:'',
-                    selectTF: 'True/False'
-                  }],
-                  domains1: [{
-                    key: 1,
-                    textMC: '',
-                    textMc1:'',
-                    textMc2:'',
-                    textMc3:'',
-                    textMc4:'',
-                    textMc5:'',
-                    valueMC:'',
-                    gradingMC:'',
-                    selectMC: 'Multiple Choice'
-                  }],
-                  domains2: [{
-                    key: 1,
-                    textSA: '',
-                    gradingSA:'',
-                    selectSA: 'Short Answer'
-                  }],
-                  domains3: [{
-                    key: 1,
-                    textFill: '',
-                    gradingFill:'',
-                    selectFB: 'Fill in the blanks'
-                  }],
-                  domains4: [{
-                    key: 1,
-                    textMA: '',
-                    valueMA:[],
-                    gradingMA:'',
+                objSA: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Short Answer',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
 
-                    selectMA: 'Multiple Answer'
-                  }],
-                }
+                objFB: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Fill in the Blanks',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
+
+                objMA: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Multiple Answer',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
+                quizdataTableData:[
+                  // {
+                  //   Avatar:'',
+                  //   fullname:'Hannah',
+                  //   status:'Open',
+                  //   timesubmitted:'July 7, 2021'  
+                  // }
+                ],
+                searchQuiz:'',
+                studassignLabelPosition: 'top',
+                // tableDataFetchQuiz:[],
+                quizgradeFetchData:[
+                //   {
+                //   question:'',
+                //   studanswer:'',
+                //   choice1:'',
+                //   choice2:'',
+                //   choice3:'',
+                //   choice4:'',
+                //   choice5:'',
+                //   points:''
+                // }
+              ],
+              SApoints:[]
             }
         },
         
             
         created: function(){
           this.getpassTeacherdash();
-          this.generate_token(5)
+          this.generate_token(5);
+          this.fetchClass();
+          this.fetchpost();
+          this.teachermembers();
+          this.classteacher(); 
+          this.fetchquizdatatable(); 
+          this.btngrade(localStorage.getItem('scid'));
         },
         
         methods: {
 
-          
-          
-          requestData() {
-            // this.objquiz.selectTF = this.value;
-            this.objTF['0'].title = this.quiz.title;
-            this.objTF['0'].instructions = this.quiz.instructions;
-            $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', ...this.objTF, response => {
-              console.log(response);
-              console.log(this.objquiz['0'].textTF);
-              this.objquiz['0'].textTF = '';
-              this.objquiz['0'].valueTF = '';
-              this.objquiz['0'].gradingTF = '';
-              this.objquiz['0'].ans1 = '';
-              this.objquiz['0'].ans2 = '';
-              
+          //quiz in new teacher dash
+          addTrueFalse(){
+            this.objTF.push({
+              key: Date.now(),
+              // titleID: this.t_id,
+              quiztype:'True/False',
+              question:'',
+              choice1:'True',
+              choice2:'False',
+              choice3:'',
+              choice4:'',
+              choice5:'',
+              points:'',
+              answer:'',
             })
-            console.log(this.objTF.title);
-            console.log(this.objTF.instructions);
           },
+
+          addMultipleChoice(){
+            this.objMC.push({
+              key: Date.now(),
+              // titleID:localStorage.getItem('tID'),
+              quiztype:'Multiple Choice',
+              question:'',
+              choice1:'',
+              choice2:'',
+              choice3:'',
+              choice4:'',
+              choice5:'',
+              points:'',
+              answer:'',
+            })
+          },
+
+          addShortAnswer(){
+            this.objSA.push({
+              key: Date.now(),
+              // titleID:localStorage.getItem('tID'),
+              quiztype:'Short Answer',
+              question:'',
+              choice1:'',
+              choice2:'',
+              choice3:'',
+              choice4:'',
+              choice5:'',
+              points:'',
+              answer:'',
+            })
+          },
+
+          addFillintheBlanks(){
+            this.objFB.push({
+              key: Date.now(),
+              // titleID:localStorage.getItem('tID'),
+              quiztype:'Fill in the Blanks',
+              question:'',
+              choice1:'',
+              choice2:'',
+              choice3:'',
+              choice4:'',
+              choice5:'',
+              points:'',
+              answer:'',
+            })
+          },
+
+          addMultipleAnswer(){
+            this.objMA.push({
+              key: Date.now(),
+              // titleID:localStorage.getItem('tID'),
+              quiztype:'Multiple Answer',
+              question:'',
+              choice1:'',
+              choice2:'',
+              choice3:'',
+              choice4:'',
+              choice5:'',
+              points:'',
+              answer:'',
+            })
+          },
+
+          // async requestTrueFalse(){
+          //   const requestTF = {
+          //     quiztrigger: true,
+          //     data: JSON.stringify(this.objTF)
+          //   }
+          //   await $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
+          //     console.log(response);
+          //   })
+          // },
+
+          // requestMultipleChoice(){
+          //   const requestTF = {
+          //     quiztrigger: true,
+          //     data: JSON.stringify(this.objMC)
+          //   }
+          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
+          //     console.log(response);
+          //   })
+          // },
+
+          // requestShortAnswer(){
+          //   const requestTF = {
+          //     quiztrigger: true,
+          //     data: JSON.stringify(this.objSA)
+          //   }
+          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
+          //     console.log(response);
+          //   })
+          // },
+
+          // requestFillintheBlanks(){
+          //   const requestTF = {
+          //     quiztrigger: true,
+          //     data: JSON.stringify(this.objFB)
+          //   }
+          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
+          //     console.log(response);
+          //   })
+          // },
+
+          quiztitle(){
+            let quizdata = {
+              title: this.quiz.title,
+              class_name: localStorage.getItem('name'),
+              instruction: this.quiz.instruction,
+              quiztitletrigger: true,
+              table: 'quiz_title_map',
+              islock: 'open',
+              quiztrigger: true,
+              data: JSON.stringify([...this.objTF, ...this.objMC, ...this.objSA, ...this.objFB])
+            }
+            $.post(this.app + this.Helpers + '/QuizTitleHelpers.php', quizdata, response => {
+              console.log(response);
+              // let res = JSON.parse(response);
+              // console.log(res);
+              // localStorage.setItem('tID', res.tID);
+            })
+          },
+
+          // requestData() {
+          //   // this.objquiz.selectTF = this.value;
+          //   this.objTF['0'].title = this.quiz.title;
+          //   this.objTF['0'].instructions = this.quiz.instructions;
+          //   $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', ...this.objTF, response => {
+          //     console.log(response);
+          //     console.log(this.objquiz['0'].textTF);
+          //     this.objquiz['0'].textTF = '';
+          //     this.objquiz['0'].valueTF = '';
+          //     this.objquiz['0'].gradingTF = '';
+          //     this.objquiz['0'].ans1 = '';
+          //     this.objquiz['0'].ans2 = '';
+              
+          //   })
+          //   console.log(this.objTF.title);
+          //   console.log(this.objTF.instructions);
+          // },
           btnsave() {
-            this.requestData();
-            console.log(...this.objquiz);
+            this.quiztitle();
+            // this.requestTrueFalse();
+            // this.requestMultipleChoice();
+            // this.requestShortAnswer();
+            // this.requestFillintheBlanks();
+            localStorage.removeItem('tID');
+            // this.requestData();
+            // console.log(...this.objquiz);
           },
 
           // select class code
-          selectCode(userID) {
-            this.post.userID = userID;
-            const data = {
-              userID,
-              table: 'class_code_map',
-              selectTrig: true
-            }
-            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
-              let res = JSON.parse(response);
-              console.log(response);
-              this.options = res;
-              this.discuss = 1;
-            });
-          },
+          // selectCode(userID) {
+          //   this.post.userID = userID;
+          //   const data = {
+          //     userID,
+          //     table: 'class_code_map',
+          //     selectTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+          //     let res = JSON.parse(response);
+          //     console.log(response);
+          //     this.options = res;
+          //     this.discuss = 1;
+          //   });
+          // },
 
-          getcodeteacher() {
-            const data = {
-              classname: this.value,
-              table: 'class_code',
-              codeTrig: true
-            }
-            $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
-              let res = JSON.parse(response);
-              console.log(response);
-              console.log(res.code);
-              this.post.class_codeID = res.class_codeID;
-              this.teacherclasscode = res.code;
-              this.status = res.status;
-              this.fetchpost();
-              this.teachermembers(res.class_codeID);
-              this.classteacher(res.class_codeID);
-            });
-          },
+          // getcodeteacher() {
+          //   const data = {
+          //     classname: this.value,
+          //     table: 'class_code',
+          //     codeTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
+          //     let res = JSON.parse(response);
+          //     console.log(response);
+          //     console.log(res.code);
+          //     this.post.class_codeID = res.class_codeID;
+          //     this.teacherclasscode = res.code;
+          //     this.status = res.status;
+          //     // this.fetchpost();
+          //     // this.teachermembers(res.class_codeID);
+          //     // this.classteacher(res.class_codeID);
+          //   });
+          // },
 
 
 
@@ -423,15 +612,29 @@ ELEMENT.locale(ELEMENT.lang.en)
 
                     loading.close();
                     this.modalpostdialogVisible = false;
-                    this.fetchpost();
+                    // this.fetchpost();
                   }); 
                 }, 3000); 
               }          
             },
 
+          // fetchpost() {
+          //   var data = {
+          //     id: this.post.class_codeID,
+          //     fetchTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+          //     console.log(response);
+          //     let res = JSON.parse(response);
+          //     console.log(res);
+          //     this.fetch = res;
+          //   });
+          // },
+
+          //post in new teacher dash
           fetchpost() {
             var data = {
-              id: this.post.class_codeID,
+              name: this.nameclass,
               fetchTrig: true
             }
             $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
@@ -441,11 +644,10 @@ ELEMENT.locale(ELEMENT.lang.en)
               this.fetch = res;
             });
           },
-
-          teachermembers(id) {
-            console.log('id:: ' + id);
+          teachermembers() {
+            // console.log('id:: ' + id);
             var obj = {
-              classcode_id: id,
+              classcode_id: this.ccid,
               table: 'class_code_map',
               type: '3',
               fetchingTrig: true
@@ -458,10 +660,10 @@ ELEMENT.locale(ELEMENT.lang.en)
             });
           },
 
-          classteacher(id) {
-            console.log('id:: ' + id);
+          classteacher() {
+            // console.log('id:: ' + id);
             var obj = {
-              classcode_id: id,
+              classcode_id: this.ccid,
               table: 'class_code_map',
               type: '2',
               fetchingTrig: true
@@ -595,7 +797,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });
                   setTimeout(() => {
                     loading.close()
-                    window.location.href="http://localhost/torrestech/modernresolve"
+                    window.location.href="http://localhost/modernresolve"
                   }, 3000)
                   
                 } //other dashboards with logout . please replace this jsondestruct logs == logout below
@@ -627,9 +829,11 @@ ELEMENT.locale(ELEMENT.lang.en)
                        this.dialogVisible = false;
                       //other actions.
                       this.selectCode(this.post.userID);
+                      this.generate_token(5);
+                      this.fetchClass();
                      }
                     })
-                  }, 5000)
+                  }, 500)
               } else {
                 console.log('error submit!!');
                 return false;
@@ -853,7 +1057,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 }).then(() => {
                   var delstud = {
                     id,
-                    classcode_id: this.post.class_codeID,
+                    classcode_id: this.ccid,
                     table: 'class_code_map',
                     delMemberTrig: true 
                   }
@@ -863,7 +1067,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                       type: 'success',
                       message: 'Delete completed'
                     });
-                    this.teachermembers(this.post.class_codeID);
+                    // this.teachermembers(this.post.class_codeID);
                   });
                 }).catch(() => {
                   this.$notify({
@@ -903,56 +1107,162 @@ ELEMENT.locale(ELEMENT.lang.en)
                 // });
                 // console.log(this.dynamicValidateForm);
               },
-              addDomain1() {
-                this.dynamicValidateForm.domains1.push({
-                  key: Date.now(),
-                  selectMC: 'Multiple Choice',
-                  textMC: '',
-                  valueMC:'',
-                  gradingMC:''
-                });
-                console.log(this.dynamicValidateForm);
-              },
-              addDomain2() {
-                this.dynamicValidateForm.domains2.push({
-                  key: Date.now(),
-                  selectSA: 'Short Answer',
-                  textSA: '',
-                  valueSA:'',
-                  gradingSA:''
-                });
-                console.log(this.dynamicValidateForm);
-              },
-              addDomain3() {
-                this.dynamicValidateForm.domains3.push({
-                  key: Date.now(),
-                  selectFB: 'Fill in the blanks',
-                  textFill: '',
-                  gradingFill:''
-                });
-                console.log(this.dynamicValidateForm);
-              },
-              addDomain4() {
-                this.dynamicValidateForm.domains4.push({
-                  key: Date.now(),
-                  selectMA: 'Multiple Answer',
-                  textMA: '',
-                  valueMA:[],
-                  gradingMA:''
-                });
-                console.log(this.dynamicValidateForm);
-              },
-              removeDomain(item) {
-                var index = this.dynamicValidateForm.domains.indexOf(item);
-                if (index !== -1) {
-                  this.dynamicValidateForm.domains.splice(index, 1);
-                }
-              },
+              // addDomain1() {
+              //   this.dynamicValidateForm.domains1.push({
+              //     key: Date.now(),
+              //     selectMC: 'Multiple Choice',
+              //     textMC: '',
+              //     valueMC:'',
+              //     gradingMC:''
+              //   });
+              //   console.log(this.dynamicValidateForm);
+              // },
+              // addDomain2() {
+              //   this.dynamicValidateForm.domains2.push({
+              //     key: Date.now(),
+              //     selectSA: 'Short Answer',
+              //     textSA: '',
+              //     valueSA:'',
+              //     gradingSA:''
+              //   });
+              //   console.log(this.dynamicValidateForm);
+              // },
+              // addDomain3() {
+              //   this.dynamicValidateForm.domains3.push({
+              //     key: Date.now(),
+              //     selectFB: 'Fill in the blanks',
+              //     textFill: '',
+              //     gradingFill:''
+              //   });
+              //   console.log(this.dynamicValidateForm);
+              // },
+              // addDomain4() {
+              //   this.dynamicValidateForm.domains4.push({
+              //     key: Date.now(),
+              //     selectMA: 'Multiple Answer',
+              //     textMA: '',
+              //     valueMA:[],
+              //     gradingMA:''
+              //   });
+              //   console.log(this.dynamicValidateForm);
+              // },
+              // removeDomain(item) {
+              //   var index = this.dynamicValidateForm.domains.indexOf(item);
+              //   if (index !== -1) {
+              //     this.dynamicValidateForm.domains.splice(index, 1);
+              //   }
+              // },
               selQue() {
                 this.indicator = this.value;
                 this.dynamicValidateForm.domains.selectTF = this.value;
                 this.dynamicValidateForm.domains.selectMC = this.value;
               },
+              
+              uploadFile() {
+
+                // var files = document.getElementById("file").files;
+    
+                // if(files.length > 0 ){
+    
+                var formData = new FormData();
+                formData.append("file", file);
+    
+                var xhttp = new XMLHttpRequest();
+    
+                // Set POST method and ajax file path
+                xhttp.open("POST", "ajaxfile.php", true);
+    
+                // call on request changes state
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+    
+                        var response = this.responseText;
+                        if(response == 1){
+                        alert("Upload successfully.");
+                        }else{
+                        alert("File not uploaded.");
+                        }
+                    }
+                };
+    
+                // Send request with data
+                xhttp.send(formData);
+    
+                // }
+                // else{
+                // alert("Please select a file");
+                // }
+    
+                },
+
+                //Fetching Class in new teacher dash
+                fetchClass(){
+                  const data = {
+                    table: "user",
+                    fetchingClass: true,
+                    email: localStorage.getItem("eml")
+                  }
+                  $.post(this.app + this.Helpers + "/FetchingClassHelpers.php", data, response =>{
+                    let res = JSON.parse(response)
+                    console.log(res);
+                    this.classname = res
+                  })
+                },
+                btnclassget(name, ccid, uid){
+                 localStorage.setItem('name', name)
+                 localStorage.setItem('ccid', ccid) 
+                 localStorage.setItem('uid', uid)
+                },
+
+                fetchquizdatatable(){
+                  let quizdatatable = {
+                    table: 'student_score',
+                    quizdatatableTrigger: true,
+                    class_name: localStorage.getItem('name')
+                  }
+                  $.post(this.app + this.Helpers + "/QuizSubmissionHelpers.php", quizdatatable, response =>{
+                    let res = JSON.parse(response)
+                    console.log(response);
+                    this.quizdataTableData = res;
+                  })
+                },
+
+                btngrade(scoreID){
+                  localStorage.setItem('scid',scoreID)
+                  let quizGrade = {
+                    scoreID:localStorage.getItem('scid'),
+                    table: 'quiz_answer',
+                    gradeTrigger: true,
+                  }
+
+                  // console.log(scoreID);
+                  $.post(this.app + this.Helpers + "/QuizSubmissionHelpers.php", quizGrade, response =>{
+                    let res = JSON.parse(response)
+                    console.log(response);
+                    this.quizgradeFetchData = res;
+
+                  })
+                },
+
+                quizgraded(){
+                  console.log(this.SApoints);
+                  let score = 0;
+                  this.quizgradeFetchData.forEach(e => {
+                    if(e.quiz_type == 'Short Answer'){
+                      score +=parseInt(e.score_points) 
+                    }
+                  });
+                  console.log(score);
+                  let quiz_graded = {
+                    quizgradedTrigger: true,
+                    table: 'student_score',
+                    score,
+                    scoreID: localStorage.getItem('scid')
+                  }
+                  $.post(this.app + this.Helpers + "/QuizSubmissionHelpers.php", quiz_graded, response =>{
+                    console.log(response);
+                  })
+                }
           }
     })
 

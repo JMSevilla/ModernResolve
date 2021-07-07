@@ -8,7 +8,7 @@
     <el-input  v-model="editclass"></el-input>
 
     <span slot="footer" class="dialog-footer">
-        <el-button>Cancel</el-button>
+        <el-button @click="EditdialogVisible = false">Cancel</el-button>
         <el-button @click="editclassname()" type="primary" >Confirm</el-button>
     </span>
 

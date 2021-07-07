@@ -63,7 +63,7 @@
                                                         <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-document-checked" onclick="location.href='teacherQuiz'">Quiz</el-button>
                                                         <el-button size="medium" style="width: 110px; padding: 11px" icon="el-icon-tickets" @click="assignDialogVisible = true">Assignment</el-button>
 
-                                       <?php include("libraries/resources/teacher/assignmentModal.php"); ?>
+                                                        <?php include("libraries/resources/teacher/assignmentModal.php"); ?>
                                                     </div>  
                                             </div>                                      
                                         </div>
