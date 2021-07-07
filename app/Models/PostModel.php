@@ -6,8 +6,8 @@
 
         public function writepost_model($table) {
             $data = [
-                'userID' => $_POST['userID'],
-                'class_codeID' => $_POST['class_codeID'],
+                'uid' => $_POST['uid'],
+                'ccid' => $_POST['ccid'],
                 'description' => $_POST['description'],
                 'files' => $_POST['files'],
             ];
@@ -17,7 +17,7 @@
 
         public function fetchpost_model($table) {
             $data = [
-                'id' => $_POST['id']
+                'name' => $_POST['name']
             ];
 
             TeacherPostController::fetchpost_controller($table, $data);

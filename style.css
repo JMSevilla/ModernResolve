@@ -801,7 +801,7 @@ input[id=txtzip]::-webkit-outer-spin-button {
  #teacherpost1
 {
   padding: 5px;
-  font-size: 1.9em;
+  font-size: 1.8em;
   color:  #f8f8f8;
 }
 
@@ -878,3 +878,45 @@ input[id=grading]::-webkit-outer-spin-button {
     margin: 0; 
 }
 
+
+/* new teacher dash */
+
+#classdashlink, #dashlink, #memberslink
+{
+  text-decoration: none;
+  color: #303133;
+}
+
+#teachsidebar
+{
+  position: fixed;
+}
+
+#usernavbar
+{
+  z-index: 10;
+  top: 0;
+  position: sticky;
+}
+
+/* assignment */
+#assignConfirmbtn
+{
+  text-transform: initial;
+  width: 100%;
+  font-weight: 500;
+}
+
+#classname
+{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* new student dash */
+#studnavbar
+{
+  z-index: 10;
+  top: 0;
+  position: sticky;
+}

@@ -252,4 +252,54 @@ public function get_current_userID($table){
 public function add_class_code_mapping($table){
   return BULK::NB_addclasscode_mapping($table);
 }
+
+//add new class in new teacher dash
+public function fetchclass($table){
+  return BULK::NB_fetchclass($table);
+}
+
+//quiztype in new teacher dash
+public function quiz($table){
+  return BULK::NB_quiz($table);
+}
+
+//quiz in new teacher dash
+public function quiz_title($table){
+  return BULK::NB_quiz_title($table);
+}
+
+//joinclass in new student dash
+public function join_classID($table, $column, $joinclass){
+  return BULK::NB_join_class($table, $column, $joinclass);
+}
+public function insert_class($table){
+  return BULK::NB_insert_join_class($table);
+}
+public function fetch_quiz_title($table){
+  return BULK::NB_fetch_quiztitle($table);
+}
+
+public function take_quiz_query($table){
+  return BULK::NB_takequiz($table);
+}
+
+public function save_score_query($table){
+  return BULK::NB_savescore($table);
+}
+
+public function fetch_quizsub_query($table){
+  return BULK::NB_fetch_quizsub($table);
+}
+
+public function insert_quizanswer_query($table){
+  return BULK::NB_insert_quizanswer($table);
+}
+
+public function fetch_quizgrade_query($table){
+  return BULK::NB_fetch_quizgrade($table);
+}
+
+public function gradedquiz_query($table){
+  return BULK::NB_gradedquiz_query($table);
+}
 }

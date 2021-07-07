@@ -102,7 +102,7 @@
                 </el-form-item>
             </el-form>
             <center>
-            <el-button round onclick="location.href='teacherDash'" style="width: 25%">Cancel</el-button>
+            <el-button round onclick="location.href='teacherDashboard'" style="width: 25%">Cancel</el-button>
             <el-button type="primary"  style="width: 25%" round @click="updateprofTeacherdash()">Save Changes</el-button> </div>
 
             </center>

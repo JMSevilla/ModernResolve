@@ -243,18 +243,30 @@ class Bulk  {
 
     public function NB_writepost($table) {
         $sql = "
-            insert into $table values (default, :userID, :class_codeID, :description, :files, current_timestamp)
+            insert into $table values (default, :uid, :ccid, :description, :files, current_timestamp)
         ";
 
         return $sql;
     }
 
+    // public function NB_fetchpost($table) {
+    //     $sql = "
+    //         select concat(user.firstname, ' ',user.lastname) as fullname, class_code.name, post.created_at, post.description from $table
+    //         inner join post on post.class_codeID = class_code.class_codeID
+    //         inner join user on post.userID = user.userID
+    //         where class_code.class_codeID = :id order by postID desc
+    //     ";
+
+    //     return $sql;
+    // }
+
+    //post in new teacher dash
     public function NB_fetchpost($table) {
         $sql = "
             select concat(user.firstname, ' ',user.lastname) as fullname, class_code.name, post.created_at, post.description from $table
             inner join post on post.class_codeID = class_code.class_codeID
             inner join user on post.userID = user.userID
-            where class_code.class_codeID = :id order by postID desc
+            where class_code.name = :name order by postID desc
         ";
 
         return $sql;
@@ -267,7 +279,6 @@ class Bulk  {
 
         return $sql;
     }
-
 
     public function NB_fetchmembers($table) {
         $sql = "
@@ -380,6 +391,106 @@ class Bulk  {
         $sql = "
         insert into ".$table." values (default, :classcodeid, :userid, current_timestamp)
         ";
+        return $sql;
+    }
+    //add new class in new teacher dash
+    public function NB_fetchclass($table){
+        $sql = "
+        select u.userID, cc.class_codeID, cc.name, cc.code from class_code as cc
+        inner join class_code_map as ccm on cc.class_codeID = ccm.class_codeID 
+        inner join $table as u on ccm. userID = u. userID 
+        where u.email_address = :email 
+        ";
+        return $sql;
+    }
+
+    //quiz in new teacher dash
+    public function NB_quiz($table){
+        $sql = "
+        insert into ".$table." values (default,:titleID, :quiz_type, :question, :choice1, :choice2, :choice3, :choice4, :choice5, :points, :answer, '', current_timestamp )
+        ";
+        return $sql;
+    }
+
+    public function NB_quiz_title($table){
+        $sql = "
+        insert into ".$table." values (default, :title, :class_name, :instruction, :islock, current_timestamp)
+        ";
+        return $sql;
+    }
+
+    //join class in new student dash
+    public function NB_join_class($table, $column, $joinclass){
+        $sql = "
+        select $column from ".$table." where $joinclass = :joinclass
+        ";
+        return $sql;
+    }
+
+    public function NB_insert_join_class($table){
+        $sql = "
+        insert into ".$table." values (default, :class_codeID, :userID ,current_timestamp)
+        ";
+        return $sql;
+    }
+
+    public function NB_fetch_quiztitle($table){
+        $sql = "
+        select * from ".$table." where class_name=:class_name
+        ";
+        return $sql;
+    }
+
+    public function NB_takequiz($table){
+        $sql = "
+        select qt.*,q.* from $table as qt
+        inner join quiz as q on qt.titleID = q.titleID
+        where qt.titleID=:qid
+        ";
+        return $sql;
+    }
+
+    public function NB_savescore($table){
+        $sql = "
+        insert into ".$table." values (default, :titleID, :userID ,:score, :status, current_timestamp)
+        ";
+        return $sql;
+    }
+
+    public function NB_fetch_quizsub($table){
+        $sql = "
+        select qtm.*, concat(u.firstname,' ',u.lastname) as fullname, ss.* from $table as ss
+        inner join quiz_title_map as qtm on ss.titleID = qtm.titleID
+        inner join user as u on ss.userID = u. userID 
+        where qtm.class_name = :class_name
+        ";
+        return $sql;
+    }
+
+    public function NB_insert_quizanswer($table){
+        $sql = "
+        insert into ".$table." values (default, :scoreID, :quiz_type ,:question, :choice1, 
+        :choice2, :choice3, :choice4, :choice5, :points, 0, :answer, :studanswer, current_timestamp)
+        ";
+        return $sql;
+    }
+
+    public function NB_fetch_quizgrade($table){
+        $sql = "
+        select * from $table where scoreID = :scoreID
+        ";
+        return $sql;
+    }
+
+    public function NB_gradedquiz_query($table){
+        // $sql = "
+        // update $table set score = :score
+        // where scoreID = :scoreID
+        // ";
+        $sql = "
+        select score from $table where scoreID = :scoreID
+        ";
+
         return $sql;
     }
 }

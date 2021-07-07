@@ -15,7 +15,7 @@
                     placeholder="Question Text"
                     type="textarea" 
                     :autosize="{ minRows: 3}"
-                    v-model="domain.textTF">
+                    v-model="domain.question">
                 </el-input>
                 <el-button style="margin: 13px 0; background-color: #EBEEF5" icon="el-icon-paperclip" size="small">Attach Files</el-button>
                 <div>
@@ -23,10 +23,10 @@
                     <span style="float: right;font-size: 12px; color: #606266">Correct Answer</span>
                 </div>
                 <div id="TFContainer" style="margin-bottom: 10px">
-                <span id="TFText">True</span>  <input id="TFRadio" type="radio"  v-model="domain.valueTF" value="1">
+                <span id="TFText">True</span>  <input id="TFRadio" type="radio"  v-model="domain.answer" value="1">
                 </div>
                 <div id="TFContainer" style="margin-bottom: 10px">
-                <span id="TFText">False</span>  <input id="TFRadio" type="radio"  v-model="domain.valueTF" value="2">
+                <span id="TFText">False</span>  <input id="TFRadio" type="radio"  v-model="domain.answer" value="2">
                 </div>
                 <div> 
                     <p style="font-size: 14px; color: #606266"  >Grading</p>   
@@ -34,18 +34,29 @@
                         type="number"
                         id="grading" 
                         style="width: 10%"
-                        v-model="domain.gradingTF">
+                        v-model="domain.points">
                     </el-input>
                     <span style="margin-left: 10px">points</span>
                 </div>
             </el-col>
         </el-form-item>
         <el-form-item>
-        <center>
-                    <el-button type="primary" style="width: 20%;"
+            <center>
+                <el-button 
+                    @click="addTrueFalse()"  
+                    type="secondary" 
+                    icon="el-icon-circle-plus">
+                    Add Question
+                </el-button>
+                        
+                <el-button 
+                    type="primary" 
+                    style="width: 15%;"
                     v-if="value"
-                    @click="btnsave()"
-                    ><i class="far fa-save"></i>  Save</el-button></center>
+                    @click="btnsave()">
+                    <i class="far fa-save" style="margin-right: 8px"></i>Save
+                </el-button>     
+            </center>
         <!-- <center> -->
             <!-- <el-button @click="addDomain" style="width: 20%" type="info" icon="el-icon-circle-plus">Add Question</el-button> -->
         <!-- </center> -->

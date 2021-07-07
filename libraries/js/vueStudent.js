@@ -62,8 +62,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                     zipcode:'',
                     hiName: '',
                 },
+                activeMem: 'first',
                 activeName: 'first',
                 studentTableData: [],
+                teacherTableData: [],
                 searchStudent: '',
                 textarea: '',
 
@@ -75,13 +77,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                   userID: '',
                   class_codeID: '',
                   description: '',
-                  files: 'filename',
+                  files: '',
                   writeTrig: true
                 },
-
-                fetch: [],
-
-
+                studfetch: [],
                 rulestudent:{
                   oldpass: [
                     { validator: validatePass1ResetStudent, trigger: 'blur' }
@@ -93,13 +92,103 @@ ELEMENT.locale(ELEMENT.lang.en)
                     { validator: validatePass3ResetStudent, trigger: 'blur' }
                   ],    
                 },
+                //new teacher dash
+                studclassname:[],
+                studnameclass: localStorage.getItem('name'),
+                joinclassdialogVisible: false,
+                joinclass: {
+                  classcode:'',
+                  email: localStorage.getItem("eml"),
+                  joinclasstrigger: true,
+                },
+                tableDataQuiz:[],
+                tableDataFetchQuiz:[],
+                search: '',
+                studassignLabelPosition: 'top',
+                quiz: {
+                  title: '',
+                  instruction: '',
+                },
+                objTF: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'True/False',
+                  question:'',
+                  choice1:'True',
+                  choice2:'False',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
+                objMC: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Multiple Choice',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
 
+                objSA: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Short Answer',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
+
+                objFB: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Fill in the Blanks',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],
+
+                objMA: [{
+                  key: Date.now(),
+                  // titleID:localStorage.getItem('tID'),
+                  quiztype:'Multiple Answer',
+                  question:'',
+                  choice1:'',
+                  choice2:'',
+                  choice3:'',
+                  choice4:'',
+                  choice5:'',
+                  points:'',
+                  answer:'',
+                }],                
             }        
         },
 
 
         created: function() {
           this.getStudentInfo();
+          this.studentfetchClass();
+          this.studfetchpost();
+          this.studentmembers();
+          this.studentteacher();
+          this.quiztitle();
+          this.studquizanswer(localStorage.getItem('qid'));
         },
 
         methods: {
@@ -275,7 +364,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 this.post.class_codeID = res.class_codeID;
                 this.studentclasscode = res.code;
                 // this.status = res.status;
-                this.fetchpost();
+                // this.fetchpost();
                 this.studentmembers(res.class_codeID);
                 // this.classteacher(res.class_codeID);
               });
@@ -312,41 +401,41 @@ ELEMENT.locale(ELEMENT.lang.en)
 
                     loading.close();
                     this.modalpostdialogVisible = false;
-                    this.fetchpost();
+                    // this.fetchpost();
                   }); 
                 }, 3000); 
               }          
             },
 
-            fetchpost() {
-              var data = {
-                id: this.post.class_codeID,
-                fetchTrig: true
-              }
-              $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
-                console.log(response);
-                let res = JSON.parse(response);
-                console.log(res);
-                this.fetch = res;
-              });
-            },
+            // fetchpost() {
+            //   var data = {
+            //     id: this.post.class_codeID,
+            //     fetchTrig: true
+            //   }
+            //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+            //     console.log(response);
+            //     let res = JSON.parse(response);
+            //     console.log(res);
+            //     this.fetch = res;
+            //   });
+            // },
 
 
-            studentmembers(id) {
-              console.log('id:: ' + id);
-              var obj = {
-                classcode_id: id,
-                table: 'class_code_map',
-                type: '3',
-                fetchingTrig: true
-              }
-              $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
-                console.log(response);
-                let res = JSON.parse(response);
-                console.log(res);
-                this.studentTableData = res;
-              });
-            },
+            // studentmembers(id) {
+            //   console.log('id:: ' + id);
+            //   var obj = {
+            //     classcode_id: id,
+            //     table: 'class_code_map',
+            //     type: '3',
+            //     fetchingTrig: true
+            //   }
+            //   $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+            //     console.log(response);
+            //     let res = JSON.parse(response);
+            //     console.log(res);
+            //     this.studentTableData = res;
+            //   });
+            // },
 
 
           onlogoutuser(){
@@ -368,7 +457,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });
                   setTimeout(() => {
                     loading.close()
-                    window.location.href="http://localhost/torrestech/modernresolve"
+                    window.location.href="http://localhost/modernresolve"
                   }, 3000)
                   
                 } //other dashboards with logout . please replace this jsondestruct logs == logout below
@@ -376,10 +465,145 @@ ELEMENT.locale(ELEMENT.lang.en)
               })
               
             }
-          }
-          
-        },
-        
-    })
+          },
 
-    
+          //Fetching Class in new student dash
+          studentfetchClass(){
+            const data = {
+              table: "user",
+              fetchingClass: true,
+              email: localStorage.getItem("eml")
+            }
+            $.post(this.app + this.Helpers + "/FetchingClassHelpers.php", data, response =>{
+              let res = JSON.parse(response)
+              console.log(res);
+              this.studclassname = res
+            })
+          },
+
+          studbtnclassget(name, ccid, uid){
+            localStorage.setItem('name', name)
+            localStorage.setItem('ccid', ccid) 
+            localStorage.setItem('uid', uid)
+           },
+
+           studentjoinclass(){
+            $.post(this.app + this.Helpers + "/JoinClassHelpers.php", this.joinclass, response =>{
+              // let res = JSON.parse(response)
+              console.log(response);
+              this.joinclassdialogVisible = false;
+              this.studentfetchClass();
+            })
+           },
+
+           studfetchpost() {
+            var data = {
+              name: this.studnameclass,
+              fetchTrig: true
+            }
+            $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.studfetch = res;
+            });
+          },
+
+          studentmembers() {
+            // console.log('id:: ' + id);
+            var obj = {
+              classcode_id: localStorage.getItem('ccid'),
+              table: 'class_code_map',
+              type: '3',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.studentTableData = res;
+
+            });
+          },
+
+          studentteacher() {
+            // console.log('id:: ' + id);
+            var obj = {
+              classcode_id: localStorage.getItem('ccid'),
+              table: 'class_code_map',
+              type: '2',
+              fetchingTrig: true
+            }
+            $.post(this.app + this.Helpers + '/teacherMembersHelpers.php', obj, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.teacherTableData = res;
+
+            });
+          },
+
+          quiztitle(){
+            let quizfetchtitle = {
+              class_name: localStorage.getItem('name'),
+              quiz_fetchTrigger: true,
+              table: 'quiz_title_map' 
+            }
+            $.post(this.app + this.Helpers + '/QuizTitleHelpers.php', quizfetchtitle, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.tableDataQuiz = res;
+            });
+          },
+
+          //student quiz dash
+          studquizanswer(titleID){
+            localStorage.setItem('qid', titleID);
+            let studtakequiz = {
+              qid: localStorage.getItem('qid'),
+              takequiztrigger: true,
+              table: 'quiz_title_map'
+            }
+            $.post(this.app + this.Helpers + '/QuizTitleHelpers.php', studtakequiz, response => {
+              console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.tableDataFetchQuiz = res;
+              this.quiz.title = res[0].title;
+              this.quiz.instruction = res[0].instruction;
+            });
+            // console.log(titleID);
+          },
+
+          studquizscores(){
+            let quizscores = 0;
+            this.tableDataFetchQuiz.forEach(e => {
+              if(e.quiz_type != 'Short Answer'){
+                if(e.studanswer == e.answer){
+                  quizscores += parseInt(e.points)
+                }
+              }
+            });
+            console.log(quizscores);
+            this.quizscores_tb(quizscores);
+            // this.studquiz_answer_data();
+          },
+
+          quizscores_tb(score){
+            let scoredata = {
+              titleID: localStorage.getItem('qid'),
+              userID: localStorage.getItem('uid'),
+              score,
+              status:'submitted',
+              table: 'student_score',
+              scoredataTrigger: true,
+              dataAnsTrigger: true, 
+              dataAns: JSON.stringify(this.tableDataFetchQuiz)
+            }
+            $.post(this.app + this.Helpers + '/QuizTitleHelpers.php', scoredata, response => {
+              console.log(response);
+            });
+          },
+        },
+    })

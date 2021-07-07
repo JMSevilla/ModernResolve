@@ -1,4 +1,4 @@
-<el-menu class="el-menu-demo" mode="horizontal" id="adminnavbar">
+<el-menu class="el-menu-demo" mode="horizontal" id="usernavbar">
   <el-menu-item >
     <img src="img/toresstec.png" alt="" id="logo" height="50" style="margin-left: 20px">
     <img src="img/torrestechlogo2.png" alt="" id="logo2" height="40">

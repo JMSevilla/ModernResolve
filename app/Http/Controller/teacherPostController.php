@@ -8,8 +8,8 @@
         public function writepost_controller($table, $data) {
             if(DBIntegrate::CHECKSERVER()) {
                 DBIntegrate::ControllerPrepare(lightBringerBulk::writepost_query($table));
-                DBIntegrate::bind(':userID', $data['userID']);
-                DBIntegrate::bind(':class_codeID', $data['class_codeID']);
+                DBIntegrate::bind(':uid', $data['uid']);
+                DBIntegrate::bind(':ccid', $data['ccid']);
                 DBIntegrate::bind(':description', $data['description']);
                 DBIntegrate::bind(':files', $data['files']);
                 if(DBIntegrate::ControllerExecutable()) {
@@ -20,7 +20,7 @@
 
         public function fetchpost_controller($table, $data) {
             DBIntegrate::ControllerPrepare(lightBringerBulk::fetchpost_query($table));
-            DBIntegrate::bind(':id', $data['id']);
+            DBIntegrate::bind(':name', $data['name']);
             if(DBIntegrate::ControllerExecutable()) {
                 if(DBIntegrate::controller_row()) {
                     while($row = DBIntegrate::controller_fetch_all()) {

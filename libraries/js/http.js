@@ -66,18 +66,18 @@ const handler = {
          console.log('condition ok');
 
 
-          window.location.href = "http://localhost/torrestech/modernresolve/homeadmin";
+          window.location.href = "http://localhost/modernresolve/homeadmin";
 
         console.log('Admin Login!');
         
       }
       else if(hammer.type == 'Teacher') { //catch
         // console.log('Teacher Login!');
-        setTimeout(() => window.location.href = "http://localhost/torrestech/modernresolve/teacherdash", 1000);
+        setTimeout(() => window.location.href = "http://localhost/modernresolve/teacherdashboard", 1000);
       }
       else if(hammer.type == 'Student') {
         console.log('Student Login!');
-        window.location.href = "http://localhost/torrestech/modernresolve/studentDash";
+        window.location.href = "http://localhost/modernresolve/studentDashboard";
       }
       else {
         alert('Invalid email and password!');
