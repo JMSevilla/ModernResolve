@@ -25,7 +25,8 @@
 
         public function takequiz_model($table) {
             $data = [
-                'qid' => $_POST['qid']
+                'qid' => $_POST['qid'],
+                'email' => $_POST['email']
             ];
 
             QuizTitleController::takequizController($table, $data);

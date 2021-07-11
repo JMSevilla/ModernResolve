@@ -9,7 +9,7 @@
 
     <span slot="footer" class="dialog-footer">
         <el-button @click="EditdialogVisible = false">Cancel</el-button>
-        <el-button @click="editclassname()" type="primary" >Confirm</el-button>
+        <el-button @click="btnEDITclass()" type="primary" >Confirm</el-button>
     </span>
 
 </el-dialog>

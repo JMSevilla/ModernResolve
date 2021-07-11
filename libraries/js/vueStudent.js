@@ -176,7 +176,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                   choice5:'',
                   points:'',
                   answer:'',
-                }],                
+                }],
+
+                doneQuiz: 'true'
             }        
         },
 
@@ -562,6 +564,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             localStorage.setItem('qid', titleID);
             let studtakequiz = {
               qid: localStorage.getItem('qid'),
+              email: localStorage.getItem('eml'),
               takequiztrigger: true,
               table: 'quiz_title_map'
             }
@@ -575,6 +578,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             });
             // console.log(titleID);
           },
+          
 
           studquizscores(){
             let quizscores = 0;

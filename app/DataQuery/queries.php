@@ -213,8 +213,8 @@ public function deletemembers_query($table) {
 }
 
 // edit class name
-public function editclassname_query($table) {
-  return BULK::NB_editclassname($table);
+public function editclss_query($table) {
+  return BULK::NB_editclss_query($table);
 }
 
 // login token route
@@ -281,6 +281,9 @@ public function fetch_quiz_title($table){
 
 public function take_quiz_query($table){
   return BULK::NB_takequiz($table);
+}
+public function done_quiz_query($table) {
+  return BULK::NB_done_quiz_query($table);
 }
 
 public function save_score_query($table){

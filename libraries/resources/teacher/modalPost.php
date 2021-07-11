@@ -5,7 +5,7 @@
         <el-avatar :size="55"  icon="el-icon-user-solid" id="teacherpost"></el-avatar>
       </div>
       <div class="col-md-10" style="margin-top:15px;" id="teacherwritepost">
-        {{ profile.fname}} {{ profile.lname }} posted to {{ value }}
+        {{ profile.fname}} {{ profile.lname }} posted to {{ profile.classnameTitle }}
       </div>
     </div>
   </span>
