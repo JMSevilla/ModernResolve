@@ -33,20 +33,48 @@
               placeholder="Type to search"/>
           </template>
           <template slot-scope="scope">
+          
+          <div v-if="scope.row.islock != 'open' && scope.row.status == 'submitted'">
+            <el-button
+              size="mini"
+              type="info"
+            >{{ scope.row.score }} {{ scope.row.score > 1 ? 'points' : 'point'}}</el-button>
             <el-button
               size="mini"
               type="danger"
             >Locked</el-button>
+          </div>
+          <div v-else-if="scope.row.islock == 'open' && scope.row.status == 'submitted'">
+            <el-button
+              size="mini"
+              type="info"
+            >{{ scope.row.score }} {{ scope.row.score > 1 ? 'points' : 'point'}}</el-button>
+          </div>
+          <div v-else-if="scope.row.islock != 'open' && scope.row.status != 'submitted'">
+           <el-button
+              size="mini"
+              type="danger"
+            >Locked</el-button>
+          </div>
+          <div v-else-if="scope.row.islock == 'open' && scope.row.status != 'submitted'">
             <el-button
               size="mini"
               type="primary"
               @click="studquizanswer(scope.row.titleID)"
               onclick="location.href='studentquizanswerdash'"
             >View</el-button>
-            <el-button
+          </div>
+            <!-- <el-button v-if="scope.row.islock != 'open'"
               size="mini"
-              type="success"
-            >Done</el-button>
+              type="danger"
+            >Locked</el-button>
+            <el-button v-else-if="scope.row.islock == 'open'"
+              size="mini"
+              type="primary"
+              @click="studquizanswer(scope.row.titleID)"
+              onclick="location.href='studentquizanswerdash'"
+            >View</el-button> -->
+         
       </template>
       </el-table-column>
     </el-table>

@@ -29,7 +29,7 @@
                                     
                                         <div style="float:right; margin-bottom: 10px" >
                                             <el-button size="mini" plain icon="el-icon-view" @click="btnclassget(item.name, item.class_codeID, item.userID)" onclick="location.href= 'teacherclassdash' " round  >View Class</el-button>
-                                            <el-button size="mini" type="primary" icon="el-icon-edit" @click="EditdialogVisible = true" round>Edit Class</el-button>
+                                            <el-button size="mini" type="primary" icon="el-icon-edit" @click="EditdialogVisible = true, btnGETclass(item.name, item.class_codeID)" round>Edit Class</el-button>
                                             <?php include("libraries/resources/teacher/modalEditClass.php"); ?> 
                                         </div>
                                         

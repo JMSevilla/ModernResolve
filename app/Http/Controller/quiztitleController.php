@@ -32,30 +32,32 @@
                 // $titleID = 20;
                 echo json_encode($data);
                 foreach($data as $req){
-                    // $titleID = $req['titleID'];
-                    $quiztype = $req['quiztype'];
-                    $question = $req['question'];
-                    $choice1 = $req['choice1'];
-                    $choice2 = $req['choice2'];
-                    $choice3 = $req['choice3'];
-                    $choice4 = $req['choice4'];
-                    $choice5 = $req['choice5'];
-                    $points = $req['points'];
-                    $answer = $req['answer'];
-                    DBIntegrate::ControllerPrepare(lightBringerBulk::quiz('quiz'));
-                    DBIntegrate::bind(':titleID', $titleID);
-                    DBIntegrate::bind(':quiz_type', $quiztype);
-                    DBIntegrate::bind(':question', $question);
-                    DBIntegrate::bind(':choice1', $choice1);
-                    DBIntegrate::bind(':choice2', $choice2);
-                    DBIntegrate::bind(':choice3', $choice3);
-                    DBIntegrate::bind(':choice4', $choice4);
-                    DBIntegrate::bind(':choice5', $choice5);
-                    DBIntegrate::bind(':points', $points);
-                    DBIntegrate::bind(':answer', $answer);
-        
-                    if(DBIntegrate::ControllerExecutable()){
-                        echo DBIntegrate::SuccessJSONResponse();
+                    if(!empty($req['question']) && !empty($req['points'])) {
+                        // $titleID = $req['titleID'];
+                        $quiztype = $req['quiztype'];
+                        $question = $req['question'];
+                        $choice1 = $req['choice1'];
+                        $choice2 = $req['choice2'];
+                        $choice3 = $req['choice3'];
+                        $choice4 = $req['choice4'];
+                        $choice5 = $req['choice5'];
+                        $points = $req['points'];
+                        $answer = $req['answer'];
+                        DBIntegrate::ControllerPrepare(lightBringerBulk::quiz('quiz'));
+                        DBIntegrate::bind(':titleID', $titleID);
+                        DBIntegrate::bind(':quiz_type', $quiztype);
+                        DBIntegrate::bind(':question', $question);
+                        DBIntegrate::bind(':choice1', $choice1);
+                        DBIntegrate::bind(':choice2', $choice2);
+                        DBIntegrate::bind(':choice3', $choice3);
+                        DBIntegrate::bind(':choice4', $choice4);
+                        DBIntegrate::bind(':choice5', $choice5);
+                        DBIntegrate::bind(':points', $points);
+                        DBIntegrate::bind(':answer', $answer);
+            
+                        if(DBIntegrate::ControllerExecutable()){
+                            echo DBIntegrate::SuccessJSONResponse();
+                        }
                     }
                     
                 }
@@ -72,11 +74,22 @@
         }
 
         public function takequizController($table, $data){
-            DBIntegrate::ControllerPrepare(lightBringerBulk::take_quiz_query($table));
+            DBIntegrate::ControllerPrepare(lightBringerBulk::done_quiz_query("student_score"));
             DBIntegrate::bind(':qid', $data['qid']);
-            if(DBIntegrate::ControllerExecutable()){
-                $row = DBIntegrate::controller_fetch_all();
-                echo json_encode($row);
+            DBIntegrate::bind(':email', $data['email']);
+            if(DBIntegrate::ControllerExecutable()) {
+                if(DBIntegrate::controller_row()) {
+                    $score_fetch = DBIntegrate::controller_fetch_all();
+                    echo json_encode($score_fetch);
+                }
+                else {
+                    DBIntegrate::ControllerPrepare(lightBringerBulk::take_quiz_query($table));
+                    DBIntegrate::bind(':qid', $data['qid']);
+                    if(DBIntegrate::ControllerExecutable()){
+                        $row = DBIntegrate::controller_fetch_all();
+                        echo json_encode($row);
+                    }
+                }
             }
         }
 

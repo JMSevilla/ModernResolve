@@ -298,17 +298,27 @@ class Bulk  {
         return $sql;
     }
 
-    public function NB_editclassname($table) {
+    // public function NB_editclassname($table) {
+    //     $sql = "
+    //         update $table as cc 
+    //         inner join class_code_map as ccm on cc.class_codeID = ccm.class_codeID
+    //         inner join user as u on ccm.userID = u.userID
+    //         set name = :classname 
+    //         where cc.name = :value and u.email_address = :user
+    //     ";
+
+    //     return $sql;
+    // }
+    public function NB_editclss_query($table) {
         $sql = "
-            update $table as cc 
-            inner join class_code_map as ccm on cc.class_codeID = ccm.class_codeID
-            inner join user as u on ccm.userID = u.userID
-            set name = :classname 
-            where cc.name = :value and u.email_address = :user
+            update $table
+            set name = :name 
+            where class_codeID = :id
         ";
 
         return $sql;
     }
+
 
     // login token route
     // public function NB_istypeUser($table) {
@@ -438,6 +448,7 @@ class Bulk  {
         $sql = "
         select * from ".$table." where class_name=:class_name
         ";
+
         return $sql;
     }
 
@@ -446,6 +457,16 @@ class Bulk  {
         select qt.*,q.* from $table as qt
         inner join quiz as q on qt.titleID = q.titleID
         where qt.titleID=:qid
+        ";
+        return $sql;
+    }
+    public function NB_done_quiz_query($table) {
+        $sql = "
+            select ss.score, ss.status, qtm.*, u.*
+            from $table as ss
+            inner join quiz_title_map as qtm on ss.titleID = qtm.titleID
+            inner join user as u on ss.userID = u.userID
+            where ss.titleID = :qid and u.email_address = :email
         ";
         return $sql;
     }

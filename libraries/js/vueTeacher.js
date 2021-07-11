@@ -111,6 +111,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                     municipality:'',
                     zipcode:'',
                     hiName: '',
+                    classnameTitle: localStorage.getItem('name')
                   },
 
                   post: {
@@ -348,7 +349,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                 //   points:''
                 // }
               ],
-              SApoints:[]
+              SApoints:[],
+
+              editclass: '',
+              editIDclss: '',
             }
         },
         
@@ -365,6 +369,33 @@ ELEMENT.locale(ELEMENT.lang.en)
         },
         
         methods: {
+
+          btnGETclass(name, id) {
+            this.editclass = name;
+            this.editIDclss = id;
+            console.log(this.editclass)
+            // let editclss_dt = {
+            //   editclssTrig: true,
+            //   table: 'class_code',
+            //   name
+            // }
+            // $.post(this.app + this.Helpers + '/FetchingClassHelpers.php', editclss_dt, response => {
+            //   console.log(response);
+            // });
+          },
+          btnEDITclass() {
+            let editclss_dt = {
+              editclssTrig: true,
+              table: 'class_code',
+              name: this.editclass,
+              id: this.editIDclss
+            }
+            $.post(this.app + this.Helpers + '/FetchingClassHelpers.php', editclss_dt, response => {
+              console.log(response);
+              this.EditdialogVisible = false;
+              this.fetchClass();
+            });
+          },
 
           //quiz in new teacher dash
           addTrueFalse(){
@@ -612,7 +643,7 @@ ELEMENT.locale(ELEMENT.lang.en)
 
                     loading.close();
                     this.modalpostdialogVisible = false;
-                    // this.fetchpost();
+                    this.fetchpost();
                   }); 
                 }, 3000); 
               }          
@@ -676,94 +707,94 @@ ELEMENT.locale(ELEMENT.lang.en)
             });
           },
 
-          editclassname() {
-            var editclass = {
-              value: this.value,
-              c_user: this.classTask.currentUser,
-              classname: this.editclass,
-              table: 'class_code',
-              editclassTrig: true
-            }
-            $.post(this.app + this.Helpers + '/teacherdashboardHelpers.php', editclass, response => {
-              console.log(response);
-              this.selectCode(this.post.userID);
-              this.editclass = '';
-              this.EditdialogVisible = false;
-            });
-          },
+          // editclassname() {
+          //   var editclass = {
+          //     value: this.value,
+          //     c_user: this.classTask.currentUser,
+          //     classname: this.editclass,
+          //     table: 'class_code',
+          //     editclassTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/teacherdashboardHelpers.php', editclass, response => {
+          //     console.log(response);
+          //     this.selectCode(this.post.userID);
+          //     this.editclass = '';
+          //     this.EditdialogVisible = false;
+          //   });
+          // },
 
-          locked(id){
-            this.$confirm('This will locked class. Continue?', 'Warning', {
-              confirmButtonText: 'OK',
-              cancelButtonText: 'Cancel',
-              type: 'warning'
-            }).then(() => {
-              const loading = this.$loading({
-                lock: true,
-                text: 'Activating',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.7)'
-              });
-              setTimeout(() => {
-            this.is_activate_indicator = "Unlocked";
-            var data = {
-              id,
-              table: 'class_code',
-              status: 'close',
-              lockedTrig: true
-            }
-            $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
-              var jsondestroy = JSON.parse(response)
-              if(jsondestroy.statusCode == "success"){
-                loading.close()
-                this.$notify.success({
-                  title: 'Success',
-                  message: 'class is locked',
-                  offset: 100
-                });
-                this.getcodeteacher();
-              }
-            })
-              }, 3000)
-            })
+          // locked(id){
+          //   this.$confirm('This will locked class. Continue?', 'Warning', {
+          //     confirmButtonText: 'OK',
+          //     cancelButtonText: 'Cancel',
+          //     type: 'warning'
+          //   }).then(() => {
+          //     const loading = this.$loading({
+          //       lock: true,
+          //       text: 'Activating',
+          //       spinner: 'el-icon-loading',
+          //       background: 'rgba(0, 0, 0, 0.7)'
+          //     });
+          //     setTimeout(() => {
+          //   this.is_activate_indicator = "Unlocked";
+          //   var data = {
+          //     id,
+          //     table: 'class_code',
+          //     status: 'close',
+          //     lockedTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
+          //     var jsondestroy = JSON.parse(response)
+          //     if(jsondestroy.statusCode == "success"){
+          //       loading.close()
+          //       this.$notify.success({
+          //         title: 'Success',
+          //         message: 'class is locked',
+          //         offset: 100
+          //       });
+          //       this.getcodeteacher();
+          //     }
+          //   })
+          //     }, 3000)
+          //   })
 
-          },
-          unlocked(id){
-            this.$confirm('This will unlocked class. Continue?', 'Warning', {
-              confirmButtonText: 'OK',
-              cancelButtonText: 'Cancel',
-              type: 'warning'
-            }).then(() => {
-              const loading = this.$loading({
-                lock: true,
-                text: 'Activating',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.7)'
-              });
-              setTimeout(() => {
-            this.is_activate_indicator = "Locked";
-            var data = {
-              id,
-              table: 'class_code',
-              status: 'open',
-              lockedTrig: true
-            }
-            $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
-              var jsondestroy = JSON.parse(response)
-              if(jsondestroy.statusCode == "success"){
-                loading.close()
-                this.$notify.success({
-                  title: 'Success',
-                  message: 'Class is unlocked',
-                  offset: 100
-                });
-                this.getcodeteacher();
-              }
-            })
-              }, 3000)
-            })
+          // },
+          // unlocked(id){
+          //   this.$confirm('This will unlocked class. Continue?', 'Warning', {
+          //     confirmButtonText: 'OK',
+          //     cancelButtonText: 'Cancel',
+          //     type: 'warning'
+          //   }).then(() => {
+          //     const loading = this.$loading({
+          //       lock: true,
+          //       text: 'Activating',
+          //       spinner: 'el-icon-loading',
+          //       background: 'rgba(0, 0, 0, 0.7)'
+          //     });
+          //     setTimeout(() => {
+          //   this.is_activate_indicator = "Locked";
+          //   var data = {
+          //     id,
+          //     table: 'class_code',
+          //     status: 'open',
+          //     lockedTrig: true
+          //   }
+          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, (response) => {
+          //     var jsondestroy = JSON.parse(response)
+          //     if(jsondestroy.statusCode == "success"){
+          //       loading.close()
+          //       this.$notify.success({
+          //         title: 'Success',
+          //         message: 'Class is unlocked',
+          //         offset: 100
+          //       });
+          //       this.getcodeteacher();
+          //     }
+          //   })
+          //     }, 3000)
+          //   })
 
-          },
+          // },
 
           // editclassname(){
           //   var data = {
@@ -828,9 +859,10 @@ ELEMENT.locale(ELEMENT.lang.en)
                        this.classTask.classname = '';
                        this.dialogVisible = false;
                       //other actions.
-                      this.selectCode(this.post.userID);
-                      this.generate_token(5);
                       this.fetchClass();
+                      // this.selectCode(this.post.userID);
+                      this.generate_token(5);
+                      // this.fetchClass();
                      }
                     })
                   }, 500)

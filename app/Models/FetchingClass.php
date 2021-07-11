@@ -7,4 +7,12 @@ class FetchingModel extends fetchingController{
         ];
         fetchingController::fetch_class($table, $data);
     }
+
+    public function editclass_name($table){
+        $data = [
+            'id' => $_POST['id'],
+            'name' => $_POST['name']
+        ];
+        fetchingController::editclass_name_controller($table, $data);
+    }
 }

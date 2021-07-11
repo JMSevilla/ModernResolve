@@ -1,4 +1,27 @@
-<div class="container">
+<div class="container pt-5" v-if="tableDataFetchQuiz[0].score >= 0">
+    <div class="row">
+        <div class="col-md-6">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>{{ tableDataFetchQuiz[0].class_name }}</span>
+                    <el-label style="float: right; padding: 3px 0" type="text">
+                        <el-tag>Score: {{ tableDataFetchQuiz[0].score }}</el-tag>
+                    </el-label>
+                </div>
+                <div class="pt-3">
+                    <span>{{ tableDataFetchQuiz[0].firstname }} {{ tableDataFetchQuiz[0].lastname }}</span>
+                </div>
+                <div class="pt-3">
+                    <span>{{ tableDataFetchQuiz[0].title }}</span>
+                </div>
+                <!-- <div class="pt-3">
+                    <span>{{ tableDataFetchQuiz[0].status }}</span>
+                </div> -->
+            </el-card>
+        </div>
+    </div>
+</div>
+<div class="container" v-else>
     <div class="card mt-4" style="width: 100%;" >
         <div class="card-body">
             <h4>Quiz</h4>
