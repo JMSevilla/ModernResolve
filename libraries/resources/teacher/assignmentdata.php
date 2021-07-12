@@ -4,7 +4,7 @@
   </div> -->
 
   <el-table
-      :data="quizdataTableData.filter(data => !search || data.fullname.toLowerCase().includes(search.toLowerCase()))"
+      :data="assignmentdataTableData.filter(data => !search || data.fullname.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%; margin-top: 10px"
       >
         <el-table-column
@@ -41,9 +41,7 @@
             <template slot-scope="scope">
             <div style="float:right">
                 <el-button 
-                    type="primary"
-                    onclick="location.href='teacherquizgrade'"
-                    @click="btngrade(scope.row.scoreID)"
+                    type="primary" 
                    >Grade
                 </el-button>
             </div>

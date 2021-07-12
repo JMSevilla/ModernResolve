@@ -305,4 +305,12 @@ public function fetch_quizgrade_query($table){
 public function gradedquiz_query($table){
   return BULK::NB_gradedquiz_query($table);
 }
+
+public function insert_assignment_query($table){
+  return BULK::NB_insert_assignment($table);
+}
+
+public function insert_assignmentTitle_query($table){
+  return BULK::NB_insert_assignmentTitle($table);
+}
 }

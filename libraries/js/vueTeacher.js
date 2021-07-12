@@ -250,7 +250,6 @@ ELEMENT.locale(ELEMENT.lang.en)
                 textMc4:'',
                 textMc5:'',
 
-                file:'',
                 classname:[],
                 nameclass: localStorage.getItem('name'),
                 ccid: localStorage.getItem('ccid'),
@@ -353,6 +352,20 @@ ELEMENT.locale(ELEMENT.lang.en)
 
               editclass: '',
               editIDclss: '',
+              file:'',
+              assignmentdataTableData:[
+                {
+                  Avatar:'',
+                  fullname:'Hannah',
+                  status:'Submitted',
+                  created:'July 7, 2021'  
+                }
+              ],
+              assignTitle:'',
+              assignInstruction:'',
+              assignPoints:'',
+              assignDuedate:'',
+              assignfilename:''
             }
         },
         
@@ -1189,44 +1202,6 @@ ELEMENT.locale(ELEMENT.lang.en)
                 this.dynamicValidateForm.domains.selectTF = this.value;
                 this.dynamicValidateForm.domains.selectMC = this.value;
               },
-              
-              uploadFile() {
-
-                // var files = document.getElementById("file").files;
-    
-                // if(files.length > 0 ){
-    
-                var formData = new FormData();
-                formData.append("file", file);
-    
-                var xhttp = new XMLHttpRequest();
-    
-                // Set POST method and ajax file path
-                xhttp.open("POST", "ajaxfile.php", true);
-    
-                // call on request changes state
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-    
-                        var response = this.responseText;
-                        if(response == 1){
-                        alert("Upload successfully.");
-                        }else{
-                        alert("File not uploaded.");
-                        }
-                    }
-                };
-    
-                // Send request with data
-                xhttp.send(formData);
-    
-                // }
-                // else{
-                // alert("Please select a file");
-                // }
-    
-                },
-
                 //Fetching Class in new teacher dash
                 fetchClass(){
                   const data = {
@@ -1294,7 +1269,75 @@ ELEMENT.locale(ELEMENT.lang.en)
                   $.post(this.app + this.Helpers + "/QuizSubmissionHelpers.php", quiz_graded, response =>{
                     console.log(response);
                   })
-                }
+                },
+
+                //file attachment
+                uploadFile:function(){
+
+                  this.file = this.$refs.file.files[0];
+               
+                  var formData = new FormData();
+               
+                  formData.append('file', this.file);
+                  // const const_formData = {
+                  //   assignInsertTrigger: true,
+                  //   form: formData.append('file', this.file)
+                  // }
+               
+                  axios.post(this.app + this.Helpers + "/AssignmentHelpers.php", formData, {
+                   header:{
+                    'Content-Type' : 'multipart/form-data'
+                   }
+                  }).then(function(response){
+                   if(response.data.image == '')
+                   {
+                    console.log(response.data);
+                    // this.errorAlert = true;
+                    // this.successAlert = false;
+                    // this.errorMessage = response.data.message;
+                    // this.successMessage = '';
+                    // this.uploadedImage = '';
+                   }
+                   else
+                   {
+                     console.log(response.data);
+                    // this.errorAlert = false;
+                    // this.successAlert = true;
+                    // this.errorMessage = '';
+                    // this.successMessage = response.data.message;
+                    // var image_html = "<img src='"+response.data.image+"' class='img-thumbnail' width='200' />";
+                    // this.uploadedImage = image_html;
+                    // this.$refs.file.value = '';
+                   }
+                  });
+                 },
+
+                 assignmentInsert(){
+                   
+
+                  // this.file = this.$refs.file.files[0];
+                  // var formData = new FormData();
+                  // formData.append('file', this.file);
+
+                  let assignmentdata = {
+                    class_name: localStorage.getItem('name'),
+                    title: this.assignTitle,
+                    instruction: this.assignInstruction,
+                    points: this.assignPoints,
+                    duedate: this.assignDuedate,
+                    islock: 'open',
+                    // assignInsertTrigger: true,
+                    table: 'assignment_title_map'
+                    // form_Data: formData               
+                  }
+                  $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignmentdata, response =>{
+                    console.log(response);
+                    // let res = JSON.parse(response);
+                    // console.log(res);
+                    // localStorage.setItem('tID', res.tID);
+                  })
+                  // this.uploadFile();
+                },
           }
     })
 

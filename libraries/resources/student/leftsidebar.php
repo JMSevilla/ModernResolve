@@ -1,6 +1,6 @@
-<el-container style="height: 500px;" >
-    <el-aside width="190px" id="teachsidebar"  >
-      <el-menu :default-openeds="['1']" >
+<el-container >
+    <el-aside>
+      <el-menu :default-openeds="['1']" id="teachsidebar">
         <div style="margin: 20px 0 20px 10px">
           <small >
            <strong>{{studnameclass}} </strong>

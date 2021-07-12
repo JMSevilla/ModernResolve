@@ -14,6 +14,9 @@
                 <div class="pt-3">
                     <span>{{ tableDataFetchQuiz[0].title }}</span>
                 </div>
+                <div class="pt-3">
+                    <span>{{ tableDataFetchQuiz[0].submitdate }}</span>
+                </div>
                 <!-- <div class="pt-3">
                     <span>{{ tableDataFetchQuiz[0].status }}</span>
                 </div> -->

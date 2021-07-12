@@ -4,7 +4,7 @@
             <h4>Quiz</h4>
             <el-divider></el-divider>
             <el-form :label-position="studassignLabelPosition" label-width="100px" :model="quiz" >
-                <el-form-item label="Quiz Title">
+                <!-- <el-form-item label="Quiz Title">
                     <el-input 
                         v-model="quiz.title"
                         readonly>
@@ -19,7 +19,7 @@
                     </el-input>
                 </el-form-item>   
                     
-                <el-divider></el-divider>   
+                <el-divider></el-divider>    -->
                 <h5>Questions</h5> 
                 <el-divider></el-divider>
 

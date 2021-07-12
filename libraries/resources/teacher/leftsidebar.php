@@ -1,6 +1,6 @@
-  <el-container style="height: 500px;" >
-    <el-aside width="190px" id="teachsidebar"  >
-      <el-menu :default-openeds="['1']" >
+ 
+    <el-aside    >
+      <el-menu :default-openeds="['1']" id="teachsidebar">
         <div style="margin: 20px 0 20px 10px">
           <small>
           
@@ -21,11 +21,28 @@
             </el-menu-item >
         </a>
 
-        <a href="teacherassignment" id="memberslink">
+        <!-- <a href="teacherassignment" id="memberslink">
         <el-menu-item  index="3">
           <template slot="title"><i class="el-icon-tickets"></i>Assignment</template>
         </el-menu-item >
-        </a>
+        </a> -->
+
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-tickets"></i>
+            <span>Assignment</span>
+          </template>
+          <a href="teacherassignment" id="memberslink">
+            <el-menu-item index="3-1">
+            <i class="el-icon-circle-plus-outline"></i> 
+            Create Quiz</el-menu-item>
+          </a>
+          <a href="teacherassignmentdata" id="memberslink">
+            <el-menu-item index="3-2" > 
+            <i class="el-icon-view"></i> 
+            View Submission</el-menu-item>
+          </a>
+        </el-submenu>
 
         <el-submenu index="4">
           <template slot="title">
@@ -49,6 +66,6 @@
         </el-menu-item >
       </el-menu>
     </el-aside>    
-  </el-container>
+
 
   <?php include("libraries/resources/teacher/assignmentModal.php"); ?>

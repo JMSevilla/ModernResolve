@@ -462,7 +462,7 @@ class Bulk  {
     }
     public function NB_done_quiz_query($table) {
         $sql = "
-            select ss.score, ss.status, qtm.*, u.*
+            select ss.score, ss.created as submitdate, ss.status, qtm.*, u.*
             from $table as ss
             inner join quiz_title_map as qtm on ss.titleID = qtm.titleID
             inner join user as u on ss.userID = u.userID
@@ -512,6 +512,20 @@ class Bulk  {
         select score from $table where scoreID = :scoreID
         ";
 
+        return $sql;
+    }
+
+    public function NB_insert_assignment($table){
+        $sql = "
+        insert into ".$table." values (default,:class_name, :title, :instruction, :islock, current_timestamp )
+        ";
+        return $sql;
+    }
+
+    public function NB_insert_assignmentTitle($table){
+        $sql = "
+        insert into ".$table." values (default,:assigntitleID, :duedate, :points, :filename, current_timestamp )
+        ";
         return $sql;
     }
 }
