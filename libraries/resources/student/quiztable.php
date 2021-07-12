@@ -62,7 +62,7 @@
               type="primary"
               @click="studquizanswer(scope.row.titleID)"
               onclick="location.href='studentquizanswerdash'"
-            >View</el-button>
+            >Take a Quiz</el-button>
           </div>
             <!-- <el-button v-if="scope.row.islock != 'open'"
               size="mini"

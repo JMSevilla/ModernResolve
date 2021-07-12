@@ -890,6 +890,8 @@ input[id=grading]::-webkit-outer-spin-button {
 #teachsidebar
 {
   position: fixed;
+  height: 100%;
+  width: 200px;
 }
 
 #usernavbar
@@ -911,6 +913,14 @@ input[id=grading]::-webkit-outer-spin-button {
 {
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+input[id=points]::-webkit-inner-spin-button, 
+input[id=points]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 /* new student dash */

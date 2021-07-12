@@ -26,6 +26,7 @@
         <el-table-column
             label="Time Submitted"
             prop="created"
+            sortable
             width="200">
         </el-table-column>
         <el-table-column
