@@ -178,7 +178,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                   answer:'',
                 }],
 
-                doneQuiz: 'true'
+                doneQuiz: 'true',
+                tableDataAssignment:[{
+                  title:'Assignment No. 1',
+                  created:'July 13, 2021',
+                },
+                {
+                  title:'Assignment No. 2',
+                  created:'July 12, 2021',
+                }],
             }        
         },
 
