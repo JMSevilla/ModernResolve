@@ -57,10 +57,11 @@
                         ref="file" 
                         class="form-control" 
                         aria-label="file example" 
+                        @change="uploadFile()"
                         required />
                 </div>
                 <div class="mb-2">
-                    <button class="btn btn-primary" type="button" id="assignConfirmbtn" @click="assignmentInsert(), uploadFile()">Confirm</button>
+                    <button class="btn btn-primary" type="button" id="assignConfirmbtn" @click="assignmentInsert()">Confirm</button>
                 </div>
             </form> 
             

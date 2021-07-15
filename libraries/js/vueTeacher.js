@@ -249,6 +249,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                 textMc3:'',
                 textMc4:'',
                 textMc5:'',
+                file_upload_assignment: '',
 
                 classname:[],
                 nameclass: localStorage.getItem('name'),
@@ -1272,19 +1273,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                 },
 
                 //file attachment
-                uploadFile:function(){
+                uploadFile(){
 
                   this.file = this.$refs.file.files[0];
                
                   var formData = new FormData();
                
                   formData.append('file', this.file);
-                  // const const_formData = {
-                  //   assignInsertTrigger: true,
-                  //   form: formData.append('file', this.file)
-                  // }
-               
-                  axios.post(this.app + this.Helpers + "/AssignmentHelpers.php", formData, {
+    
+                  axios.post(this.app + this.Helpers + "/UploadFileHelpers.php", formData, {
                    header:{
                     'Content-Type' : 'multipart/form-data'
                    }
@@ -1300,7 +1297,9 @@ ELEMENT.locale(ELEMENT.lang.en)
                    }
                    else
                    {
-                     console.log(response.data);
+                    console.log(response.data);
+                    localStorage.setItem('fn', response.data);
+                    //  this.file_upload_assignment = img_file;
                     // this.errorAlert = false;
                     // this.successAlert = true;
                     // this.errorMessage = '';
@@ -1312,31 +1311,21 @@ ELEMENT.locale(ELEMENT.lang.en)
                   });
                  },
 
-                 assignmentInsert(){
-                   
-
-                  // this.file = this.$refs.file.files[0];
-                  // var formData = new FormData();
-                  // formData.append('file', this.file);
-
+                assignmentInsert(){
                   let assignmentdata = {
                     class_name: localStorage.getItem('name'),
                     title: this.assignTitle,
                     instruction: this.assignInstruction,
                     points: this.assignPoints,
                     duedate: this.assignDuedate,
-                    islock: 'open',
-                    // assignInsertTrigger: true,
+                    islock: 'open' ,
+                    filename: localStorage.getItem('fn'),
+                    assignInsertTrigger: true,
                     table: 'assignment_title_map'
-                    // form_Data: formData               
                   }
-                  $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignmentdata, response =>{
+                  $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignmentdata, response => {
                     console.log(response);
-                    // let res = JSON.parse(response);
-                    // console.log(res);
-                    // localStorage.setItem('tID', res.tID);
-                  })
-                  // this.uploadFile();
+                  });
                 },
           }
     })
