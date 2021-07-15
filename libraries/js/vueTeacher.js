@@ -366,7 +366,13 @@ ELEMENT.locale(ELEMENT.lang.en)
               assignInstruction:'',
               assignPoints:'',
               assignDuedate:'',
-              assignfilename:''
+              assignfilename:'',
+              progressTableData: [{
+                fullname:'John Doe',
+                quiz1: '90%',
+                quiz2: '90%', 
+                assignment1: '80%',
+              }],
             }
         },
         
