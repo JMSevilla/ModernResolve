@@ -1,20 +1,19 @@
 <?php 
 
-    // include_once "../Http/Controller/assignmentController.php";
+    include_once "../Http/Controller/assignmentController.php";
 
-    class AssignmentModel{
+    class AssignmentModel extends AssignmentController {
 
-        public function assignmentInsert_model($data, $file_upload) {
+        public function assignmentInsert_model($table) {
             $data = [
                 'class_name' => $_POST['class_name'],
                 'title' => $_POST['title'],
                 'instruction' => $_POST['instruction'],
                 'points' => $_POST['points'],
                 'duedate' => $_POST['duedate'],
-                'islock' => $_POST['islock']
+                'islock' => $_POST['islock'],
+                'filename' => $_POST['filename']
             ];
-            echo json_encode($file_upload);
-            echo json_encode($data);
-            // AssignmentController::assignmentInsert($table, $data, $image_file);
+            AssignmentController::assignmentInsert($table, $data);
         }        
     }
