@@ -27,7 +27,7 @@
 <div class="container" v-else>
     <div class="card mt-4" style="width: 100%;" >
         <div class="card-body">
-            <h4>Quiz</h4>
+            <h4>Quiz Details</h4>
             <el-divider></el-divider>
             <el-form :label-position="studassignLabelPosition" label-width="100px" :model="quiz" >
                 <el-form-item label="Quiz Title">

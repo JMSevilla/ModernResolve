@@ -909,6 +909,13 @@ input[id=grading]::-webkit-outer-spin-button {
   font-weight: 500;
 }
 
+#assignSubmitbtn
+{
+  text-transform: initial;
+  width: 15%;
+  font-weight: 500;
+}
+
 #classname
 {
   font-size: 1.3rem;
@@ -929,4 +936,17 @@ input[id=points]::-webkit-outer-spin-button {
   z-index: 10;
   top: 0;
   position: sticky;
+}
+
+#classbox
+{
+  border-radius: 15px;
+  border-top: 20px solid #79BBFF;
+  margin-bottom: 50px; 
+  margin-left: 50px;
+}
+
+#classbutton
+{
+  border-radius: 8px;
 }

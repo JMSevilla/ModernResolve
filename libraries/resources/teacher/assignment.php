@@ -63,10 +63,8 @@
                 <div class="mb-2">
                     <button class="btn btn-primary" type="button" id="assignConfirmbtn" @click="assignmentInsert()">Confirm</button>
                 </div>
-            </form> 
-            
-        </div>  
-        
+            </form>    
+        </div>
     </div>
 </div>
 
