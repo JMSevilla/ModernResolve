@@ -38,6 +38,7 @@
             <el-button
               size="mini"
               type="primary"
+              onclick="location.href='studassignmentanswerdash'"
             >Take an Assignment</el-button>
           </div>
             <!-- <el-button v-if="scope.row.islock != 'open'"
