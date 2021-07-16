@@ -38,6 +38,28 @@
                 echo DBIntegrate::SuccessJSONResponse();
             }
         }       
+
+        public function assignmentFetchTitle_controller($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::fetchtitle_assign_query($table));
+            DBIntegrate::bind('class_name', $data['class_name']);
+            if(DBIntegrate::ControllerExecutable()) {
+                if(DBIntegrate::controller_row()) {
+                    $rowTitle = DBIntegrate::controller_fetch_all();
+                    echo json_encode($rowTitle);
+                }
+            }
+        }
+
+        public function assignmentFetchQuestion_controller($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::fetchquestion_assign_query($table));
+            DBIntegrate::bind('id', $data['id']);
+            if(DBIntegrate::ControllerExecutable()) {
+                if(DBIntegrate::controller_row()) {
+                    $rowQuestion = DBIntegrate::controller_fetch_all();
+                    echo json_encode($rowQuestion);
+                }
+            }
+        }
 }
    
     

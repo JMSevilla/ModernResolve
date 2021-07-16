@@ -528,4 +528,22 @@ class Bulk  {
         ";
         return $sql;
     }
+
+    // assignment title teacher
+    public function NB_fetchtitle_assign($table) {
+        $sql = "
+            select * from $table where class_name = :class_name
+        ";
+
+        return $sql;
+    }
+    public function NB_fetchquestion_assign_query($table) {
+        $sql = "
+            select atm.*, a.* from $table as atm
+            inner join assignment as a on atm.assign_titleID = a.assign_titleID
+            where atm.assign_titleID = :id
+        ";
+
+        return $sql;
+    }
 }
