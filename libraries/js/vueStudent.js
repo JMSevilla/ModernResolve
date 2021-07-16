@@ -199,6 +199,7 @@ ELEMENT.locale(ELEMENT.lang.en)
           this.studentteacher();
           this.quiztitle();
           this.studquizanswer(localStorage.getItem('qid'));
+          this.fetch_assignment_title();
         },
 
         methods: {
@@ -617,5 +618,32 @@ ELEMENT.locale(ELEMENT.lang.en)
               console.log(response);
             });
           },
+
+          fetch_assignment_title() {
+            let fetch_title = {
+              assignTitle_trig: true,
+              class_name: localStorage.getItem('name'),
+              table: 'assignment_title_map'
+            }
+            $.post(this.app + this.Helpers + '/AssignmentHelpers.php', fetch_title, response => {
+              // console.log(response);
+              let res = JSON.parse(response);
+              console.log(res);
+              this.tableDataAssignment = res;
+            });
+          },
+
+          fetch_assignment_question(id) {
+            // console.log(id);
+            let fetch_question = {
+              id,
+              table: 'assignment_title_map',
+              assignQuestion_trig: true
+            }
+            $.post(this.app + this.Helpers + '/AssignmentHelpers.php', fetch_question, response => {
+              let res = JSON.parse(response);
+              console.log(res);
+            });
+          }
         },
     })

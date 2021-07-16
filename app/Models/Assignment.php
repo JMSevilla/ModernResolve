@@ -15,5 +15,21 @@
                 'filename' => $_POST['filename']
             ];
             AssignmentController::assignmentInsert($table, $data);
-        }        
+        }     
+        
+        public function assignmentFetchTitle_model($table) {
+            $data = [
+                'class_name' => $_POST['class_name']
+            ];
+            // echo json_encode($data);
+            AssignmentController::assignmentFetchTitle_controller($table, $data);
+        }
+
+        public function assignmentFetchQuestion_model($table) {
+            $data = [
+                'id' => $_POST['id']
+            ];
+            // echo json_encode($data);
+            AssignmentController::assignmentFetchQuestion_controller($table, $data);
+        }
     }
