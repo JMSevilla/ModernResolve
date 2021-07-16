@@ -371,8 +371,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                 fullname:'John Doe',
                 quiz1: '90%',
                 quiz2: '90%', 
-                assignment1: '80%',
-              }],
+                assignment1: '80%'
+              }]
             }
         },
         
@@ -498,45 +498,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             })
           },
 
-          // async requestTrueFalse(){
-          //   const requestTF = {
-          //     quiztrigger: true,
-          //     data: JSON.stringify(this.objTF)
-          //   }
-          //   await $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
-          //     console.log(response);
-          //   })
-          // },
-
-          // requestMultipleChoice(){
-          //   const requestTF = {
-          //     quiztrigger: true,
-          //     data: JSON.stringify(this.objMC)
-          //   }
-          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
-          //     console.log(response);
-          //   })
-          // },
-
-          // requestShortAnswer(){
-          //   const requestTF = {
-          //     quiztrigger: true,
-          //     data: JSON.stringify(this.objSA)
-          //   }
-          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
-          //     console.log(response);
-          //   })
-          // },
-
-          // requestFillintheBlanks(){
-          //   const requestTF = {
-          //     quiztrigger: true,
-          //     data: JSON.stringify(this.objFB)
-          //   }
-          //   $.post(this.app + this.Helpers + '/RequestHelpers.php', requestTF, response => {
-          //     console.log(response);
-          //   })
-          // },
+         
 
           quiztitle(){
             let quizdata = {
@@ -557,23 +519,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             })
           },
 
-          // requestData() {
-          //   // this.objquiz.selectTF = this.value;
-          //   this.objTF['0'].title = this.quiz.title;
-          //   this.objTF['0'].instructions = this.quiz.instructions;
-          //   $.post(this.app + this.Helpers + '/TeacherMembersHelpers.php', ...this.objTF, response => {
-          //     console.log(response);
-          //     console.log(this.objquiz['0'].textTF);
-          //     this.objquiz['0'].textTF = '';
-          //     this.objquiz['0'].valueTF = '';
-          //     this.objquiz['0'].gradingTF = '';
-          //     this.objquiz['0'].ans1 = '';
-          //     this.objquiz['0'].ans2 = '';
-              
-          //   })
-          //   console.log(this.objTF.title);
-          //   console.log(this.objTF.instructions);
-          // },
+         
           btnsave() {
             this.quiztitle();
             // this.requestTrueFalse();
@@ -585,53 +531,7 @@ ELEMENT.locale(ELEMENT.lang.en)
             // console.log(...this.objquiz);
           },
 
-          // select class code
-          // selectCode(userID) {
-          //   this.post.userID = userID;
-          //   const data = {
-          //     userID,
-          //     table: 'class_code_map',
-          //     selectTrig: true
-          //   }
-          //   $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
-          //     let res = JSON.parse(response);
-          //     console.log(response);
-          //     this.options = res;
-          //     this.discuss = 1;
-          //   });
-          // },
-
-          // getcodeteacher() {
-          //   const data = {
-          //     classname: this.value,
-          //     table: 'class_code',
-          //     codeTrig: true
-          //   }
-          //   $.post(this.app + this.Helpers + '/TeacherCodeSelectHelpers.php', data, response => {
-          //     let res = JSON.parse(response);
-          //     console.log(response);
-          //     console.log(res.code);
-          //     this.post.class_codeID = res.class_codeID;
-          //     this.teacherclasscode = res.code;
-          //     this.status = res.status;
-          //     // this.fetchpost();
-          //     // this.teachermembers(res.class_codeID);
-          //     // this.classteacher(res.class_codeID);
-          //   });
-          // },
-
-
-
-          // // post 
-          // writePost() {
-          //   $.post(this.app + this.Helpers + '/PostHelpers.php', this.post, response => {
-          //     console.log(response);
-          //     this.post.description = '';
-          //     this.modalpostdialogVisible = false;
-          //     console.log(this.post.class_codeID);
-          //     this.fetchpost();
-          //   });            
-          // },
+        
              // post 
             writePost() {
               if(this.post.description == '') {
@@ -669,18 +569,6 @@ ELEMENT.locale(ELEMENT.lang.en)
               }          
             },
 
-          // fetchpost() {
-          //   var data = {
-          //     id: this.post.class_codeID,
-          //     fetchTrig: true
-          //   }
-          //   $.post(this.app + this.Helpers + '/PostHelpers.php', data, response => {
-          //     console.log(response);
-          //     let res = JSON.parse(response);
-          //     console.log(res);
-          //     this.fetch = res;
-          //   });
-          // },
 
           //post in new teacher dash
           fetchpost() {
@@ -1150,54 +1038,8 @@ ELEMENT.locale(ELEMENT.lang.en)
                     selectTF: 'True/False'              
                   }
                   )
-                // this.dynamicValidateForm.domains.push({
-                //   key: Date.now(),
-                //   selectTF: 'True/False',
-                //   textTF: '',
-                //   valueTF:'',
-                //   gradingTF:''
-                // });
-                // console.log(this.dynamicValidateForm);
               },
-              // addDomain1() {
-              //   this.dynamicValidateForm.domains1.push({
-              //     key: Date.now(),
-              //     selectMC: 'Multiple Choice',
-              //     textMC: '',
-              //     valueMC:'',
-              //     gradingMC:''
-              //   });
-              //   console.log(this.dynamicValidateForm);
-              // },
-              // addDomain2() {
-              //   this.dynamicValidateForm.domains2.push({
-              //     key: Date.now(),
-              //     selectSA: 'Short Answer',
-              //     textSA: '',
-              //     valueSA:'',
-              //     gradingSA:''
-              //   });
-              //   console.log(this.dynamicValidateForm);
-              // },
-              // addDomain3() {
-              //   this.dynamicValidateForm.domains3.push({
-              //     key: Date.now(),
-              //     selectFB: 'Fill in the blanks',
-              //     textFill: '',
-              //     gradingFill:''
-              //   });
-              //   console.log(this.dynamicValidateForm);
-              // },
-              // addDomain4() {
-              //   this.dynamicValidateForm.domains4.push({
-              //     key: Date.now(),
-              //     selectMA: 'Multiple Answer',
-              //     textMA: '',
-              //     valueMA:[],
-              //     gradingMA:''
-              //   });
-              //   console.log(this.dynamicValidateForm);
-              // },
+             
               // removeDomain(item) {
               //   var index = this.dynamicValidateForm.domains.indexOf(item);
               //   if (index !== -1) {

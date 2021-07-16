@@ -268,6 +268,14 @@ public function quiz_title($table){
   return BULK::NB_quiz_title($table);
 }
 
+// assignment teacher
+public function fetchtitle_assign_query($table) {
+  return BULK::NB_fetchtitle_assign($table);
+}
+public function fetchquestion_assign_query($table) {
+  return BULK::NB_fetchquestion_assign_query($table);
+}
+
 //joinclass in new student dash
 public function join_classID($table, $column, $joinclass){
   return BULK::NB_join_class($table, $column, $joinclass);
