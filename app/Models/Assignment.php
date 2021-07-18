@@ -32,4 +32,17 @@
             // echo json_encode($data);
             AssignmentController::assignmentFetchQuestion_controller($table, $data);
         }
+
+        public function assignmentAnswerStud_model($table) {
+            $data = [
+                'questionfile' => $_POST['questionfile'],
+                'answerfile' => $_POST['answerfile'],
+                'userID' => $_POST['userID'],
+                'assign_titleID' => $_POST['assign_titleID'],
+                'score' => $_POST['score'],
+                'status' => $_POST['status']
+            ];
+
+            AssignmentController::scoreID_assignment($table, $data);
+        }
     }

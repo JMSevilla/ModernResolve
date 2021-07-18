@@ -546,4 +546,19 @@ class Bulk  {
 
         return $sql;
     }
+    public function NB_answerAssign_query($table) {
+        $sql = "
+            insert into $table values (default, :assignment_scoreID, :assign_questionfilename, :assign_answerfilename, current_timestamp)
+        ";
+
+        return $sql;
+    }
+    public function NB_scoreAssign_query($table) {
+        $sql = "
+            insert into $table values (default, :assign_titleID, :userID, :score, :status, current_timestamp)
+        ";
+
+        return $sql;
+    }
+
 }

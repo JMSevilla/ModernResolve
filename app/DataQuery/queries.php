@@ -275,6 +275,12 @@ public function fetchtitle_assign_query($table) {
 public function fetchquestion_assign_query($table) {
   return BULK::NB_fetchquestion_assign_query($table);
 }
+public function answerAssign_query($table) {
+  return BULK::NB_answerAssign_query($table);
+}
+public function scoreAssign_query($table) {
+  return BULK::NB_scoreAssign_query($table);
+}
 
 //joinclass in new student dash
 public function join_classID($table, $column, $joinclass){

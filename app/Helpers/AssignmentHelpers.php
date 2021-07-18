@@ -17,6 +17,11 @@
         AssignmentModel::assignmentFetchQuestion_model($table);
     }
 
+    if(isset($_POST['assignAnswer_trig']) == true) {
+        $table = $_POST['table'];
+        AssignmentModel::assignmentAnswerStud_model($table);
+    }
+
     function assignment_route() {
         include "../Models/Assignment.php";
     }
