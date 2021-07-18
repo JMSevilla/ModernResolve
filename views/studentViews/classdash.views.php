@@ -1,11 +1,11 @@
 <div id="student">
-    <div class="student" style="margin-bottom:30px">
-        <?php include("libraries/resources/studentNavbar.php"); ?>
+    <?php include("libraries/resources/studentNavbar.php"); ?>
+    <div class="container-fluid">
         <div class="row ">
             <div class="col-md-2">
                 <?php include("libraries/resources/student/leftsidebar.php"); ?>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10" style="background-color:#F8F9FA">
                 <?php include("libraries/resources/student/studentPost.php") ?>
             </div>
         </div>

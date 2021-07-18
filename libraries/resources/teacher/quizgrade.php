@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card mt-4" style="width: 100%;" >
+    <div class="card mt-4 mb-4" style="width: 100%;" >
         <div class="card-body">
             <h4>Quiz</h4>
             <el-divider></el-divider>

@@ -1,7 +1,8 @@
 <!-- <div class="teacher"> -->
 <div id="teacher">
     <?php include("libraries/resources/userNavbar.php"); ?>
-        <div class="container" style="margin-top: 20px" >
+    <div class="container-fluid" style="background-color:#F8F9FA;">
+        <div class="container" style="padding: 30px">
             
             <el-row :gutter="12">
             <div >
@@ -20,13 +21,13 @@
                                         {{item.name}} 
                                         </p>
                                             
-                                        <p style="">
+                                        <p>
                                         Class Code:  {{item.code}}   
                                         </p>
                                     
                                         <div style="float:right; margin-bottom: 10px" >
-                                            <el-button size="mini" plain icon="el-icon-view" @click="btnclassget(item.name, item.class_codeID, item.userID)" onclick="location.href= 'teacherclassdash'" id="classbutton">View Class</el-button>
-                                            <el-button size="mini" type="primary" icon="el-icon-edit" @click="EditdialogVisible = true, btnGETclass(item.name, item.class_codeID)" classbutton>Edit Class</el-button>
+                                            <el-button size="mini" id="viewclassbtn" plain icon="el-icon-view" @click="btnclassget(item.name, item.class_codeID, item.userID)" onclick="location.href= 'teacherclassdash'">View Class</el-button>
+                                            <el-button size="mini" id="editclassbtn" plain icon="el-icon-edit" @click="EditdialogVisible = true, btnGETclass(item.name, item.class_codeID)">Edit Class</el-button>
                                             <?php include("libraries/resources/teacher/modalEditClass.php"); ?> 
                                         </div>
                                         
@@ -35,5 +36,6 @@
                     </el-col>
                 </el-row>
             </div>
+        </div>
     </div>
 </div>

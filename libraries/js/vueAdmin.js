@@ -285,7 +285,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                     });
                     setTimeout(() => {
                       loading.close()
-                      window.location.href="http://localhost/torrestech/modernresolve"
+                      window.location.href="http://localhost/modernresolve"
                     }, 3000)
                     
                   } //other dashboards with logout . please replace this jsondestruct logs == logout below
