@@ -187,6 +187,15 @@ ELEMENT.locale(ELEMENT.lang.en)
                   title:'Assignment No. 2',
                   created:'July 12, 2021',
                 }],
+
+                // answer assignment student 
+                AssignmentStudent_Fetch: [],
+                // AssignmentStudent_Fetch: [{
+                //   assignTitle_answer: '',
+                //   assignInstruction_answer: '',
+                //   assignFilename_answer: ''
+                // }],
+
             }        
         },
 
@@ -200,6 +209,7 @@ ELEMENT.locale(ELEMENT.lang.en)
           this.quiztitle();
           this.studquizanswer(localStorage.getItem('qid'));
           this.fetch_assignment_title();
+          this.fetch_assignment_question(localStorage.getItem('tid_a'));
         },
 
         methods: {
@@ -634,16 +644,88 @@ ELEMENT.locale(ELEMENT.lang.en)
           },
 
           fetch_assignment_question(id) {
+            localStorage.setItem('tid_a', id);
             // console.log(id);
             let fetch_question = {
-              id,
+              id: localStorage.getItem('tid_a'),
               table: 'assignment_title_map',
               assignQuestion_trig: true
             }
             $.post(this.app + this.Helpers + '/AssignmentHelpers.php', fetch_question, response => {
               let res = JSON.parse(response);
               console.log(res);
+              this.AssignmentStudent_Fetch = res;
+            });
+          },
+
+           //file attachment
+          answerassign_selectFILE() {
+
+            this.file = this.$refs.file.files[0];
+          
+            var formData = new FormData();
+          
+            formData.append('file', this.file);
+
+            axios.post(this.app + this.Helpers + "/AssignmentSelectFile.php", formData, {
+              header:{
+              'Content-Type' : 'multipart/form-data'
+              }
+            }).then(function(response){
+              if(response.data.image == '')
+              {
+              console.log(response.data);
+              // this.errorAlert = true;
+              // this.successAlert = false;
+              // this.errorMessage = response.data.message;
+              // this.successMessage = '';
+              // this.uploadedImage = '';
+              }
+              else
+              {
+              console.log(response.data);
+              localStorage.setItem('a_sf', response.data);
+              //  this.file_upload_assignment = img_file;
+              // this.errorAlert = false;
+              // this.successAlert = true;
+              // this.errorMessage = '';
+              // this.successMessage = response.data.message;
+              // var image_html = "<img src='"+response.data.image+"' class='img-thumbnail' width='200' />";
+              // this.uploadedImage = image_html;
+              // this.$refs.file.value = '';
+              }
+            });
+          },
+
+          scoreID_Assignment() {
+            let assignDataSubmit = {
+              table: 'student_score_assignment',
+              assignAnswer_trig: true,
+              questionfile: this.AssignmentStudent_Fetch[0].filename,
+              answerfile: localStorage.getItem('a_sf'),
+              userID: localStorage.getItem('uid'),
+              assign_titleID: this.AssignmentStudent_Fetch[0].assign_titleID,
+              score: 0,
+              status: 'submitted'
+            }
+            $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignDataSubmit, response => {
+              console.log(response);
             });
           }
+          
+          // insertAnswerAssignment_FILE() {
+          //   let assignDataSubmit = {
+          //     table: 'assignment_answer',
+          //     assignAnswer_trig: true,
+          //     // class_name: this.AssignmentStudent_Fetch[0].class_name,
+          //     questionfile: this.AssignmentStudent_Fetch[0].filename,
+          //     answerfile: localStorage.getItem('a_sf'),
+          //     scoreID: 2
+          //   }
+          //   $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignDataSubmit, response => {
+          //     console.log(response);
+          //   });
+          // }
+
         },
     })

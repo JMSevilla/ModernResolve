@@ -9,26 +9,30 @@
                     <label class="mb-2"> Assignment Title </label>
                     <div class="form-outline">
                     <input 
-                        v-model="assignTitle"
+                        v-model="AssignmentStudent_Fetch[0].title"
                         type="text" 
                         class="form-control"
                         id="assignmenttext"
-                        />
+                        readonly/>
                     </div>
                 </div>
                 <div class="mb-4">
                     <label class="mb-2">Instructions</label>
                     <div class="form-outline">
                         <textarea
-                            v-model="assignInstruction"
+                            v-model="AssignmentStudent_Fetch[0].instruction"
                             class="form-control"
                             id="instructiontext"
                             rows="5"
+                            readonly
                         ></textarea>
                     </div>
                 </div> 
                 <div class="mb-4">
-                    <label class="mb-2">Download File: <embed src="upload/gg.webm" width="300px" height="300px"></label>
+                    <label class="mb-2">Download File: 
+                        <!-- <embed v-bind:src="'upload/'+AssignmentStudent_Fetch[0].filename" width="300px" height="300px"> -->
+                        <a v-bind:href="'upload/'+AssignmentStudent_Fetch[0].filename" download>{{AssignmentStudent_Fetch[0].filename}}</a>
+                    </label>
                     <!-- <div class="form-outline">
                         <input 
                             v-model="assignPoints"
@@ -41,15 +45,18 @@
                 
                 <div class="mb-5">
                     <input 
-                        v-model="assignfilename"
                         type="file" 
                         ref="file" 
                         class="form-control" 
                         aria-label="file example"
+                        @change="answerassign_selectFILE()"
                          />
                 </div>
                 <div class="mb-2">
-                    <center> <button class="btn btn-primary" type="button" id="assignSubmitbtn">Submit</button></center>
+                    <center> 
+                        <button class="btn btn-primary" type="button" id="assignSubmitbtn"
+                        @click="scoreID_Assignment()">Submit</button>
+                    </center>
                 </div>
             </form> 
             
@@ -57,3 +64,4 @@
         
     </div>
 </div>
+

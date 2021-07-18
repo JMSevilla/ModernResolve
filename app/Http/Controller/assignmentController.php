@@ -60,6 +60,34 @@
                 }
             }
         }
-}
+
+        public function scoreID_assignment($table, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::scoreAssign_query($table));
+            DBIntegrate::bind(':userID', $data['userID']);
+            DBIntegrate::bind(':assign_titleID', $data['assign_titleID']);
+            DBIntegrate::bind(':score', $data['score']);
+            DBIntegrate::bind(':status', $data['status']);
+            if(DBIntegrate::ControllerExecutable()) {
+                if(DBIntegrate::ControllerQuery("select max(assignmentScoreID) as s_ID from $table")){
+                    if(DBIntegrate::ControllerExecutable()) {
+                        $row = DBIntegrate::controller_fetch_row();
+                        $scoreID = $row['s_ID'];
+                        AssignmentController::assignmentAnswer_controller($scoreID, $data);
+                    }
+                }
+            }
+        }
+
+        public function assignmentAnswer_controller($scoreID, $data) {
+            DBIntegrate::ControllerPrepare(lightBringerBulk::answerAssign_query("assignment_answer"));
+            DBIntegrate::bind(':assignment_scoreID', $scoreID);
+            DBIntegrate::bind(':assign_questionfilename', $data['questionfile']);
+            DBIntegrate::bind(':assign_answerfilename', $data['answerfile']);
+            if(DBIntegrate::ControllerExecutable()) {
+                echo DBIntegrate::SuccessJSONResponse();
+            }
+        }
+
+    }
    
     
