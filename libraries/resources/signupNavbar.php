@@ -5,8 +5,9 @@
       <div class="navbarimages">
 
        <a href="index">
-        <img src="img/toresstec.png" alt="" id="logo">
-        <img src="img/torrestechlogo2.png" alt="" id="logo2">
+        <img src="img/torreslogo.png" alt="" id="torreslogo">
+        <!-- <img src="img/toresstec.png" alt="" id="logo">
+        <img src="img/torrestechlogo2.png" alt="" id="logo2"> -->
        </a>
 
       </div>        

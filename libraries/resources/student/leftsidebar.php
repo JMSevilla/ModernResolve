@@ -2,10 +2,14 @@
     <el-aside>
       <el-menu :default-openeds="['1']" id="teachsidebar">
       <div style="margin: 20px 0 20px 10px">
-          <small>
-           <strong>{{studnameclass}}  </strong>
-          </small>
-          <el-button style="margin-top: 10px" type="secondary" icon="el-icon-arrow-left" size="mini" onclick="location.href='studentDashboard'" round >Back to Class Page</el-button>
+        <div id="classnameborder">
+          <div style="margin-left: 10px">
+            <small id="sidebarclassname">
+              {{studnameclass}}
+            </small>
+          </div>
+        </div>
+          <el-button id="editclassbtn" style="margin-top: 20px; width: 90%" plain icon="el-icon-arrow-left" size="mini" onclick="location.href='studentDashboard'">Return to Class Page</el-button>
         </div>
         
         <a href="studentclassdash" id="dashlink">

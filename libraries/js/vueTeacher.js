@@ -118,7 +118,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                     userID: '',
                     class_codeID: '',
                     description: '',
-                    files: '',
+                    files: localStorage.getItem('postfn'),
                     writeTrig: true,
                     name: '',
                     ccid:localStorage.getItem('ccid'),
@@ -557,7 +557,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                     
                     this.$notify.success({
                       title: 'Yey!',
-                      message: 'Successfully post!',
+                      message: 'Successfully posted!',
                       offset: 100
                     });
 
@@ -569,6 +569,44 @@ ELEMENT.locale(ELEMENT.lang.en)
               }          
             },
 
+            // Post File Attachment
+            uploadFilePost(){
+
+              this.file = this.$refs.file.files[0];
+           
+              var formData = new FormData();
+           
+              formData.append('file', this.file);
+
+              axios.post(this.app + this.Helpers + "/UploadFilePostHelpers.php", formData, {
+               header:{
+                'Content-Type' : 'multipart/form-data'
+               }
+              }).then(function(response){
+               if(response.data.image == '')
+               {
+                console.log(response.data);
+                // this.errorAlert = true;
+                // this.successAlert = false;
+                // this.errorMessage = response.data.message;
+                // this.successMessage = '';
+                // this.uploadedImage = '';
+               }
+               else
+               {
+                console.log(response.data);
+                localStorage.setItem('postfn', response.data);
+                //  this.file_upload_assignment = img_file;
+                // this.errorAlert = false;
+                // this.successAlert = true;
+                // this.errorMessage = '';
+                // this.successMessage = response.data.message;
+                // var image_html = "<img src='"+response.data.image+"' class='img-thumbnail' width='200' />";
+                // this.uploadedImage = image_html;
+                // this.$refs.file.value = '';
+               }
+              });
+             },
 
           //post in new teacher dash
           fetchpost() {
@@ -1174,7 +1212,7 @@ ELEMENT.locale(ELEMENT.lang.en)
                   $.post(this.app + this.Helpers + '/AssignmentHelpers.php', assignmentdata, response => {
                     console.log(response);
                   });
-                },
+                },                 
           }
     })
 

@@ -884,14 +884,18 @@ input[id=grading]::-webkit-outer-spin-button {
 #classdashlink, #dashlink, #memberslink
 {
   text-decoration: none;
-  color: #303133;
+  /* color: #303133; */
+}
+#dashactive:active
+{
+  color: yellow;
 }
 
 #teachsidebar
 {
   position: fixed;
   height: 100%;
-  width: 200px;
+  width: 210px;
 }
 
 #usernavbar
@@ -918,8 +922,8 @@ input[id=grading]::-webkit-outer-spin-button {
 
 #classname
 {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 630;
 }
 
 input[id=points]::-webkit-inner-spin-button, 
@@ -940,8 +944,9 @@ input[id=points]::-webkit-outer-spin-button {
 
 #classbox
 {
-  border-radius: 15px;
-  border-top: 20px solid #79BBFF;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 8px solid #0F5298;
   margin-bottom: 50px; 
   margin-left: 50px;
 }
@@ -949,4 +954,44 @@ input[id=points]::-webkit-outer-spin-button {
 #classbutton
 {
   border-radius: 8px;
+}
+
+#torreslogo
+{
+  height: 65px;
+  width: 350px;
+}
+
+#torreslogodash
+{
+  margin-left: 20px;
+  height: 50px;
+  width: 250px;
+}
+
+#classnameborder
+{
+  border-left: 5px solid #0F5298;
+  border-radius: 2px;
+  /* width: 5px;
+  background-color: #79BBFF;
+  border-radius: 99px; */
+}
+
+#editclassbtn
+{
+  font-weight: 600;
+  color: #409EFF;
+}
+
+#viewclassbtn
+{
+  font-weight: 600;
+}
+
+#sidebarclassname
+{
+  font-size: 1.4em;
+  color: #303133;
+  font-weight: 630;
 }

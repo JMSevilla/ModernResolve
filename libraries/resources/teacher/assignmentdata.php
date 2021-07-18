@@ -1,4 +1,4 @@
-<div class="container-fluid" style="margin-top: 30px">
+<div class="container-fluid" style="margin-top: 30px;">
   <!-- <div class="row" style="margin-top: 20px" >
     <h3 style="display: flex; align-item: center; justify-content: center">Quiz Data</h3>
   </div> -->

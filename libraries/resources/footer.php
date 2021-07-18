@@ -4,23 +4,25 @@
           <div class="card">
             <div class="container" >
               <div class="card-top" style="margin-bottom: 16px; margin-top: 16px;">
-                  <img src="img/toresstec.png" class="img-fluid img1" />
-                  <img src="img/torrestechlogo2.png" class="img-fluid img2" />
+                <img src="img/torreslogo.png" alt="" id="torreslogodash">
+                  <!-- <img src="img/toresstec.png" class="img-fluid img1" />
+                  <img src="img/torrestechlogo2.png" class="img-fluid img2" /> -->
               </div>
               <div class="row" >
                   <div class="col-md-4"  >
-                      <p class="footer-section-content">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Tenetur odio molestias temporibus alias ipsa possimus repellendus saepe facere,
-                      quis totam qui repellat consectetur quia inventore autem impedit obcaecati molestiae soluta!
-                      </p>
+                        <p class="footer-section-content">
+                            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Tenetur odio molestias temporibus alias ipsa possimus repellendus saepe facere,
+                            quis totam qui repellat consectetur quia inventore autem impedit obcaecati molestiae soluta! -->
+                            Creating Positive Work Environment with the guide of our enthusiastic professionals
+                        </p>
                       <p class="footer-section-content1" id="demo1" >
                           Torres Technology Center Corporation &copy;
                           <script> document.write(new Date().getFullYear())</script>
                       </p>
                   </div>
 
-                  <div class="col-md">
+                  <!-- <div class="col-md">
                       <h3 class="footer-section-title"> Company</h3>
                       <ul class="list-unstyled">
                           <li>
@@ -91,7 +93,7 @@
                               <a href="#" >Facebook</a>
                           </li>
                       </ul>
-                  </div>
+                  </div> -->
               </div>
             </div>
         </div>

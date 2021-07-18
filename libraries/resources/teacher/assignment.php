@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin: 20px 0">
     <div class="card" style="width: 80%; margin-left: 10%">
         <div class="card-body">
             <h4>Create Assignment</h4>

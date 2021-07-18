@@ -1,5 +1,5 @@
-<div class="container" style="margin-top: 30px;" >
-        <div class="card" style="margin-bottom: 30px" v-for="(item, index) in studfetch">
+<div class="container" style="margin-top: 20px;">
+        <div class="card mb-4" v-for="(item, index) in studfetch">
                 <div class="card-body">
                         <div class="container"  >
                                 <div class="row mt-3">

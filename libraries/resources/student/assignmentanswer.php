@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card" style="width: 80%; margin-left: 10%">
+    <div class="card mt-4 mb-4" style="width: 80%; margin-left: 10%">
         <div class="card-body">
             <h4>Assignment Details</h4>
             <hr>
